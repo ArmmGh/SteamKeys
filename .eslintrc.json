@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "globals": {
+    "localStorage": true,
+    "document": true,
+    "window": true,
+    "fetch": false
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "class-methods-use-this": "off",
+    "react/no-array-index-key": "off",
+    "react/destructuring-assignment": "off"
+  }
+}
