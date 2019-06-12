@@ -8,7 +8,7 @@ const development = merge(
   {
     devServer: {
       contentBase: PATHS.DIST,
-      port: 3000,
+      port: 5000,
       host: 'localhost',
       compress: true,
       historyApiFallback: true,
