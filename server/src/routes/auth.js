@@ -15,6 +15,8 @@ const url =
 require('../utils/passport');
 require('dotenv').config();
 
+auth.use(passport.session());
+
 auth.get('/steam', passport.authenticate('steam'), (req, res) => {
   res.redirect(`${url}`);
   // res.redirect('/');
@@ -46,7 +48,7 @@ auth.get('/logout', (req, res) => {
 });
 
 auth.get('/user', (req, res) => {
-  console.log('/user', req.session);
+  console.log('/user', req.user);
   if (req.user) {
     const data = {
       isLogged: true,

@@ -1,5 +1,5 @@
 const app = require('express')();
-const http = require('http').Server(app);
+// const http = require('http').Server(app);
 const setup = require('./utils/start');
 const bodyParser = require('body-parser');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
@@ -20,13 +20,12 @@ app.use(
     name: 'steam_session',
     resave: true,
     saveUninitialized: true,
-    // cookie: { secure: true },
+    cookie: { secure: false },
   }),
 );
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/auth', auth);
-
 app.get('/', (req, res) => {
   res.send(req.user);
 });
