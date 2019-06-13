@@ -44,6 +44,7 @@ const update = async user => {
         );
       }
     } else {
+      // register(user);
       console.log('New User!!!!!!!');
     }
   });

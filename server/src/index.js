@@ -9,6 +9,7 @@ const session = require('express-session');
 const passport = require('passport');
 const auth = require('./routes/auth');
 const cors = require('cors');
+require('./utils/passport');
 
 setup(app);
 app.use(bodyParser.json());
@@ -16,15 +17,16 @@ app.use(cors());
 app.use(
   session({
     secret: process.env.SECRET,
-    resave: false,
+    name: 'steam_session',
+    resave: true,
     saveUninitialized: true,
-    cookie: { secure: true },
+    // cookie: { secure: true },
   }),
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(auth);
+app.use('/auth', auth);
 
 app.get('/', (req, res) => {
-  res.send('LOL');
+  res.send(req.user);
 });
