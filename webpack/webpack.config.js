@@ -25,7 +25,7 @@ const common = {
   },
   resolve: {
     modules: ['node_modules', PATHS.SRC],
-    extensions: ['.js', '.jsx', '.json', '.less'],
+    extensions: ['.js', '.jsx', '.json', '.scss'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },

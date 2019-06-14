@@ -1,19 +1,20 @@
 /* eslint-disable indent */
 import React, { useEffect } from 'react';
 import jwtDecode from 'jwt-decode';
+import { Switch, Route } from 'react-router-dom';
 import { useStateValue } from '../../context';
 import Header from '../Header';
 import fetchApi from '../../utils/fetchApi';
+import Profile from '../Profile';
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
-
   const getUser = info => {
     dispatch({ type: 'GET_USER', payload: info });
   };
   const getFetch = () => {
     fetchApi('/auth/user', { method: 'GET', credentials: 'include' })
-      .then(res => res.data)
+      .then(res => res)
       .then(data => {
         fetchApi('/auth/login', {
           method: 'POST',
@@ -21,26 +22,26 @@ function App() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data),
-        }).then(info => {
-          console.log(info);
-          if (info.isLoggedIn) {
-            if (info.user) {
-              window.localStorage.setItem('user', info);
-              window.localStorage.setItem('token', info.token);
+        })
+          .then(res => res)
+          .then(info => {
+            if (info && info.isLogged) {
+              if (info.user) {
+                window.localStorage.setItem('user', JSON.stringify(info));
+                window.localStorage.setItem('token', info.token);
+              }
+              const infoUser = jwtDecode(info.user);
+              const infoData = info;
+              infoData.user = infoUser;
+              getUser({
+                user: infoData.user,
+                fromStorage: true,
+                token: infoData.token,
+              });
             }
-            const infoUser = jwtDecode(info.user);
-            const infoData = info;
-            infoData.user = infoUser;
-            this.getUser({
-              user: infoData.user,
-              fromStorage: true,
-              token: infoData.token,
-            });
-          }
-        });
+          });
       });
   };
-  // console.log(user);
   useEffect(() => {
     const userCheck = window.localStorage.getItem('user');
     const token = window.localStorage.getItem('token');
@@ -52,12 +53,15 @@ function App() {
           token,
         })
       : getFetch();
-  });
+  }, []);
 
   return (
     <div>
       <Header />
-      <main />
+      <main>
+        <Route path="/profile" component={Profile} />
+        {/* <Route path="/faq" component={} /> */}
+      </main>
     </div>
   );
 }

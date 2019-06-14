@@ -18,7 +18,7 @@ const production = merge(
           options: { minimize: true },
         },
         {
-          loader: 'less-loader',
+          loader: 'sass-loader',
         },
         {
           loader: 'postcss-loader',

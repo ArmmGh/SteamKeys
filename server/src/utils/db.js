@@ -35,7 +35,7 @@ const update = async user => {
         );
       }
       if (data.imgurl !== user.imgurl) {
-        console.log('Changed imaage');
+        console.log('Changed image');
         User.findOneAndUpdate(
           { steamid: user.steamid },
           { $set: { imgurl: user.imgurl } },
@@ -44,8 +44,7 @@ const update = async user => {
         );
       }
     } else {
-      // register(user);
-      console.log('New User!!!!!!!');
+      console.log('New User');
     }
   });
 };

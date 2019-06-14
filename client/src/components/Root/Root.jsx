@@ -8,6 +8,7 @@ const Root = () => {
   const initialState = {
     user: {},
     token: null,
+    authenticated: false,
   };
   return (
     <Router>

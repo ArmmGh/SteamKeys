@@ -30,33 +30,32 @@ auth.get(
     };
     db.update(data);
     res.redirect(`${url}`);
-    // res.redirect('/');
     next();
   },
 );
 
 auth.get('/logout', (req, res) => {
-  res.logout();
-  res.cookies.set('token', null);
-  res.redirect('/');
+  req.logOut();
+  res.send({
+    isLogged: false,
+    message: 'not logged in',
+  });
 });
 
 auth.get('/user', (req, res) => {
   if (req.user) {
-    const data = {
+    res.send({
       isLogged: true,
       username: req.user.displayName,
       steamid: req.user.id,
       imgurl: req.user._json.avatarfull,
       profileurl: req.user._json.profileurl,
-    };
-    res.send({ data });
+    });
   } else {
-    const data = {
+    res.send({
       isLogged: false,
       message: 'not logged in',
-    };
-    res.send({ data });
+    });
   }
 });
 
@@ -69,33 +68,24 @@ auth.post('/login', (req, res) => {
     const token = jwt({ data });
     db.login(data.steamid).then(user => {
       if (user == null) {
-        console.log('New User');
-        return db
-          .register(req.body)
-          .then(newUser => {
-            const userToken = jwt(newUser);
-            const registred = {
-              user: userToken,
-              token,
-              newUser: true,
-              isLogged: true,
-            };
-            res.send(registred);
-          })
-          .catch(e => console.log(e));
+        // New User
+        return db.register(req.body).then(newUser => {
+          const userToken = jwt(newUser.toJSON());
+          res.send({
+            user: userToken,
+            token,
+            newUser: true,
+            isLogged: true,
+          });
+        });
       }
-      console.log('Old User');
+      // Old User
       const userToken = jwt({ user });
-      res.send({
-        user: userToken,
-        token,
-        newUser: false,
-        isLogged: true,
-      });
+      res.send({ user: userToken, token, newUser: false, isLogged: true });
       return false;
     });
   } else {
-    res.send({ data: { isLogged: false, message: 'not logged in' } });
+    res.send({ isLogged: false, message: 'not logged in' });
   }
 });
 

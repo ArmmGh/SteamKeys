@@ -1,11 +1,12 @@
 export default (state, action) => {
   switch (action.type) {
     case 'GET_USER':
-      if (action.fromStorage) {
+      if (action.payload.fromStorage) {
         return {
           ...state,
-          user: action.info.user,
-          token: action.token,
+          user: action.payload.user.user || action.payload.user,
+          token: action.payload.token,
+          authenticated: true,
         };
       }
       return { ...state };

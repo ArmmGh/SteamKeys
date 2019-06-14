@@ -52,7 +52,7 @@ exports.styleLoader = options => ({
   module: {
     rules: [
       {
-        test: /\.sass$/,
+        test: /\.scss$/,
         use: options.use,
       },
     ],

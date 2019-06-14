@@ -27,7 +27,7 @@ const development = merge(
         loader: 'css-loader',
       },
       {
-        loader: 'less-loader',
+        loader: 'sass-loader',
       },
       {
         loader: 'postcss-loader',
