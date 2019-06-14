@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiSettings } from 'react-icons/fi';
+import { FiSettings, FiPlusCircle } from 'react-icons/fi';
 import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import './Header.scss';
@@ -51,6 +51,12 @@ const Header = ({ info }) => {
         <div className="actions">
           {authenticated ? (
             <React.Fragment>
+              <div className="balance">
+                <p>
+                  Balance: <span>{user.balance}</span>
+                </p>
+                <FiPlusCircle />
+              </div>
               <div className="avatar">
                 <Link to="/profile" href="/profile">
                   <img src={user.imgurl} alt="" />
