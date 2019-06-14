@@ -1,6 +1,7 @@
 const passport = require('passport');
 const SteamStrategy = require('passport-steam').Strategy;
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+const User = require('../models/User');
 
 const { KEY } = process.env;
 const host = process.env.HOST || 'localhost';
@@ -14,6 +15,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
+
 passport.use(
   new SteamStrategy(
     {
@@ -25,7 +27,8 @@ passport.use(
       process.nextTick(() => {
         // eslint-disable-next-line no-param-reassign
         profile.identifier = identifier;
-        return done(null, profile);
+        const a = profile;
+        done(null, a);
       });
     },
   ),

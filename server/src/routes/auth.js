@@ -1,10 +1,9 @@
 // const Router = require('express-router');
-const express = require('express');
 const db = require('../utils/db');
-const jwt = require('jsonwebtoken');
+const jwt = require('../utils/token');
 const passport = require('passport');
+const auth = require('express').Router();
 
-const auth = express.Router();
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 5000;
 const url =
@@ -12,20 +11,15 @@ const url =
     ? `http://${host}:${port}/`
     : `http://${host}/`;
 
-require('../utils/passport');
+// require('../utils/passport');
 require('dotenv').config();
 
-auth.use(passport.session());
-
-auth.get('/steam', passport.authenticate('steam'), (req, res) => {
-  res.redirect(`${url}`);
-  // res.redirect('/');
-});
+auth.get('/steam', passport.authenticate('steam'));
 
 auth.get(
   '/steam/return',
   passport.authenticate('steam', {
-    failureRedirect: '/',
+    failureRedirect: `${url}`,
   }),
   (req, res, next) => {
     const data = {
@@ -48,7 +42,6 @@ auth.get('/logout', (req, res) => {
 });
 
 auth.get('/user', (req, res) => {
-  console.log('/user', req.user);
   if (req.user) {
     const data = {
       isLogged: true,
@@ -72,16 +65,15 @@ auth.post('/login', (req, res) => {
     steamid: req.body.steamid,
     username: req.body.username,
   };
-
   if (data.steamid) {
-    const token = jwt.createToken({ data });
+    const token = jwt({ data });
     db.login(data.steamid).then(user => {
       if (user == null) {
         console.log('New User');
         return db
           .register(req.body)
           .then(newUser => {
-            const userToken = jwt.createToken(newUser);
+            const userToken = jwt(newUser);
             const registred = {
               user: userToken,
               token,
@@ -93,7 +85,7 @@ auth.post('/login', (req, res) => {
           .catch(e => console.log(e));
       }
       console.log('Old User');
-      const userToken = jwt.createToken({ user });
+      const userToken = jwt({ user });
       res.send({
         user: userToken,
         token,
@@ -103,7 +95,6 @@ auth.post('/login', (req, res) => {
       return false;
     });
   } else {
-    console.log('/login', req.user);
     res.send({ data: { isLogged: false, message: 'not logged in' } });
   }
 });

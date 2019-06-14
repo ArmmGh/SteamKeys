@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import fetchApi from '../../utils/fetchApi';
 
 const Header = ({ info }) => {
-  const logout = () => e => {
-    window.localStorage.removeItem('user');
-    window.localStorage.removeItem('token');
-  };
   const haveJwt = window.localStorage.getItem('token');
   const host = process.env.HOST || 'localhost';
   const port = process.env.PORT || 3000;
@@ -14,6 +10,14 @@ const Header = ({ info }) => {
     process.env.NODE_ENV === 'development'
       ? `http://${host}:${port}`
       : `http://${host}`;
+  const logout = () => e => {
+    window.localStorage.removeItem('user');
+    window.localStorage.removeItem('token');
+  };
+  const authSteam = () => e => {
+    window.open(`${url}/auth/steam`, '_self');
+  };
+
   return (
     <header>
       <ul>
@@ -38,7 +42,7 @@ const Header = ({ info }) => {
         ) : (
           <li>
             {/* <a href="/auth">Login</a> */}
-            <a href={`${url}/auth/steam`}>AUTH</a>
+            <button onClick={authSteam()}>AUTH</button>
           </li>
         )}
         <li>
