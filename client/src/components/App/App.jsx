@@ -4,15 +4,17 @@ import jwtDecode from 'jwt-decode';
 import { Switch, Route } from 'react-router-dom';
 import { useStateValue } from '../../context';
 import Header from '../Header';
+import Game from '../Game';
 import fetchApi from '../../utils/fetchApi';
 import Profile from '../Profile';
+import './App.scss';
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
   const getUser = info => {
     dispatch({ type: 'GET_USER', payload: info });
   };
-  const getFetch = () => {
+  const getFetch = () => e => {
     fetchApi('/auth/user', { method: 'GET', credentials: 'include' })
       .then(res => res)
       .then(data => {
@@ -42,6 +44,7 @@ function App() {
           });
       });
   };
+
   useEffect(() => {
     const userCheck = window.localStorage.getItem('user');
     const token = window.localStorage.getItem('token');
@@ -60,7 +63,7 @@ function App() {
       <Header />
       <main>
         <Route path="/profile" component={Profile} />
-        {/* <Route path="/faq" component={} /> */}
+        <Game />
       </main>
     </div>
   );

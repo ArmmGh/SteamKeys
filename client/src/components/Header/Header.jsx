@@ -5,7 +5,7 @@ import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import './Header.scss';
 
-const Header = ({ info }) => {
+const Header = () => {
   const [{ user, authenticated }] = useStateValue();
   const host = process.env.HOST || 'localhost';
   const port = process.env.PORT || 3000;
