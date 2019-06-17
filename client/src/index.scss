@@ -15,6 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
   * {
     font-family: 'Roboto', sans-serif;
   }
@@ -22,4 +23,10 @@ body {
 a {
   text-decoration: none;
   color: #454545;
+}
+.main-width {
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  position: relative;
+  max-width: 1240px;
 }

@@ -1,3 +1,11 @@
+import EN from './../trans/en.json';
+import RU from './../trans/ru.json';
+
+const translations = {
+  en: EN,
+  ru: RU,
+};
+const getTranslate = langCode => key => translations[langCode][key] || key;
 export default (state, action) => {
   switch (action.type) {
     case 'GET_USER':
@@ -10,11 +18,11 @@ export default (state, action) => {
         };
       }
       return { ...state };
-    case 'removeUser':
+    case 'setLanguage':
       return {
         ...state,
-        authenticated: false,
-        user: null,
+        langCode: action.payload,
+        translate: getTranslate(action.payload),
       };
     default:
       return state;

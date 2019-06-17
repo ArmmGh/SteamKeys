@@ -1,72 +1,79 @@
-.spinner_holder {
-  background: #fff;
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 175px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 0;
-    background: white;
-    z-index: 10;
-  }
-  .spinner {
+.game {
+  .spinner_holder {
+    background: #fff;
     display: flex;
-    width: 1000px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     overflow: hidden;
-    position: relative;
-    padding: 30px 1px;
-    transition: ease 5s;
-    margin: 0 auto;
-    .list {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      transition-timing-function: cubic-bezier(0.6, 1, 0.5, 1);
-      .item {
-        user-select: none;
-        border-radius: 5px;
-        overflow: hidden;
-        height: 118px;
-        margin-right: 10px;
-        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
-        img {
+    .point {
+      height: 150px;
+      position: absolute;
+      z-index: 1;
+    }
+    .spinner {
+      &::before {
+        content: '';
+        height: 145px;
+        position: absolute;
+        left: -55px;
+        top: 30px;
+        background: linear-gradient(
+          to right,
+          rgba(72, 72, 72, 0.1) 0%,
+          #ffffff 30%,
+          rgba(155, 64, 64, 0) 100%
+        );
+        width: 185px;
+        z-index: 1;
+      }
+      &::after {
+        content: '';
+        height: 145px;
+        position: absolute;
+        right: -55px;
+        top: 30px;
+        background: linear-gradient(
+          to left,
+          rgba(72, 72, 72, 0.1) 0%,
+          #ffffff 30%,
+          rgba(155, 64, 64, 0) 100%
+        );
+        width: 185px;
+        z-index: 1;
+      }
+      width: 1240px;
+      min-width: 1240px;
+      max-width: 1240px;
+      overflow: hidden;
+      position: relative;
+      // display: flex;
+      // padding: 30px 1px;
+      // transition: ease 5s;
+      // margin: 0 auto;
+
+      .list {
+        display: flex;
+        box-orient: horizontal;
+        box-direction: normal;
+        flex-direction: row;
+        // transition-timing-function: cubic-bezier(0.6, 1, 0.5, 1);
+        margin-left: -151.5px;
+        .item {
+          user-select: none;
+          border-radius: 5px;
+          flex: 0 0 auto;
+          overflow: hidden;
+          width: 303px;
+          height: 118px;
+          margin-right: 10px;
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+          img {
+            width: auto;
+            height: auto;
+          }
         }
       }
-    }
-    &::before {
-      content: '';
-      height: 145px;
-      position: absolute;
-      left: -55px;
-      top: 30px;
-      background: linear-gradient(
-        to right,
-        rgba(72, 72, 72, 0.1) 0%,
-        #ffffff 30%,
-        rgba(155, 64, 64, 0) 100%
-      );
-      width: 185px;
-      z-index: 1;
-    }
-    &::after {
-      content: '';
-      height: 145px;
-      position: absolute;
-      right: -55px;
-      top: 30px;
-      background: linear-gradient(
-        to left,
-        rgba(72, 72, 72, 0.1) 0%,
-        #ffffff 30%,
-        rgba(155, 64, 64, 0) 100%
-      );
-      width: 185px;
-      z-index: 1;
     }
   }
   h2 {

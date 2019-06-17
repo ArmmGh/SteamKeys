@@ -14,6 +14,7 @@ const cookieParser = require('cookie-parser');
 require('./utils/passport');
 
 setup(app);
+app.enable('trust proxy');
 app.use(bodyParser.json());
 app.use(
   cookieSession({

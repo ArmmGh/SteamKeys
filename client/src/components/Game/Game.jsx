@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import fetchApi from '../../utils/fetchApi';
 import Item from './Item';
 import { useStateValue } from '../../context';
-import bf from '../../assets/bf.png';
-import minecraft from '../../assets/minecraft.png';
-import overwatch from '../../assets/overwatch.png';
+import point from '../../assets/game-point.png';
 import './Game.scss';
 
 const Game = () => {
@@ -29,7 +27,7 @@ const Game = () => {
   //   { name: 'portal2', price: 399, chance: 4 },
   //   { name: 'overwatch', price: 249, chance: 6 },
   // ];
-  const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1];
+  const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   const actionCase = [
     {
@@ -82,49 +80,65 @@ const Game = () => {
   }
 
   const openCase = () => e => {
+    const d = Math.random();
+    let randomMargin = 0;
+    if (d < 0.75) {
+      randomMargin = 165;
+    } else if (d < 0.50) {
+      randomMargin = 85;
+    } else if (d < 0.25) {
+      randomMargin = 42;
+    } else {
+      randomMargin = 15;
+    }
     // Request backend for case
     PerformAction(actionCase)
       .then(res => {
-        const elementLeft = document.querySelectorAll(`.${res.img}`)[7]
+        const elementLeft = document.querySelectorAll(`.${res.img}`)[10]
           .offsetLeft;
-        const divLeft = document.getElementById('spinner').offsetLeft;
-        const elementRelativeTop = elementLeft - (divLeft - 45);
-        const minusPos = elementRelativeTop;
+        console.log(document.querySelectorAll(`.${res.img}`)[10]);
+        console.log('elementLeft', elementLeft);
+        const minusPos = elementLeft - (772 - randomMargin);
+        // - (151.5 + randomMargin);
         setMatrix(matrix - minusPos);
+
         return res;
       })
       .then(res =>
         setTimeout(() => {
           setWinner(res);
-        }, 3000),
+        }, 5500),
       );
   };
 
-  useEffect(() => {
-    setTrans(transition + 3);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="game">
-      <div className="spinner_holder">
-        <div className="spinner" id="spinner">
-          <div
-            className="list"
-            id="list"
-            style={{
-              transform: `matrix(1, 0, 0, 1, ${matrix},0)`,
-              transitionDuration: `${transition}s`,
-            }}
-          >
-            {count.map((k, i) => (
-              <Item key={i} />
-            ))}
+      <div className="main-width">
+        <div className="spinner_holder">
+          <img src={point} alt="point" className="point" />
+
+          <div className="spinner" id="spinner">
+            <div
+              className="list"
+              id="list"
+              style={{
+                transform: `matrix(1, 0, 0, 1, ${matrix},0)`,
+                transition: 'all 5.5s cubic-bezier(0.32, 0.64, 0.45, 1) -0ms',
+                // transitionDuration: `${transition}s`,
+              }}
+            >
+              {count.map((k, i) => (
+                <Item key={i} />
+              ))}
+            </div>
           </div>
         </div>
         {winner && <h2>{winner.name}</h2>}
-      </div>
-      <div className="action">
-        <button onClick={openCase()}>Open case</button>
+        <div className="action">
+          <button onClick={openCase()}>Open case</button>
+        </div>
       </div>
     </div>
   );
