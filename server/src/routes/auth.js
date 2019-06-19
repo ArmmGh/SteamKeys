@@ -67,6 +67,7 @@ auth.post('/login', (req, res) => {
   if (data.steamid) {
     const token = jwt({ data });
     db.login(data.steamid).then(user => {
+      console.log(user);
       if (user == null) {
         // New User
         return db.register(req.body).then(newUser => {

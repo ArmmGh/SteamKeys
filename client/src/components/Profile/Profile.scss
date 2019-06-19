@@ -1,0 +1,25 @@
+.profile {
+  text-align: center;
+  .info {
+    .name {
+      margin-bottom: 20px;
+      p {
+        font-weight: 700;
+        color: #454545;
+      }
+    }
+    .avatar {
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+    }
+    .actions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+  }
+}

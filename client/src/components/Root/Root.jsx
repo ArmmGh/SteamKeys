@@ -7,17 +7,25 @@ import EN from '../../trans/en.json';
 import RU from '../../trans/ru.json';
 
 const Root = () => {
+  const storageLang = window.localStorage.getItem('lang');
+  const browserLang =
+    window.navigator.language.substring(0, 2) ||
+    window.navigator.userLanguage.substring(0, 2);
+  if (storageLang !== browserLang) {
+    window.localStorage.setItem('lang', browserLang);
+  }
   const translations = {
     en: EN,
     ru: RU,
   };
-  const getTranslate = langCode => key => translations[langCode][key] || key;
+  const getTranslate = langCode => key =>
+    translations[langCode === 'ru' ? 'ru' : 'en'][key] || key;
   const initialState = {
     user: {},
     token: null,
     authenticated: false,
-    langCode: 'en',
-    translate: getTranslate('en'),
+    langCode: browserLang,
+    translate: getTranslate(browserLang),
   };
 
   return (

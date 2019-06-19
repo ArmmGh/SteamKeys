@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000;
 const session = require('express-session');
 const passport = require('passport');
 const auth = require('./routes/auth');
+const cases = require('./routes/cases');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
@@ -34,6 +35,7 @@ app.use(
   }),
 );
 app.use('/auth', auth);
+app.use(cases);
 
 const authCheck = (req, res, next) => {
   if (!req.user) {

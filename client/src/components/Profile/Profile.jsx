@@ -5,13 +5,43 @@ import { Switch, Route } from 'react-router-dom';
 import { useStateValue } from '../../context';
 import Header from '../Header';
 import fetchApi from '../../utils/fetchApi';
+import './Profile.scss';
 
 const Profile = () => {
-  const [{ user }] = useStateValue();
+  const [{ user, translate }] = useStateValue();
+
+  const logout = () => e => {
+    window.localStorage.removeItem('user');
+    window.localStorage.removeItem('token');
+    fetchApi('/auth/logout', { method: 'GET', credentials: 'include' }).then(
+      res => {
+        if (!res.isLogged) {
+          window.open(`${window.location.origin}/`, '_self');
+        }
+      },
+    );
+  };
 
   return (
-    <div>
-      <h1>{user.username}</h1>
+    <div className="profile">
+      <div className="main-width">
+        <div className="info">
+          <div className="name">
+            <p>{user.username}</p>
+          </div>
+          <div className="avatar">
+            <img src={user.imgurl} alt="" />
+          </div>
+          <div className="actions">
+            <div className="add_balance">
+              <button>{translate('add_balance')}</button>
+            </div>
+            <div className="logout">
+              <button onClick={logout()}>Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Cases = require('../models/Cases');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const { ADMIN1, ADMIN2 } = process.env;
@@ -27,7 +28,7 @@ const update = async user => {
     if (data !== null) {
       if (data.username !== user.username) {
         console.log('Changed name');
-        User.findOneAndUpdate(
+        User.updateOne(
           { steamid: user.steamid },
           { $set: { username: user.username } },
           { new: true },
@@ -36,7 +37,7 @@ const update = async user => {
       }
       if (data.imgurl !== user.imgurl) {
         console.log('Changed image');
-        User.findOneAndUpdate(
+        User.updateOne(
           { steamid: user.steamid },
           { $set: { imgurl: user.imgurl } },
           { new: true },
@@ -49,8 +50,15 @@ const update = async user => {
   });
 };
 
+const getCase = type =>
+  Cases.findOne({ type })
+    .then(res => res.data)
+    .then(arr => arr);
+// const getCase = name => console.log(Cases)
+
 module.exports = {
   login,
   register,
   update,
+  getCase,
 };

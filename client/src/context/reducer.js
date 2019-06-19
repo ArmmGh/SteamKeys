@@ -8,7 +8,7 @@ const translations = {
 const getTranslate = langCode => key => translations[langCode][key] || key;
 export default (state, action) => {
   switch (action.type) {
-    case 'GET_USER':
+    case 'getUser':
       if (action.payload.fromStorage) {
         return {
           ...state,
@@ -23,6 +23,11 @@ export default (state, action) => {
         ...state,
         langCode: action.payload,
         translate: getTranslate(action.payload),
+      };
+    case 'setCase':
+      return {
+        ...state,
+        cases: action.payload,
       };
     default:
       return state;

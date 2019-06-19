@@ -6,42 +6,43 @@
     justify-content: center;
     flex-direction: column;
     overflow: hidden;
+    &::before {
+      content: '';
+      height: 140px;
+      position: absolute;
+      left: -55px;
+      top: 0;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.1) 0%,
+        #ffffff 30%,
+        rgba(155, 64, 64, 0) 100%
+      );
+      width: 185px;
+      z-index: 1;
+    }
+    &::after {
+      content: '';
+      height: 140px;
+      position: absolute;
+      right: -55px;
+      top: 0;
+      background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.1) 0%,
+        #ffffff 30%,
+        rgba(155, 64, 64, 0) 100%
+      );
+      width: 185px;
+      z-index: 1;
+    }
     .point {
       height: 150px;
       position: absolute;
+      top: -15px;
       z-index: 1;
     }
     .spinner {
-      &::before {
-        content: '';
-        height: 145px;
-        position: absolute;
-        left: -55px;
-        top: 30px;
-        background: linear-gradient(
-          to right,
-          rgba(72, 72, 72, 0.1) 0%,
-          #ffffff 30%,
-          rgba(155, 64, 64, 0) 100%
-        );
-        width: 185px;
-        z-index: 1;
-      }
-      &::after {
-        content: '';
-        height: 145px;
-        position: absolute;
-        right: -55px;
-        top: 30px;
-        background: linear-gradient(
-          to left,
-          rgba(72, 72, 72, 0.1) 0%,
-          #ffffff 30%,
-          rgba(155, 64, 64, 0) 100%
-        );
-        width: 185px;
-        z-index: 1;
-      }
       width: 1240px;
       min-width: 1240px;
       max-width: 1240px;
@@ -59,6 +60,7 @@
         flex-direction: row;
         // transition-timing-function: cubic-bezier(0.6, 1, 0.5, 1);
         margin-left: -151.5px;
+        padding-bottom: 20px;
         .item {
           user-select: none;
           border-radius: 5px;

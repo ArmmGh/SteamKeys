@@ -17,77 +17,65 @@ const Header = () => {
     process.env.NODE_ENV === 'development'
       ? `http://${host}:${port}`
       : `http://${host}`;
-  const logout = () => e => {
-    window.localStorage.removeItem('user');
-    window.localStorage.removeItem('token');
-    fetchApi('/auth/logout', { method: 'GET', credentials: 'include' }).then(
-      res => {
-        if (!res.isLogged) {
-          window.open(`${window.location.origin}/`, '_self');
-        }
-      },
-    );
-  };
+
   const authSteam = () => e => {
     window.open(`${url}/auth/steam`, '_self');
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch({ type: 'setLanguage', payload: 'ru' });
-    }, 3000);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <header>
-      <div className="header_holder">
-        <ul className="nav">
-          <li>
-            <Link to="/roulette" href="/roulette">
-              Homepage
-            </Link>
-          </li>
-          <li>
-            <Link to="/roulette" href="/roulette">
-              FAQ
-            </Link>
-          </li>
-          <li>
-            <Link to="/roulette" href="/roulette">
-              Keys for Free
-            </Link>
-          </li>
-        </ul>
-        <div className="actions">
-          {authenticated ? (
-            <React.Fragment>
-              <div className="balance">
-                <p>
-                  {translate('balance')}: <span>{user.balance}</span>
-                </p>
-                <FiPlusCircle />
-              </div>
-              <div className="avatar">
-                <Link to="/profile" href="/profile">
-                  <img src={user.imgurl} alt="" />
-                </Link>
-              </div>
-              <div className="settings">
-                <Link to="/profile" href="/profile">
-                  <FiSettings />
-                  <p>Settings</p>
-                </Link>
-              </div>
-            </React.Fragment>
-          ) : (
-            // <button onClick={logout()}>Logout</button>
-            // <a href={user.profileurl} rel="noopener noreferrer" target="_blank">
-            //   {user.username}
-            // </a>
+      <div className="main-width">
+        <div className="header_holder">
+          <ul className="nav">
             <li>
-              <button onClick={authSteam()}>Login</button>
+              <Link to="/roulette" href="/roulette">
+                Homepage
+              </Link>
             </li>
-          )}
+            <li>
+              <Link to="/roulette" href="/roulette">
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link to="/roulette" href="/roulette">
+                Keys for Free
+              </Link>
+            </li>
+          </ul>
+          <div className="actions">
+            {authenticated ? (
+              <React.Fragment>
+                <div className="balance">
+                  <p>
+                    {translate('balance')}: <span>{user.balance}</span>
+                  </p>
+                  <FiPlusCircle />
+                </div>
+                <div className="avatar">
+                  <Link to="/profile" href="/profile">
+                    <img src={user.imgurl} alt="" />
+                  </Link>
+                </div>
+                <div className="settings">
+                  <Link to="/profile" href="/profile">
+                    <FiSettings />
+                    <p>{translate('profile')}</p>
+                  </Link>
+                </div>
+              </React.Fragment>
+            ) : (
+              // <button onClick={logout()}>Logout</button>
+              // <a href={user.profileurl} rel="noopener noreferrer" target="_blank">
+              //   {user.username}
+              // </a>
+              <li>
+                <button onClick={authSteam()}>Login</button>
+              </li>
+            )}
+          </div>
         </div>
       </div>
     </header>

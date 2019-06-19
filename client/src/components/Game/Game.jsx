@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import fetchApi from '../../utils/fetchApi';
 import Item from './Item';
 import { useStateValue } from '../../context';
@@ -6,8 +7,7 @@ import point from '../../assets/game-point.png';
 import './Game.scss';
 
 const Game = () => {
-  const [{ user, authenticated }] = useStateValue();
-  const [transition, setTrans] = useState(0);
+  const [{ user, authenticated, cases }, dispatch] = useStateValue();
   const [matrix, setMatrix] = useState(0);
   const [winner, setWinner] = useState(null);
 
@@ -29,32 +29,6 @@ const Game = () => {
   // ];
   const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
-  const actionCase = [
-    {
-      name: 'overwatch',
-      price: 1999,
-      chance: 50,
-      img: 'overwatch',
-    },
-    {
-      name: 'minecraft',
-      price: 1900,
-      chance: 25,
-      img: 'minecraft',
-    },
-    {
-      name: 'battlefield1',
-      price: 1499,
-      chance: 15,
-      img: 'bf',
-    },
-    {
-      name: 'pubg',
-      price: 1399,
-      chance: 10,
-      img: 'pubg',
-    },
-  ];
   async function PerformAction(actions) {
     const totalChance = actions.reduce(
       (accum, current) => accum + current.chance,
@@ -84,7 +58,7 @@ const Game = () => {
     let randomMargin = 0;
     if (d < 0.75) {
       randomMargin = 165;
-    } else if (d < 0.50) {
+    } else if (d < 0.5) {
       randomMargin = 85;
     } else if (d < 0.25) {
       randomMargin = 42;
@@ -92,14 +66,11 @@ const Game = () => {
       randomMargin = 15;
     }
     // Request backend for case
-    PerformAction(actionCase)
+    PerformAction(cases)
       .then(res => {
         const elementLeft = document.querySelectorAll(`.${res.img}`)[10]
           .offsetLeft;
-        console.log(document.querySelectorAll(`.${res.img}`)[10]);
-        console.log('elementLeft', elementLeft);
         const minusPos = elementLeft - (772 - randomMargin);
-        // - (151.5 + randomMargin);
         setMatrix(matrix - minusPos);
 
         return res;
@@ -111,7 +82,17 @@ const Game = () => {
       );
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    switch (window.location.pathname) {
+      case '/':
+        fetchApi('/cases/demo', { method: 'POST' }).then(res => {
+          dispatch({ type: 'setCase', payload: res });
+        });
+        break;
+      default:
+        break;
+    }
+  }, []);
 
   return (
     <div className="game">

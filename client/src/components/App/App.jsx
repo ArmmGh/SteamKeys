@@ -12,9 +12,9 @@ import './App.scss';
 function App() {
   const [{ user }, dispatch] = useStateValue();
   const getUser = info => {
-    dispatch({ type: 'GET_USER', payload: info });
+    dispatch({ type: 'getUser', payload: info });
   };
-  const getFetch = () => e => {
+  const getFetch = () => {
     fetchApi('/auth/user', { method: 'GET', credentials: 'include' })
       .then(res => res)
       .then(data => {
@@ -63,7 +63,7 @@ function App() {
       <Header />
       <main>
         <Route path="/profile" component={Profile} />
-        <Game />
+        <Route exact path={['/', '/case']} component={Game} />
       </main>
     </div>
   );

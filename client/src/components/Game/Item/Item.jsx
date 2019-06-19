@@ -4,7 +4,7 @@ import { useStateValue } from '../../../context';
 import './Item.scss';
 
 const Item = () => {
-  const [{ user, authenticated }] = useStateValue();
+  const [{ user, authenticated, cases }] = useStateValue();
 
   function importAll(r) {
     const images = {};
@@ -19,37 +19,14 @@ const Item = () => {
     require.context('../../../assets', false, /\.(png|jpe?g|svg)$/),
   );
 
-  const actionCase = [
-    {
-      name: 'overwatch',
-      price: 1999,
-      chance: 90,
-      img: 'overwatch',
-    },
-    {
-      name: 'minecraft',
-      price: 1900,
-      chance: 2,
-      img: 'minecraft',
-    },
-    {
-      name: 'battlefield1',
-      price: 1499,
-      chance: 5,
-      img: 'bf',
-    },
-    {
-      name: 'pubg',
-      price: 1399,
-      chance: 3,
-      img: 'pubg',
-    },
-  ];
-  return actionCase.map((item, i) => (
-    <div key={i} className={`item ${item.img}`}>
-      <img src={images[item.img]} alt="" />
-    </div>
-  ));
+  return (
+    (cases &&
+      cases.map((item, i) => (
+        <div key={i} className={`item ${item.img}`}>
+          <img src={images[item.img]} alt="" />
+        </div>
+      ))) || <h2>Case not found</h2>
+  );
 };
 
 export default Item;
