@@ -1,0 +1,41 @@
+.livedrop {
+  background: #7395ae;
+  padding: 30px;
+  h1 {
+    font-size: 18px;
+    color: #fff;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    li.item {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      text-overflow: ellipsis;
+      margin-right: 10px;
+      flex: 0 0 1;
+      // overflow: hidden;
+      img {
+        max-width: 170px;
+        border-radius: 5px;
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+      }
+      .fullname {
+        margin: 2px 0;
+        font-size: 14px;
+        color: #fff;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

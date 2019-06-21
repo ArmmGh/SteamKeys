@@ -1,16 +1,20 @@
 /* eslint-disable indent */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { useStateValue } from '../../context';
 import Header from '../Header';
 import Game from '../Game';
+import Livedrop from '../Livedrop';
 import fetchApi from '../../utils/fetchApi';
 import Profile from '../Profile';
 import './App.scss';
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, socket }, dispatch] = useStateValue();
+  const [messageCount, setMessageCount] = useState(0);
+  const [inRoom, setInRoom] = useState(false);
+
   const getUser = info => {
     dispatch({ type: 'getUser', payload: info });
   };
@@ -56,11 +60,33 @@ function App() {
           token,
         })
       : getFetch();
+
+    fetchApi('/live').then(res => {
+      res.fromDb = true;
+      dispatch({ type: 'updateLive', payload: res });
+    });
   }, []);
+
+  useEffect(() => {
+    socket.on('receive message', payload => {
+      setMessageCount(messageCount + 1);
+    });
+
+    document.title = `${messageCount} new messages have been emitted`;
+  }, [messageCount]);
+
+  const handleNewMessage = () => {
+    console.log('emitting new message');
+    socket.emit('new message', {
+      room: 'test-room',
+    });
+    setMessageCount(messageCount + 1);
+  };
 
   return (
     <div>
       <Header />
+      <Livedrop />
       <main>
         <Route path="/profile" component={Profile} />
         <Route exact path={['/', '/case']} component={Game} />

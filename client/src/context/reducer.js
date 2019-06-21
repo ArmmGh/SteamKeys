@@ -29,6 +29,17 @@ export default (state, action) => {
         ...state,
         cases: action.payload,
       };
+    case 'updateLive':
+      if (action.payload.fromDb) {
+        return {
+          ...state,
+          livedrop: [...state.livedrop, ...action.payload],
+        };
+      }
+      return {
+        ...state,
+        livedrop: [...state.livedrop, action.payload],
+      };
     default:
       return state;
   }

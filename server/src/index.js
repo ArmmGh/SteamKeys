@@ -1,17 +1,17 @@
 const app = require('express')();
-// const http = require('http').Server(app);
-const setup = require('./utils/start');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
-const port = process.env.PORT || 3000;
 const session = require('express-session');
 const passport = require('passport');
 const auth = require('./routes/auth');
 const cases = require('./routes/cases');
+const livedrop = require('./routes/livedrop');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
+const setup = require('./utils/start');
 require('./utils/passport');
 
 setup(app);
@@ -36,6 +36,7 @@ app.use(
 );
 app.use('/auth', auth);
 app.use(cases);
+app.use(livedrop);
 
 const authCheck = (req, res, next) => {
   if (!req.user) {

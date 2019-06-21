@@ -1,6 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { BrowserRouter as Router } from 'react-router-dom';
+import io from 'socket.io-client';
 import { StateProvider } from '../../context';
 import App from '../App';
 import EN from '../../trans/en.json';
@@ -20,12 +21,17 @@ const Root = () => {
   };
   const getTranslate = langCode => key =>
     translations[langCode === 'ru' ? 'ru' : 'en'][key] || key;
+
   const initialState = {
     user: {},
     token: null,
     authenticated: false,
     langCode: browserLang,
     translate: getTranslate(browserLang),
+    socket: io(
+      `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`,
+    ),
+    livedrop: [],
   };
 
   return (

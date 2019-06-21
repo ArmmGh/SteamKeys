@@ -12,7 +12,7 @@ header {
       flex-direction: row;
       li {
         list-style-type: none;
-        margin-right: 10px;
+        margin-right: 15px;
         a {
           font-size: 14px;
           text-transform: uppercase;
@@ -34,7 +34,7 @@ header {
           font-weight: bold;
           margin-right: 5px;
           span {
-            color: #0747a6;
+            color: #f8f9f9;
           }
         }
         svg {
@@ -56,29 +56,30 @@ header {
         cursor: pointer;
         a {
           display: flex;
-          border: 3px solid #0747a6;
+          border: 3px solid #454545;
           align-items: center;
           justify-content: center;
           padding: 10px;
           border-radius: 25px;
-          transition: background 0.3s;
+          transition: all 0.3s;
           svg {
-            color: #0747a6;
+            color: #454545;
             margin-right: 3px;
           }
           p {
-            color: #0747a6;
+            color: #454545;
             font-size: 13.5px;
             font-weight: 700;
           }
           &:hover {
-            background: #0747a6;
-            transition: background 0.3s;
+            background: #f8f9f9;
+            transition: all 0.3s;
+            border: 3px solid #f8f9f9;
             svg,
             p {
-              transition: background, color 0.5s;
+              transition: all, color 0.5s;
               background: transparent;
-              color: #fff;
+              // color: #fff;
             }
           }
         }

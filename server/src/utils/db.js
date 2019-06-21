@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const Cases = require('../models/Cases');
+const Livedrop = require('../models/Livedrop');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const { ADMIN1, ADMIN2 } = process.env;
@@ -54,11 +55,20 @@ const getCase = type =>
   Cases.findOne({ type })
     .then(res => res.data)
     .then(arr => arr);
-// const getCase = name => console.log(Cases)
+
+const getLivedrop = () => Livedrop.find({});
+
+const setLivedrop = async data => {
+  const drop = await new Livedrop(data.game);
+  await drop.save();
+  return drop;
+};
 
 module.exports = {
   login,
   register,
   update,
   getCase,
+  setLivedrop,
+  getLivedrop,
 };

@@ -36,12 +36,12 @@ const Header = () => {
             </li>
             <li>
               <Link to="/roulette" href="/roulette">
-                FAQ
+                Reviews
               </Link>
             </li>
             <li>
               <Link to="/roulette" href="/roulette">
-                Keys for Free
+                Faq & guarantees
               </Link>
             </li>
           </ul>

@@ -7,26 +7,10 @@ import point from '../../assets/game-point.png';
 import './Game.scss';
 
 const Game = () => {
-  const [{ user, authenticated, cases }, dispatch] = useStateValue();
+  const [{ user, authenticated, cases, socket }, dispatch] = useStateValue();
   const [matrix, setMatrix] = useState(0);
   const [winner, setWinner] = useState(null);
 
-  // const actionCase = [
-  //   { name: 'overwatch', price: 1999, chance: 0.1 },
-  //   { name: 'minecraft', price: 1900, chance: 0.1 },
-  //   { name: 'battlefield1', price: 1499, chance: 0.1 },
-  //   { name: 'dayz', price: 1199, chance: 0.2 },
-  //   { name: 'witcher3', price: 1199, chance: 0.6 },
-  //   { name: 'csgo', price: 1020, chance: 0.1 },
-  //   { name: 'gta5', price: 999, chance: 0.7 },
-  //   { name: 'pubg', price: 949, chance: 0.8 },
-  //   { name: 'quantumbreak', price: 699, chance: 0.9 },
-  //   { name: 'rust', price: 649, chance: 0.9 },
-  //   { name: 'payday2', price: 599, chance: 1 },
-  //   { name: 'other', price: 399, chance: 85 },
-  //   { name: 'portal2', price: 399, chance: 4 },
-  //   { name: 'overwatch', price: 249, chance: 6 },
-  // ];
   const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   async function PerformAction(actions) {
@@ -78,6 +62,9 @@ const Game = () => {
       .then(res =>
         setTimeout(() => {
           setWinner(res);
+          socket.emit('opened case', {
+            game: res,
+          });
         }, 5500),
       );
   };
@@ -118,7 +105,9 @@ const Game = () => {
         </div>
         {winner && <h2>{winner.name}</h2>}
         <div className="action">
-          <button onClick={openCase()}>Open case</button>
+          <button className="btn" onClick={openCase()}>
+            Open case
+          </button>
         </div>
       </div>
     </div>
