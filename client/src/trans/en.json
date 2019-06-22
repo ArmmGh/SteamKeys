@@ -1,5 +1,8 @@
 {
   "balance": "Balance",
   "profile": "Profile",
-  "add_balance": "Add balance"
+  "add_balance": "Add balance",
+  "homepage": "Homepage",
+  "reviews": "Reviews",
+  "faqAndGuarant": "FAQ & Guarantees"
 }

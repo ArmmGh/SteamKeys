@@ -31,17 +31,17 @@ const Header = () => {
           <ul className="nav">
             <li>
               <Link to="/roulette" href="/roulette">
-                Homepage
+                {translate('homepage')}
               </Link>
             </li>
             <li>
               <Link to="/roulette" href="/roulette">
-                Reviews
+                {translate('reviews')}
               </Link>
             </li>
             <li>
               <Link to="/roulette" href="/roulette">
-                Faq & guarantees
+                {translate('faqAndGuarant')}
               </Link>
             </li>
           </ul>

@@ -34,7 +34,7 @@ header {
           font-weight: bold;
           margin-right: 5px;
           span {
-            color: #f8f9f9;
+            color: #7395ae;
           }
         }
         svg {
@@ -56,28 +56,29 @@ header {
         cursor: pointer;
         a {
           display: flex;
-          border: 3px solid #454545;
+          border: 3px solid #7395ae;
           align-items: center;
           justify-content: center;
           padding: 10px;
           border-radius: 25px;
-          transition: all 0.3s;
+          transition: all 0.5s;
           svg {
-            color: #454545;
+            transition: all 0.5s;
+            color: #7395ae;
             margin-right: 3px;
           }
           p {
-            color: #454545;
+            transition: all 0.5s;
+            color: #7395ae;
             font-size: 13.5px;
-            font-weight: 700;
           }
           &:hover {
-            background: #f8f9f9;
+            background: #7395ae;
             transition: all 0.3s;
-            border: 3px solid #f8f9f9;
             svg,
             p {
-              transition: all, color 0.5s;
+              color: #fff;
+              transition: all 0.5s;
               background: transparent;
               // color: #fff;
             }

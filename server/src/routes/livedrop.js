@@ -12,7 +12,7 @@ const url =
 require('dotenv').config();
 
 livedrop.get('/live', (req, res) => {
-  db.getLivedrop().then(data => res.send(data));
+  db.getLivedrop().then(data => res.send(data.reverse().slice(0, 10)));
 });
 
 module.exports = livedrop;

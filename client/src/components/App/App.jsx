@@ -12,8 +12,6 @@ import './App.scss';
 
 function App() {
   const [{ user, socket }, dispatch] = useStateValue();
-  const [messageCount, setMessageCount] = useState(0);
-  const [inRoom, setInRoom] = useState(false);
 
   const getUser = info => {
     dispatch({ type: 'getUser', payload: info });
@@ -60,28 +58,7 @@ function App() {
           token,
         })
       : getFetch();
-
-    fetchApi('/live').then(res => {
-      res.fromDb = true;
-      dispatch({ type: 'updateLive', payload: res });
-    });
   }, []);
-
-  useEffect(() => {
-    socket.on('receive message', payload => {
-      setMessageCount(messageCount + 1);
-    });
-
-    document.title = `${messageCount} new messages have been emitted`;
-  }, [messageCount]);
-
-  const handleNewMessage = () => {
-    console.log('emitting new message');
-    socket.emit('new message', {
-      room: 'test-room',
-    });
-    setMessageCount(messageCount + 1);
-  };
 
   return (
     <div>

@@ -1,5 +1,4 @@
 .game {
-  background: #f8f9f9;
   margin-top: 50px;
   .spinner_holder {
     background: #fff;
@@ -17,7 +16,7 @@
       background: linear-gradient(
         to right,
         rgba(248, 249, 249, 0.1) 0%,
-        #f8f9f9 30%,
+        #fff 30%,
         rgba(248, 249, 249, 0) 100%
       );
       width: 185px;
@@ -32,7 +31,7 @@
       background: linear-gradient(
         to left,
         rgba(248, 249, 249, 0.1) 0%,
-        #f8f9f9 30%,
+        #fff 30%,
         rgba(248, 249, 249, 0) 100%
       );
       width: 185px;
@@ -64,7 +63,7 @@
         // transition-timing-function: cubic-bezier(0.6, 1, 0.5, 1);
         margin-left: -151.5px;
         padding-bottom: 20px;
-        background: #f8f9f9;
+        background: #fff;
         .item {
           user-select: none;
           border-radius: 5px;
@@ -92,7 +91,7 @@
   $blue: #3498db;
   $yellow: #f1c40f;
   $purple: #8e44ad;
-  $turquoise: #7395ae;
+  $turquoise: #a1c3db;
   .action {
     text-align: center;
     .btn {
@@ -117,7 +116,8 @@
       font-weight: 700;
       border-radius: 3em;
       border-color: $turquoise;
-      color: #454545;
+      color: #6d6d6d;
+      text-shadow: 0px 0px 8px hsl(205, 27%, 57%);
       background: {
         image: linear-gradient(
           to right,
@@ -171,7 +171,7 @@
       }
       &:hover,
       &:focus {
-        color: #454545;
+        color: #6d6d6d;
         outline: 0;
       }
     }
