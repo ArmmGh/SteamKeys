@@ -1,8 +1,6 @@
-const host = window.location.origin.match('github')
-  ? 'steam-keys.herokuapp.com'
-  : 'localhost';
-const port = process.env.PORT || ':3000';
-const ref = process.env.REF || 'http';
+const pathname = window.location.origin.match('github')
+  ? 'https://steam-keys.herokuapp.com'
+  : 'http://localhost:3000';
 const fetchApi = (url, options) =>
-  fetch(`${ref}://${host}${port}${url}`, options).then(res => res.json());
+  fetch(`${pathname}${url}`, options).then(res => res.json());
 export default fetchApi;
