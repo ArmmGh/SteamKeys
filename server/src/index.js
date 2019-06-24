@@ -25,12 +25,19 @@ app.use(
     maxAge: 24 * 60 * 60 * 100,
   }),
 );
+const host = process.env.FRONT_HOST || 'localhost';
+const port = process.env.PORT || ':5000';
+const url =
+  process.env.NODE_ENV === 'development'
+    ? `http://${host}${port}`
+    : `https://${host}`;
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
+console.log(url);
 app.use(
   cors({
-    origin: 'http://localhost:5000', // allow to server to accept request from different origin
+    origin: `${url}`, // allow to server to accept request from different origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // allow session cookie from browser to pass through
   }),
