@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Cases = require('../models/Cases');
 const Livedrop = require('../models/Livedrop');
+const Games = require('../models/Games');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const { ADMIN1, ADMIN2 } = process.env;
@@ -64,6 +65,8 @@ const setLivedrop = async data => {
   return drop;
 };
 
+const getGames = () => Games.find({});
+
 module.exports = {
   login,
   register,
@@ -71,4 +74,5 @@ module.exports = {
   getCase,
   setLivedrop,
   getLivedrop,
+  getGames,
 };

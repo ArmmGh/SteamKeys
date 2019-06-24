@@ -1,0 +1,116 @@
+@keyframes pulls {
+  0% {
+    box-shadow: 0 0 0 0 #d1dfff;
+  }
+}
+
+.cases_holder {
+  background: #f5f5f5;
+  margin-bottom: 100px;
+  padding: 20px;
+  .main-width {
+    h1 {
+      width: max-content;
+      margin: 0 auto;
+      color: white;
+      font-size: 40px;
+      text-shadow: 1px 1px #93b1f7, 2px 2px #93b1f7, 3px 3px #93b1f7;
+      margin-bottom: 20px;
+    }
+    ul.ourKeys {
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      li.item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        // border: 1px solid #9fbcff;
+        text-align: center;
+        margin: 0 10px;
+        flex: 0.25;
+        box-shadow: 0.3em 0.3em 0 0 #d1dfff, inset 0.3em 0.3em 0 0 #d1dfff;
+        border: 1px solid transparent;
+        transition: all 0.25s;
+        .image {
+          padding: 20px 10px;
+          img {
+          }
+        }
+        .info {
+          padding: 5px;
+          display: flex;
+          flex-direction: column;
+          border-top: 1px solid #d1dfff;
+          color: #6a6a6a;
+          font-weight: bold;
+          background: rgba(209, 223, 255, 0.3);
+          transition: all 0.25s;
+        }
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 0 0 #e0eaf4, inset 25em 15em 0 0 #e0eaf4;
+          border: 1px solid #d1dfff;
+          .info {
+            color: #454545;
+            background: rgba(209, 223, 255, 0.6);
+          }
+        }
+      }
+    }
+    ul.gameKeys {
+      margin-top: 100px;
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      .Tilt {
+        // flex: 1;
+        margin: 8px;
+      }
+      .item {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 100%;
+        max-width: 232px;
+        transition: all 0.5s;
+        border-radius: 5px;
+        .image {
+          display: flex;
+          img {
+            border-radius: 5px 5px 0 0;
+          }
+        }
+        .info {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 10px;
+          background: #fff;
+          border: 1px solid #ebebeb;
+          border-top: none;
+          border-radius: 0 0 5px 5px;
+          .name {
+            font-weight: 400;
+            font-size: 18px;
+          }
+          .price {
+            font-weight: bold;
+          }
+        }
+        &:hover,
+        &:focus {
+          // transform: translateY(-10px);
+          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ import './Livedrop.scss';
 import { useStateValue } from '../../context';
 
 const Livedrop = () => {
-  const [{ socket }, dispatch] = useStateValue();
+  const [{ socket, translate }, dispatch] = useStateValue();
   const [livedrop, setLivedrop] = useState([]);
 
   // setLivedrop([...livedrop, {}]);
@@ -32,7 +32,7 @@ const Livedrop = () => {
 
   useEffect(() => {
     socket.on('update live', payload => {
-      console.log('AAAAAA')
+      console.log('AAAAAA');
       if (livedrop.length >= 10) {
         const list = document.querySelectorAll('ul#list')[0];
         const elems = document.querySelectorAll('ul#list li');
@@ -57,11 +57,11 @@ const Livedrop = () => {
   return (
     <div className="livedrop_holder">
       <div className="livedrop">
-        <h1>Last drops</h1>
+        <h1>{translate('live')}</h1>
         {livedrop && (
           <ul className="list" id="list">
             {livedrop.map((item, index) => (
-              <li className={`item `} key={index}>
+              <li className="item" key={index}>
                 <img src={images[item.img]} alt={item.img} />
                 <p className="fullname">{item.name}</p>
               </li>

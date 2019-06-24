@@ -8,6 +8,7 @@ import Game from '../Game';
 import Livedrop from '../Livedrop';
 import fetchApi from '../../utils/fetchApi';
 import Profile from '../Profile';
+import Cases from '../Cases';
 import './App.scss';
 
 function App() {
@@ -66,7 +67,9 @@ function App() {
       <Livedrop />
       <main>
         <Route path="/profile" component={Profile} />
-        <Route exact path={['/', '/case']} component={Game} />
+        <Route path="/case/:name" component={Game} />
+        <Route exact path="/" component={Game} />
+        <Route exact path="/" component={Cases} />
       </main>
     </div>
   );

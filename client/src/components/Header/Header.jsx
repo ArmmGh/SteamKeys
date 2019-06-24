@@ -30,7 +30,7 @@ const Header = () => {
         <div className="header_holder">
           <ul className="nav">
             <li>
-              <Link to="/roulette" href="/roulette">
+              <Link to="/" href="/">
                 {translate('homepage')}
               </Link>
             </li>
@@ -42,6 +42,16 @@ const Header = () => {
             <li>
               <Link to="/roulette" href="/roulette">
                 {translate('faqAndGuarant')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/roulette" href="/roulette">
+                {translate('contacts')}
+              </Link>
+            </li>
+            <li>
+              <Link to="/roulette" href="/roulette">
+                {translate('xujanKeys')}
               </Link>
             </li>
           </ul>
