@@ -29,21 +29,6 @@ export default (state, action) => {
         ...state,
         cases: action.payload,
       };
-    // case 'updateLive':
-    //   if (action.payload.fromDb) {
-    //     return {
-    //       ...state,
-    //       livedrop: [...action.payload, ...state.livedrop],
-    //     };
-    //   }
-    //   if (state.livedrop.length >= 10) {
-    //     state.livedrop.pop();
-    //   }
-    //   console.log(state);
-    //   return {
-    //     ...state,
-    //     livedrop: [action.payload, ...state.livedrop],
-    //   };
     default:
       return state;
   }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import fetchApi from '../../../utils/fetchApi';
 import { useStateValue } from '../../../context';
 import './Item.scss';
 

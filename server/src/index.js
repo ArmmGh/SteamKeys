@@ -1,8 +1,9 @@
-const app = require('express')();
+const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
+const app = express();
 const session = require('express-session');
 const passport = require('passport');
 const auth = require('./routes/auth');
@@ -13,6 +14,7 @@ const cors = require('cors');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const setup = require('./utils/start');
+const path = require('path');
 require('./utils/passport');
 
 setup(app);
@@ -31,10 +33,11 @@ const url =
   process.env.NODE_ENV === 'development'
     ? `http://${host}${port}`
     : `https://${host}`;
+
+// app.use(express.static(path.join(__dirname, 'client/dist')));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-console.log(url);
 app.use(
   cors({
     origin: url, // allow to server to accept request from different origin
@@ -47,16 +50,9 @@ app.use(livedrop);
 app.use(games);
 app.use(cases);
 
-const authCheck = (req, res, next) => {
-  if (!req.user) {
-    res.json({
-      authenticated: false,
-      message: 'user has not been authenticated',
-    });
-  } else {
-    next();
-  }
-};
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(`${__dirname}/client/build/index.html`));
+// });
 
 app.get('/', (req, res) => {
   res.send('LOL');

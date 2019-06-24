@@ -1,15 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiSettings, FiPlusCircle } from 'react-icons/fi';
-import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import './Header.scss';
 
 const Header = () => {
-  const [
-    { user, authenticated, strings, translate },
-    dispatch,
-  ] = useStateValue();
+  const [{ user, authenticated, translate }, dispatch] = useStateValue();
 
   const url = window.location.origin.match('github')
     ? 'https://steam-keys.herokuapp.com'
@@ -27,12 +23,12 @@ const Header = () => {
         <div className="header_holder">
           <ul className="nav">
             <li>
-              <Link to="/" href="/">
+              <Link to="/SteamKeys/" href="/SteamKeys/">
                 {translate('homepage')}
               </Link>
             </li>
             <li>
-              <Link to="/roulette" href="/roulette">
+              <Link to="/SteamKeys/roulette" href="/SteamKeys/roulette">
                 {translate('reviews')}
               </Link>
             </li>

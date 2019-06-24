@@ -36,7 +36,7 @@ const Cases = () => {
         <h1>Keys</h1>
         <ul className="ourKeys">
           <li className="item">
-            <Link to="/case/simple" href="/case/simple">
+            <Link to="/SteamKeys/case/simple" href="/SteamKeys/case/simple">
               <div className="image">
                 <img src={free} alt="free" />
               </div>
@@ -47,7 +47,7 @@ const Cases = () => {
             </Link>
           </li>
           <li className="item">
-            <Link to="/case/lucky" href="/case/lucky">
+            <Link to="/SteamKeys/case/lucky" href="/SteamKeys/case/lucky">
               <div className="image">
                 <img src={free} alt="" />
               </div>

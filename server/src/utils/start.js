@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
-const { DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME } = process.env.PORT;
+const { DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME } = process.env;
 const socket = require('../socket');
 
 module.exports = app => {

@@ -23,6 +23,7 @@ function App() {
       .then(data => {
         fetchApi('/auth/login', {
           method: 'POST',
+          credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -66,10 +67,10 @@ function App() {
       <Header />
       <Livedrop />
       <main>
-        <Route path="/profile" component={Profile} />
-        <Route path="/case/:name" component={Game} />
-        <Route exact path="/" component={Game} />
-        <Route exact path="/" component={Cases} />
+        <Route path="/SteamKeys/profile" component={Profile} />
+        <Route path="/SteamKeys/case/:name" component={Game} />
+        <Route exact path="/SteamKeys/" component={Game} />
+        <Route exact path="/SteamKeys/" component={Cases} />
       </main>
     </div>
   );

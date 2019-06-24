@@ -83,17 +83,19 @@ const Game = params => {
 
   useEffect(() => {
     switch (window.location.pathname) {
-      case '/':
-        fetchApi('/cases/demo', { method: 'POST' }).then(res => {
+      case '/SteamKeys/':
+        fetchApi('/cases/demo', {
+          method: 'POST',
+        }).then(res => {
           dispatch({ type: 'setCase', payload: res });
         });
         break;
       case params.match.url:
-        fetchApi(`/cases/${params.match.params.name}`, { method: 'POST' }).then(
-          res => {
-            dispatch({ type: 'setCase', payload: res });
-          },
-        );
+        fetchApi(`/cases/${params.match.params.name}`, {
+          method: 'POST',
+        }).then(res => {
+          dispatch({ type: 'setCase', payload: res });
+        });
         break;
       default:
         break;
