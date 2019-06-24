@@ -7,8 +7,7 @@
     "start": "webpack-dev-server --config webpack/webpack.config.js --hot",
     "build": "webpack --config webpack/webpack.config.js",
     "serve": "nodemon ./server/src/index.js",
-    "lint": "eslint src",
-    "lint_fix": "eslint src --fix"
+    "deploy": "gh-pages -d dist"
   },
   "authors": [
     "Arman01"
