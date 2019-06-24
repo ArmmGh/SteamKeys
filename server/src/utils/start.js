@@ -9,7 +9,7 @@ module.exports = app => {
   const io = require('socket.io')(http);
   socket(io);
   http.listen(process.env.PORT || 3000, () =>
-    console.log(`listening on http://localhost:${PORT}`),
+    console.log(`listening ${process.env.PORT || 3000}`),
   );
 
   mongoose.connect(
