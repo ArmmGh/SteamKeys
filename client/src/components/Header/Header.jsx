@@ -11,12 +11,9 @@ const Header = () => {
     dispatch,
   ] = useStateValue();
 
-  const host = process.env.HOST || 'localhost';
-  const port = process.env.PORT || 3000;
-  const url =
-    process.env.NODE_ENV === 'development'
-      ? `http://${host}:${port}`
-      : `https://${host}`;
+  const url = window.location.origin.match('github')
+    ? 'https://steam-keys.herokuapp.com'
+    : 'http://localhost:3000';
 
   const authSteam = () => e => {
     window.open(`${url}/auth/steam`, '_self');

@@ -26,13 +26,17 @@ const Root = () => {
   const getTranslate = langCode => key =>
     translations[langCode === 'ru' ? 'ru' : 'en'][key] || key;
 
+  const url = window.location.origin.match('github')
+    ? 'https://steam-keys.herokuapp.com'
+    : 'http://localhost:3000';
+
   const initialState = {
     user: {},
     token: null,
     authenticated: false,
     langCode: browserLang,
     translate: getTranslate(browserLang),
-    socket: io(`${ref}://${host}${port}`),
+    socket: io(url),
   };
 
   return (
