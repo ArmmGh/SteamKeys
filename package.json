@@ -4,7 +4,8 @@
   "description": "SteamKeys",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack/webpack.config.js --hot",
+    "start": "node ./server/src/index.js",
+    "start:front": "webpack-dev-server --config webpack/webpack.config.js --hot",
     "build": "webpack --config webpack/webpack.config.js",
     "serve": "nodemon ./server/src/index.js",
     "deploy": "gh-pages -d dist"
