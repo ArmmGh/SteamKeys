@@ -1,8 +1,14 @@
 const db = require('../utils/db');
 
+let userCount = 0;
 module.exports = io => {
   io.on('connection', socket => {
-    socket.on('disconnect', reason => {});
+    socket.on('disconnect', () => {
+      userCount -= 1;
+      io.emit('userCount', { userCount });
+    });
+    userCount += 1;
+    io.emit('userCount', { userCount });
 
     socket.on('opened case', data => {
       db.setLivedrop(data).then(res => {

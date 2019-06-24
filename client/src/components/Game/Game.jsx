@@ -134,10 +134,10 @@ const Game = params => {
           </div>
         </div>
       </div>
-      <div className="caseItems">
-        <div className="main-width">
-          {window.location.pathname !== '/' &&
-            window.location.pathname === params.match.url && (
+      {window.location.pathname !== '/SteamKeys/' &&
+        window.location.pathname === params.match.url && (
+          <div className="caseItems">
+            <div className="main-width">
               <div className="caseOverview">
                 {cases &&
                   cases.map((item, i) => (
@@ -147,9 +147,9 @@ const Game = params => {
                     </div>
                   ))}
               </div>
-            )}
-        </div>
-      </div>
+            </div>
+          </div>
+        )}
     </div>
   );
 };

@@ -67,6 +67,22 @@ const setLivedrop = async data => {
 
 const getGames = () => Games.find({});
 
+const getLiveinfo = async () => {
+  const openCasesLength = () =>
+    new Promise((resolve, reject) => {
+      Livedrop.collection.countDocuments({}, {}, (err, res) => resolve(res));
+    });
+
+  const usersLength = () =>
+    new Promise((resolve, reject) => {
+      User.collection.countDocuments({}, {}, (err, res) => resolve(res));
+    });
+
+  return Promise.all([await usersLength(), await openCasesLength()]).then(
+    val => val,
+  );
+};
+
 module.exports = {
   login,
   register,
@@ -75,4 +91,5 @@ module.exports = {
   setLivedrop,
   getLivedrop,
   getGames,
+  getLiveinfo,
 };

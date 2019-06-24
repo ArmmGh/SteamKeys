@@ -28,10 +28,8 @@
         flex-direction: column;
         justify-content: space-between;
         cursor: pointer;
-        // border: 1px solid #9fbcff;
         text-align: center;
         margin: 0 10px;
-        flex: 0.25;
         box-shadow: 0.3em 0.3em 0 0 #d1dfff, inset 0.3em 0.3em 0 0 #d1dfff;
         border: 1px solid transparent;
         transition: all 0.25s;
@@ -69,8 +67,7 @@
       flex-wrap: wrap;
       justify-content: center;
       .Tilt {
-        // flex: 1;
-        margin: 8px;
+        margin: 10px;
       }
       .item {
         cursor: pointer;
@@ -78,13 +75,15 @@
         flex-direction: column;
         flex: 1;
         height: 100%;
-        max-width: 232px;
+        max-width: 190px;
         transition: all 0.5s;
         border-radius: 5px;
         .image {
           display: flex;
+          max-width: 190px;
           img {
             border-radius: 5px 5px 0 0;
+            max-width: 100%;
           }
         }
         .info {

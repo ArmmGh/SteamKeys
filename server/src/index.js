@@ -14,7 +14,6 @@ const cors = require('cors');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const setup = require('./utils/start');
-const path = require('path');
 require('./utils/passport');
 
 setup(app);
@@ -34,7 +33,6 @@ const url =
     ? `http://${host}${port}`
     : `https://${host}`;
 
-// app.use(express.static(path.join(__dirname, 'client/dist')));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -49,10 +47,6 @@ app.use('/auth', auth);
 app.use(livedrop);
 app.use(games);
 app.use(cases);
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(`${__dirname}/client/build/index.html`));
-// });
 
 app.get('/', (req, res) => {
   res.send('LOL');

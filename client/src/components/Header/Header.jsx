@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiSettings, FiPlusCircle } from 'react-icons/fi';
+import { FaSteam, FaVk } from 'react-icons/fa';
 import { useStateValue } from '../../context';
 import './Header.scss';
 
@@ -58,25 +59,28 @@ const Header = () => {
                   <FiPlusCircle />
                 </div>
                 <div className="avatar">
-                  <Link to="/profile" href="/profile">
+                  <Link to="/SteamKeys/profile" href="/profile">
                     <img src={user.imgurl} alt="" />
                   </Link>
                 </div>
                 <div className="settings">
-                  <Link to="/profile" href="/profile">
+                  <Link to="/SteamKeys/profile" href="/profile">
                     <FiSettings />
                     <p>{translate('profile')}</p>
                   </Link>
                 </div>
               </React.Fragment>
             ) : (
-              // <button onClick={logout()}>Logout</button>
-              // <a href={user.profileurl} rel="noopener noreferrer" target="_blank">
-              //   {user.username}
-              // </a>
-              <li>
-                <button onClick={authSteam()}>Login</button>
-              </li>
+              <React.Fragment>
+                <button className="auth" onClick={authSteam()}>
+                  <FaSteam />
+                  {translate('login')} <span>steam</span>
+                </button>
+                <button className="auth" onClick={authSteam()}>
+                  <FaVk />
+                  {translate('login')} <span>vk</span>
+                </button>
+              </React.Fragment>
             )}
           </div>
         </div>

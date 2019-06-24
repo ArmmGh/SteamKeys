@@ -1,11 +1,16 @@
 /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
+import { FaUser, FaUsers, FaRegFolderOpen } from 'react-icons/fa';
+import fetchApi from '../../utils/fetchApi';
 import './Livedrop.scss';
 import { useStateValue } from '../../context';
 
 const Livedrop = () => {
   const [{ socket, translate }, dispatch] = useStateValue();
   const [livedrop, setLivedrop] = useState([]);
+  const [totalUsers, setTotalusers] = useState(0);
+  const [openCases, setOpencases] = useState(0);
+  const [onlineUsers, setOnlineusers] = useState(0);
 
   // setLivedrop([...livedrop, {}]);
   function importAll(r) {
@@ -27,12 +32,16 @@ const Livedrop = () => {
       setLivedrop([...payload]);
     });
 
+    fetchApi('/liveinfo').then(res => {
+      setTotalusers(res.users);
+      setOpencases(res.cases);
+    });
+
     return () => {};
   }, []);
 
   useEffect(() => {
     socket.on('update live', payload => {
-      console.log('AAAAAA');
       if (livedrop.length >= 10) {
         const list = document.querySelectorAll('ul#list')[0];
         const elems = document.querySelectorAll('ul#list li');
@@ -54,22 +63,62 @@ const Livedrop = () => {
 
     return () => {};
   }, [livedrop]);
+
+  useEffect(() => {
+    socket.on('userCount', data => {
+      setOnlineusers(data.userCount);
+    });
+    return () => {};
+  }, [onlineUsers]);
+
   return (
-    <div className="livedrop_holder">
-      <div className="livedrop">
-        <h1>{translate('live')}</h1>
-        {livedrop && (
-          <ul className="list" id="list">
-            {livedrop.map((item, index) => (
-              <li className="item" key={index}>
-                <img src={images[item.img]} alt={item.img} />
-                <p className="fullname">{item.name}</p>
-              </li>
-            ))}
-          </ul>
-        )}
+    <React.Fragment>
+      <div className="livedrop_holder">
+        <div className="livedrop">
+          <h1>{translate('live')}</h1>
+          {livedrop && (
+            <ul className="list" id="list">
+              {livedrop.map((item, index) => (
+                <li className="item" key={index}>
+                  <img src={images[item.img]} alt={item.img} />
+                  <p className="fullname">{item.name}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
-    </div>
+      <div className="liveUsers">
+        <div className="main-width">
+          <div className="itemsHolder">
+            <div className="item">
+              <div className="icon">
+                <FaUsers />
+              </div>
+              <div className="text">
+                {translate('totalUsers')}: <span>{totalUsers}</span>
+              </div>
+            </div>
+            <div className="item">
+              <div className="icon">
+                <FaRegFolderOpen />
+              </div>
+              <div className="text">
+                {translate('openCase')}: <span>{openCases}</span>
+              </div>
+            </div>
+            <div className="item">
+              <div className="icon">
+                <FaUser />
+              </div>
+              <div className="text">
+                {translate('onlineUsers')}: <span>{onlineUsers}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </React.Fragment>
   );
 };
 
