@@ -16,7 +16,7 @@ const Header = () => {
   const url =
     process.env.NODE_ENV === 'development'
       ? `http://${host}:${port}`
-      : `http://${host}`;
+      : `https://${host}`;
 
   const authSteam = () => e => {
     window.open(`${url}/auth/steam`, '_self');

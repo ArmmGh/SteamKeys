@@ -8,6 +8,9 @@ import EN from '../../trans/en.json';
 import RU from '../../trans/ru.json';
 
 const Root = () => {
+  const host = process.env.HOST || 'localhost';
+  const port = process.env.PORT || ':3000';
+  const ref = process.env.REF || 'http';
   const storageLang = window.localStorage.getItem('lang');
   const browserLang =
     window.navigator.language.substring(0, 2) ||
@@ -15,6 +18,7 @@ const Root = () => {
   if (storageLang !== browserLang) {
     window.localStorage.setItem('lang', browserLang);
   }
+
   const translations = {
     en: EN,
     ru: RU,
@@ -28,9 +32,7 @@ const Root = () => {
     authenticated: false,
     langCode: browserLang,
     translate: getTranslate(browserLang),
-    socket: io(
-      `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`,
-    ),
+    socket: io(`${ref}://${host}${port}`),
   };
 
   return (

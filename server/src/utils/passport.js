@@ -4,8 +4,6 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const User = require('../models/User');
 
 const { KEY } = process.env;
-const host = process.env.HOST || 'localhost';
-const port = process.env.PORT || 3000;
 const { defaultURL, returnURL } = require('./url');
 
 passport.serializeUser((user, done) => {
