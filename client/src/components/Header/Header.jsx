@@ -38,11 +38,11 @@ const Header = () => {
                 {translate('faqAndGuarant')}
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/roulette" href="/roulette">
                 {translate('contacts')}
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/roulette" href="/roulette">
                 {translate('xujanKeys')}

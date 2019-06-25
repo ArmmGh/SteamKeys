@@ -59,55 +59,57 @@
         }
       }
     }
-    ul.gameKeys {
+    .gameKeysHolder {
       margin-top: 100px;
-      display: flex;
-      flex-direction: row;
-      list-style-type: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      .Tilt {
-        margin: 10px;
-      }
-      .item {
-        cursor: pointer;
+      ul.gameKeys {
         display: flex;
-        flex-direction: column;
-        flex: 1;
-        height: 100%;
-        max-width: 190px;
-        transition: all 0.5s;
-        border-radius: 5px;
-        .image {
-          display: flex;
-          max-width: 190px;
-          img {
-            border-radius: 5px 5px 0 0;
-            max-width: 100%;
-          }
+        flex-direction: row;
+        list-style-type: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        .Tilt {
+          margin: 10px;
         }
-        .info {
-          flex: 1;
+        .item {
+          cursor: pointer;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          padding: 10px;
-          background: #fff;
-          border: 1px solid #ebebeb;
-          border-top: none;
-          border-radius: 0 0 5px 5px;
-          .name {
-            font-weight: 400;
-            font-size: 18px;
+          flex: 1;
+          height: 100%;
+          max-width: 190px;
+          transition: all 0.5s;
+          border-radius: 5px;
+          .image {
+            display: flex;
+            max-width: 190px;
+            img {
+              border-radius: 5px 5px 0 0;
+              max-width: 100%;
+            }
           }
-          .price {
-            font-weight: bold;
+          .info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ebebeb;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            .name {
+              font-weight: 400;
+              font-size: 18px;
+            }
+            .price {
+              font-weight: bold;
+            }
           }
-        }
-        &:hover,
-        &:focus {
-          // transform: translateY(-10px);
-          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
+          &:hover,
+          &:focus {
+            // transform: translateY(-10px);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
+          }
         }
       }
     }

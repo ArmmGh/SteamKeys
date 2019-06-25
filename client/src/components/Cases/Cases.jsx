@@ -67,23 +67,31 @@ const Cases = () => {
             </div>
           </li>
         </ul>
-        <ul className="gameKeys">
-          {arr.map(() =>
-            games.map((item, i) => (
-              <Tilt key={i} className="Tilt">
-                <li className="Tilt-inner item">
-                  <div className="image">
-                    <img src={images[item.img]} alt={item.name} />
-                  </div>
-                  <div className="info">
-                    <div className="name">{item.name}</div>
-                    <div className="price">{item.priceRUB}₽</div>
-                  </div>
-                </li>
-              </Tilt>
-            )),
-          )}
-        </ul>
+        <div className="gameKeysHolder">
+          <h1>{translate('chooseGame')}</h1>
+          <ul className="gameKeys">
+            {arr.map(() =>
+              games.map((item, i) => (
+                <Tilt key={i} className="Tilt">
+                  <Link
+                    to={`/SteamKeys/case/${item.url}`}
+                    href={`/SteamKeys/case/${item.url}`}
+                  >
+                    <li className="Tilt-inner item">
+                      <div className="image">
+                        <img src={images[item.img]} alt={item.name} />
+                      </div>
+                      <div className="info">
+                        <div className="name">{item.name}</div>
+                        <div className="price">{item.priceRUB}₽</div>
+                      </div>
+                    </li>
+                  </Link>
+                </Tilt>
+              )),
+            )}
+          </ul>
+        </div>
       </div>
     </div>
   );
