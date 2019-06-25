@@ -45,12 +45,40 @@ const Livedrop = () => {
       if (livedrop.length >= 10) {
         const list = document.querySelectorAll('ul#list')[0];
         const elems = document.querySelectorAll('ul#list li');
-        const lastElem = elems[elems.length - 1];
+        let lastElem;
+        if (window.innerWidth >= 1616) {
+          lastElem = elems[9];
+        } else if (window.innerWidth >= 1456) {
+          lastElem = elems[8];
+        } else if (window.innerWidth >= 1296) {
+          lastElem = elems[7];
+        } else if (window.innerWidth >= 1136) {
+          lastElem = elems[6];
+        } else if (window.innerWidth >= 976) {
+          lastElem = elems[5];
+        } else if (window.innerWidth >= 816) {
+          lastElem = elems[4];
+        } else if (window.innerWidth >= 656) {
+          lastElem = elems[3];
+        } else if (window.innerWidth >= 486) {
+          lastElem = elems[2];
+        } else if (window.innerWidth >= 326) {
+          lastElem = elems[1];
+        } else {
+          lastElem = elems[0];
+        }
         const firstElem = elems[0];
+        const newElem = document.createElement('div');
+        window.addEventListener('resize', () => {
+          newElem.remove();
+        });
+        newElem.setAttribute('id', 'helper');
+        newElem.classList.add('animated', 'helper');
         lastElem.classList.add('animated', 'fadeOutDown', 'hideElem');
+        lastElem.after(newElem);
         lastElem.addEventListener('animationend', () => {
-          // list.classList.add('to_right');
           firstElem.classList.add('animated', 'flipInX', 'showElem');
+          newElem.classList.add('mainWidth', 'animated', 'widthDown');
           firstElem.addEventListener('animationend', () => {
             firstElem.classList.remove('animated', 'flipInX', 'showElem');
           });

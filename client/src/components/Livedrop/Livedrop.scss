@@ -9,22 +9,28 @@
 
 @keyframes mainWidth {
   0% {
-    flex: 0;
+    max-width: 0;
     opacity: 0.2;
   }
   100% {
-    flex: 0 0 170px;
+    max-width: 150px;
     opacity: 1;
   }
 }
-@keyframes mediumWidth {
+@keyframes toBig {
   0% {
-    flex: 0;
-    opacity: 0.2;
+    width: 0;
   }
   100% {
-    flex: 0 0 155px;
-    opacity: 1;
+    width: 160px;
+  }
+}
+@keyframes toDown {
+  0% {
+    width: 160px;
+  }
+  100% {
+    width: 0;
   }
 }
 @keyframes smallWidth {
@@ -33,7 +39,7 @@
     opacity: 0.2;
   }
   100% {
-    flex: 0 0 145px;
+    max-width: 150px;
     opacity: 1;
   }
 }
@@ -110,7 +116,7 @@
       &.to_right {
         transform: translateX(180px);
       }
-      li.item {
+      .item {
         display: flex;
         flex-direction: column;
         text-align: center;
@@ -122,6 +128,7 @@
         box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
+        transform: all 1s;
         &:first-child {
           margin-left: 0;
         }
@@ -132,7 +139,7 @@
         &.hideElem {
           animation-duration: 1s;
           transition: all 1s;
-          flex: 0;
+          max-width: 0;
           margin: 0;
         }
         img {
@@ -155,29 +162,11 @@
       }
     }
   }
-  @media screen and (max-width: 768px) {
-    .livedrop {
-      ul.list {
-        li.item {
-          flex: 0 0 155px;
-          &.showElem {
-            animation: mediumWidth;
-            animation-duration: 1s;
-          }
-        }
-      }
-    }
-  }
   @media screen and (max-width: 576px) {
     .livedrop {
       padding: 5px;
       ul.list {
-        li.item {
-          flex: 0 0 145px;
-          &.showElem {
-            animation: smallWidth;
-            animation-duration: 1s;
-          }
+        .item {
         }
       }
     }
@@ -217,4 +206,41 @@
       }
     }
   }
+}
+@media screen and (max-width: 768px) {
+  .liveUsers {
+    .main-width {
+      .itemsHolder {
+        // flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        .item {
+          .icon {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+          }
+          .text {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.helper {
+  height: 200px;
+  animation: toBig;
+  animation-duration: 1s;
+  transition: all 1s;
+}
+.widthDown {
+  animation: toDown;
+  animation-duration: 1s;
+  transition: all 1s;
+}
+
+.mainWidth {
+  width: 160px;
 }
