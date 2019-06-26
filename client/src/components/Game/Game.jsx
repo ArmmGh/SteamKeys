@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaSteam, FaVk } from 'react-icons/fa';
 import fetchApi from '../../utils/fetchApi';
 import Item from './Item';
 import { useStateValue } from '../../context';
@@ -6,14 +7,25 @@ import point from '../../assets/game-point.png';
 import './Game.scss';
 
 const Game = params => {
-  const [{ user, authenticated, cases, socket }, dispatch] = useStateValue();
+  const [
+    { authenticated, translate, cases, socket },
+    dispatch,
+  ] = useStateValue();
   const [matrix, setMatrix] = useState(0);
   const [winner, setWinner] = useState(null);
+  const [caseOpening, setOpening] = useState(false);
+  const url = window.location.origin.match('github')
+    ? 'https://steam-keys.herokuapp.com'
+    : 'http://localhost:3000';
+
+  const authSteam = () => e => {
+    window.open(`${url}/auth/steam`, '_self');
+  };
 
   function importAll(r) {
     const images = {};
     // eslint-disable-next-line array-callback-return
-    r.keys().map((item, index) => {
+    r.keys().map(item => {
       images[item.replace('./', '').replace('.png', '')] = r(item);
     });
     return images;
@@ -50,6 +62,7 @@ const Game = params => {
   }
 
   const openCase = () => e => {
+    setOpening(true);
     const d = Math.random();
     let randomMargin = 0;
     if (d < 0.75) {
@@ -74,11 +87,18 @@ const Game = params => {
       .then(res =>
         setTimeout(() => {
           setWinner(res);
+          setOpening(false);
           socket.emit('opened case', {
             game: res,
           });
         }, 5500),
       );
+  };
+
+  const tryAgain = () => e => {
+    // If balance
+    setWinner(null);
+    setMatrix(0);
   };
 
   useEffect(() => {
@@ -104,36 +124,73 @@ const Game = params => {
 
   return (
     <div className="game">
-      <div className="main-width game_holder">
-        <div className="game_inner">
-          <h1>Испытай Удачу</h1>
-          <div className="spinner_holder">
-            <img src={point} alt="point" className="point" />
+      {window.location.pathname === '/SteamKeys/' && (
+        <div className="main-width game_holder">
+          {winner ? (
+            <div className="winner">
+              <h1>
+                {translate('youWon')} - {winner.name}
+              </h1>
+              <img
+                className="animated pulse"
+                src={images[winner.img]}
+                alt={winner.name}
+              />
+              <button onClick={tryAgain()} className="tryAgain">
+                {translate('tryAgain')}
+              </button>
+            </div>
+          ) : (
+            <div className="game_inner">
+              <h1>Испытай Удачу</h1>
+              <div className="spinner_holder">
+                <img src={point} alt="point" className="point" />
 
-            <div className="spinner" id="spinner">
-              <div
-                className="list"
-                id="list"
-                style={{
-                  transform: `matrix(1, 0, 0, 1, ${matrix},0)`,
-                  transition: 'all 5.5s cubic-bezier(0.32, 0.64, 0.45, 1) -0ms',
-                  // transitionDuration: `${transition}s`,
-                }}
-              >
-                {count.map((k, i) => (
-                  <Item key={i} />
-                ))}
+                <div className="spinner" id="spinner">
+                  <div
+                    className="list"
+                    id="list"
+                    style={{
+                      transform: `matrix(1, 0, 0, 1, ${matrix},0)`,
+                      transition:
+                        'all 5.5s cubic-bezier(0.32, 0.64, 0.45, 1) -0ms',
+                    }}
+                  >
+                    {count.map((k, i) => (
+                      <Item key={i} />
+                    ))}
+                  </div>
+                </div>
               </div>
+              {!caseOpening && (
+                <div className="action">
+                  <button className="btn" onClick={openCase()}>
+                    Open case
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {window.location.pathname !== '/SteamKeys/' && !authenticated && (
+        <div className="main-width">
+          <div className="notLogged">
+            <div className="actions">
+              <button className="auth" onClick={authSteam()}>
+                <FaSteam />
+                {translate('login')} <span>steam</span>
+              </button>
+              <button className="auth" onClick={authSteam()}>
+                <FaVk />
+                {translate('login')} <span>vk</span>
+              </button>
             </div>
           </div>
-          {winner && <h2>{winner.name}</h2>}
-          <div className="action">
-            <button className="btn" onClick={openCase()}>
-              Open case
-            </button>
-          </div>
         </div>
-      </div>
+      )}
+
       {window.location.pathname !== '/SteamKeys/' &&
         window.location.pathname === params.match.url && (
           <div className="caseItems">

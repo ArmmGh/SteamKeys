@@ -12,5 +12,7 @@
   "totalUsers": "Total Users",
   "openCase": "Open Cases",
   "onlineUsers": "Online Users",
-  "chooseGame": "Choose your Game"
+  "chooseGame": "Choose your Game",
+  "tryAgain": "Try Again",
+  "youWon": "You Won"
 }

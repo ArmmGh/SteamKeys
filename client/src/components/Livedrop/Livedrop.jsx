@@ -6,7 +6,7 @@ import './Livedrop.scss';
 import { useStateValue } from '../../context';
 
 const Livedrop = () => {
-  const [{ socket, translate }, dispatch] = useStateValue();
+  const [{ socket, translate }] = useStateValue();
   const [livedrop, setLivedrop] = useState([]);
   const [totalUsers, setTotalusers] = useState(0);
   const [openCases, setOpencases] = useState(0);
@@ -16,7 +16,7 @@ const Livedrop = () => {
   function importAll(r) {
     const images = {};
     // eslint-disable-next-line array-callback-return
-    r.keys().map((item, index) => {
+    r.keys().map(item => {
       images[item.replace('./', '').replace('.png', '')] = r(item);
     });
     return images;
@@ -43,7 +43,9 @@ const Livedrop = () => {
   useEffect(() => {
     socket.on('update live', payload => {
       if (livedrop.length >= 10) {
-        const list = document.querySelectorAll('ul#list')[0];
+        if (document.getElementById('helper')) {
+          document.getElementById('helper').remove();
+        }
         const elems = document.querySelectorAll('ul#list li');
         let lastElem;
         if (window.innerWidth >= 1616) {
@@ -75,12 +77,15 @@ const Livedrop = () => {
         newElem.setAttribute('id', 'helper');
         newElem.classList.add('animated', 'helper');
         lastElem.classList.add('animated', 'fadeOutDown', 'hideElem');
-        lastElem.after(newElem);
+        if (window.innerWidth < 1616) {
+          lastElem.after(newElem);
+        }
         lastElem.addEventListener('animationend', () => {
           firstElem.classList.add('animated', 'flipInX', 'showElem');
           newElem.classList.add('mainWidth', 'animated', 'widthDown');
           firstElem.addEventListener('animationend', () => {
             firstElem.classList.remove('animated', 'flipInX', 'showElem');
+            newElem.remove();
           });
           lastElem.classList.remove('animated', 'fadeOutDown', 'hideElem');
           livedrop.pop();
