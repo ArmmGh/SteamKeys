@@ -14,5 +14,6 @@
   "onlineUsers": "Online Users",
   "chooseGame": "Choose your Game",
   "tryAgain": "Try Again",
-  "youWon": "You Won"
+  "youWon": "You Won",
+  "needAuth": "Authorization required to open case"
 }

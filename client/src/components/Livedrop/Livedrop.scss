@@ -46,30 +46,7 @@
 
 .livedrop_holder {
   position: relative;
-  padding: 3px;
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    z-index: -1;
-    height: 100%;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    background-position: 0% 0%;
-    background: linear-gradient(
-      to right,
-      #b294ff,
-      #57e6e6,
-      #feffb8,
-      #57e6e6,
-      #b294ff,
-      #57e6e6
-    );
-    background-size: 500% auto;
-    animation: gradient 5s linear infinite;
-  }
+  // padding: 3px;
   .livedrop {
     // background: #7395ae;
     padding: 10px;
@@ -77,17 +54,26 @@
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     background-position: 0% 0%;
+    // background: linear-gradient(
+    //   to left,
+    //   rgba(178, 148, 255, 0.7),
+    //   rgba(87, 230, 230, 0.7),
+    //   rgba(254, 255, 184, 0.7),
+    //   rgba(87, 230, 230, 0.7),
+    //   rgba(178, 148, 255, 0.7),
+    //   rgba(87, 230, 230, 0.7)
+    // );
     background: linear-gradient(
       to left,
-      rgba(178, 148, 255, 0.7),
-      rgba(87, 230, 230, 0.7),
-      rgba(254, 255, 184, 0.7),
-      rgba(87, 230, 230, 0.7),
-      rgba(178, 148, 255, 0.7),
-      rgba(87, 230, 230, 0.7)
+      #c462b7,
+      rgba(92, 107, 216, 0.85),
+      #b93a9c,
+      rgba(92, 107, 216, 0.85),
+      #c462b7,
+      rgba(92, 107, 216, 0.85)
     );
     background-size: 500% auto;
-    animation: gradient 5s linear infinite;
+    animation: gradient 7s linear infinite;
     h1 {
       font-size: 16px;
       color: #fff;

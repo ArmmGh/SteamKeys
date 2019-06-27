@@ -7,8 +7,7 @@ import free from '../../assets/cases/free.png';
 import './Cases.scss';
 
 const Cases = () => {
-  const [{ user, translate, cases }, dispatch] = useStateValue();
-  const [games, setgames] = useState([]);
+  const [{ user, translate, games, cases }, dispatch] = useStateValue();
 
   function importAll(r) {
     const images = {};
@@ -22,19 +21,24 @@ const Cases = () => {
   const images = importAll(
     require.context('../../assets/profile', false, /\.(png|jpe?g|svg)$/),
   );
-
-  useEffect(() => {
-    fetchApi('/games', { method: 'GET', credentials: 'include' }).then(res => {
-      setgames([...res]);
-    });
-  }, []);
-  const arr = [1, 2, 3];
+  useEffect(() => {}, []);
 
   return (
     <div className="cases_holder">
       <div className="main-width">
         <h1>Keys</h1>
         <ul className="ourKeys">
+          <li className="item">
+            <Link to="/SteamKeys/case/bomj" href="/SteamKeys/case/bomj">
+              <div className="image">
+                <img src={free} alt="free" />
+              </div>
+              <div className="info">
+                <div className="name">Bomj</div>
+                <div className="price">0₽</div>
+              </div>
+            </Link>
+          </li>
           <li className="item">
             <Link to="/SteamKeys/case/simple" href="/SteamKeys/case/simple">
               <div className="image">
@@ -70,7 +74,7 @@ const Cases = () => {
         <div className="gameKeysHolder">
           <h1>{translate('chooseGame')}</h1>
           <ul className="gameKeys">
-            {arr.map(() =>
+            {games.length &&
               games.map((item, i) => (
                 <Tilt key={i} className="Tilt">
                   <Link
@@ -88,8 +92,7 @@ const Cases = () => {
                     </li>
                   </Link>
                 </Tilt>
-              )),
-            )}
+              ))}
           </ul>
         </div>
       </div>

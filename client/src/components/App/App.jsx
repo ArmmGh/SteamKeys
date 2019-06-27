@@ -6,6 +6,7 @@ import { useStateValue } from '../../context';
 import Header from '../Header';
 import Game from '../Game';
 import Livedrop from '../Livedrop';
+import Footer from '../Footer';
 import fetchApi from '../../utils/fetchApi';
 import Profile from '../Profile';
 import Cases from '../Cases';
@@ -14,6 +15,12 @@ import './App.scss';
 function App() {
   const [{ user, socket }, dispatch] = useStateValue();
 
+  const getGames = () => {
+    fetchApi('/games', {
+      method: 'GET',
+      credentials: 'include',
+    }).then(payload => dispatch({ type: 'setGames', payload }));
+  };
   const getUser = info => {
     dispatch({ type: 'getUser', payload: info });
   };
@@ -60,6 +67,8 @@ function App() {
           token,
         })
       : getFetch();
+
+    getGames();
   }, []);
 
   return (
@@ -72,6 +81,7 @@ function App() {
         <Route exact path="/SteamKeys/" component={Game} />
         <Route exact path="/SteamKeys/" component={Cases} />
       </main>
+      <Footer />
     </div>
   );
 }

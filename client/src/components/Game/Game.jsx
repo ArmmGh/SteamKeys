@@ -35,6 +35,10 @@ const Game = params => {
     require.context('../../assets/slots', false, /\.(png|jpe?g|svg)$/),
   );
 
+  const profImages = importAll(
+    require.context('../../assets/profile', false, /\.(png|jpe?g|svg)$/),
+  );
+
   const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   async function PerformAction(actions) {
@@ -123,81 +127,93 @@ const Game = params => {
   }, []);
 
   return (
-    <div className="game">
-      {window.location.pathname === '/SteamKeys/' && (
-        <div className="main-width game_holder">
-          {winner ? (
-            <div className="winner">
-              <h1>
-                {translate('youWon')} - {winner.name}
-              </h1>
-              <img
-                className="animated pulse"
-                src={images[winner.img]}
-                alt={winner.name}
-              />
-              <button onClick={tryAgain()} className="tryAgain">
-                {translate('tryAgain')}
-              </button>
-            </div>
-          ) : (
-            <div className="game_inner">
-              <h1>Испытай Удачу</h1>
-              <div className="spinner_holder">
-                <img src={point} alt="point" className="point" />
+    <React.Fragment>
+      <div className="game">
+        {window.location.pathname === '/SteamKeys/' && (
+          <div className="main-width game_holder">
+            {winner ? (
+              <div className="winner">
+                <h1>
+                  {translate('youWon')} - {winner.name}
+                </h1>
+                <img
+                  className="animated pulse"
+                  src={images[winner.img]}
+                  alt={winner.name}
+                />
+                <button onClick={tryAgain()} className="tryAgain">
+                  {translate('tryAgain')}
+                </button>
+              </div>
+            ) : (
+              <div className="game_inner">
+                <h1>Испытай Удачу</h1>
+                <div className="spinner_holder">
+                  <img src={point} alt="point" className="point" />
 
-                <div className="spinner" id="spinner">
-                  <div
-                    className="list"
-                    id="list"
-                    style={{
-                      transform: `matrix(1, 0, 0, 1, ${matrix},0)`,
-                      transition:
-                        'all 5.5s cubic-bezier(0.32, 0.64, 0.45, 1) -0ms',
-                    }}
-                  >
-                    {count.map((k, i) => (
-                      <Item key={i} />
-                    ))}
+                  <div className="spinner" id="spinner">
+                    <div
+                      className="list"
+                      id="list"
+                      style={{
+                        transform: `matrix(1, 0, 0, 1, ${matrix},0)`,
+                        transition:
+                          'all 5.5s cubic-bezier(0.32, 0.64, 0.45, 1) -0ms',
+                      }}
+                    >
+                      {count.map((k, i) => (
+                        <Item key={i} />
+                      ))}
+                    </div>
                   </div>
                 </div>
+                {!caseOpening && (
+                  <div className="action">
+                    <button className="btn" onClick={openCase()}>
+                      Open case
+                    </button>
+                  </div>
+                )}
               </div>
-              {!caseOpening && (
-                <div className="action">
-                  <button className="btn" onClick={openCase()}>
-                    Open case
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        )}
+        {window.location.pathname !== '/SteamKeys/' && cases && (
+          <div className="caseInfo">
+            <h1 className="gameName">{cases.name}</h1>
+            <img src={profImages[cases.img]} alt={cases.name} />
+          </div>
+        )}
+        {/* {window.location.pathname !== '/SteamKeys/' && authenticated && (
+          // ruletka
+        )} */}
 
-      {window.location.pathname !== '/SteamKeys/' && !authenticated && (
-        <div className="main-width">
-          <div className="notLogged">
-            <div className="actions">
-              <button className="auth" onClick={authSteam()}>
-                <FaSteam />
-                {translate('login')} <span>steam</span>
-              </button>
-              <button className="auth" onClick={authSteam()}>
-                <FaVk />
-                {translate('login')} <span>vk</span>
-              </button>
+        {window.location.pathname !== '/SteamKeys/' && !authenticated && (
+          <div className="main-width">
+            <div className="notLogged">
+              <h2 className="needAuth">{translate('needAuth')}</h2>
+              <div className="actions">
+                <button className="auth" onClick={authSteam()}>
+                  <FaSteam />
+                  {translate('login')} <span>steam</span>
+                </button>
+                <button className="auth" onClick={authSteam()}>
+                  <FaVk />
+                  {translate('login')} <span>vk</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-
+        )}
+      </div>
       {window.location.pathname !== '/SteamKeys/' &&
         window.location.pathname === params.match.url && (
           <div className="caseItems">
             <div className="main-width">
               <div className="caseOverview">
                 {cases &&
-                  cases.map((item, i) => (
+                  cases.data &&
+                  cases.data.map((item, i) => (
                     <div className="item" key={i}>
                       <p className="price">{item.priceRUB} ₽</p>
                       <img src={images[item.img]} alt={item.name} />
@@ -207,7 +223,7 @@ const Game = params => {
             </div>
           </div>
         )}
-    </div>
+    </React.Fragment>
   );
 };
 

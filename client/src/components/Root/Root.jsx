@@ -2,6 +2,7 @@ import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { BrowserRouter as Router } from 'react-router-dom';
 import io from 'socket.io-client';
+import fetchApi from '../../utils/fetchApi';
 import { StateProvider } from '../../context';
 import App from '../App';
 import EN from '../../trans/en.json';
@@ -37,6 +38,7 @@ const Root = () => {
     langCode: browserLang,
     translate: getTranslate(browserLang),
     socket: io(url),
+    games: [],
   };
 
   return (

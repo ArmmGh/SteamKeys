@@ -20,7 +20,8 @@ const Item = () => {
 
   return (
     (cases &&
-      cases.map((item, i) => (
+      cases.data &&
+      cases.data.map((item, i) => (
         <div key={i} className={`item ${item.img}`}>
           <img src={images[item.img]} alt="" />
         </div>

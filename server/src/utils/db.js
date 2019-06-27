@@ -52,10 +52,7 @@ const update = async user => {
   });
 };
 
-const getCase = type =>
-  Cases.findOne({ type })
-    .then(res => res.data)
-    .then(arr => arr);
+const getCase = type => Cases.findOne({ type }).then(res => res);
 
 const getLivedrop = () => Livedrop.find({});
 

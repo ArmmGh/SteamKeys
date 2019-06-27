@@ -29,6 +29,11 @@ export default (state, action) => {
         ...state,
         cases: action.payload,
       };
+    case 'setGames':
+      return {
+        ...state,
+        games: action.payload,
+      };
     default:
       return state;
   }
