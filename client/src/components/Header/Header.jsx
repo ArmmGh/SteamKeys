@@ -1,12 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiSettings, FiPlusCircle } from 'react-icons/fi';
+import { Slider } from 'react-burgers';
 import { FaSteam, FaVk } from 'react-icons/fa';
 import { useStateValue } from '../../context';
 import './Header.scss';
 
 const Header = () => {
   const [{ user, games, authenticated, translate }, dispatch] = useStateValue();
+  const [isActive, setActive] = useState(false);
+
   const url = window.location.origin.match('github')
     ? 'https://steam-keys.herokuapp.com'
     : 'http://localhost:3000';
@@ -33,7 +36,17 @@ const Header = () => {
     <header>
       <div className="main-width">
         <div className="header_holder">
-          <ul className="nav">
+          <div className={`menu_bar ${isActive ? 'active' : ''}`}>
+            <Slider
+              width={30}
+              lineHeight={3}
+              lineSpacing={5}
+              padding="10px"
+              onClick={() => setActive(!isActive)}
+              active={isActive}
+            />
+          </div>
+          <ul className={`nav mobile_menu ${isActive ? 'show' : 'hide'}`}>
             <li>
               <Link to="/SteamKeys/" href="/SteamKeys/">
                 {translate('homepage')}
