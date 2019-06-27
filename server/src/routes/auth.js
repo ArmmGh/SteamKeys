@@ -4,12 +4,12 @@ const jwt = require('../utils/token');
 const passport = require('passport');
 const auth = require('express').Router();
 
-const host = process.env.HOST || 'localhost';
+const host = process.env.FRONT_HOST || 'localhost';
 const port = process.env.PORT || 5000;
 const url =
   process.env.NODE_ENV === 'development'
     ? `http://${host}:${port}/SteamKeys/`
-    : `https://${host}/`;
+    : `https://${host}/SteamKeys/`;
 
 // require('../utils/passport');
 require('dotenv').config();
