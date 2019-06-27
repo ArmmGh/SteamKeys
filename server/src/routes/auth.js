@@ -8,7 +8,7 @@ const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 5000;
 const url =
   process.env.NODE_ENV === 'development'
-    ? `http://${host}:${port}/`
+    ? `http://${host}:${port}/SteamKeys/`
     : `https://${host}/`;
 
 // require('../utils/passport');

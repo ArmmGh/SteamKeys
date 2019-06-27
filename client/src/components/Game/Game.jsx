@@ -79,7 +79,7 @@ const Game = params => {
       randomMargin = 15;
     }
     // Request backend for case
-    PerformAction(cases)
+    PerformAction(cases.data)
       .then(res => {
         const elementLeft = document.querySelectorAll(`.${res.img}`)[10]
           .offsetLeft;
