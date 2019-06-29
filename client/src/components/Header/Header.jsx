@@ -21,7 +21,7 @@ const Header = () => {
     const images = {};
     // eslint-disable-next-line array-callback-return
     r.keys().map((item, index) => {
-      images[item.replace('./', '').replace('.png', '')] = r(item);
+      images[item.replace('./', '').replace(/\.(png|jpe?g|svg)$/, '')] = r(item);
     });
     return images;
   }

@@ -17,7 +17,7 @@ const Livedrop = () => {
     const images = {};
     // eslint-disable-next-line array-callback-return
     r.keys().map(item => {
-      images[item.replace('./', '').replace('.png', '')] = r(item);
+      images[item.replace('./', '').replace(/\.(png|jpe?g|svg)$/, '')] = r(item);
     });
     return images;
   }
