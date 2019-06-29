@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaUser, FaUsers, FaRegFolderOpen } from 'react-icons/fa';
 import fetchApi from '../../utils/fetchApi';
 import './Livedrop.scss';
@@ -114,9 +115,23 @@ const Livedrop = () => {
             <ul className="list" id="list">
               {livedrop.map((item, index) => (
                 <li className="item" key={index}>
-                  <div className="type">{item.type || ''}</div>
-                  <img src={images[item.img]} alt={item.img} />
-                  <p className="fullname">{item.name}</p>
+                  <Link
+                    to={`/SteamKeys/case/${item.type}`}
+                    href={`/SteamKeys/case/${item.type}`}
+                  >
+                    <div className="infoOver">
+                      <div className="avatar">
+                        <img src={images[item.type]} alt={item.name} />
+                      </div>
+                      <div className="infoInner">
+                        <p>
+                          Case: <span>{item.caseName || ''}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <img src={images[item.img]} alt={item.img} />
+                    <p className="fullname">{item.name}</p>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -11,6 +11,7 @@ const LivedropSchema = new Schema({
   chance: { type: Number, required: true },
   img: { type: String, required: true },
   type: { type: String },
+  caseName: { type: String },
 });
 
 const Livedrop = mongoose.model('Livedrop', LivedropSchema);

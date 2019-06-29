@@ -110,11 +110,73 @@
         margin-left: 10px;
         max-width: 150px;
         margin-bottom: 20px;
+        position: relative;
         overflow: hidden;
         box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         transform: all 1s;
+        a {
+          display: flex;
+          flex-direction: column;
+          .infoOver {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 155px;
+            border-radius: 5px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background: rgba(28, 26, 21, 0.85);
+            padding: 35px 0 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            .avatar {
+              transform: translateY(5px);
+              transition: all 0.4s ease;
+              img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+              }
+            }
+            .infoInner {
+              color: #fff;
+              transform: translateY(-5px);
+              transition: all 0.4s ease;
+              p {
+                display: flex;
+                flex-direction: column;
+                font-size: 12px;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.6);
+                span {
+                  color: #ffffff;
+                  font-size: 11px;
+                  text-transform: none;
+                }
+              }
+            }
+          }
+        }
+        &:hover {
+          a {
+            .infoOver {
+              opacity: 1;
+              visibility: visible;
+              .avatar {
+                transform: translateY(-5px);
+                transition: all 0.4s ease;
+              }
+              .infoInner {
+                transform: translateY(5px);
+                transition: all 0.4s ease;
+              }
+            }
+          }
+        }
         &:first-child {
           margin-left: 0;
         }

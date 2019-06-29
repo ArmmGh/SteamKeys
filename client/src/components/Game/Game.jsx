@@ -97,6 +97,7 @@ const Game = params => {
           setOpening(false);
           if (cases.type !== 'demo') {
             res.type = cases.type;
+            res.caseName = cases.name;
             socket.emit('opened case', {
               game: res,
             });
@@ -198,7 +199,7 @@ const Game = params => {
 
                 {authenticated && cases && !caseOpening && (
                   <div className="action">
-                    {user.balance >= cases.priceRUB ? (
+                    {!cases.priceRUB || user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
                         Open Case
                       </button>
