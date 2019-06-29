@@ -17,14 +17,47 @@ header {
       transition: all 0.3s;
       li {
         list-style-type: none;
-        margin-right: 15px;
+        margin: 0 0.8em;
+        list-style: outside none none;
         display: flex;
         align-items: center;
         a {
-          font-size: 14px;
+          padding: 0.5em 0;
+          color: rgba(69, 69, 69, 0.6);
+          font-size: 15px;
+          position: relative;
+          letter-spacing: 1px;
+          text-decoration: none;
           text-transform: uppercase;
-          font-weight: 700;
-          transition: all 0.3s;
+          transition: all 0.35s ease;
+          &:before {
+            position: absolute;
+            transition: all 0.35s ease;
+          }
+          &:before {
+            top: 0;
+            display: block;
+            height: 3px;
+            width: 0%;
+            content: '';
+            background-color: #93b1f7;
+          }
+          &:hover {
+            color: #454545;
+            transition: all 0.35s ease;
+            &:before {
+              opacity: 1;
+              width: 100%;
+            }
+          }
+        }
+        &.active {
+          a {
+            &:before {
+              opacity: 1;
+              width: 100%;
+            }
+          }
         }
       }
     }
@@ -167,6 +200,10 @@ header {
             width: 100%;
             text-align: center;
             font-size: 13px;
+            &:before,
+            &:after {
+              display: none;
+            }
           }
           &:hover {
             background: #93b1f7;

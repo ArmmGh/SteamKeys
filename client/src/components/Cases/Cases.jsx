@@ -14,7 +14,8 @@ import './Cases.scss';
 
 const Cases = ({ history }) => {
   const [{ user, translate, games, cases }, dispatch] = useStateValue();
-
+  const [count, setCount] = useState(15);
+  const [showMore, setShowmore] = useState(false);
   function importAll(r) {
     const images = {};
     // eslint-disable-next-line array-callback-return
@@ -27,6 +28,17 @@ const Cases = ({ history }) => {
   const images = importAll(
     require.context('../../assets/profile', false, /\.(png|jpe?g|svg)$/),
   );
+
+  const onShowMore = () => e => {
+    if (showMore) {
+      setCount(15);
+      setShowmore(false);
+    } else {
+      setCount(cases.length);
+      setShowmore(true);
+    }
+  };
+
   useEffect(() => {}, []);
 
   // Autocomplete
@@ -172,7 +184,7 @@ const Cases = ({ history }) => {
           </form>
           <ul className="gameKeys">
             {games.length &&
-              games.map((item, i) => (
+              games.slice(0, count).map((item, i) => (
                 <Tilt key={i} className="Tilt">
                   <Link
                     to={`/SteamKeys/case/${item.url}`}
@@ -191,6 +203,9 @@ const Cases = ({ history }) => {
                 </Tilt>
               ))}
           </ul>
+          <button className="showMore" onClick={onShowMore()}>
+            {showMore ? 'Show Less' : 'Show More'}
+          </button>
         </div>
       </div>
     </div>

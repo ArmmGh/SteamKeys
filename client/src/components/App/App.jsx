@@ -60,14 +60,14 @@ function App() {
     const userCheck = window.localStorage.getItem('user');
     const token = window.localStorage.getItem('token');
     // eslint-disable-next-line no-unused-expressions
-    userCheck
-      ? getUser({
-          user: jwtDecode(userCheck),
-          fromStorage: true,
-          token,
-        })
-      : getFetch();
-
+    // userCheck
+    //   ? getUser({
+    //       user: jwtDecode(userCheck),
+    //       fromStorage: true,
+    //       token,
+    //     })
+    //   : getFetch();
+    getFetch();
     getGames();
   }, []);
 

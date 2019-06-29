@@ -5,6 +5,7 @@ mongoose.Promise = require('bluebird');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
+  email: { type: String, required: true },
   username: { type: String, required: true },
   steamid: { type: Number, required: true },
   admin: { type: Boolean, required: true },

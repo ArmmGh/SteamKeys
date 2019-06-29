@@ -15,5 +15,9 @@
   "chooseGame": "Choose your Game",
   "tryAgain": "Try Again",
   "youWon": "You Won",
-  "needAuth": "Authorization required to open case"
+  "needAuth": "Authorization required to open case",
+  "help": "Help",
+  "agreement": "Terms Of Use",
+  "onVk": "We Vkontakte",
+  "warningSteamText": "Этот сайт не был одобрен Корпорацией Valve и не аффилирован с Корпорацией Valve или ее лицензиаров. Название и логотип Steam являются товарными знаками или зарегистрированными товарными знаками Корпорации Valve в США и/или других странах. Все права сохранены. Содержимое игр и игровые материалы (с) Корпорация Valve. Все названия продуктов, компаний и марок, логотипы и товарные знаки являются собственностью соответствующих владельцев."
 }
