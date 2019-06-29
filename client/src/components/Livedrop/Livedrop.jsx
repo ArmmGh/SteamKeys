@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReactTimeAgo from 'react-time-ago';
 import { FaUser, FaUsers, FaRegFolderOpen } from 'react-icons/fa';
 import fetchApi from '../../utils/fetchApi';
 import './Livedrop.scss';
@@ -125,12 +126,19 @@ const Livedrop = () => {
                       </div>
                       <div className="infoInner">
                         <p>
-                          Case: <span>{item.caseName || ''}</span>
+                          {translate('case')}:{' '}
+                          <span>{item.caseName || ''}</span>
                         </p>
                       </div>
                     </div>
                     <img src={images[item.img]} alt={item.img} />
-                    <p className="fullname">{item.name}</p>
+                    <p className="fullname">
+                      {item.name}
+                      {/* <ReactTimeAgo
+                        date={item.time || new Date()}
+                        locale="en"
+                      /> */}
+                    </p>
                   </Link>
                 </li>
               ))}

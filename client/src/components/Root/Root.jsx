@@ -2,6 +2,9 @@ import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { BrowserRouter as Router } from 'react-router-dom';
 import io from 'socket.io-client';
+import JavascriptTimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+import ru from 'javascript-time-ago/locale/ru';
 import fetchApi from '../../utils/fetchApi';
 import { StateProvider } from '../../context';
 import App from '../App';
@@ -26,6 +29,8 @@ const Root = () => {
   };
   const getTranslate = langCode => key =>
     translations[langCode === 'ru' ? 'ru' : 'en'][key] || key;
+
+  // JavascriptTimeAgo.locale(browserLang);
 
   const url = window.location.origin.match('github')
     ? 'https://steam-keys.herokuapp.com'

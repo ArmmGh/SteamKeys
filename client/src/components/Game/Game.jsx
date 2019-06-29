@@ -98,6 +98,7 @@ const Game = params => {
           if (cases.type !== 'demo') {
             res.type = cases.type;
             res.caseName = cases.name;
+            res.time = new Date();
             socket.emit('opened case', {
               game: res,
             });
@@ -176,7 +177,7 @@ const Game = params => {
               </div>
             ) : (
               <div className="game_inner">
-                <h1>Испытай Удачу</h1>
+                <h1>{translate('tryYourLuck')}</h1>
                 <div className="spinner_holder">
                   <img src={point} alt="point" className="point" />
 
@@ -201,11 +202,11 @@ const Game = params => {
                   <div className="action">
                     {!cases.priceRUB || user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
-                        Open Case
+                        {translate('openThisCase')}
                       </button>
                     ) : (
                       <button className="btn" onClick={addBalance()}>
-                        Add balance
+                        {translate('addBalance')}
                       </button>
                     )}
                   </div>
@@ -216,7 +217,7 @@ const Game = params => {
                   cases.type === 'demo' && (
                     <div className="action">
                       <button className="btn" onClick={openCase()}>
-                        Open Demo Case
+                        {translate('demoCase')}
                       </button>
                     </div>
                   )}

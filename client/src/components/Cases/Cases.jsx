@@ -128,7 +128,7 @@ const Cases = ({ history }) => {
   return (
     <div className="cases_holder">
       <div className="main-width">
-        <h1>Keys</h1>
+        <h1>{translate('keys')}</h1>
         <ul className="ourKeys">
           {otherCases.map((item, i) => (
             <li key={i} className="item">
@@ -140,7 +140,9 @@ const Cases = ({ history }) => {
                   <img src={free || item.img} alt={item.name} />
                 </div>
                 <div className="info">
-                  <div className="name">{item.name} Key</div>
+                  <div className="name">
+                    {translate(item.name)} {translate('key')}
+                  </div>
                   <div className="price">{item.priceRUB}₽</div>
                 </div>
               </Link>
@@ -181,7 +183,7 @@ const Cases = ({ history }) => {
               ))}
           </ul>
           <button className="showMore" onClick={onShowMore()}>
-            {showMore ? 'Show Less' : 'Show More'}
+            {showMore ? translate('showLess') : translate('showMore')}
           </button>
         </div>
       </div>
