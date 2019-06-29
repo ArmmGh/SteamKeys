@@ -96,6 +96,7 @@ const Game = params => {
           setWinner(res);
           setOpening(false);
           if (cases.type !== 'demo') {
+            res.type = cases.type;
             socket.emit('opened case', {
               game: res,
             });
@@ -115,7 +116,7 @@ const Game = params => {
   const addBalance = () => e => {};
 
   useEffect(() => {
-    const caseUrl = authenticated ? 'lucky' : 'demo';
+    const caseUrl = authenticated ? 'bronze' : 'demo';
     switch (window.location.pathname) {
       case '/SteamKeys/':
         fetchApi(`/cases/${caseUrl}`, {

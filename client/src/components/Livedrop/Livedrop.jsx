@@ -12,12 +12,13 @@ const Livedrop = () => {
   const [openCases, setOpencases] = useState(0);
   const [onlineUsers, setOnlineusers] = useState(0);
 
-  // setLivedrop([...livedrop, {}]);
   function importAll(r) {
     const images = {};
     // eslint-disable-next-line array-callback-return
     r.keys().map(item => {
-      images[item.replace('./', '').replace(/\.(png|jpe?g|svg)$/, '')] = r(item);
+      images[item.replace('./', '').replace(/\.(png|jpe?g|svg)$/, '')] = r(
+        item,
+      );
     });
     return images;
   }
@@ -113,6 +114,7 @@ const Livedrop = () => {
             <ul className="list" id="list">
               {livedrop.map((item, index) => (
                 <li className="item" key={index}>
+                  <div className="type">{item.type || ''}</div>
                   <img src={images[item.img]} alt={item.img} />
                   <p className="fullname">{item.name}</p>
                 </li>

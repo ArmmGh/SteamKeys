@@ -10,6 +10,7 @@ const LivedropSchema = new Schema({
   priceUSD: { type: Number, required: true },
   chance: { type: Number, required: true },
   img: { type: String, required: true },
+  type: { type: String },
 });
 
 const Livedrop = mongoose.model('Livedrop', LivedropSchema);
