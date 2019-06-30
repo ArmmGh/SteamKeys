@@ -12,6 +12,7 @@ const LivedropSchema = new Schema({
   img: { type: String, required: true },
   type: { type: String },
   caseName: { type: String },
+  time: { type: Date },
 });
 
 const Livedrop = mongoose.model('Livedrop', LivedropSchema);

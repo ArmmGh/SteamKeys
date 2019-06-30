@@ -1,11 +1,18 @@
 /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ReactTimeAgo from 'react-time-ago';
+import TimeAgo from 'react-timeago';
+import EnStrings from 'react-timeago/lib/language-strings/en';
+import RuStrings from 'react-timeago/lib/language-strings/ru';
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
 import { FaUser, FaUsers, FaRegFolderOpen } from 'react-icons/fa';
 import fetchApi from '../../utils/fetchApi';
 import './Livedrop.scss';
 import { useStateValue } from '../../context';
+
+const formatter = buildFormatter(
+  window.localStorage.getItem('lang') === 'en' ? EnStrings : RuStrings,
+);
 
 const Livedrop = () => {
   const [{ socket, translate }] = useStateValue();
@@ -132,13 +139,13 @@ const Livedrop = () => {
                       </div>
                     </div>
                     <img src={images[item.img]} alt={item.img} />
-                    <p className="fullname">
-                      {item.name}
-                      {/* <ReactTimeAgo
-                        date={item.time || new Date()}
-                        locale="en"
-                      /> */}
-                    </p>
+                    <p className="fullname">{item.name}</p>
+                    <TimeAgo
+                      now={() => new Date()}
+                      formatter={formatter}
+                      minPeriod="5"
+                      date={item.time || new Date()}
+                    />
                   </Link>
                 </li>
               ))}

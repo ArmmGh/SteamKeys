@@ -25,7 +25,7 @@ const Footer = () => {
               {translate('help')}
             </Link>
             <Link to="/SteamKeys/contact" href="/SteamKeys/contact">
-              {translate('contact')}
+              {translate('contacts')}
             </Link>
             <Link to="/SteamKeys/reviews" href="/SteamKeys/reviews">
               {translate('reviews')}

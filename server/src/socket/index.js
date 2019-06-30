@@ -12,7 +12,6 @@ module.exports = io => {
 
     socket.on('opened case', data => {
       db.setLivedrop(data).then(res => {
-        console.log(res);
         io.emit('update live', res);
       });
     });
