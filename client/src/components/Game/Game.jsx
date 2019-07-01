@@ -69,44 +69,55 @@ const Game = params => {
   }
 
   const openCase = () => e => {
-    setOpening(true);
-    const d = Math.random();
-    let randomMargin = 0;
-    if (d < 0.75) {
-      randomMargin = 165;
-    } else if (d < 0.5) {
-      randomMargin = 85;
-    } else if (d < 0.25) {
-      randomMargin = 42;
-    } else {
-      randomMargin = 15;
-    }
-    // Request backend for case
-    PerformAction(cases.data)
-      .then(res => {
-        const elementLeft = document.querySelectorAll(`.${res.img}`)[10]
-          .offsetLeft;
-        const minusPos = elementLeft - (772 - randomMargin);
-        setMatrix(matrix - minusPos);
+    if (user.balance >= cases.priceRUB) {
+      setOpening(true);
+      const d = Math.random();
+      let randomMargin = 0;
+      if (d < 0.75) {
+        randomMargin = 165;
+      } else if (d < 0.5) {
+        randomMargin = 85;
+      } else if (d < 0.25) {
+        randomMargin = 42;
+      } else {
+        randomMargin = 15;
+      }
+      // Request backend for case
+      PerformAction(cases.data)
+        .then(res => {
+          const elementLeft = document.querySelectorAll(`.${res.img}`)[10]
+            .offsetLeft;
+          const minusPos = elementLeft - (772 - randomMargin);
+          setMatrix(matrix - minusPos);
 
-        return res;
-      })
-      .then(res =>
-        setTimeout(() => {
-          setWinner(res);
-          setOpening(false);
-          if (cases.type !== 'demo') {
+          fetchApi('/opencase', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ res, case: cases }),
+          }).then(data => {
+            dispatch({ type: 'updateUser', payload: { ...data } });
             res.type = cases.type;
             res.caseName = cases.name;
             res.time = new Date();
             socket.emit('opened case', {
               game: res,
             });
-          } else {
-            setDemoOpen(true);
-          }
-        }, 5500),
-      );
+          });
+          return res;
+        })
+        .then(res =>
+          setTimeout(() => {
+            setWinner(res);
+            setOpening(false);
+            if (cases.type === 'demo') {
+              setDemoOpen(true);
+            }
+          }, 5500),
+        );
+    }
   };
 
   const tryAgain = () => e => {
@@ -200,7 +211,8 @@ const Game = params => {
 
                 {authenticated && cases && !caseOpening && (
                   <div className="action">
-                    {!cases.priceRUB || user.balance >= cases.priceRUB ? (
+                    {cases.priceRUB}
+                    {user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
                         {translate('openThisCase')}
                       </button>

@@ -8,6 +8,12 @@ const translations = {
 const getTranslate = langCode => key => translations[langCode][key] || key;
 export default (state, action) => {
   switch (action.type) {
+    case 'updateUser':
+      console.log(action);
+      return {
+        ...state,
+        user: action.payload,
+      };
     case 'getUser':
       if (action.payload.fromStorage) {
         return {

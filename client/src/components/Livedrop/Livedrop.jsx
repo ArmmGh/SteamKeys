@@ -141,9 +141,8 @@ const Livedrop = () => {
                     <img src={images[item.img]} alt={item.img} />
                     <p className="fullname">{item.name}</p>
                     <TimeAgo
-                      now={() => new Date()}
                       formatter={formatter}
-                      minPeriod="5"
+                      minPeriod="1"
                       date={item.time || new Date()}
                     />
                   </Link>

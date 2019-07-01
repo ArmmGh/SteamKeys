@@ -15,6 +15,7 @@ const register = async data => {
     admin: false,
     profileurl: data.profileurl,
     balance: 0,
+    gameHistory: [],
   });
   // eslint-disable-next-line no-unused-expressions
   data.steamid === ADMIN1 || data.steamid === ADMIN2
@@ -26,7 +27,21 @@ const register = async data => {
 
 const login = steamid => User.findOne({ steamid });
 
-const update = async user => {
+const updateBalance = async (user, data) =>
+  new Promise((resolve, reject) => {
+    User.findOne().then(res => {
+      if (data.type === 'balance') {
+        User.findOneAndUpdate(
+          { steamid: user.steamid },
+          { balance: res.balance - data.price },
+          { new: true },
+          (err, doc) => resolve(doc._doc),
+        );
+      }
+    });
+  });
+
+const update = async (user, payload) => {
   login(user.steamid).then(data => {
     if (data !== null) {
       if (data.username !== user.username) {
@@ -90,4 +105,5 @@ module.exports = {
   getLivedrop,
   getGames,
   getLiveinfo,
+  updateBalance,
 };

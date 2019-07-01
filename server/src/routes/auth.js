@@ -44,12 +44,15 @@ auth.get('/logout', (req, res) => {
 
 auth.get('/user', (req, res) => {
   if (req.user) {
-    res.send({
-      isLogged: true,
-      username: req.user.displayName,
-      steamid: req.user.id,
-      imgurl: req.user._json.avatarfull,
-      profileurl: req.user._json.profileurl,
+    db.login(req.user.id).then(data => {
+      res.send({
+        isLogged: true,
+        username: req.user.displayName,
+        steamid: req.user.id,
+        imgurl: req.user._json.avatarfull,
+        profileurl: req.user._json.profileurl,
+        gameHistory: data.gameHistory,
+      });
     });
   } else {
     res.send({

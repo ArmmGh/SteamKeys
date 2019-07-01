@@ -33,12 +33,13 @@ const Profile = () => {
             <img src={user.imgurl} alt="" />
           </div>
           <div className="actions">
-            <div className="add_balance">
-              <button>{translate('add_balance')}</button>
-            </div>
-            <div className="logout">
-              <button onClick={logout()}>Logout</button>
-            </div>
+            <button className="auth">{translate('add_balance')}</button>
+            <button className="auth" onClick={logout()}>
+              Logout
+            </button>
+          </div>
+          <div className="games">
+            
           </div>
         </div>
       </div>

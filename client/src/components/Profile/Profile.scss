@@ -1,5 +1,6 @@
 .profile {
   text-align: center;
+  padding: 20px 0;
   .info {
     .name {
       margin-bottom: 20px;
@@ -16,10 +17,33 @@
       }
     }
     .actions {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      .auth {
+        margin-right: 10px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        padding: 8px 10px;
+        cursor: pointer;
+        background: #f5f5f5;
+        color: #454545;
+        border-radius: 45px;
+        border: 3px solid #93b1f7;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        transition: all 0.4s;
+        &:hover {
+          background: #93b1f7;
+          color: #fff;
+          transition: all 0.4s;
+        }
+      }
+    }
+    .games {
     }
   }
 }

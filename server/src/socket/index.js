@@ -11,9 +11,11 @@ module.exports = io => {
     io.emit('userCount', { userCount });
 
     socket.on('opened case', data => {
-      db.setLivedrop(data).then(res => {
-        io.emit('update live', res);
-      });
+      setTimeout(() => {
+        db.setLivedrop(data).then(res => {
+          io.emit('update live', res);
+        });
+      }, 5500);
     });
 
     if (!socket.sentLivedrop) {

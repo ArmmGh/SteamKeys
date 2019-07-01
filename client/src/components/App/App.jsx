@@ -57,9 +57,9 @@ function App() {
   };
 
   useEffect(() => {
-    const userCheck = window.localStorage.getItem('user');
-    const token = window.localStorage.getItem('token');
-    // eslint-disable-next-line no-unused-expressions
+    // const userCheck = window.localStorage.getItem('user');
+    // const token = window.localStorage.getItem('token');
+    // // eslint-disable-next-line no-unused-expressions
     // userCheck
     //   ? getUser({
     //       user: jwtDecode(userCheck),
