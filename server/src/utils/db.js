@@ -29,7 +29,7 @@ const login = steamid => User.findOne({ steamid });
 
 const updateBalance = async (user, data) =>
   new Promise((resolve, reject) => {
-    User.findOne().then(res => {
+    User.findOne({ steamid: user.steamid }).then(res => {
       if (data.type === 'balance') {
         User.findOneAndUpdate(
           { steamid: user.steamid },

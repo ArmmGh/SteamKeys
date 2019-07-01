@@ -69,7 +69,7 @@ const Game = params => {
   }
 
   const openCase = () => e => {
-    if (user.balance >= cases.priceRUB) {
+    if (user.balance >= cases.priceRUB || cases.type === 'demo') {
       setOpening(true);
       const d = Math.random();
       let randomMargin = 0;
