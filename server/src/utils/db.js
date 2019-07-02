@@ -27,54 +27,6 @@ const register = async data => {
 
 const login = steamid => User.findOne({ steamid });
 
-const addBalance = (user, data) =>
-  new Promise((resolve, reject) => {
-    User.findOne({ steamid: user.steamid }).then(res => {
-      User.findOneAndUpdate(
-        {
-          steamid: user.steamid,
-          'gameHistory._id': data._id,
-        },
-        {
-          $set: {
-            balance: res.balance + data.sellPrice,
-            'gameHistory.$.action': 'selled',
-          },
-        },
-        { new: true },
-        (err, doc) => resolve(doc._doc),
-      );
-    });
-  });
-
-const removeBalance = (user, data) =>
-  new Promise((resolve, reject) => {
-    User.findOne({ steamid: user.steamid }).then(res => {
-      if (data.type === 'balance') {
-        User.findOneAndUpdate(
-          { steamid: user.steamid },
-          {
-            balance: res.balance - data.price,
-            gameHistory: [
-              ...res.gameHistory,
-              {
-                key: '',
-                order: 0,
-                sellPrice: data.sellPrice,
-                caseType: data.caseType,
-                name: data.name,
-                action: 'waiting',
-                date: new Date(),
-              },
-            ],
-          },
-          { new: true },
-          (err, doc) => resolve(doc._doc),
-        );
-      }
-    });
-  });
-
 const update = async (user, payload) => {
   login(user.steamid).then(data => {
     if (data !== null) {
@@ -129,6 +81,58 @@ const getLiveinfo = async () => {
     val => val,
   );
 };
+
+const addBalance = (user, data) =>
+  new Promise((resolve, reject) => {
+    User.findOne({ steamid: user.steamid }).then(res => {
+      User.findOneAndUpdate(
+        {
+          steamid: user.steamid,
+          'gameHistory._id': data._id,
+        },
+        {
+          $set: {
+            balance: res.balance + data.sellPrice,
+            'gameHistory.$.action': 'selled',
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc),
+      );
+    });
+  });
+
+const removeBalance = (user, data) =>
+  new Promise((resolve, reject) => {
+    User.findOne({ steamid: user.steamid }).then(res => {
+      if (data.type === 'balance') {
+        Livedrop.collection.countDocuments({}, {}, (err, count) => {
+          User.findOneAndUpdate(
+            { steamid: user.steamid },
+            {
+              $set: {
+                balance: res.balance - data.price,
+                gameHistory: [
+                  ...res.gameHistory,
+                  {
+                    key: '',
+                    order: count,
+                    sellPrice: data.sellPrice,
+                    caseType: data.caseType,
+                    name: data.name,
+                    action: 'waiting',
+                    date: new Date(),
+                  },
+                ],
+              },
+            },
+            { new: true },
+            (err, doc) => resolve(doc._doc || {}),
+          );
+        });
+      }
+    });
+  });
 
 module.exports = {
   login,

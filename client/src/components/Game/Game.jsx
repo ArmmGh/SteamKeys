@@ -213,6 +213,7 @@ const Game = params => {
 
                 {authenticated && cases && !caseOpening && (
                   <div className="action">
+                    {cases.priceRUB}
                     {user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
                         {translate('openThisCase')}

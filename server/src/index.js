@@ -23,7 +23,7 @@ app.use(
   cookieSession({
     name: 'session',
     keys: [process.env.SECRET],
-    maxAge: 24 * 60 * 60 * 100,
+    maxAge: 365 * 24 * 60 * 60 * 1000,
   }),
 );
 const host = process.env.FRONT_HOST || 'localhost';

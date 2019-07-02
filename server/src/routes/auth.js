@@ -43,7 +43,10 @@ auth.get('/logout', (req, res) => {
 });
 
 auth.get('/user', (req, res) => {
-  if (req && (req.user || req.session.passport.user)) {
+  if (
+    req &&
+    (req.user || (req.session.passport && req.session.passport.user))
+  ) {
     db.login(req.user.id).then(data => {
       res.send({
         isLogged: true,

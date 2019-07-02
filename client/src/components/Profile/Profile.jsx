@@ -59,7 +59,11 @@ const Profile = () => {
               <div key={i} className="gameItem">
                 <div className="order">{item.order}</div>
                 <div className="name">{item.name}</div>
-                {item.action === 'waiting' ? (
+                {item.key ? (
+                  <div className="action">
+                    <p>{item.key}</p>
+                  </div>
+                ) : item.action === 'waiting' ? (
                   <div className="action">
                     {(item.caseType === 'bronze' ||
                       item.caseType === 'metallic' ||
