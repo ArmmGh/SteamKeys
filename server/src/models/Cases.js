@@ -11,6 +11,7 @@ const casesSchema = new Schema({
       name: { type: String, required: true },
       priceRUB: { type: Number, required: true },
       priceUSD: { type: Number, required: true },
+      sellPrice: { type: Number, required: false },
       chance: { type: Number, required: true },
       img: { type: String, required: true },
     },

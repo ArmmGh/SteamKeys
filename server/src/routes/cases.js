@@ -26,8 +26,15 @@ cases.post('/opencase', (req, res) => {
 cases.post('/sellgame', (req, res) => {
   db.addBalance(
     { steamid: req.session.passport.user.id },
-    { sellPrice: req.body.sellPrice },
-  );
+    {
+      _id: req.body._id,
+      name: req.body.name,
+      caseType: req.body.caseType,
+      sellPrice: req.body.sellPrice,
+    },
+  ).then(data => {
+    res.send({ ...data });
+  });
 });
 
 module.exports = cases;

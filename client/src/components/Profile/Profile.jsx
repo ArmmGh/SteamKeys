@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable indent */
 import React, { useEffect } from 'react';
 import Moment from 'react-moment';
@@ -6,7 +7,7 @@ import fetchApi from '../../utils/fetchApi';
 import './Profile.scss';
 
 const Profile = () => {
-  const [{ user, translate }] = useStateValue();
+  const [{ user, translate }, dispatch] = useStateValue();
 
   const logout = () => e => {
     window.localStorage.removeItem('user');
@@ -27,9 +28,10 @@ const Profile = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ game }),
+      body: JSON.stringify({ ...game }),
+    }).then(data => {
+      dispatch({ type: 'updateUser', payload: { ...data } });
     });
-    console.log(game);
   };
 
   return (
@@ -64,10 +66,14 @@ const Profile = () => {
                       item.caseType === 'silver' ||
                       item.caseType === 'gold') && (
                       <button className="btn" onClick={sellGame(item)}>
-                        Sell for 9
+                        Sell for {item.sellPrice}
                       </button>
                     )}
                     <button className="btn">Give a key</button>
+                  </div>
+                ) : item.action === 'selled' ? (
+                  <div className="action">
+                    <p>Selled</p>
                   </div>
                 ) : (
                   ''
