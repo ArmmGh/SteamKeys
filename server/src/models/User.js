@@ -12,7 +12,17 @@ const userSchema = new Schema({
   balance: { type: Number, required: true },
   profileurl: { type: String, required: true },
   imgurl: { type: String },
-  gameHistory: [{ order: Number, name: String, action: String, date: Date }],
+  gameHistory: [
+    {
+      key: String,
+      order: Number,
+      name: String,
+      action: String,
+      sellPrice: Number,
+      date: Date,
+      caseType: String,
+    },
+  ],
 });
 
 const user = mongoose.model('User', userSchema);

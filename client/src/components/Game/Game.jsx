@@ -90,22 +90,24 @@ const Game = params => {
           const minusPos = elementLeft - (772 - randomMargin);
           setMatrix(matrix - minusPos);
 
-          fetchApi('/opencase', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ res, case: cases }),
-          }).then(data => {
-            dispatch({ type: 'updateUser', payload: { ...data } });
-            res.type = cases.type;
-            res.caseName = cases.name;
-            res.time = new Date();
-            socket.emit('opened case', {
-              game: res,
+          if (cases.type !== 'demo') {
+            fetchApi('/opencase', {
+              method: 'POST',
+              credentials: 'include',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ winner: res, case: cases }),
+            }).then(data => {
+              dispatch({ type: 'updateUser', payload: { ...data } });
+              res.type = cases.type;
+              res.caseName = cases.name;
+              res.time = new Date();
+              socket.emit('opened case', {
+                game: res,
+              });
             });
-          });
+          }
           return res;
         })
         .then(res =>
@@ -211,7 +213,6 @@ const Game = params => {
 
                 {authenticated && cases && !caseOpening && (
                   <div className="action">
-                    {cases.priceRUB}
                     {user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
                         {translate('openThisCase')}
