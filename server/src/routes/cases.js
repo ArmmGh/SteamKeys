@@ -37,4 +37,18 @@ cases.post('/sellgame', (req, res) => {
   });
 });
 
+cases.post('/getkey', (req, res) => {
+  db.getKey(
+    { steamid: req.session.passport.user.id },
+    {
+      _id: req.body._id,
+      name: req.body.name,
+      caseType: req.body.caseType,
+      sellPrice: req.body.sellPrice,
+    },
+  ).then(data => {
+    res.send({ ...data });
+  });
+});
+
 module.exports = cases;

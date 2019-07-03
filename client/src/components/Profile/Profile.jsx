@@ -34,6 +34,19 @@ const Profile = () => {
     });
   };
 
+  const getKey = game => e => {
+    fetchApi('/getkey', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...game }),
+    }).then(data => {
+      dispatch({ type: 'updateUser', payload: { ...data } });
+    });
+  };
+
   return (
     <div className="profile">
       <div className="main-width">
@@ -73,11 +86,17 @@ const Profile = () => {
                         Sell for {item.sellPrice}
                       </button>
                     )}
-                    <button className="btn">Give a key</button>
+                    <button className="btn" onClick={getKey(item)}>
+                      Give a key
+                    </button>
                   </div>
                 ) : item.action === 'selled' ? (
                   <div className="action">
                     <p>Selled</p>
+                  </div>
+                ) : item.action === 'key' ? (
+                  <div className="action">
+                    <p>{item.key || 'Wait For Key'}</p>
                   </div>
                 ) : (
                   ''

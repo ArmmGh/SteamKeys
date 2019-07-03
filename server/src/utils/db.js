@@ -106,7 +106,7 @@ const removeBalance = (user, data) =>
   new Promise((resolve, reject) => {
     User.findOne({ steamid: user.steamid }).then(res => {
       if (data.type === 'balance') {
-        Livedrop.collection.countDocuments({}, {}, (err, count) => {
+        Livedrop.collection.countDocuments({}, {}, (error, count) => {
           User.findOneAndUpdate(
             { steamid: user.steamid },
             {
@@ -134,6 +134,25 @@ const removeBalance = (user, data) =>
     });
   });
 
+const getKey = (user, data) =>
+  new Promise((resolve, reject) => {
+    User.findOne({ steamid: user.steamid }).then(res => {
+      User.findOneAndUpdate(
+        {
+          steamid: user.steamid,
+          'gameHistory._id': data._id,
+        },
+        {
+          $set: {
+            'gameHistory.$.action': 'key',
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc),
+      );
+    });
+  });
+
 module.exports = {
   login,
   register,
@@ -145,4 +164,5 @@ module.exports = {
   getLiveinfo,
   removeBalance,
   addBalance,
+  getKey,
 };
