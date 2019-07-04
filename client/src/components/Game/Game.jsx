@@ -213,7 +213,6 @@ const Game = params => {
 
                 {authenticated && cases && !caseOpening && (
                   <div className="action">
-                    {cases.priceRUB}
                     {user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
                         {translate('openThisCase')}
@@ -259,20 +258,22 @@ const Game = params => {
           </div>
         )}
       </div>
-      {cases && cases.type !== 'demo' && (
-        <div className="caseItems">
-          <div className="main-width">
-            <div className="caseOverview">
-              {cases.data.map((item, i) => (
-                <div className="item" key={i}>
-                  <p className="price">{item.priceRUB} ₽</p>
-                  <img src={images[item.img]} alt={item.name} />
-                </div>
-              ))}
+      {cases &&
+        cases.type !== 'demo' &&
+        window.location.pathname !== '/SteamKeys/' && (
+          <div className="caseItems">
+            <div className="main-width">
+              <div className="caseOverview">
+                {cases.data.map((item, i) => (
+                  <div className="item" key={i}>
+                    <p className="price">{item.priceRUB} ₽</p>
+                    <img src={images[item.img]} alt={item.name} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
     </React.Fragment>
   );
 };

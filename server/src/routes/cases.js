@@ -19,6 +19,7 @@ cases.post('/opencase', (req, res) => {
       price: req.body.case.priceRUB,
     },
   ).then(data => {
+    data.gameHistory.reverse();
     res.send({ ...data });
   });
 });
@@ -33,6 +34,7 @@ cases.post('/sellgame', (req, res) => {
       sellPrice: req.body.sellPrice,
     },
   ).then(data => {
+    data.gameHistory.reverse();
     res.send({ ...data });
   });
 });
@@ -47,6 +49,7 @@ cases.post('/getkey', (req, res) => {
       sellPrice: req.body.sellPrice,
     },
   ).then(data => {
+    data.gameHistory.reverse();
     res.send({ ...data });
   });
 });

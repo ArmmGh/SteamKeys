@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable indent */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import { useStateValue } from '../../context';
 import fetchApi from '../../utils/fetchApi';
@@ -8,6 +8,8 @@ import './Profile.scss';
 
 const Profile = () => {
   const [{ user, translate }, dispatch] = useStateValue();
+  const [count, setCount] = useState(10);
+  const [showMore, setShowmore] = useState(false);
 
   const logout = () => e => {
     window.localStorage.removeItem('user');
@@ -47,6 +49,21 @@ const Profile = () => {
     });
   };
 
+  const onShowMore = () => e => {
+    if (showMore) {
+      setCount(15);
+      setShowmore(false);
+    } else {
+      setCount(user.gameHistory.length);
+      setShowmore(true);
+    }
+  };
+
+  useEffect(() => {
+    console.log(user);
+    return () => {};
+  }, []);
+
   return (
     <div className="profile">
       <div className="main-width">
@@ -68,7 +85,7 @@ const Profile = () => {
               <div className="action">Action</div>
               <div className="date">Data</div>
             </div>
-            {user.gameHistory.map((item, i) => (
+            {user.gameHistory.slice(0, count).map((item, i) => (
               <div key={i} className="gameItem">
                 <div className="order">{item.order}</div>
                 <div className="name">{item.name}</div>
@@ -106,6 +123,10 @@ const Profile = () => {
                 </div>
               </div>
             ))}
+
+            <button className="showMore" onClick={onShowMore()}>
+              {showMore ? translate('showLess') : translate('showMore')}
+            </button>
           </div>
         </div>
       </div>

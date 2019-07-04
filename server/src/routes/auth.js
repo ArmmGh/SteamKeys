@@ -54,7 +54,7 @@ auth.get('/user', (req, res) => {
         steamid: req.user.id,
         imgurl: req.user._json.avatarfull,
         profileurl: req.user._json.profileurl,
-        gameHistory: data.gameHistory,
+        gameHistory: data.gameHistory.reverse(),
       });
     });
   } else {
@@ -86,6 +86,7 @@ auth.post('/login', (req, res) => {
         });
       }
       // Old User
+      user.gameHistory.reverse();
       const userToken = jwt({ user });
       res.send({ user: userToken, token, newUser: false, isLogged: true });
       return false;
