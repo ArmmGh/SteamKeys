@@ -136,6 +136,7 @@ const Game = params => {
       case '/SteamKeys/':
         fetchApi(`/cases/${caseUrl}`, {
           method: 'POST',
+          credentials: 'include',
         }).then(res => {
           dispatch({ type: 'setCase', payload: res });
         });
@@ -143,6 +144,7 @@ const Game = params => {
       case params.match.url:
         fetchApi(`/cases/${params.match.params.name}`, {
           method: 'POST',
+          credentials: 'include',
         }).then(res => {
           dispatch({ type: 'setCase', payload: res });
         });
