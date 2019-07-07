@@ -6,11 +6,11 @@ const socket = require('../socket');
 
 module.exports = app => {
   const http = require('http').createServer(app);
-  const io = require('socket.io')(http);
-  socket(io);
-  http.listen(process.env.PORT || 3000, () =>
+  const aa = http.listen(process.env.PORT || 3000, () =>
     console.log(`listening ${process.env.PORT || 3000}`),
   );
+  const io = require('socket.io').listen(aa);
+  socket(io);
 
   mongoose.connect(
     `mongodb://${DB_USER}:${DB_PASS}${DB_HOST}:${DB_PORT}/${DB_NAME}`,
