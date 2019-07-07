@@ -60,7 +60,6 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    console.log(user);
     return () => {};
   }, []);
 

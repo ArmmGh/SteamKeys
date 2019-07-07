@@ -8,9 +8,9 @@ const { ADMIN1, ADMIN2 } = process.env;
 
 const register = async data => {
   const user = await new User({
-    email: data.username,
+    email: data.email || data.username,
     username: data.username,
-    steamid: data.steamid,
+    userID: data.userID,
     imgurl: data.imgurl,
     admin: false,
     profileurl: data.profileurl,
@@ -18,22 +18,22 @@ const register = async data => {
     gameHistory: [],
   });
   // eslint-disable-next-line no-unused-expressions
-  data.steamid === ADMIN1 || data.steamid === ADMIN2
+  data.userID === ADMIN1 || data.userID === ADMIN2
     ? (user.admin = await true)
     : null;
   await user.save();
   return user;
 };
 
-const login = steamid => User.findOne({ steamid });
+const login = userID => User.findOne({ userID });
 
-const update = async (user, payload) => {
-  login(user.steamid).then(data => {
+const update = async user => {
+  login(user.userID).then(data => {
     if (data !== null) {
       if (data.username !== user.username) {
         console.log('Changed name');
         User.updateOne(
-          { steamid: user.steamid },
+          { userID: user.userID },
           { $set: { username: user.username } },
           { new: true },
           (err, doc) => doc,
@@ -42,7 +42,7 @@ const update = async (user, payload) => {
       if (data.imgurl !== user.imgurl) {
         console.log('Changed image');
         User.updateOne(
-          { steamid: user.steamid },
+          { userID: user.userID },
           { $set: { imgurl: user.imgurl } },
           { new: true },
           (err, doc) => doc,
@@ -84,10 +84,10 @@ const getLiveinfo = async () => {
 
 const addBalance = (user, data) =>
   new Promise((resolve, reject) => {
-    User.findOne({ steamid: user.steamid }).then(res => {
+    User.findOne({ userID: user.userID }).then(res => {
       User.findOneAndUpdate(
         {
-          steamid: user.steamid,
+          userID: user.userID,
           'gameHistory._id': data._id,
         },
         {
@@ -104,11 +104,11 @@ const addBalance = (user, data) =>
 
 const removeBalance = (user, data) =>
   new Promise((resolve, reject) => {
-    User.findOne({ steamid: user.steamid }).then(res => {
+    User.findOne({ userID: user.userID }).then(res => {
       if (data.type === 'balance') {
         Livedrop.collection.countDocuments({}, {}, (error, count) => {
           User.findOneAndUpdate(
-            { steamid: user.steamid },
+            { userID: user.userID },
             {
               $set: {
                 balance: res.balance - data.price,
@@ -136,10 +136,10 @@ const removeBalance = (user, data) =>
 
 const getKey = (user, data) =>
   new Promise((resolve, reject) => {
-    User.findOne({ steamid: user.steamid }).then(res => {
+    User.findOne({ userID: user.userID }).then(res => {
       User.findOneAndUpdate(
         {
-          steamid: user.steamid,
+          userID: user.userID,
           'gameHistory._id': data._id,
         },
         {

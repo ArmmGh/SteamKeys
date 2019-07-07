@@ -7,7 +7,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   email: { type: String, required: true },
   username: { type: String, required: true },
-  steamid: { type: Number, required: true },
+  userID: { type: Number, required: true },
   admin: { type: Boolean, required: true },
   balance: { type: Number, required: true },
   profileurl: { type: String, required: true },

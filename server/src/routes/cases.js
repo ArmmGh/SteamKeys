@@ -9,7 +9,7 @@ cases.post('/cases/:name', (req, res) => {
 
 cases.post('/opencase', (req, res) => {
   db.removeBalance(
-    { steamid: req.session.passport.user.id },
+    { userID: req.session.passport.user.id },
     {
       type: 'balance',
       sellPrice: req.body.winner.sellPrice || 9,
@@ -26,7 +26,7 @@ cases.post('/opencase', (req, res) => {
 
 cases.post('/sellgame', (req, res) => {
   db.addBalance(
-    { steamid: req.session.passport.user.id },
+    { userID: req.session.passport.user.id },
     {
       _id: req.body._id,
       name: req.body.name,
@@ -41,7 +41,7 @@ cases.post('/sellgame', (req, res) => {
 
 cases.post('/getkey', (req, res) => {
   db.getKey(
-    { steamid: req.session.passport.user.id },
+    { userID: req.session.passport.user.id },
     {
       _id: req.body._id,
       name: req.body.name,

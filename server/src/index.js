@@ -14,7 +14,8 @@ const cors = require('cors');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const setup = require('./utils/start');
-require('./utils/passport');
+require('./utils/passport-steam');
+require('./utils/passport-vk');
 
 setup(app);
 app.enable('trust proxy');

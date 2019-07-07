@@ -139,7 +139,9 @@ const Livedrop = () => {
                       </div>
                     </div>
                     <img src={images[item.img]} alt={item.img} />
-                    <p className="fullname">{item.name}</p>
+                    <p className="fullname">
+                      {item.name === 'other' ? 'Игра до 419 рублей' : item.name}
+                    </p>
                     <TimeAgo
                       formatter={formatter}
                       minPeriod="1"

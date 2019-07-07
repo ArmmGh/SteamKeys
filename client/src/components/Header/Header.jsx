@@ -16,12 +16,17 @@ const Header = () => {
   const authSteam = () => e => {
     window.open(`${url}/auth/steam`, '_self');
   };
+  const authVk = () => e => {
+    window.open(`${url}/auth/vkontakte`, '_self');
+  };
 
   function importAll(r) {
     const images = {};
     // eslint-disable-next-line array-callback-return
     r.keys().map((item, index) => {
-      images[item.replace('./', '').replace(/\.(png|jpe?g|svg)$/, '')] = r(item);
+      images[item.replace('./', '').replace(/\.(png|jpe?g|svg)$/, '')] = r(
+        item,
+      );
     });
     return images;
   }
@@ -95,7 +100,7 @@ const Header = () => {
                   <FaSteam />
                   {translate('login')} <span>steam</span>
                 </button>
-                <button className="auth" onClick={authSteam()}>
+                <button className="auth" onClick={authVk()}>
                   <FaVk />
                   {translate('login')} <span>vk</span>
                 </button>
