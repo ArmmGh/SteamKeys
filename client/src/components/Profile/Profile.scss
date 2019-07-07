@@ -118,6 +118,8 @@
         cursor: pointer;
         border: 3px solid #93b1f7;
         padding: 10px 25px;
+        max-width: 265px;
+        margin: 0 auto;
         background: #f5f5f5;
         border-radius: 45px;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
@@ -126,6 +128,20 @@
           background: #93b1f7;
           color: #fff;
           transition: all 0.4s;
+        }
+      }
+      @media screen and (max-width: 576px) {
+        .gameItem {
+          padding: 10px;
+          height: 155px;
+          flex-direction: column;
+          justify-content: space-evenly;
+          .order,
+          .name,
+          .action,
+          .date {
+            flex: 0;
+          }
         }
       }
     }

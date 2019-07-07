@@ -25,7 +25,7 @@ const Root = () => {
     ru: RU,
   };
   const getTranslate = langCode => key =>
-    translations[langCode === 'ru' ? 'ru' : 'en'][key] || key;
+    translations[langCode === 'ru' ? 'ru' : 'ru'][key] || key;
 
   const url = window.location.origin.match('github')
     ? 'https://steam-keys.herokuapp.com'

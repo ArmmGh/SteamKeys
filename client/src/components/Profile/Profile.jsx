@@ -74,20 +74,22 @@ const Profile = () => {
           <div className="actions">
             <button className="auth">{translate('add_balance')}</button>
             <button className="auth" onClick={logout()}>
-              Logout
+              Выйти
             </button>
           </div>
           <div className="gamesHistory">
             <div className="tableHeader">
               <div className="order">#</div>
-              <div className="name">Name</div>
-              <div className="action">Action</div>
-              <div className="date">Data</div>
+              <div className="name">Имя</div>
+              <div className="action">Действие</div>
+              <div className="date">Дата</div>
             </div>
             {user.gameHistory.slice(0, count).map((item, i) => (
               <div key={i} className="gameItem">
                 <div className="order">{item.order}</div>
-                <div className="name">{item.name}</div>
+                <div className="name">
+                  {item.name === 'other' ? 'Игра до 419 рублей' : item.name}
+                </div>
                 {item.key ? (
                   <div className="action">
                     <p>{item.key}</p>
@@ -97,18 +99,19 @@ const Profile = () => {
                     {(item.caseType === 'bronze' ||
                       item.caseType === 'metallic' ||
                       item.caseType === 'silver' ||
-                      item.caseType === 'gold') && (
+                      item.caseType === 'gold' ||
+                      item.name === 'other') && (
                       <button className="btn" onClick={sellGame(item)}>
-                        Sell for {item.sellPrice}
+                        Продать за {item.sellPrice}
                       </button>
                     )}
                     <button className="btn" onClick={getKey(item)}>
-                      Give a key
+                      Взять ключ
                     </button>
                   </div>
                 ) : item.action === 'selled' ? (
                   <div className="action">
-                    <p>Selled</p>
+                    <p>Продано</p>
                   </div>
                 ) : item.action === 'key' ? (
                   <div className="action">

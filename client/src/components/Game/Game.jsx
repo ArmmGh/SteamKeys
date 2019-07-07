@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaSteam, FaVk } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import fetchApi from '../../utils/fetchApi';
 import Item from './Item';
 import { useStateValue } from '../../context';
@@ -152,7 +153,7 @@ const Game = params => {
       default:
         break;
     }
-  }, []);
+  }, [authenticated, params.match.url]);
 
   return (
     <React.Fragment>
@@ -185,9 +186,14 @@ const Game = params => {
                     </div>
                   </div>
                 ) : (
-                  <button onClick={tryAgain()} className="tryAgain">
-                    {translate('tryAgain')}
-                  </button>
+                  <div className="actions">
+                    <button onClick={tryAgain()} className="tryAgain">
+                      {translate('tryAgain')}
+                    </button>
+                    <Link to="/SteamKeys/profile" href="/SteamKeys/profile">
+                      Продать или взять игру можно в профиле
+                    </Link>
+                  </div>
                 )}
               </div>
             ) : (
@@ -213,7 +219,7 @@ const Game = params => {
                   </div>
                 </div>
 
-                {authenticated && cases && !caseOpening && (
+                {authenticated && user && cases && !caseOpening && (
                   <div className="action">
                     {user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
