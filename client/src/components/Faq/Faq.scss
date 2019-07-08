@@ -1,0 +1,90 @@
+.faqHolder {
+  padding: 25px 0;
+  .main-width {
+    .qa {
+      h1 {
+        font-size: 18px;
+        color: #454545;
+        text-transform: uppercase;
+        text-align: center;
+        width: max-content;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        padding-bottom: 3px;
+        border-bottom: 3px solid #93b1f7;
+      }
+      .item {
+        padding: 32px 50px;
+        background: #fff;
+        border-radius: 50px;
+        position: relative;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        margin-bottom: 20px;
+        user-select: none;
+        border: 1px solid #ebebeb;
+        .question {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          color: #454545;
+          font-size: 16px;
+          .title {
+            font-weight: 600;
+          }
+          .text {
+            font-weight: 600;
+            padding: 0 13px;
+            flex: 1;
+          }
+          .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+            border: 3px solid #93b1f7;
+            padding: 8px 10px;
+            font-size: 12px;
+            border-radius: 45px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s;
+            cursor: pointer;
+            &:hover {
+              background: #93b1f7;
+              color: #fff;
+              transition: all 0.4s;
+            }
+          }
+        }
+        .answer {
+          font-size: 15px;
+          overflow: hidden;
+          height: 0;
+          transition: all 0.5s;
+        }
+        &.collapsed {
+          .answer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-top: 5px;
+            height: auto;
+            transition: all 0.5s;
+            h1 {
+              margin: 0;
+              font-size: 13px;
+              margin-top: 10px;
+              margin-bottom: 2px;
+            }
+            p {
+              margin: 0;
+              font-size: 14px;
+              color: #454545;
+            }
+          }
+        }
+      }
+    }
+  }
+}

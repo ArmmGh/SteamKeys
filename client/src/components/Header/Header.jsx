@@ -63,7 +63,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/roulette" href="/roulette">
+              <Link to="/SteamKeys/faq" href="/faq">
                 {translate('faqAndGuarant')}
               </Link>
             </li>

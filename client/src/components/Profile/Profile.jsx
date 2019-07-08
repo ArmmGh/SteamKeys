@@ -51,7 +51,7 @@ const Profile = () => {
 
   const onShowMore = () => e => {
     if (showMore) {
-      setCount(15);
+      setCount(10);
       setShowmore(false);
     } else {
       setCount(user.gameHistory.length);

@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import { useStateValue } from '../../context';
 import Header from '../Header';
 import Game from '../Game';
+import Faq from '../Faq';
 import Livedrop from '../Livedrop';
 import Footer from '../Footer';
 import fetchApi from '../../utils/fetchApi';
@@ -81,6 +82,7 @@ function App() {
         <Route path="/SteamKeys/case/:name" component={Game} />
         <Route exact path="/SteamKeys/" component={Game} />
         <Route exact path="/SteamKeys/" component={Cases} />
+        <Route path="/SteamKeys/faq" component={Faq} />
       </main>
       <Footer />
     </div>
