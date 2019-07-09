@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="main-width">
         <div className="links">
           <div className="urlLink">
-            <Link to="/SteamKeys/" href="/SteamKeys/">
+            <Link to="/SteamKeys" href="/SteamKeys">
               {translate('homepage')}
             </Link>
             <Link to="/SteamKeys/contact" href="/SteamKeys/contact">

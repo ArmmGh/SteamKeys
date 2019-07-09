@@ -20,7 +20,9 @@ function App() {
     fetchApi('/games', {
       method: 'GET',
       credentials: 'include',
-    }).then(payload => dispatch({ type: 'setGames', payload }));
+    }).then(payload => {
+      dispatch({ type: 'setGames', payload: payload.encrypted });
+    });
   };
   const getUser = info => {
     // getFetch();
@@ -80,8 +82,8 @@ function App() {
       <main>
         <Route path="/SteamKeys/profile" component={Profile} />
         <Route path="/SteamKeys/case/:name" component={Game} />
-        <Route exact path="/SteamKeys/" component={Game} />
-        <Route exact path="/SteamKeys/" component={Cases} />
+        <Route exact path="/SteamKeys" component={Game} />
+        <Route exact path="/SteamKeys" component={Cases} />
         <Route path="/SteamKeys/faq" component={Faq} />
       </main>
       <Footer />

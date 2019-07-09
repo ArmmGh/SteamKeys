@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode';
 import EN from './../trans/en.json';
 import RU from './../trans/ru.json';
 
@@ -32,12 +33,12 @@ export default (state, action) => {
     case 'setCase':
       return {
         ...state,
-        cases: action.payload,
+        cases: jwtDecode(action.payload),
       };
     case 'setGames':
       return {
         ...state,
-        games: action.payload,
+        games: jwtDecode(action.payload).response,
       };
     default:
       return state;

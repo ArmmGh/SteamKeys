@@ -7,6 +7,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Tilt from 'react-tilt';
+import { MdClose } from 'react-icons/md';
 import otherCases from '../../utils/otherCases.json';
 import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
@@ -17,6 +18,9 @@ const Cases = ({ history }) => {
   const [{ user, translate, games, cases }, dispatch] = useStateValue();
   const [count, setCount] = useState(15);
   const [showMore, setShowmore] = useState(false);
+  const [hideAlert, toggleAlert] = useState(
+    window.localStorage.getItem('closeAlert'),
+  );
   function importAll(r) {
     const images = {};
     // eslint-disable-next-line array-callback-return
@@ -125,6 +129,11 @@ const Cases = ({ history }) => {
     autocomplete(document.getElementById('myInput'), games);
   }
 
+  const closeAlert = () => e => {
+    toggleAlert(true);
+    window.localStorage.setItem('closeAlert', true);
+  };
+
   return (
     <div className="cases_holder">
       <div className="main-width">
@@ -151,6 +160,18 @@ const Cases = ({ history }) => {
         </ul>
         <div className="gameKeysHolder">
           <h1>{translate('chooseGame')}</h1>
+          {!hideAlert && (
+            <div className="alert">
+              <div className="close" onClick={closeAlert()}>
+                <MdClose />
+              </div>
+              <div className="title">Внимание!!!</div>
+              <div className="text">
+                Нижние цены написано для одного открывания кейса
+              </div>
+            </div>
+          )}
+
           <form className="search" autoComplete="off">
             <div className="autocomplete">
               <input

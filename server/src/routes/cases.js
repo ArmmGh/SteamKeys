@@ -1,10 +1,14 @@
 const db = require('../utils/db');
+const jwt = require('../utils/token');
 const cases = require('express').Router();
 
 require('dotenv').config();
 
 cases.post('/cases/:name', (req, res) => {
-  db.getCase(req.params.name).then(response => res.send(response));
+  db.getCase(req.params.name).then(response => {
+    const encrypted = jwt(response.toJSON());
+    res.send({ encrypted });
+  });
 });
 
 cases.post('/opencase', (req, res) => {

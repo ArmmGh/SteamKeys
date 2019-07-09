@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaSteam, FaVk } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import Modal from 'react-modal';
 import fetchApi from '../../utils/fetchApi';
 import Item from './Item';
 import { useStateValue } from '../../context';
@@ -16,6 +17,8 @@ const Game = params => {
   const [winner, setWinner] = useState(null);
   const [caseOpening, setOpening] = useState(false);
   const [demoOpen, setDemoOpen] = useState('false');
+  const [modalIsOpen, setModal] = useState(false);
+
   const url = window.location.origin.match('github')
     ? 'https://steam-keys.herokuapp.com'
     : 'http://localhost:3000';
@@ -132,14 +135,18 @@ const Game = params => {
   const addBalance = () => e => {};
 
   useEffect(() => {
+    if (params.match.params.name === 'xujan') {
+      // Modal.setAppElement('#yourAppElement');
+      setModal(true);
+    }
     const caseUrl = authenticated ? 'bronze' : 'demo';
     switch (window.location.pathname) {
-      case '/SteamKeys/':
+      case '/SteamKeys':
         fetchApi(`/cases/${caseUrl}`, {
           method: 'POST',
           credentials: 'include',
         }).then(res => {
-          dispatch({ type: 'setCase', payload: res });
+          dispatch({ type: 'setCase', payload: res.encrypted });
         });
         break;
       case params.match.url:
@@ -147,7 +154,7 @@ const Game = params => {
           method: 'POST',
           credentials: 'include',
         }).then(res => {
-          dispatch({ type: 'setCase', payload: res });
+          dispatch({ type: 'setCase', payload: res.encrypted });
         });
         break;
       default:
@@ -157,6 +164,36 @@ const Game = params => {
 
   return (
     <React.Fragment>
+      <Modal
+        ariaHideApp={false}
+        isOpen={modalIsOpen}
+        // onAfterOpen={this.afterOpenModal}
+        // onRequestClose={this.closeModal}
+        className="Modal"
+        overlayClassName="Overlay"
+      >
+        <div className="header">
+          <h1>Внимание!!!</h1>
+        </div>
+        <div className="body">
+          <div className="text">
+            В этом кейсе существует контент для взрослых, пожалуйста если вы
+            меньше 18 просим вас покинуть данный раздел.
+            <span>Игры из этого кейса не входят в Лайв ленту</span>
+          </div>
+        </div>
+        <div className="actions">
+          <button className="success" onClick={() => setModal(false)}>
+            Мне 18 или больше
+          </button>
+          <button
+            className="danger"
+            onClick={() => params.history.push('/SteamKeys')}
+          >
+            Мне меньше 18
+          </button>
+        </div>
+      </Modal>
       <div className="game">
         {(authenticated || (!authenticated && cases)) && (
           <div className="main-width game_holder">
@@ -191,7 +228,13 @@ const Game = params => {
                       {translate('tryAgain')}
                     </button>
                     <Link to="/SteamKeys/profile" href="/SteamKeys/profile">
-                      Продать или взять игру можно в профиле
+                      {(winner.name === 'other' ||
+                        (winner.type === 'bronze' ||
+                          winner.type === 'metalliic' ||
+                          winner.type === 'silver' ||
+                          winner.type === 'gold')) &&
+                        'Продать или '}
+                      Взять ключ можно в профиле
                     </Link>
                   </div>
                 )}
@@ -223,12 +266,17 @@ const Game = params => {
                   <div className="action">
                     {user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
-                        {translate('openThisCase')}
+                        {`Открыть кейс за ${cases.priceRUB}₽`}
                       </button>
                     ) : (
-                      <button className="btn" onClick={addBalance()}>
-                        {translate('addBalance')}
-                      </button>
+                      <React.Fragment>
+                        <div className="text">
+                          Цена кейса: <span>{cases.priceRUB}₽</span>
+                        </div>
+                        <button className="btn" onClick={addBalance()}>
+                          {translate('addBalance')}
+                        </button>
+                      </React.Fragment>
                     )}
                   </div>
                 )}
@@ -268,9 +316,10 @@ const Game = params => {
       </div>
       {cases &&
         cases.type !== 'demo' &&
-        window.location.pathname !== '/SteamKeys/' && (
+        window.location.pathname !== '/SteamKeys' && (
           <div className="caseItems">
             <div className="main-width">
+              <h1>Что можно выиграть</h1>
               <div className="caseOverview">
                 {cases.data.map((item, i) => (
                   <div className="item" key={i}>

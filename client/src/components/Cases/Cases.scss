@@ -9,27 +9,29 @@
   padding: 20px;
   .main-width {
     h1 {
-      width: max-content;
-      margin: 0 auto;
+      text-align: center;
       color: white;
       font-size: 40px;
       text-shadow: 1px 1px #93b1f7, 2px 2px #93b1f7, 3px 3px #93b1f7;
       margin-bottom: 15px;
+      margin-top: 15px;
     }
     ul.ourKeys {
-      list-style-type: none;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
+      list-style-type: none;
       li.item {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         flex: 1;
+        max-width: 288px;
         cursor: pointer;
         text-align: center;
-        margin: 0 10px;
+        margin: 10px 10px;
         box-shadow: 0.3em 0.3em 0 0 #d1dfff, inset 0.3em 0.3em 0 0 #d1dfff;
         border: 1px solid transparent;
         transition: all 0.25s;
@@ -62,9 +64,47 @@
     .gameKeysHolder {
       margin-top: 35px;
       text-align: center;
+      .alert {
+        background: #ce352c;
+        // width: max-content;
+        position: relative;
+        border-radius: 5px;
+        color: #f5f5f5;
+        margin: 15px auto;
+        padding: 20px;
+        .close {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #f5f5f5;
+          padding: 1px;
+          border-radius: 50%;
+          cursor: pointer;
+          position: absolute;
+          right: 5px;
+          top: 5px;
+          transition: all 0.3s;
+          svg {
+            font-size: 16px;
+          }
+          &:hover {
+            transition: all 0.3s;
+            background: #f5f5f5;
+            svg {
+              color: #ce352c;
+            }
+          }
+        }
+        .title {
+          font-weight: bold;
+          font-size: 18px;
+        }
+        .text {
+        }
+      }
       form.search {
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-        width: 300px;
+        max-width: 300px;
         margin: 0 auto;
         .autocomplete {
           position: relative;
@@ -208,6 +248,26 @@
           background: #93b1f7;
           color: #fff;
           transition: all 0.4s;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    padding: 5px;
+    .main-width {
+      h1 {
+        font-size: 30px;
+      }
+      ul.ourKeys {
+      }
+      .gameKeysHolder {
+        .alert {
+          .title {
+            font-size: 15px;
+          }
+          .text {
+            font-size: 14px;
+          }
         }
       }
     }
