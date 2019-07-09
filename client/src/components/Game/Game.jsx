@@ -28,7 +28,7 @@ const Game = params => {
     const images = {};
     // eslint-disable-next-line array-callback-return
     r.keys().map(item => {
-      images[item.replace('./', '').replace(/\.(png|jpe?g|svg)$/, '')] = r(
+      images[item.replace('./', '').replace(/\.(png|jpeg|jpg|svg)$/, '')] = r(
         item,
       );
     });
@@ -36,11 +36,11 @@ const Game = params => {
   }
 
   const images = importAll(
-    require.context('../../assets/slots', false, /\.(png|jpe?g|svg)$/),
+    require.context('../../assets/slots', false, /\.(png|jpeg|jpg|svg)$/),
   );
 
   const profImages = importAll(
-    require.context('../../assets/profile', false, /\.(png|jpe?g|svg)$/),
+    require.context('../../assets/profile', false, /\.(png|jpeg|jpg|svg)$/),
   );
 
   const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];

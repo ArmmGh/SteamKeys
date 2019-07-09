@@ -52,7 +52,7 @@ const Livedrop = () => {
 
   useEffect(() => {
     socket.on('update live', payload => {
-      if (livedrop.length >= 10) {
+      if (payload.type !== 'xujan' && livedrop.length >= 10) {
         if (document.getElementById('helper')) {
           document.getElementById('helper').remove();
         }

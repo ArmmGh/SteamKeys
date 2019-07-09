@@ -11,11 +11,13 @@ module.exports = io => {
     io.emit('userCount', { userCount });
 
     socket.on('opened case', data => {
-      setTimeout(() => {
-        db.setLivedrop(data).then(res => {
-          io.emit('update live', res);
-        });
-      }, 5500);
+      if (data.game.type !== 'xujan') {
+        setTimeout(() => {
+          db.setLivedrop(data).then(res => {
+            io.emit('update live', res);
+          });
+        }, 5500);
+      }
     });
 
     if (!socket.sentLivedrop) {
