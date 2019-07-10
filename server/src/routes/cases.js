@@ -72,6 +72,16 @@ cases.post('/getkey', (req, res) => {
       sellPrice: req.body.sellPrice,
     },
   ).then(data => {
+    slack.alert({
+      text: 'GET KEY',
+      fields: {
+        user: `Username: ${req.session.passport.user.displayName}, ID: ${
+          req.session.passport.user.id
+        }`,
+        game: req.body.name,
+        order: req.body.order,
+      },
+    });
     data.gameHistory.reverse();
     res.send({ ...data });
   });
