@@ -62,6 +62,7 @@ auth.get('/logout', (req, res) => {
 });
 
 auth.get('/user', (req, res) => {
+  console.log(req.ipInfo);
   if (
     req &&
     (req.user || (req.session.passport && req.session.passport.user))
@@ -107,6 +108,7 @@ auth.get('/user', (req, res) => {
           imgurl: req.user._json.avatarfull,
           profileurl: req.user._json.profileurl,
           gameHistory: user ? user.gameHistory.reverse() : [],
+          aaaaa: req.ipInfo,
         });
       }
     });
