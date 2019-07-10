@@ -49,6 +49,7 @@ const update = async user => {
           (err, doc) => doc,
         );
       }
+
       if (data.ip.city !== user.ip.city) {
         User.updateOne(
           { userID: user.userID },
