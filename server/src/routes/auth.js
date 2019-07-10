@@ -71,6 +71,7 @@ auth.get('/user', (req, res) => {
       if (!user) {
         const regData = {
           isLogged: true,
+          ip: req.ipInfo,
           email: req.user.email || req.user.id,
           username: req.user.displayName,
           userID: req.user.id,
@@ -98,6 +99,7 @@ auth.get('/user', (req, res) => {
             isLogged: true,
             gameHistory:
               (req.user.gameHistory && req.user.gameHistory.reverse()) || [],
+            ip: newUser.ip,
           });
         });
       } else {
@@ -108,7 +110,7 @@ auth.get('/user', (req, res) => {
           imgurl: req.user._json.avatarfull,
           profileurl: req.user._json.profileurl,
           gameHistory: user ? user.gameHistory.reverse() : [],
-          aaaaa: req.ipInfo,
+          ip: req.ipInfo,
         });
       }
     });

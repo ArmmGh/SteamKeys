@@ -8,6 +8,7 @@ const { ADMIN1, ADMIN2 } = process.env;
 
 const register = async data => {
   const user = await new User({
+    ip: data.ip,
     email: data.email || data.username,
     username: data.username,
     userID: data.userID,
