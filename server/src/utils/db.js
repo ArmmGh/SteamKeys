@@ -49,6 +49,14 @@ const update = async user => {
           (err, doc) => doc,
         );
       }
+      if (data.ip.city !== user.ip.city) {
+        User.updateOne(
+          { userID: user.userID },
+          { $set: { ip: user.ip } },
+          { new: true },
+          (err, doc) => doc,
+        );
+      }
     } else {
       console.log('New User');
     }

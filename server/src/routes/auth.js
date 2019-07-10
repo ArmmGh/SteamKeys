@@ -28,6 +28,7 @@ auth.get(
       userID: req.user.steamid || req.user.userID,
       profileurl: req.user._json.profileurl,
       imgurl: req.user._json.avatarfull,
+      ip: req.ipInfo,
     };
     db.update(data);
     res.redirect(`${url}`);
@@ -46,6 +47,7 @@ auth.get(
       userID: req.user.id,
       profileurl: req.user.profileUrl,
       imgurl: req.user._json.photo,
+      ip: req.ipInfo,
     };
     db.update(data);
     res.redirect(`${url}`);
