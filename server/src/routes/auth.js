@@ -3,6 +3,7 @@ const db = require('../utils/db');
 const jwt = require('../utils/token');
 const passport = require('passport');
 const auth = require('express').Router();
+const expressip = require('express-ip');
 
 const host = process.env.FRONT_HOST || 'localhost';
 const port = process.env.PORT || 5000;
@@ -13,6 +14,7 @@ const url =
 
 require('dotenv').config();
 
+auth.use(expressip().getIpInfoMiddleware);
 auth.get('/steam', passport.authenticate('steam'));
 
 auth.get(
