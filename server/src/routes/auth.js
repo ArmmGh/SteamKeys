@@ -69,10 +69,7 @@ auth.get('/user', (req, res) => {
         const regData = {
           isLogged: true,
           email: req.user.email || req.user.id,
-          username:
-            req.user.provider === 'steam'
-              ? req.user.displayName
-              : req.user.username,
+          username: req.user.displayName,
           userID: req.user.id,
           imgurl:
             req.user.provider === 'steam'

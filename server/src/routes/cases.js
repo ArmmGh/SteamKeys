@@ -1,6 +1,11 @@
 const db = require('../utils/db');
 const jwt = require('../utils/token');
+const Livedrop = require('../models/Livedrop');
 const cases = require('express').Router();
+
+const MY_SLACK_WEBHOOK_URL =
+  'https://hooks.slack.com/services/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';
+const slack = require('slack-notify')(MY_SLACK_WEBHOOK_URL);
 
 require('dotenv').config();
 
@@ -23,6 +28,20 @@ cases.post('/opencase', (req, res) => {
       price: req.body.case.priceRUB,
     },
   ).then(data => {
+    Livedrop.collection.countDocuments({}, {}, (error, count) => {
+      console.log(req.session.passport.user);
+      slack.alert({
+        text: 'Winner',
+        fields: {
+          user: `Username: ${req.session.passport.user.displayName}, ID: ${
+            req.session.passport.user.id
+          }`,
+          game: req.body.winner.name,
+          order: count,
+        },
+      });
+    });
+
     data.gameHistory.reverse();
     res.send({ ...data });
   });
