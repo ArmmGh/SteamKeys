@@ -82,8 +82,8 @@ function App() {
       <main>
         <Route path="/SteamKeys/profile" component={Profile} />
         <Route path="/SteamKeys/case/:name" component={Game} />
-        <Route exact path="/SteamKeys" component={Game} />
-        <Route exact path="/SteamKeys" component={Cases} />
+        <Route exact path="/SteamKeys/" component={Game} />
+        <Route exact path="/SteamKeys/" component={Cases} />
         <Route path="/SteamKeys/faq" component={Faq} />
       </main>
       <Footer />

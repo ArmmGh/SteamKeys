@@ -53,7 +53,7 @@ const Header = () => {
           </div>
           <ul className={`nav mobile_menu ${isActive ? 'show' : 'hide'}`}>
             <li>
-              <Link to="/SteamKeys" href="/SteamKeys">
+              <Link to="/SteamKeys/" href="/SteamKeys/">
                 {translate('homepage')}
               </Link>
             </li>
