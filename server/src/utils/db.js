@@ -107,6 +107,7 @@ const removeBalance = (user, data) =>
     User.findOne({ userID: user.userID }).then(res => {
       if (data.type === 'balance') {
         Livedrop.collection.countDocuments({}, {}, (error, count) => {
+          const order = data.caseType === 'xujan' ? data.order : count + 1;
           User.findOneAndUpdate(
             { userID: user.userID },
             {
@@ -116,7 +117,7 @@ const removeBalance = (user, data) =>
                   ...res.gameHistory,
                   {
                     key: '',
-                    order: count,
+                    order,
                     sellPrice: data.sellPrice,
                     caseType: data.caseType,
                     name: data.name,

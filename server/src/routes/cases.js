@@ -26,10 +26,10 @@ cases.post('/opencase', (req, res) => {
       name: req.body.winner.name,
       img: req.body.winner.img,
       price: req.body.case.priceRUB,
+      order: req.body.winner.order || 0,
     },
   ).then(data => {
     Livedrop.collection.countDocuments({}, {}, (error, count) => {
-      console.log(req.session.passport.user);
       slack.alert({
         text: 'Winner',
         fields: {
@@ -37,7 +37,7 @@ cases.post('/opencase', (req, res) => {
             req.session.passport.user.id
           }`,
           game: req.body.winner.name,
-          order: count,
+          order: req.body.case.type === 'xujan' ? req.body.winner.order : count,
         },
       });
     });

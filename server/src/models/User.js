@@ -15,7 +15,7 @@ const userSchema = new Schema({
   gameHistory: [
     {
       key: String,
-      order: Number,
+      order: String || Number,
       name: String,
       action: String,
       sellPrice: Number,

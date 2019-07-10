@@ -86,7 +86,6 @@ const Game = params => {
       } else {
         randomMargin = 15;
       }
-      // Request backend for case
       PerformAction(cases.data)
         .then(res => {
           const elementLeft = document.querySelectorAll(`.${res.img}`)[10]
@@ -95,6 +94,15 @@ const Game = params => {
           setMatrix(matrix - minusPos);
 
           if (cases.type !== 'demo') {
+            if (cases.type === 'xujan') {
+              res.order =
+                Math.random()
+                  .toString(36)
+                  .substring(2, 15) +
+                Math.random()
+                  .toString(36)
+                  .substring(2, 15);
+            }
             fetchApi('/opencase', {
               method: 'POST',
               credentials: 'include',
