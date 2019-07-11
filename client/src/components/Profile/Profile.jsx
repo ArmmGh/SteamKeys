@@ -10,6 +10,7 @@ const Profile = () => {
   const [{ user, translate }, dispatch] = useStateValue();
   const [count, setCount] = useState(10);
   const [showMore, setShowmore] = useState(false);
+  const [disableButton, disableButtons] = useState(false);
 
   const logout = () => e => {
     window.localStorage.removeItem('user');
@@ -24,6 +25,7 @@ const Profile = () => {
   };
 
   const sellGame = game => e => {
+    disableButtons(true);
     fetchApi('/sellgame', {
       method: 'POST',
       credentials: 'include',
@@ -33,10 +35,12 @@ const Profile = () => {
       body: JSON.stringify({ ...game }),
     }).then(data => {
       dispatch({ type: 'updateUser', payload: { ...data } });
+      disableButtons(false);
     });
   };
 
   const getKey = game => e => {
+    disableButtons(true);
     fetchApi('/getkey', {
       method: 'POST',
       credentials: 'include',
@@ -46,6 +50,7 @@ const Profile = () => {
       body: JSON.stringify({ ...game }),
     }).then(data => {
       dispatch({ type: 'updateUser', payload: { ...data } });
+      disableButtons(false);
     });
   };
 
@@ -101,11 +106,19 @@ const Profile = () => {
                       item.caseType === 'silver' ||
                       item.caseType === 'gold' ||
                       item.name === 'other') && (
-                      <button className="btn" onClick={sellGame(item)}>
+                      <button
+                        disabled={disableButton}
+                        className="btn"
+                        onClick={sellGame(item)}
+                      >
                         Продать за {item.sellPrice}
                       </button>
                     )}
-                    <button className="btn" onClick={getKey(item)}>
+                    <button
+                      disabled={disableButton}
+                      className="btn"
+                      onClick={getKey(item)}
+                    >
                       Взять ключ
                     </button>
                   </div>
