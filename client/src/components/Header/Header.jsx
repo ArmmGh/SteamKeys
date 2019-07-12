@@ -10,7 +10,7 @@ const Header = () => {
   const [{ user, games, authenticated, translate }, dispatch] = useStateValue();
   const [isActive, setActive] = useState(false);
 
-  const url = window.location.origin.match('keyforu')
+  const url = window.location.origin.match('github')
     ? 'https://steam-keys.herokuapp.com'
     : 'http://localhost:3000';
   const authSteam = () => e => {

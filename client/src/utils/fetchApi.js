@@ -1,4 +1,4 @@
-const pathname = window.location.origin.match('keyforu')
+const pathname = window.location.origin.match('github')
   ? 'https://steam-keys.herokuapp.com'
   : 'http://localhost:3000';
 const fetchApi = (url, options) =>
