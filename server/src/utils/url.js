@@ -6,18 +6,18 @@ const port = process.env.PORT || 3000;
 exports.returnURLSteam =
   process.env.NODE_ENV === 'development'
     ? `http://${host}:${port}/auth/steam/return`
-    : `http://${host}/auth/steam/return`;
+    : `https://${host}/auth/steam/return`;
 
 exports.defaultURLSteam =
   process.env.NODE_ENV === 'development'
     ? `http://${host}:${port}/`
-    : `http://${host}/`;
+    : `https://${host}/`;
 
 exports.returnURLVk =
   process.env.NODE_ENV === 'development'
     ? `http://${host}:${port}/auth/vkontakte/callback`
-    : `http://${host}/auth/vkontakte/callback`;
+    : `httsp://${host}/auth/vkontakte/callback`;
 exports.defaultURLVk =
   process.env.NODE_ENV === 'development'
     ? `http://${host}:${port}/`
-    : `http://${host}/`;
+    : `https://${host}/`;
