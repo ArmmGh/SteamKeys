@@ -11,7 +11,7 @@ import './Livedrop.scss';
 import { useStateValue } from '../../context';
 
 const formatter = buildFormatter(
-  window.localStorage.getItem('lang') === 'en' ? EnStrings : RuStrings,
+  window.localStorage.getItem('lang') === 'en' ? RuStrings : RuStrings,
 );
 
 const Livedrop = () => {
@@ -34,6 +34,9 @@ const Livedrop = () => {
 
   const images = importAll(
     require.context('../../assets/profile', false, /\.(png|jpe?g|svg)$/),
+  );
+  const imagesCases = importAll(
+    require.context('../../assets/cases', false, /\.(png|jpe?g|svg)$/),
   );
 
   useEffect(() => {
@@ -123,13 +126,20 @@ const Livedrop = () => {
             <ul className="list" id="list">
               {livedrop.map((item, index) => (
                 <li className="item" key={index}>
-                  <Link
-                    to={`/case/${item.type}`}
-                    href={`/case/${item.type}`}
-                  >
+                  <Link to={`/case/${item.type}`} href={`/case/${item.type}`}>
                     <div className="infoOver">
                       <div className="avatar">
-                        <img src={images[item.type]} alt={item.name} />
+                        <img
+                          src={
+                            item.type === 'bronze' ||
+                            item.type === 'metallic' ||
+                            item.type === 'silver' ||
+                            item.type === 'gold'
+                              ? imagesCases[item.type]
+                              : images[item.type]
+                          }
+                          alt={item.name}
+                        />
                       </div>
                       <div className="infoInner">
                         <p>

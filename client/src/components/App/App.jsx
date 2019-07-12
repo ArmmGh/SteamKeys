@@ -8,6 +8,7 @@ import Game from '../Game';
 import Faq from '../Faq';
 import Livedrop from '../Livedrop';
 import Footer from '../Footer';
+import Agreement from '../Agreement';
 import fetchApi from '../../utils/fetchApi';
 import Profile from '../Profile';
 import Cases from '../Cases';
@@ -85,6 +86,7 @@ function App() {
         <Route exact path="/" component={Game} />
         <Route exact path="/" component={Cases} />
         <Route path="/faq" component={Faq} />
+        <Route path="/agreement" component={Agreement} />
       </main>
       <Footer />
     </div>

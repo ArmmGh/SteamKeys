@@ -3,6 +3,7 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const production = require('./webpack.config.prod');
+const CnameWebpackPlugin = require('cname-webpack-plugin');
 const development = require('./webpack.config.dev');
 const PATHS = require('./PATHS');
 require('dotenv').config();
@@ -31,8 +32,11 @@ const common = {
     },
   },
   plugins: [
+    new CnameWebpackPlugin({
+      domain: 'keyforu.net',
+    }),
     new CopyWebpackPlugin([
-      { from: 'src/assets/*', to: 'assets/', flatten: true },
+      { from: 'src/assets/*/*', to: 'assets/', flatten: true },
     ]),
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
   ],

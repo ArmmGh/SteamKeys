@@ -228,7 +228,7 @@ const Game = params => {
                     </div>
                   </div>
                 ) : (
-                  <div className="actions">
+                  <div className="actions actionsWinner">
                     <button onClick={tryAgain()} className="tryAgain">
                       {translate('tryAgain')}
                     </button>

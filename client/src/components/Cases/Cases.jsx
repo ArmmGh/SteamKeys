@@ -11,7 +11,6 @@ import { MdClose } from 'react-icons/md';
 import otherCases from '../../utils/otherCases.json';
 import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
-import free from '../../assets/cases/free.png';
 import './Cases.scss';
 
 const Cases = ({ history }) => {
@@ -34,6 +33,10 @@ const Cases = ({ history }) => {
 
   const images = importAll(
     require.context('../../assets/profile', false, /\.(png|jpe?g|svg)$/),
+  );
+
+  const imagesCases = importAll(
+    require.context('../../assets/cases', false, /\.(png|jpe?g|svg)$/),
   );
 
   const onShowMore = () => e => {
@@ -141,12 +144,9 @@ const Cases = ({ history }) => {
         <ul className="ourKeys">
           {otherCases.map((item, i) => (
             <li key={i} className="item">
-              <Link
-                to={`/case/${item.url}`}
-                href={`/case/${item.url}`}
-              >
+              <Link to={`/case/${item.url}`} href={`/case/${item.url}`}>
                 <div className="image">
-                  <img src={free || item.img} alt={item.name} />
+                  <img src={imagesCases[item.img]} alt={item.name} />
                 </div>
                 <div className="info">
                   <div className="name">
@@ -186,10 +186,7 @@ const Cases = ({ history }) => {
             {games.length &&
               games.slice(0, count).map((item, i) => (
                 <Tilt key={i} className="Tilt">
-                  <Link
-                    to={`/case/${item.url}`}
-                    href={`/case/${item.url}`}
-                  >
+                  <Link to={`/case/${item.url}`} href={`/case/${item.url}`}>
                     <li className="Tilt-inner item">
                       <div className="image">
                         <img src={images[item.img]} alt={item.name} />

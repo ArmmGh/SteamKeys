@@ -181,7 +181,10 @@
       }
       .actions {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        &.actionsWinner {
+          flex-direction: column;
+        }
         .tryAgain {
           cursor: pointer;
           background: none;
