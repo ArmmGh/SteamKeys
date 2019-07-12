@@ -19,7 +19,7 @@ const Game = params => {
   const [demoOpen, setDemoOpen] = useState('false');
   const [modalIsOpen, setModal] = useState(false);
 
-  const url = window.location.origin.match('github')
+  const url = window.location.origin.match('keyforu')
     ? 'https://steam-keys.herokuapp.com'
     : 'http://localhost:3000';
 
