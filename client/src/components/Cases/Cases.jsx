@@ -77,7 +77,7 @@ const Cases = ({ history }) => {
           b.innerHTML += `<input type='hidden' value='${arr[i].name}'>`;
           // eslint-disable-next-line no-loop-func
           b.addEventListener('click', function() {
-            history.push(`/SteamKeys/case/${arr[i].url}`);
+            history.push(`/case/${arr[i].url}`);
             inp.value = this.getElementsByTagName('input')[0].value;
             closeAllLists();
           });
@@ -142,8 +142,8 @@ const Cases = ({ history }) => {
           {otherCases.map((item, i) => (
             <li key={i} className="item">
               <Link
-                to={`/SteamKeys/case/${item.url}`}
-                href={`/SteamKeys/case/${item.url}`}
+                to={`/case/${item.url}`}
+                href={`/case/${item.url}`}
               >
                 <div className="image">
                   <img src={free || item.img} alt={item.name} />
@@ -187,8 +187,8 @@ const Cases = ({ history }) => {
               games.slice(0, count).map((item, i) => (
                 <Tilt key={i} className="Tilt">
                   <Link
-                    to={`/SteamKeys/case/${item.url}`}
-                    href={`/SteamKeys/case/${item.url}`}
+                    to={`/case/${item.url}`}
+                    href={`/case/${item.url}`}
                   >
                     <li className="Tilt-inner item">
                       <div className="image">

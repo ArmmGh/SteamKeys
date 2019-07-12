@@ -9,8 +9,8 @@ const host = process.env.FRONT_HOST || 'localhost';
 const port = process.env.PORT || 5000;
 const url =
   process.env.NODE_ENV === 'development'
-    ? `http://${host}:${port}/SteamKeys/`
-    : `https://${host}/SteamKeys/`;
+    ? `http://${host}:${port}/`
+    : `https://${host}/`;
 
 require('dotenv').config();
 

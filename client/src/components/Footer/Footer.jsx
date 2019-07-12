@@ -18,16 +18,16 @@ const Footer = () => {
       <div className="main-width">
         <div className="links">
           <div className="urlLink">
-            <Link to="/SteamKeys/" href="/SteamKeys/">
+            <Link to="/" href="/">
               {translate('homepage')}
             </Link>
-            <Link to="/SteamKeys/contact" href="/SteamKeys/contact">
+            <Link to="/contact" href="/contact">
               {translate('contacts')}
             </Link>
-            <Link to="/SteamKeys/reviews" href="/SteamKeys/reviews">
+            <Link to="/reviews" href="/reviews">
               {translate('reviews')}
             </Link>
-            <Link to="/SteamKeys/agreement" href="/SteamKeys/agreement">
+            <Link to="/agreement" href="/agreement">
               {translate('agreement')}
             </Link>
           </div>

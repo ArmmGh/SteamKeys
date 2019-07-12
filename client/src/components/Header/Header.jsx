@@ -53,22 +53,22 @@ const Header = () => {
           </div>
           <ul className={`nav mobile_menu ${isActive ? 'show' : 'hide'}`}>
             <li>
-              <Link to="/SteamKeys/" href="/SteamKeys/">
+              <Link to="/" href="/">
                 {translate('homepage')}
               </Link>
             </li>
             <li>
-              <Link to="/SteamKeys/roulette" href="/SteamKeys/roulette">
+              <Link to="/roulette" href="/roulette">
                 {translate('reviews')}
               </Link>
             </li>
             <li>
-              <Link to="/SteamKeys/faq" href="/faq">
+              <Link to="/faq" href="/faq">
                 {translate('faqAndGuarant')}
               </Link>
             </li>
             <li>
-              <Link to="/SteamKeys/case/xujan" href="/SteamKeys/case/xujan">
+              <Link to="/case/xujan" href="/case/xujan">
                 {translate('xujanKeys')}
               </Link>
             </li>
@@ -83,12 +83,12 @@ const Header = () => {
                   <FiPlusCircle />
                 </div>
                 <div className="avatar">
-                  <Link to="/SteamKeys/profile" href="/profile">
+                  <Link to="/profile" href="/profile">
                     <img src={user.imgurl} alt="" />
                   </Link>
                 </div>
                 <div className="settings">
-                  <Link to="/SteamKeys/profile" href="/profile">
+                  <Link to="/profile" href="/profile">
                     <FiSettings />
                     <p>{translate('profile')}</p>
                   </Link>

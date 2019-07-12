@@ -80,11 +80,11 @@ function App() {
       <Header />
       <Livedrop />
       <main>
-        <Route path="/SteamKeys/profile" component={Profile} />
-        <Route path="/SteamKeys/case/:name" component={Game} />
-        <Route exact path="/SteamKeys/" component={Game} />
-        <Route exact path="/SteamKeys/" component={Cases} />
-        <Route path="/SteamKeys/faq" component={Faq} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/case/:name" component={Game} />
+        <Route exact path="/" component={Game} />
+        <Route exact path="/" component={Cases} />
+        <Route path="/faq" component={Faq} />
       </main>
       <Footer />
     </div>

@@ -149,7 +149,7 @@ const Game = params => {
     }
     const caseUrl = authenticated ? 'bronze' : 'demo';
     switch (window.location.pathname) {
-      case '/SteamKeys/':
+      case '/':
         fetchApi(`/cases/${caseUrl}`, {
           method: 'POST',
           credentials: 'include',
@@ -196,7 +196,7 @@ const Game = params => {
           </button>
           <button
             className="danger"
-            onClick={() => params.history.push('/SteamKeys/')}
+            onClick={() => params.history.push('/')}
           >
             Мне меньше 18
           </button>
@@ -235,7 +235,7 @@ const Game = params => {
                     <button onClick={tryAgain()} className="tryAgain">
                       {translate('tryAgain')}
                     </button>
-                    <Link to="/SteamKeys/profile" href="/SteamKeys/profile">
+                    <Link to="/profile" href="/profile">
                       {(winner.name === 'other' ||
                         (winner.type === 'bronze' ||
                           winner.type === 'metalliic' ||
@@ -324,7 +324,7 @@ const Game = params => {
       </div>
       {cases &&
         cases.type !== 'demo' &&
-        window.location.pathname !== '/SteamKeys/' && (
+        window.location.pathname !== '/' && (
           <div className="caseItems">
             <div className="main-width">
               <h1>Что можно выиграть</h1>

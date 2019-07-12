@@ -124,8 +124,8 @@ const Livedrop = () => {
               {livedrop.map((item, index) => (
                 <li className="item" key={index}>
                   <Link
-                    to={`/SteamKeys/case/${item.type}`}
-                    href={`/SteamKeys/case/${item.type}`}
+                    to={`/case/${item.type}`}
+                    href={`/case/${item.type}`}
                   >
                     <div className="infoOver">
                       <div className="avatar">
