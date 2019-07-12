@@ -19,7 +19,7 @@ const Game = params => {
   const [demoOpen, setDemoOpen] = useState('false');
   const [modalIsOpen, setModal] = useState(false);
 
-  const url = window.location.origin.match('github')
+  const url = window.location.origin.match('keyforu')
     ? 'https://steam-keys.herokuapp.com'
     : 'http://localhost:3000';
 
@@ -194,10 +194,7 @@ const Game = params => {
           <button className="success" onClick={() => setModal(false)}>
             Мне 18 или больше
           </button>
-          <button
-            className="danger"
-            onClick={() => params.history.push('/')}
-          >
+          <button className="danger" onClick={() => params.history.push('/')}>
             Мне меньше 18
           </button>
         </div>
@@ -322,23 +319,21 @@ const Game = params => {
           </div>
         )}
       </div>
-      {cases &&
-        cases.type !== 'demo' &&
-        window.location.pathname !== '/' && (
-          <div className="caseItems">
-            <div className="main-width">
-              <h1>Что можно выиграть</h1>
-              <div className="caseOverview">
-                {cases.data.map((item, i) => (
-                  <div className="item" key={i}>
-                    <p className="price">{item.priceRUB} ₽</p>
-                    <img src={images[item.img]} alt={item.name} />
-                  </div>
-                ))}
-              </div>
+      {cases && cases.type !== 'demo' && window.location.pathname !== '/' && (
+        <div className="caseItems">
+          <div className="main-width">
+            <h1>Что можно выиграть</h1>
+            <div className="caseOverview">
+              {cases.data.map((item, i) => (
+                <div className="item" key={i}>
+                  <p className="price">{item.priceRUB} ₽</p>
+                  <img src={images[item.img]} alt={item.name} />
+                </div>
+              ))}
             </div>
           </div>
-        )}
+        </div>
+      )}
     </React.Fragment>
   );
 };

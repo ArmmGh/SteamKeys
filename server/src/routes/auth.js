@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 const url =
   process.env.NODE_ENV === 'development'
     ? `http://${host}:${port}/`
-    : `https://${host}/`;
+    : `http://${host}/`;
 
 require('dotenv').config();
 
