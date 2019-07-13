@@ -10,6 +10,7 @@ const auth = require('./routes/auth');
 const cases = require('./routes/cases');
 const livedrop = require('./routes/livedrop');
 const games = require('./routes/games');
+const userbalance = require('./routes/userbalance');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
@@ -48,6 +49,7 @@ app.use('/auth', auth);
 app.use(livedrop);
 app.use(games);
 app.use(cases);
+app.use(userbalance);
 
 app.get('/', (req, res) => {
   res.send('LOL');

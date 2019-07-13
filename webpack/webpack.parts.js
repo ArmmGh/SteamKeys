@@ -28,29 +28,28 @@ exports.buildSetup = env => ({
         env === 'development'
           ? false
           : {
-            removeAttributeQuotes: true,
-            collapseWhitespace: true,
-            html5: true,
-            removeComments: true,
-            removeEmptyAttributes: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true,
-            removeStyleLinkTypeAttributes: true,
-            keepClosingSlash: true,
-            minifyJS: true,
-            minifyCSS: true,
-            minifyURLs: true,
-          },
+              removeAttributeQuotes: true,
+              collapseWhitespace: true,
+              html5: true,
+              removeComments: true,
+              removeEmptyAttributes: true,
+              removeRedundantAttributes: true,
+              useShortDoctype: true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash: true,
+              minifyJS: true,
+              minifyCSS: true,
+              minifyURLs: true,
+            },
     }),
     new HtmlWebpackPlugin({
       filename: '404.html',
       template: PATHS.TEMPLATE_404,
     }),
+    // http://localhost:5000/
     new BaseHrefWebpackPlugin({
       baseHref:
-        env === 'development'
-          ? 'https://keyforu.net/'
-          : 'https://keyforu.net/',
+        env === 'development' ? 'https://keyforu.net/' : 'https://keyforu.net/',
     }),
   ],
 });

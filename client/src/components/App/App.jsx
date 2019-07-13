@@ -13,6 +13,7 @@ import fetchApi from '../../utils/fetchApi';
 import Profile from '../Profile';
 import Cases from '../Cases';
 import './App.scss';
+import Reviews from '../Reviews';
 
 function App() {
   const [{ user, socket }, dispatch] = useStateValue();
@@ -87,6 +88,7 @@ function App() {
         <Route exact path="/" component={Cases} />
         <Route path="/faq" component={Faq} />
         <Route path="/agreement" component={Agreement} />
+        <Route path="/reviews" component={Reviews} />
       </main>
       <Footer />
     </div>

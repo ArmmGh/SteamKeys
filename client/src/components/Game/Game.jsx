@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaSteam, FaVk } from 'react-icons/fa';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import fetchApi from '../../utils/fetchApi';
 import Item from './Item';
@@ -178,7 +178,7 @@ const Game = params => {
         // onAfterOpen={this.afterOpenModal}
         // onRequestClose={this.closeModal}
         className="Modal"
-        overlayClassName="Overlay"
+        overlayClassName="OverlayGame"
       >
         <div className="header">
           <h1>Внимание!!!</h1>
