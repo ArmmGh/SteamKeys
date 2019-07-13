@@ -49,7 +49,7 @@ exports.buildSetup = env => ({
     new BaseHrefWebpackPlugin({
       baseHref:
         env === 'development'
-          ? 'http://localhost:5000/'
+          ? 'https://keyforu.net/'
           : 'https://keyforu.net/',
     }),
   ],
