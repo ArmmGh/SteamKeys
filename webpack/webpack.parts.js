@@ -19,6 +19,10 @@ exports.sourceMaps = method => ({
 exports.buildSetup = env => ({
   plugins: [
     new HtmlWebpackPlugin({
+      baseUrl:
+        process.env.NODE_ENV === 'development'
+          ? 'http://localhost:5000/'
+          : 'https://keyforu.net/',
       template: PATHS.TEMPLATE,
       filename: 'index.html',
       title: TITLE,
@@ -27,19 +31,19 @@ exports.buildSetup = env => ({
         env === 'development'
           ? false
           : {
-            removeAttributeQuotes: true,
-            collapseWhitespace: true,
-            html5: true,
-            removeComments: true,
-            removeEmptyAttributes: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true,
-            removeStyleLinkTypeAttributes: true,
-            keepClosingSlash: true,
-            minifyJS: true,
-            minifyCSS: true,
-            minifyURLs: true,
-          },
+              removeAttributeQuotes: true,
+              collapseWhitespace: true,
+              html5: true,
+              removeComments: true,
+              removeEmptyAttributes: true,
+              removeRedundantAttributes: true,
+              useShortDoctype: true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash: true,
+              minifyJS: true,
+              minifyCSS: true,
+              minifyURLs: true,
+            },
     }),
     new HtmlWebpackPlugin({
       filename: '404.html',
