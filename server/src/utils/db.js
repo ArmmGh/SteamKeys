@@ -77,6 +77,7 @@ const setLivedrop = async data => {
 const getGames = () => Games.find({});
 
 const getLiveinfo = async () => {
+  // Cases.deleteOne({ _id: {} }).then(res => console.log('done', res));
   const openCasesLength = () =>
     new Promise((resolve, reject) => {
       Livedrop.collection.countDocuments({}, {}, (err, res) => resolve(res));
