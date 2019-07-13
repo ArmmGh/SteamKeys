@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><base href="https://keyforu.net/">
+  <head><base href="http://localhost:5000/">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>SteamKeys</title>
+    <script
+      src="https://vk.com/js/api/openapi.js?161"
+      type="text/javascript"
+    ></script>
     <script type="text/javascript">
       (function(l) {
         if (l.search) {
@@ -36,5 +40,12 @@
 
   <body>
     <div id="root"></div>
-  <script type="text/javascript" src="react.b8f395caae42cbccfe48.js"></script><script type="text/javascript" src="app.bundle.6bf131b7ddacca43fecd.js"></script></body>
+
+    <script type="text/javascript">
+      VK.init({
+        apiId: 7047439,
+        onlyWidgets: true,
+      });
+    </script>
+  <script type="text/javascript" src="react.b8f395caae42cbccfe48.js"></script><script type="text/javascript" src="app.bundle.eb5e6ecfdc9a0908b774.js"></script></body>
 </html>
