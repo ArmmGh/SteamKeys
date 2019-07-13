@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 /* eslint-enable */
 require('dotenv').config();
 
@@ -19,10 +20,6 @@ exports.sourceMaps = method => ({
 exports.buildSetup = env => ({
   plugins: [
     new HtmlWebpackPlugin({
-      baseUrl:
-        env === 'development'
-          ? 'http://localhost:5000/'
-          : 'https://keyforu.net/',
       template: PATHS.TEMPLATE,
       filename: 'index.html',
       title: TITLE,
@@ -31,23 +28,29 @@ exports.buildSetup = env => ({
         env === 'development'
           ? false
           : {
-              removeAttributeQuotes: true,
-              collapseWhitespace: true,
-              html5: true,
-              removeComments: true,
-              removeEmptyAttributes: true,
-              removeRedundantAttributes: true,
-              useShortDoctype: true,
-              removeStyleLinkTypeAttributes: true,
-              keepClosingSlash: true,
-              minifyJS: true,
-              minifyCSS: true,
-              minifyURLs: true,
-            },
+            removeAttributeQuotes: true,
+            collapseWhitespace: true,
+            html5: true,
+            removeComments: true,
+            removeEmptyAttributes: true,
+            removeRedundantAttributes: true,
+            useShortDoctype: true,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true,
+          },
     }),
     new HtmlWebpackPlugin({
       filename: '404.html',
       template: PATHS.TEMPLATE_404,
+    }),
+    new BaseHrefWebpackPlugin({
+      baseHref:
+        env === 'development'
+          ? 'http://localhost:5000/'
+          : 'https://keyforu.net/',
     }),
   ],
 });
