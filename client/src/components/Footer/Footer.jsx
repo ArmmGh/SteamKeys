@@ -28,7 +28,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="socialLinks">
-            <a href="vk.com">
+            <a href="https://vk.com/club184431451">
               <FaVk /> {translate('onVk')}
             </a>
           </div>
