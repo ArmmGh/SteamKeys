@@ -11,6 +11,7 @@ const development = merge(
       port: 5000,
       host: 'localhost',
       compress: true,
+      publicPath: '/',
       historyApiFallback: true,
       hot: true,
     },
