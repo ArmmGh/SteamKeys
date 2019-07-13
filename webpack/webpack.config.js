@@ -36,7 +36,7 @@ const common = {
       domain: 'keyforu.net',
     }),
     new CopyWebpackPlugin([
-      { from: 'src/assets/*/*', to: 'assets/', flatten: true },
+      { from: 'src/assets.*', to: 'assets.', flatten: true },
     ]),
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
   ],
@@ -78,6 +78,7 @@ const common = {
             options: {
               limit: 100000,
               name: 'assets/[name].[ext]',
+              useRelativePath: true,
             },
           },
         ],

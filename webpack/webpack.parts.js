@@ -41,6 +41,10 @@ exports.buildSetup = env => ({
             minifyURLs: true,
           },
     }),
+    new HtmlWebpackPlugin({
+      filename: '404.html',
+      template: PATHS.TEMPLATE_404,
+    }),
   ],
 });
 
