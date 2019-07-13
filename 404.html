@@ -10,23 +10,23 @@
         l.protocol +
           '//' +
           l.hostname +
-          //   (l.port ? ':' + l.port : '') +
+          (l.port ? ':' + l.port : '') +
           l.pathname
             .split('/')
             .slice(0, 1 + segmentCount)
             .join('/') +
-          //   '/?p=/' +
+          '/?p=/' +
           l.pathname
             .slice(1)
             .split('/')
             .slice(segmentCount)
-            .join('/'),
-        // .replace(/&/g, '~and~') +
-        //   (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        //   l.hash,
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash,
       );
     </script>
   </head>
 
-  <body><script type="text/javascript" src="react.b8f395caae42cbccfe48.js"></script><script type="text/javascript" src="app.bundle.8dbf09a14d418a1eea02.js"></script></body>
+  <body><script type="text/javascript" src="react.b8f395caae42cbccfe48.js"></script><script type="text/javascript" src="app.bundle.33845f60d345105572a3.js"></script></body>
 </html>
