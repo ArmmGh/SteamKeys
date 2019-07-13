@@ -11,23 +11,22 @@
           '//' +
           l.hostname +
           (l.port ? ':' + l.port : '') +
-          l.pathname,
+          l.pathname
+            .split('/')
+            .slice(0, 1 + segmentCount)
+            .join('/') +
+          '/?p=/' +
+          l.pathname
+            .slice(1)
+            .split('/')
+            .slice(segmentCount)
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash,
       );
-
-      //   .split('/')
-      //         .slice(0, 1 + segmentCount)
-      //         .join('/') +
-      //       '/?p=/' +
-      //       l.pathname
-      //         .slice(1)
-      //         .split('/')
-      //         .slice(segmentCount)
-      //         .join('/')
-      //         .replace(/&/g, '~and~') +
-      //       (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      //       l.hash,
     </script>
   </head>
 
-  <body><script type="text/javascript" src="react.b8f395caae42cbccfe48.js"></script><script type="text/javascript" src="app.bundle.e0c78141a6c1e18d0aba.js"></script></body>
+  <body><script type="text/javascript" src="react.b8f395caae42cbccfe48.js"></script><script type="text/javascript" src="app.bundle.33845f60d345105572a3.js"></script></body>
 </html>
