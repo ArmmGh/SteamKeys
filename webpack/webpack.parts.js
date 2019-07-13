@@ -20,7 +20,7 @@ exports.buildSetup = env => ({
   plugins: [
     new HtmlWebpackPlugin({
       baseUrl:
-        process.env.NODE_ENV === 'development'
+        env === 'development'
           ? 'http://localhost:5000/'
           : 'https://keyforu.net/',
       template: PATHS.TEMPLATE,
