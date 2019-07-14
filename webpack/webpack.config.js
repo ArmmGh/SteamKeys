@@ -36,7 +36,7 @@ const common = {
       domain: 'keyforu.net',
     }),
     new CopyWebpackPlugin([
-      { from: 'src/assets.*', to: 'assets.', flatten: true },
+      { from: 'src/assets/*', to: 'assets/', flatten: true },
     ]),
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
   ],
@@ -76,7 +76,7 @@ const common = {
           {
             loader: 'url-loader',
             options: {
-              limit: 1000000,
+              limit: 10 * 1024,
               name: 'assets/[name].[ext]',
               useRelativePath: true,
             },
@@ -88,6 +88,7 @@ const common = {
 };
 
 module.exports = () => {
+  console.log(ENV);
   const config = merge(common, ENV === 'DEV' ? development : production);
   return config;
 };

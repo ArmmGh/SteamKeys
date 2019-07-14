@@ -17,41 +17,47 @@ exports.sourceMaps = method => ({
   devtool: method,
 });
 
-exports.buildSetup = env => ({
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: PATHS.TEMPLATE,
-      filename: 'index.html',
-      title: TITLE,
-      inject: 'body',
-      minify: {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-        html5: true,
-        removeComments: true,
-        removeEmptyAttributes: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-    }),
-    new HtmlWebpackPlugin({
-      filename: '404.html',
-      template: PATHS.TEMPLATE_404,
-    }),
-    // http://localhost:5000/
-    new BaseHrefWebpackPlugin({
-      baseHref:
-        env === 'development'
-          ? 'https://keyforu.net/'
-          : 'https://keyforu.net/',
-    }),
-  ],
-});
+exports.buildSetup = env => {
+  env = 'production';
+  return {
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: PATHS.TEMPLATE,
+        filename: 'index.html',
+        title: TITLE,
+        inject: 'body',
+        minify:
+          env === 'development'
+            ? false
+            : {
+                removeAttributeQuotes: true,
+                collapseWhitespace: true,
+                html5: true,
+                removeComments: true,
+                removeEmptyAttributes: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true,
+              },
+      }),
+      new HtmlWebpackPlugin({
+        filename: '404.html',
+        template: PATHS.TEMPLATE_404,
+      }),
+      // http://localhost:5000/
+      new BaseHrefWebpackPlugin({
+        baseHref:
+          env === 'development'
+            ? 'https://keyforu.net/'
+            : 'https://keyforu.net/',
+      }),
+    ],
+  };
+};
 
 exports.extractLess = new ExtractTextPlugin({
   filename: 'style.[hash].css',
