@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiSettings, FiPlusCircle } from 'react-icons/fi';
 import { Slider } from 'react-burgers';
 import { FaSteam, FaVk } from 'react-icons/fa';
+import fetchApi from '../../utils/fetchApi';
 import { MdClose } from 'react-icons/md';
 import Modal from 'react-modal';
 import { useStateValue } from '../../context';
@@ -51,7 +52,10 @@ const Header = () => {
   };
 
   const addBalance = () => e => {
-    console.log(sum);
+    fetchApi('/addbalance', {
+      method: 'POST',
+      body: JSON.stringify(sum),
+    });
   };
 
   useEffect(() => {}, []);
