@@ -18,7 +18,7 @@ exports.sourceMaps = method => ({
 });
 
 exports.buildSetup = env => {
-  // env = 'production';
+  env = 'production';
   return {
     plugins: [
       new HtmlWebpackPlugin({

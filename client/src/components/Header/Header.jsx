@@ -62,11 +62,13 @@ const Header = () => {
       via: 'qiwi',
     };
     console.log(data);
-    fetch('https://primepayer.com/pay', {
+    fetch('https://primepayer.com/api/110857/pay', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        Authorization:
+          'Bearer w46kofoy10afthh95ir4z8cx2k0mr4hcob9s6bd7f0dxxzboianmnpgwxfx1yhba',
       },
       body: JSON.stringify(data),
     }).then(res => {
