@@ -54,7 +54,7 @@ const Header = () => {
   const addBalance = () => e => {
     fetchApi('/addbalance', {
       method: 'POST',
-      body: JSON.stringify(sum),
+      body: JSON.stringify({ sum }),
     });
   };
 

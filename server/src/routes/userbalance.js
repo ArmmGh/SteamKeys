@@ -19,7 +19,7 @@ userbalance.post('/addbalance', (req, res) => {
   const data = {
     shop: 4285,
     payment: 110857,
-    amount: req.body,
+    amount: req.body.sum,
     description: 'Оплата товара',
     currency: 3,
     via: 'qiwi',
