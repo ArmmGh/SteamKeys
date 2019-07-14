@@ -26,19 +26,20 @@ userbalance.post('/addbalance', (req, res) => {
     sign,
     // via: 'qiwi',
   };
-  Request.post(
-    {
-      url: 'https://primepayer.com/pay',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ data }),
-    },
-    (err, resp, body) => {
-      if (err) {
-        return console.dir(err);
-      }
-      console.dir(JSON.parse(body));
-    },
-  );
+  res.send(data);
+  // Request.post(
+  //   {
+  //     url: 'https://primepayer.com/pay',
+  //     headers: { 'content-type': 'application/json' },
+  //     body: JSON.stringify({ data }),
+  //   },
+  //   (err, resp, body) => {
+  //     if (err) {
+  //       return console.dir(err);
+  //     }
+  //     console.dir(JSON.parse(body));
+  //   },
+  // );
 });
 
 module.exports = userbalance;
