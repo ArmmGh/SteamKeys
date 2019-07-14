@@ -24,23 +24,20 @@ exports.buildSetup = env => ({
       filename: 'index.html',
       title: TITLE,
       inject: 'body',
-      minify:
-        env === 'development'
-          ? false
-          : {
-              removeAttributeQuotes: true,
-              collapseWhitespace: true,
-              html5: true,
-              removeComments: true,
-              removeEmptyAttributes: true,
-              removeRedundantAttributes: true,
-              useShortDoctype: true,
-              removeStyleLinkTypeAttributes: true,
-              keepClosingSlash: true,
-              minifyJS: true,
-              minifyCSS: true,
-              minifyURLs: true,
-            },
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        html5: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
     }),
     new HtmlWebpackPlugin({
       filename: '404.html',
@@ -49,7 +46,9 @@ exports.buildSetup = env => ({
     // http://localhost:5000/
     new BaseHrefWebpackPlugin({
       baseHref:
-        env === 'development' ? 'https://keyforu.net/' : 'https://keyforu.net/',
+        env === 'development'
+          ? 'https://keyforu.net/'
+          : 'https://keyforu.net/',
     }),
   ],
 });
