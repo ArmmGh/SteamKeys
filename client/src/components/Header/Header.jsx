@@ -59,10 +59,15 @@ const Header = () => {
       description: 'Оплата товара',
       currency: 3,
       sign: 'OirW4Mt+i0g3v6Yb+0yenYeqPqKYoimjehJEKZC1v+w=',
-      // via: 'qiwi',
+      via: 'qiwi',
     };
-    fetchApi('https://primepayer.com/pay', {
+    console.log(data);
+    fetch('https://primepayer.com/pay', {
       method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(data),
     }).then(res => {
       console.log(res);

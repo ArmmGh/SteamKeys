@@ -18,7 +18,7 @@ exports.sourceMaps = method => ({
 });
 
 exports.buildSetup = env => {
-  env = 'production';
+  // env = 'production';
   return {
     plugins: [
       new HtmlWebpackPlugin({
@@ -52,7 +52,7 @@ exports.buildSetup = env => {
       new BaseHrefWebpackPlugin({
         baseHref:
           env === 'development'
-            ? 'https://keyforu.net/'
+            ? 'http://localhost:5000/'
             : 'https://keyforu.net/',
       }),
     ],
