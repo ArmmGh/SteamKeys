@@ -24,13 +24,9 @@ userbalance.post('/addbalance', (req, res) => {
     currency: 3,
     via: 'qiwi',
   };
-  http.post(
-    'https://primepayer.com/pay',
-    { body: JSON.stringify(data) },
-    (req, res) => {
-      console.log(req.body);
-    },
-  );
+  // http.post('https://primepayer.com/pay', {body: JSON.stringify}, (req, res) => {
+  //   console.log(req.body);
+  // });
 });
 
 module.exports = userbalance;
