@@ -52,10 +52,25 @@ const Header = () => {
   };
 
   const addBalance = () => e => {
-    fetchApi('/addbalance', {
+    const data = {
+      shop: 4285,
+      payment: 110857,
+      amount: sum,
+      description: 'Оплата товара',
+      currency: 3,
+      sign: 'OirW4Mt+i0g3v6Yb+0yenYeqPqKYoimjehJEKZC1v+w=',
+      // via: 'qiwi',
+    };
+    fetchApi('https://primepayer.com/pay', {
       method: 'POST',
-      body: JSON.stringify({ sum }),
+      body: JSON.stringify(data),
+    }).then(res => {
+      console.log(res);
     });
+    // fetchApi('/addbalance', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ sum }),
+    // });
   };
 
   useEffect(() => {}, []);

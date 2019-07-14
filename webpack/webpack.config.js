@@ -76,7 +76,7 @@ const common = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10 * 1024,
+              limit: 1000000,
               name: 'assets/[name].[ext]',
               useRelativePath: true,
             },
