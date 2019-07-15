@@ -66,6 +66,10 @@ const common = {
   module: {
     rules: [
       {
+        test: /\.txt$/i,
+        use: 'raw-loader',
+      },
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
