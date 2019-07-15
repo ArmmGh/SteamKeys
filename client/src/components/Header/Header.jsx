@@ -8,6 +8,7 @@ import { MdClose } from 'react-icons/md';
 import Modal from 'react-modal';
 import { useStateValue } from '../../context';
 import './Header.scss';
+import Logo from '../../assets/logo.png';
 
 const Header = () => {
   const [{ user, games, authenticated, translate }, dispatch] = useStateValue();
@@ -152,6 +153,11 @@ const Header = () => {
                 </Link>
               </li>
             </ul>
+            <div className="logo_holder">
+              <div className="logo">
+                <img src={Logo} alt="logo" />
+              </div>
+            </div>
             <div className="actions">
               {authenticated ? (
                 <React.Fragment>

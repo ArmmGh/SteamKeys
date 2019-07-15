@@ -190,6 +190,25 @@ header {
         }
       }
     }
+    .logo_holder {
+      flex: 1;
+      .logo {
+        flex: 1;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        background: rgba(147, 177, 247, 0.65);
+        border-radius: 50%;
+        width: 60px;
+        margin: 0 auto;
+        padding-bottom: 6px;
+        img {
+          width: 40px;
+        }
+      }
+    }
     .actions {
       flex: 1;
       display: flex;

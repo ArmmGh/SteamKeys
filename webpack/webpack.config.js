@@ -71,7 +71,7 @@ const common = {
         loader: 'babel-loader',
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg|jpg|jpeg)$/,
+        test: /\.(png|woff|woff2|eot|ttf|svg|jpg|jpeg|ico)$/,
         use: [
           {
             loader: 'url-loader',

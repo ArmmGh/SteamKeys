@@ -2,6 +2,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+
 /* eslint-enable */
 require('dotenv').config();
 
@@ -55,6 +57,7 @@ exports.buildSetup = env => {
             ? 'http://localhost:5000/'
             : 'https://keyforu.net/',
       }),
+      new FaviconsWebpackPlugin('favicon.png'),
     ],
   };
 };
