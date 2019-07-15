@@ -11,6 +11,7 @@ import Footer from '../Footer';
 import Agreement from '../Agreement';
 import fetchApi from '../../utils/fetchApi';
 import Profile from '../Profile';
+import Contact from '../Contact';
 import Cases from '../Cases';
 import './App.scss';
 import Reviews from '../Reviews';
@@ -89,6 +90,7 @@ function App() {
         <Route path="/faq" component={Faq} />
         <Route path="/agreement" component={Agreement} />
         <Route path="/reviews" component={Reviews} />
+        <Route path="/contact" component={Contact} />
       </main>
       <Footer />
     </div>
