@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaSteam, FaVk } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
+import { MdClose } from 'react-icons/md';
 import fetchApi from '../../utils/fetchApi';
 import Item from './Item';
 import { useStateValue } from '../../context';
@@ -18,6 +19,7 @@ const Game = params => {
   const [caseOpening, setOpening] = useState(false);
   const [demoOpen, setDemoOpen] = useState('false');
   const [modalIsOpen, setModal] = useState(false);
+  const [sum, setSum] = useState(1000);
 
   const url = window.location.origin.match('keyforu')
     ? 'https://steam-keys.herokuapp.com'
@@ -140,7 +142,45 @@ const Game = params => {
     setMatrix(0);
   };
 
-  const addBalance = () => e => {};
+  const openModal = () => e => {
+    setModal(true);
+    setSum(1000);
+  };
+
+  const addBalance = () => e => {
+    const data = {
+      shop: 4285,
+      payment: 110857,
+      amount: sum,
+      description: 'Оплата товара',
+      currency: 3,
+      sign: 'OirW4Mt+i0g3v6Yb+0yenYeqPqKYoimjehJEKZC1v+w=',
+      via: 'qiwi',
+    };
+    console.log(data);
+    fetch('https://primepayer.com/api/110857/pay', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization:
+          'Bearer w46kofoy10afthh95ir4z8cx2k0mr4hcob9s6bd7f0dxxzboianmnpgwxfx1yhba',
+      },
+      body: JSON.stringify(data),
+    }).then(res => {
+      console.log(res);
+    });
+    // fetchApi('/addbalance', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ sum }),
+    // });
+  };
+
+  const handeleChange = val => {
+    if (val.match(/^[0-9]+$/)) {
+      setSum(val);
+    }
+  };
 
   useEffect(() => {
     if (params.match.params.name === 'xujan') {
@@ -172,6 +212,39 @@ const Game = params => {
 
   return (
     <React.Fragment>
+      <Modal
+        closeTimeoutMS={200}
+        ariaHideApp={false}
+        onRequestClose={() => setModal(false)}
+        shouldCloseOnOverlayClick={true}
+        isOpen={modalIsOpen}
+        className="Modal"
+        overlayClassName="OverlayHeader"
+      >
+        <div className="header">
+          <div />
+          <h1>ПОПОЛНЕНИЕ БАЛАНСА</h1>
+          <div className="close">
+            <MdClose onClick={() => setModal(false)} />
+          </div>
+        </div>
+        <div className="body">
+          <h1>Введите сумму</h1>
+          <div className="inpHolder">
+            <input
+              type="text"
+              className="input"
+              name="sum"
+              value={sum}
+              onChange={e => handeleChange(e.target.value)}
+            />
+            <button onClick={openModal()}>Пополнить</button>
+          </div>
+          <div className="info">
+            Средства приходят моментально, но могут быть задержки до 5-10 минут.
+          </div>
+        </div>
+      </Modal>
       <Modal
         ariaHideApp={false}
         isOpen={modalIsOpen}
