@@ -37,6 +37,7 @@ const common = {
     }),
     new CopyWebpackPlugin([
       { from: 'src/assets/*', to: 'assets/', flatten: true },
+      { from: '*.txt', to: '.', flatten: true },
     ]),
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
   ],
@@ -66,8 +67,16 @@ const common = {
   module: {
     rules: [
       {
-        test: /\.txt$/i,
-        use: 'raw-loader',
+        test: /\.(txt)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '[name].[ext]',
+              useRelativePath: true,
+            },
+          },
+        ],
       },
       {
         test: /\.jsx?$/,

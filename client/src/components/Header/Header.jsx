@@ -156,6 +156,11 @@ const Header = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/contact" href="/contact">
+                  Контакты
+                </Link>
+              </li>
+              <li>
                 <Link to="/case/xujan" href="/case/xujan">
                   {translate('xujanKeys')}
                 </Link>

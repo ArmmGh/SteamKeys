@@ -10,7 +10,12 @@ const Contact = () => (
     <p>
       Наша тех. поддержка будет помогать вас если возникли какие то проблемы,
       пожалуйста свяжитесь с нами через
-      <a href="https://vk.com/club184431451">VK</a>
+    </p>
+    <p>
+      Наш VK -
+      <span>
+        <a href="https://vk.com/club184431451">https://vk.com/club184431451</a>
+      </span>
     </p>
     <p>
       Наш Email - <span>keyforu@list.ru</span>
