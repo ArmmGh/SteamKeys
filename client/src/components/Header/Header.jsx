@@ -94,7 +94,15 @@ const Header = () => {
         className="Modal"
         overlayClassName="OverlayHeader"
       >
-        <div className="header">
+        <iframe
+          title="freekassa"
+          src="http://www.free-kassa.ru/merchant/forms.php?gen_form=1&m=153248&default-sum=1000&button-text=Оплатить&type=v3&id=530529"
+          width="590"
+          height="320"
+          frameBorder="0"
+          target="_parent"
+        />
+        {/* <div className="header">
           <div />
           <h1>ПОПОЛНЕНИЕ БАЛАНСА</h1>
           <div className="close">
@@ -116,7 +124,7 @@ const Header = () => {
           <div className="info">
             Средства приходят моментально, но могут быть задержки до 5-10 минут.
           </div>
-        </div>
+        </div> */}
       </Modal>
       <header>
         <div className="main-width">
