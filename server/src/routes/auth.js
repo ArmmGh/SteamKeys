@@ -64,7 +64,6 @@ auth.get('/logout', (req, res) => {
 });
 
 auth.get('/user', (req, res) => {
-  console.log(req.ipInfo);
   if (
     req &&
     (req.user || (req.session.passport && req.session.passport.user))

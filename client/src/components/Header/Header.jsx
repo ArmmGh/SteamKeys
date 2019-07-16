@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { FiSettings, FiPlusCircle } from 'react-icons/fi';
 import { Slider } from 'react-burgers';
 import { FaSteam, FaVk } from 'react-icons/fa';
-import fetchApi from '../../utils/fetchApi';
 import { MdClose } from 'react-icons/md';
 import Modal from 'react-modal';
+import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import './Header.scss';
 import Logo from '../../assets/logo.png';
@@ -53,32 +53,11 @@ const Header = () => {
   };
 
   const addBalance = () => e => {
-    const data = {
-      shop: 4285,
-      payment: 110857,
-      amount: sum,
-      description: 'Оплата товара',
-      currency: 3,
-      sign: 'OirW4Mt+i0g3v6Yb+0yenYeqPqKYoimjehJEKZC1v+w=',
-      via: 'qiwi',
-    };
-    console.log(data);
-    fetch('https://primepayer.com/api/110857/pay', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization:
-          'Bearer w46kofoy10afthh95ir4z8cx2k0mr4hcob9s6bd7f0dxxzboianmnpgwxfx1yhba',
-      },
-      body: JSON.stringify(data),
-    }).then(res => {
-      console.log(res);
-    });
-    // fetchApi('/addbalance', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ sum }),
-    // });
+    fetchApi(
+      '/addbalacne',
+      { method: 'POST', body: JSON.stringify({ sum }) },
+      res => {},
+    );
   };
 
   useEffect(() => {}, []);
@@ -94,15 +73,7 @@ const Header = () => {
         className="Modal"
         overlayClassName="OverlayHeader"
       >
-        <iframe
-          title="freekassa"
-          src="http://www.free-kassa.ru/merchant/forms.php?gen_form=1&m=153248&default-sum=1000&button-text=Оплатить&type=v3&id=530529"
-          width="590"
-          height="320"
-          frameBorder="0"
-          target="_parent"
-        />
-        {/* <div className="header">
+        <div className="header">
           <div />
           <h1>ПОПОЛНЕНИЕ БАЛАНСА</h1>
           <div className="close">
@@ -124,7 +95,7 @@ const Header = () => {
           <div className="info">
             Средства приходят моментально, но могут быть задержки до 5-10 минут.
           </div>
-        </div> */}
+        </div>
       </Modal>
       <header>
         <div className="main-width">
