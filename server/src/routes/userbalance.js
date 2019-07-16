@@ -14,7 +14,8 @@ userbalance.post('/addbalance', (req, res, next) => {
     process.env.merchant_sign
   }`;
   res.redirect(url);
-  next();
+  res.send('');
+  // next();
 });
 
 module.exports = userbalance;
