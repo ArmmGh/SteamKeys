@@ -8,7 +8,7 @@ const md5 = require('md5');
 
 require('dotenv').config();
 
-userbalance.post('/addbalance', (req, res) => {
+userbalance.post('/addbalance', (req, res, next) => {
   // const secret = process.env.prime_secret || '';
   // const str = `
   //   ${secret
@@ -54,8 +54,8 @@ userbalance.post('/addbalance', (req, res) => {
   //   process.env.merchant_sign
   // }`;
   // res.redirect(url);
-  // res.send('');
-  // next();
+  res.send('');
+  next();
 
   // https://any-pay.org/merchant
 });
