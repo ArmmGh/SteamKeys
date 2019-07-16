@@ -5,12 +5,12 @@ const Request = require('request');
 const http = require('https');
 const url = require('url');
 const uuid = require('uuid/v4');
-const redirect = require('express-redirect');
+// const redirect = require('express-redirect');
 const md5 = require('md5');
 
 require('dotenv').config();
 
-redirect(userbalance);
+// redirect(userbalance);
 
 userbalance.post('/addbalance', (req, res, next) => {
   const data = {
@@ -35,7 +35,9 @@ userbalance.post('/addbalance', (req, res, next) => {
   res.redirect(
     `https://any-pay.org/merchant?merchant_id=${data.merchant_id}&pay_id=${
       data.pay_id
-    }&amount=${data.amount}&currency=${data.currency}&desc=${data.desc}`,
+    }&amount=${data.amount}&currency=${data.currency}&desc=${data.desc}&sign=${
+      data.sign
+    }`,
   );
   //   // res.redirect(
   //   //   url.format({
