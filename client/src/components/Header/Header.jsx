@@ -53,11 +53,7 @@ const Header = () => {
   };
 
   const addBalance = () => e => {
-    fetchApi(
-      '/addbalacne',
-      { method: 'POST', body: JSON.stringify({ sum }) },
-      res => {},
-    );
+    fetchApi('/addbalacne', { method: 'POST', body: JSON.stringify({ sum }) });
   };
 
   useEffect(() => {}, []);
