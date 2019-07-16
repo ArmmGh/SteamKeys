@@ -3,22 +3,16 @@ const userbalance = require('express').Router();
 const crypto = require('crypto');
 const Request = require('request');
 const http = require('https');
+const url = require('url');
 const uuid = require('uuid/v4');
+const redirect = require('express-redirect');
 const md5 = require('md5');
 
 require('dotenv').config();
 
+redirect(userbalance);
+
 userbalance.post('/addbalance', (req, res, next) => {
-  // const secret = process.env.prime_secret || '';
-  // const str = `
-  //   ${secret
-  //     .split('')
-  //     .sort()
-  //     .join(':')}:${secret}`;
-  // const sign = crypto
-  //   .createHash('sha256')
-  //   .update(str)
-  //   .digest('base64');
   const data = {
     merchant_id: process.env.merchant_id,
     pay_id: uuid(),
@@ -31,33 +25,39 @@ userbalance.post('/addbalance', (req, res, next) => {
       data.merchant_id
     }:${data.pay_id}`,
   );
-  Request.post(
-    {
-      url: 'https://any-pay.org/merchant',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ ...data }),
-    },
-    (err, resp, body) => {
-      console.log(resp);
-      console.log(JSON.parse(body));
-      res.send(resp);
-      if (err) {
-        return console.dir(err);
-      }
-      console.dir(JSON.parse(body));
-    },
+  // userbalance.redirect(
+  //   '/addbalance',
+  //   `https://any-pay.org/merchant?merchant_id=${data.merchant_id}&pay_id=${
+  //     data.pay_id
+  //   }&amount=${data.amount}&currency=${data.currency}&desc=${data.desc}`,
+  //   'post',
+  // );
+  res.redirect(
+    `https://any-pay.org/merchant?merchant_id=${data.merchant_id}&pay_id=${
+      data.pay_id
+    }&amount=${data.amount}&currency=${data.currency}&desc=${data.desc}`,
   );
-
-  // const url = `https://any-pay.org/merchant?merchant_id=${
-  //   process.env.merchant_id
-  // }&amount=${req.body.sum}&pay_id=${uuid()}&desc=Пополнение счёта&sign=${
-  //   process.env.merchant_sign
-  // }`;
-  // res.redirect(url);
-  res.send('');
-  next();
-
-  // https://any-pay.org/merchant
+  //   // res.redirect(
+  //   //   url.format({
+  //   //     pathname: 'https://any-pay.org/merchant',
+  //   //     query: JSON.stringify({ ...data }),
+  //   //   }),
+  //   // );
+  //   // Request.get(
+  //   //   {
+  //   //     url: 'https://any-pay.org/merchant',
+  //   //     headers: { 'content-type': 'application/json' },
+  //   //     body: JSON.stringify({ data }),
+  //   //   },
+  //   //   (err, resp, body) => {
+  //   //     // res.redirect('https://any-pay.org/merchant');
+  //   //     // res.send(resp);
+  //   //     if (err) {
+  //   //       return console.dir(err);
+  //   //     }
+  //   //     // res.send(body);
+  //   //   },
+  //   // );
 });
 
 module.exports = userbalance;
