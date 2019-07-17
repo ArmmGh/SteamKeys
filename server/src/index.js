@@ -34,13 +34,20 @@ const url =
   process.env.NODE_ENV === 'development'
     ? `http://${host}${port}`
     : `https://${host}`;
+const allowedOrigins = [url, 'https://any-pay.org'];
 
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(
   cors({
-    origin: url, // allow to server to accept request from different origin
+    origin: function(origin, callback) {
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // allow session cookie from browser to pass through
   }),
