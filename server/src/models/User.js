@@ -24,6 +24,13 @@ const userSchema = new Schema({
       caseType: String,
     },
   ],
+  balanceHistory: [
+    {
+      pay_id: String || Number,
+      amount: Number,
+      date: Date,
+    },
+  ],
 });
 
 const user = mongoose.model('User', userSchema);

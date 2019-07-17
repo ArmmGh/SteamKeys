@@ -6,12 +6,16 @@ import { FaSteam, FaVk } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import Modal from 'react-modal';
 import fetchApi from '../../utils/fetchApi';
+import uuid from 'uuid/v4';
 import { useStateValue } from '../../context';
 import './Header.scss';
 import Logo from '../../assets/logo.png';
 
 const Header = () => {
-  const [{ user, games, authenticated, translate }, dispatch] = useStateValue();
+  const [
+    { user, socket, authenticated, translate },
+    dispatch,
+  ] = useStateValue();
   const [isActive, setActive] = useState(false);
   const [modalIsOpen, setModal] = useState(false);
   const [sum, setSum] = useState(1000);
@@ -63,7 +67,11 @@ const Header = () => {
     });
   };
 
-  useEffect(() => {}, []);
+  // dispatch({ type: 'updateUser', payload: { ...data } });
+
+  useEffect(() => {
+    socket.on('aaa', data => console.log(data));
+  }, []);
 
   return (
     <React.Fragment>
@@ -86,14 +94,48 @@ const Header = () => {
         <div className="body">
           <h1>Введите сумму</h1>
           <div className="inpHolder">
-            <input
-              type="text"
-              className="input"
-              name="sum"
-              value={sum}
-              onChange={e => handeleChange(e.target.value)}
-            />
-            <button onClick={addBalance()}>Пополнить</button>
+            <form action="https://any-pay.org/merchant" method="post">
+              <input
+                type="text"
+                className="input"
+                name="sum"
+                value={sum}
+                onChange={e => handeleChange(e.target.value)}
+              />
+              <input
+                className="hide"
+                type="text"
+                name="merchant_id"
+                defaultValue="4183"
+              />
+              <input
+                className="hide"
+                type="text"
+                name="pay_id"
+                defaultValue={Math.floor(100000 + Math.random() * 900000)}
+              />
+              <input
+                className="hide"
+                type="text"
+                name="amount"
+                defaultValue={sum}
+              />
+              <input
+                className="hide"
+                type="text"
+                name="currency"
+                defaultValue="RUB"
+              />
+              <input
+                className="hide"
+                type="text"
+                name="desc"
+                defaultValue="Пополнение счёта"
+              />
+              <button onClick={addBalance()} type="submit">
+                Пополнить
+              </button>
+            </form>
           </div>
           <div className="info">
             Средства приходят моментально, но могут быть задержки до 5-10 минут.

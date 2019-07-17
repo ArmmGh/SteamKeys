@@ -48,7 +48,7 @@ cases.post('/opencase', (req, res) => {
 });
 
 cases.post('/sellgame', (req, res) => {
-  db.addBalance(
+  db.sellGame(
     { userID: req.session.passport.user.id },
     {
       _id: req.body._id,

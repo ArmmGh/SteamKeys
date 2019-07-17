@@ -17,6 +17,7 @@ const register = async data => {
     profileurl: data.profileurl,
     balance: 0,
     gameHistory: [],
+    balanceHistory: [],
   });
   // eslint-disable-next-line no-unused-expressions
   data.userID === ADMIN1 || data.userID === ADMIN2
@@ -99,6 +100,32 @@ const addBalance = (user, data) =>
       User.findOneAndUpdate(
         {
           userID: user.userID,
+        },
+        {
+          $set: {
+            balance: res.balance + Number(data.amount),
+            balanceHistory: [
+              ...res.balanceHistory,
+              {
+                pay_id: data.pay_id,
+                amount: data.amount,
+                date: new Date(),
+              },
+            ],
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc || {}),
+      );
+    });
+  });
+
+const sellGame = (user, data) =>
+  new Promise((resolve, reject) => {
+    User.findOne({ userID: user.userID }).then(res => {
+      User.findOneAndUpdate(
+        {
+          userID: user.userID,
           'gameHistory._id': data._id,
         },
         {
@@ -175,6 +202,7 @@ module.exports = {
   getGames,
   getLiveinfo,
   removeBalance,
-  addBalance,
+  sellGame,
   getKey,
+  addBalance,
 };

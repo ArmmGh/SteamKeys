@@ -100,6 +100,7 @@ auth.get('/user', (req, res) => {
             isLogged: true,
             gameHistory:
               (req.user.gameHistory && req.user.gameHistory.reverse()) || [],
+            balanceHistory: req.user.balanceHistory || [],
             ip: newUser.ip,
           });
         });
@@ -111,6 +112,7 @@ auth.get('/user', (req, res) => {
           imgurl: req.user._json.avatarfull,
           profileurl: req.user._json.profileurl,
           gameHistory: user ? user.gameHistory.reverse() : [],
+          balanceHistory: user ? user.balanceHistory : [],
           ip: req.ipInfo,
         });
       }
