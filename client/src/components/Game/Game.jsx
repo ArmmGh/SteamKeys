@@ -28,6 +28,9 @@ const Game = params => {
   const authSteam = () => e => {
     window.open(`${url}/steam`, '_self');
   };
+  const authVk = () => e => {
+    window.open(`${url}/vkontakte`, '_self');
+  };
 
   function importAll(r) {
     const images = {};
@@ -294,7 +297,7 @@ const Game = params => {
                         <FaSteam />
                         {translate('login')} <span>steam</span>
                       </button>
-                      <button className="auth" onClick={authSteam()}>
+                      <button className="auth" onClick={authVk()}>
                         <FaVk />
                         {translate('login')} <span>vk</span>
                       </button>
