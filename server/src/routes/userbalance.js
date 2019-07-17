@@ -28,10 +28,15 @@ userbalance.post('/addbalance', (req, res, next) => {
           pay_id: reqq.query.pay_id,
           amount: reqq.query.amount,
         },
-      ).then(data => {
-        // global.socket.emit('aaa', { a: 'AAAAA' });
-        res.send({ ...data });
-      });
+      )
+        .then(data => {
+          // global.socket.emit('aaa', { a: 'AAAAA' });
+          res.send({ ...data });
+        })
+        .catch(err => {
+          console.log(err);
+          return res.send(err);
+        });
     }
   });
   // const data = {
