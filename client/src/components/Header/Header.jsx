@@ -98,7 +98,7 @@ const Header = () => {
               <input
                 type="text"
                 className="input"
-                name="sum"
+                name="amount"
                 value={sum}
                 onChange={e => handeleChange(e.target.value)}
               />
@@ -113,12 +113,6 @@ const Header = () => {
                 type="text"
                 name="pay_id"
                 defaultValue={Math.floor(100000 + Math.random() * 900000)}
-              />
-              <input
-                className="hide"
-                type="text"
-                name="amount"
-                defaultValue={sum}
               />
               <input
                 className="hide"
