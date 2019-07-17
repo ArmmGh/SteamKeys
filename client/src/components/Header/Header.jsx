@@ -24,10 +24,10 @@ const Header = () => {
     ? 'https://steam-keys.herokuapp.com'
     : 'http://localhost:3000';
   const authSteam = () => e => {
-    window.open(`${url}/auth/steam`, '_self');
+    window.open(`${url}/steam`, '_self');
   };
   const authVk = () => e => {
-    window.open(`${url}/auth/vkontakte`, '_self');
+    window.open(`${url}/vkontakte`, '_self');
   };
 
   function importAll(r) {
@@ -51,20 +51,12 @@ const Header = () => {
     }
   };
 
+  const addBalance = () => e => {};
+
   const openModal = () => e => {
+    // fetchApi('/addbalance').then(res => console.log(res));
     setModal(true);
     setSum(1000);
-  };
-
-  const addBalance = () => e => {
-    fetchApi('/addbalance', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ sum }),
-    });
   };
 
   // dispatch({ type: 'updateUser', payload: { ...data } });
@@ -126,9 +118,7 @@ const Header = () => {
                 name="desc"
                 defaultValue="Пополнение счёта"
               />
-              <button onClick={addBalance()} type="submit">
-                Пополнить
-              </button>
+              <button type="submit">Пополнить</button>
             </form>
           </div>
           <div className="info">

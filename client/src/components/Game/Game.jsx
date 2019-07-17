@@ -26,7 +26,7 @@ const Game = params => {
     : 'http://localhost:3000';
 
   const authSteam = () => e => {
-    window.open(`${url}/auth/steam`, '_self');
+    window.open(`${url}/steam`, '_self');
   };
 
   function importAll(r) {

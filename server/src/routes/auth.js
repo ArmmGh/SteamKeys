@@ -68,6 +68,26 @@ auth.get('/user', (req, res) => {
     req &&
     (req.user || (req.session.passport && req.session.passport.user))
   ) {
+    auth.post('/result', (reqq, ress) => {
+      if (
+        reqq.query.merchant_id === process.env.merchant_id &&
+        reqq.query.amount &&
+        reqq.query.pay_id
+      ) {
+        db.addBalance(
+          {
+            userID: req.user.id || req.session.passport.user.id,
+          },
+          {
+            merchant_id: reqq.merchant_id,
+            pay_id: reqq.query.pay_id,
+            amount: reqq.query.amount,
+          },
+        )
+          .then(data => res.send({ ...data }))
+          .catch(err => res.send(err));
+      }
+    });
     db.login(req.user.id).then(user => {
       if (!user) {
         const regData = {
