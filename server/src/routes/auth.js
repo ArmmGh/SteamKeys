@@ -84,8 +84,8 @@ auth.get('/user', (req, res) => {
             amount: reqq.query.amount,
           },
         )
-          .then(data => res.send({ ...data }))
-          .catch(err => res.send(err));
+          .then(data => ress.send({ ...data }))
+          .catch(err => ress.send(err));
       }
     });
     db.login(req.user.id).then(user => {
