@@ -34,7 +34,7 @@ const url =
   process.env.NODE_ENV === 'development'
     ? `http://${host}${port}`
     : `https://${host}`;
-const allowedOrigins = [url, 'https://any-pay.org'];
+const allowedOrigins = [url, 'https://any-pay.org/api'];
 
 app.use(cookieParser());
 app.use(passport.initialize());
