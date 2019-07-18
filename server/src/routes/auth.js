@@ -69,6 +69,7 @@ auth.get('/user', (req, res) => {
     (req.user || (req.session.passport && req.session.passport.user))
   ) {
     auth.post('/result', (reqq, ress) => {
+      console.log(reqq.query);
       if (
         reqq.query.merchant_id === process.env.merchant_id &&
         reqq.query.amount &&
