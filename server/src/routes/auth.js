@@ -87,6 +87,8 @@ auth.get('/user', (req, res) => {
         )
           .then(data => ress.send({ ...data }))
           .catch(err => ress.send(err));
+      } else {
+        res.send('error');
       }
     });
     db.login(req.user.id).then(user => {
