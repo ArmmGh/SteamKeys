@@ -19,6 +19,9 @@ const Header = () => {
   const [isActive, setActive] = useState(false);
   const [modalIsOpen, setModal] = useState(false);
   const [sum, setSum] = useState(1000);
+  const [random, setRandom] = useState(
+    Math.floor(100000 + Math.random() * 900000),
+  );
 
   const url = window.location.origin.match('keyforu')
     ? 'https://steam-keys.herokuapp.com'
@@ -57,6 +60,21 @@ const Header = () => {
     // fetchApi('/addbalance').then(res => console.log(res));
     setModal(true);
     setSum(1000);
+  };
+  const storeData = () => e => {
+    // console.log(data);
+    fetchApi('/storedata', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: user.userID,
+        sum,
+        pay_id: random,
+      }),
+    });
   };
 
   // dispatch({ type: 'updateUser', payload: { ...data } });
@@ -104,7 +122,7 @@ const Header = () => {
                 className="hide"
                 type="text"
                 name="pay_id"
-                defaultValue={Math.floor(100000 + Math.random() * 900000)}
+                defaultValue={random}
               />
               <input
                 className="hide"
@@ -118,7 +136,9 @@ const Header = () => {
                 name="desc"
                 defaultValue="Пополнение счёта"
               />
-              <button type="submit">Пополнить</button>
+              <button onClick={storeData()} type="submit">
+                Пополнить
+              </button>
             </form>
           </div>
           <div className="info">

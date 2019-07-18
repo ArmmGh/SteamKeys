@@ -34,7 +34,12 @@ const url =
   process.env.NODE_ENV === 'development'
     ? `http://${host}${port}`
     : `https://${host}`;
-const allowedOrigins = [url, 'https://any-pay.org', undefined];
+const allowedOrigins = [
+  url,
+  'https://any-pay.org',
+  undefined,
+  'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+];
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
