@@ -84,6 +84,7 @@ auth.post('/storedata', (req, res) => {
 });
 
 auth.post('/result', (reqq, ress) => {
+  console.log(reqq);
   const elem = global.balanceHistory.find(
     el => el.pay_id === reqq.query.pay_id,
   );
