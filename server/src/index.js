@@ -34,7 +34,7 @@ const url =
   process.env.NODE_ENV === 'development'
     ? `http://${host}${port}`
     : `https://${host}`;
-const allowedOrigins = [url, 'https://any-pay.org/', undefined];
+const allowedOrigins = [url, 'https://any-pay.org', undefined];
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -42,7 +42,7 @@ app.use(
   cors({
     origin: function(origin, callback) {
       console.log(origin);
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      if (origin == undefined || allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
         callback(new Error(`aaaaa - ${origin}`));
