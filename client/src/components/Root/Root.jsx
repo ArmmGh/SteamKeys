@@ -7,7 +7,7 @@ import { StateProvider } from '../../context';
 import App from '../App';
 import EN from '../../trans/en.json';
 import RU from '../../trans/ru.json';
-import '../../../71520c5957f682a7807934a73c201932.txt';
+// import '../../../71520c5957f682a7807934a73c201932.txt';
 
 const Root = () => {
   const host = process.env.HOST || 'localhost';
