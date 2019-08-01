@@ -39,19 +39,19 @@ const Livedrop = () => {
     require.context('../../assets/cases', false, /\.(png|jpe?g|svg)$/),
   );
 
-  useEffect(() => {
-    socket.emit('emit getlive');
-    socket.on('get live', payload => {
-      setLivedrop([...payload]);
-    });
+  // useEffect(() => {
+  //   socket.emit('emit getlive');
+  //   socket.on('get live', payload => {
+  //     setLivedrop([...payload]);
+  //   });
 
-    fetchApi('/liveinfo').then(res => {
-      setTotalusers(res.users);
-      setOpencases(res.cases);
-    });
+  //   fetchApi('/liveinfo').then(res => {
+  //     setTotalusers(res.users);
+  //     setOpencases(res.cases);
+  //   });
 
-    return () => {};
-  }, []);
+  //   return () => {};
+  // }, []);
 
   useEffect(() => {
     socket.on('update live', payload => {

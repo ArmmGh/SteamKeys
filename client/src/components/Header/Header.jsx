@@ -79,9 +79,9 @@ const Header = () => {
 
   // dispatch({ type: 'updateUser', payload: { ...data } });
 
-  useEffect(() => {
-    socket.on('aaa', data => console.log(data));
-  }, []);
+  // useEffect(() => {
+  //   socket.on('aaa', data => console.log(data));
+  // }, []);
 
   return (
     <React.Fragment>
