@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { BrowserRouter as Router } from 'react-router-dom';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import fetchApi from '../../utils/fetchApi';
 import { StateProvider } from '../../context';
 import App from '../App';
@@ -17,9 +17,9 @@ const Root = () => {
   const browserLang =
     window.navigator.language.substring(0, 2) ||
     window.navigator.userLanguage.substring(0, 2);
-  if (storageLang !== browserLang) {
-    window.localStorage.setItem('lang', browserLang);
-  }
+  // if (storageLang !== browserLang) {
+  //   window.localStorage.setItem('lang', browserLang);
+  // }
 
   const translations = {
     en: EN,
@@ -38,7 +38,7 @@ const Root = () => {
     authenticated: false,
     langCode: browserLang,
     translate: getTranslate(browserLang),
-    socket: io(url),
+    // socket: i,o(url)
     games: [],
   };
 

@@ -90,5 +90,15 @@
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
     "uuid": "^3.3.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arman625101/SteamKeys.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Arman625101/SteamKeys/issues"
+  },
+  "homepage": "https://github.com/Arman625101/SteamKeys#readme"
 }
