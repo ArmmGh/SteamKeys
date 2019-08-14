@@ -173,10 +173,10 @@ const Game = params => {
     }).then(res => {
       console.log(res);
     });
-    // fetchApi('/addbalance', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ sum }),
-    // });
+    fetchApi('/addbalance', {
+      method: 'POST',
+      body: JSON.stringify({ sum }),
+    });
   };
 
   const handeleChange = val => {
@@ -187,7 +187,7 @@ const Game = params => {
 
   useEffect(() => {
     if (params.match.params.name === 'xujan') {
-      // Modal.setAppElement('#yourAppElement');
+      Modal.setAppElement('#yourAppElement');
       setModal(true);
     }
     const caseUrl = authenticated ? 'bronze' : 'demo';
@@ -251,8 +251,8 @@ const Game = params => {
       <Modal
         ariaHideApp={false}
         isOpen={modalIsOpen}
-        // onAfterOpen={this.afterOpenModal}
-        // onRequestClose={this.closeModal}
+        onAfterOpen={this.afterOpenModal}
+        onRequestClose={this.closeModal}
         className="Modal"
         overlayClassName="OverlayGame"
       >

@@ -57,12 +57,12 @@ const Header = () => {
   const addBalance = () => e => {};
 
   const openModal = () => e => {
-    // fetchApi('/addbalance').then(res => console.log(res));
+    fetchApi('/addbalance').then(res => console.log(res));
     setModal(true);
     setSum(1000);
   };
   const storeData = () => e => {
-    // console.log(data);
+    console.log(data);
     fetchApi('/storedata', {
       method: 'POST',
       credentials: 'include',
@@ -77,11 +77,11 @@ const Header = () => {
     });
   };
 
-  // dispatch({ type: 'updateUser', payload: { ...data } });
+  dispatch({ type: 'updateUser', payload: { ...data } });
 
-  // useEffect(() => {
-  //   socket.on('aaa', data => console.log(data));
-  // }, []);
+  useEffect(() => {
+    socket.on('aaa', data => console.log(data));
+  }, []);
 
   return (
     <React.Fragment>

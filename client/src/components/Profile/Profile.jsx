@@ -94,10 +94,10 @@ const Profile = () => {
     }).then(res => {
       console.log(res);
     });
-    // fetchApi('/addbalance', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ sum }),
-    // });
+    fetchApi('/addbalance', {
+      method: 'POST',
+      body: JSON.stringify({ sum }),
+    });
   };
   const handeleChange = val => {
     if (val.match(/^[0-9]+$/)) {

@@ -69,13 +69,13 @@ function App() {
     const userCheck = window.localStorage.getItem('user');
     const token = window.localStorage.getItem('token');
     // eslint-disable-next-line no-unused-expressions
-    // userCheck
-    //   ? getUser({
-    //       user: jwtDecode(userCheck),
-    //       fromStorage: true,
-    //       token,
-    //     })
-    //   : getFetch();
+    userCheck
+      ? getUser({
+          user: jwtDecode(userCheck),
+          fromStorage: true,
+          token,
+        })
+      : getFetch();
     getFetch();
     getGames();
   }, []);
@@ -91,7 +91,7 @@ function App() {
         <Route exact path="/" component={Cases} />
         <Route path="/faq" component={Faq} />
         <Route path="/agreement" component={Agreement} />
-        {/* <Route path="/reviews" component={Reviews} /> */}
+        <Route path="/reviews" component={Reviews} />
         <Route path="/contact" component={Contact} />
         <Route path="/success" component={Success} />
         <Route path="/fail" component={Fail} />
