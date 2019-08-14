@@ -39,7 +39,7 @@ auth.get(
 auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
 auth.get(
-  '/vkontakte/callback',
+  './vkontakte/callback',
   passport.authenticate('vkontakte', { failureRedirect: 'bbbb' }),
   (req, res, next) => {
     const data = {
