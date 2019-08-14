@@ -13,7 +13,7 @@ import fetchApi from '../../utils/fetchApi';
 import Profile from '../Profile';
 import Contact from '../Contact';
 import Cases from '../Cases';
-// import Reviews from '../Reviews';
+import Reviews from '../Reviews';
 import Success from '../Success';
 import Fail from '../Fail';
 import './App.scss';
@@ -30,7 +30,7 @@ function App() {
     });
   };
   const getUser = info => {
-    // getFetch();
+    getFetch();
     dispatch({ type: 'getUser', payload: info });
   };
   const getFetch = () => {
