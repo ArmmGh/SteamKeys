@@ -31,7 +31,7 @@ auth.get(
       ip: req.ipInfo,
     };
     db.update(data);
-    res.redirect(`${url}`);
+    res.redirect('/');
     next();
   },
 );
@@ -39,7 +39,7 @@ auth.get(
 auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
 auth.get(
-  './vkontakte/callback',
+  '/vkontakte/callback',
   passport.authenticate('vkontakte', { failureRedirect: 'bbbb' }),
   (req, res, next) => {
     const data = {
@@ -50,7 +50,7 @@ auth.get(
       ip: req.ipInfo,
     };
     db.update(data);
-    res.redirect(`${url}`);
+    res.redirect('/');
     next();
   },
 );
