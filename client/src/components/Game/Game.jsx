@@ -248,7 +248,7 @@ const Game = params => {
           </div>
         </div>
       </Modal>
-      <Modal
+      {/* <Modal
         ariaHideApp={false}
         isOpen={modalIsOpen}
         onAfterOpen={this.afterOpenModal}
@@ -274,7 +274,7 @@ const Game = params => {
             Мне меньше 18
           </button>
         </div>
-      </Modal>
+      </Modal> */}
       <div className="game">
         {(authenticated || (!authenticated && cases)) && (
           <div className="main-width game_holder">
