@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import io from 'socket.io-client';
+import io from 'socket.io-client';
 import fetchApi from '../../utils/fetchApi';
 import App from '../App';
 // import '../../../71520c5957f682a7807934a73c201932.txt';
@@ -21,7 +21,7 @@ const Root = () => {
     authenticated: false,
     langCode: browserLang,
     translate: getTranslate(browserLang),
-    // socket: i,o(url)
+    socket: io(url),
     games: [],
   };
 
