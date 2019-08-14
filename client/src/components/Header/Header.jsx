@@ -62,7 +62,7 @@ const Header = () => {
     setSum(1000);
   };
   const storeData = () => e => {
-    console.log(data);
+    // console.log(data);
     fetchApi('/storedata', {
       method: 'POST',
       credentials: 'include',
