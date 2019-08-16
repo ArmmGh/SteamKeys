@@ -1,4 +1,4 @@
-// const Router = require('express-router');
+const Router = require('express-router');
 const db = require('../utils/db');
 const jwt = require('../utils/token');
 const passport = require('passport');
@@ -31,7 +31,7 @@ auth.get(
       ip: req.ipInfo,
     };
     db.update(data);
-    res.redirect('/');
+    res.redirect(`${url}`);
     next();
   },
 );
@@ -50,7 +50,7 @@ auth.get(
       ip: req.ipInfo,
     };
     db.update(data);
-    res.redirect('/');
+    res.redirect(`${url}`);
     next();
   },
 );
