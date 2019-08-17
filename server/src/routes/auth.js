@@ -39,7 +39,7 @@ auth.get(
 auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
 auth.get(
-  '/auth/vkontakte/callback',
+  '/vkontakte/callback',
   passport.authenticate('vkontakte', { failureRedirect: 'bbbb' }),
   (req, res, next) => {
     const data = {
@@ -205,6 +205,7 @@ auth.post('/login', (req, res) => {
   } else {
     res.send({ isLogged: false, message: 'not logged in' });
   }
+
 });
 
 module.exports = auth;
