@@ -5,13 +5,13 @@ const port = process.env.PORT || 3000;
 
 exports.returnURLSteam =
   process.env.NODE_ENV === 'development'
-    ? `http://${host}:${port}/auth/steam/return`
-    : `https://${host}/auth/steam/return`;
+    ? `http://steam-keys.herokuapp.com/auth/steam/return`
+    : `https://steam-keys.herokuapp/auth/steam/return`;
 
 exports.defaultURLSteam =
   process.env.NODE_ENV === 'development'
-    ? `http://${host}:${port}/`
-    : `https://${host}/`;
+    ? `http://steam-keys.herokuapp.com/`
+    : `https://steam-keys.herokuapp/`;
 
 exports.returnURLVk =
   process.env.NODE_ENV === 'development'
