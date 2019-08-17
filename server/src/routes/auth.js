@@ -31,7 +31,7 @@ auth.get(
       ip: req.ipInfo,
     };
     db.update(data);
-    res.redirect(`${url}`);
+    res.redirect(`https://keyforu.net/`);
     next();
   },
 );
@@ -40,7 +40,7 @@ auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
 auth.get(
   '/vkontakte/callback',
-  passport.authenticate('vkontakte', { failureRedirect: '/login' }),
+  passport.authenticate('vkontakte', { failureRedirect: 'bbbb' }),
   (req, res, next) => {
     const data = {
       username: req.user.displayName,
