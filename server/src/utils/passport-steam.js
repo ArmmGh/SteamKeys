@@ -17,15 +17,15 @@ passport.deserializeUser((obj, done) => {
 passport.use(
   new SteamStrategy(
     {
-      returnURL: returnURLSteam,
       realm: defaultURLSteam,
+      returnURL: returnURLSteam,
       apiKey: KEY,
     },
     (identifier, profile, done) => {
       process.nextTick(() => {
         // eslint-disable-next-line no-param-reassign
         profile.identifier = identifier;
-        done(null, profile);
+        return done(null, profile);
       });
     },
   ),
