@@ -17,24 +17,24 @@ require('dotenv').config();
 auth.use(expressip().getIpInfoMiddleware);
 auth.get('/steam', passport.authenticate('steam'));
 
-auth.get(
-  'auth/steam/return',
-  passport.authenticate('steam', {successRedirect: `${url}`,
-    failureRedirect: `${url}`,
-  }),
-  (req, res, next) => {
-    const data = {
-      username: req.user.displayName,
-      userID: req.user.steamid || req.user.userID,
-      profileurl: req.user._json.profileurl,
-      imgurl: req.user._json.avatarfull,
-      ip: req.ipInfo,
-    };
-    db.update(data);
-    res.redirect(`${url}`);
-    next();
-  },
-);
+// auth.get(
+//   'auth/steam/return',
+//   passport.authenticate('steam', {successRedirect: `${url}`,
+//     failureRedirect: `${url}`,
+//   }),
+//   (req, res, next) => {
+//     const data = {
+//       username: req.user.displayName,
+//       userID: req.user.steamid || req.user.userID,
+//       profileurl: req.user._json.profileurl,
+//       imgurl: req.user._json.avatarfull,
+//       ip: req.ipInfo,
+//     };
+//     db.update(data);
+//     res.redirect(`${url}`);
+//     next();
+//   },
+// );
 
 auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
