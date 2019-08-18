@@ -27,10 +27,10 @@ const Header = () => {
     ? 'https://steam-keys.herokuapp.com'
     : 'http://localhost:3000';
   const authSteam = () => e => {
-    window.open(`${url}/steam`, '_self');
+    window.open(`${url}/auth/steam`, '_self');
   };
   const authVk = () => e => {
-    window.open(`${url}/vkontakte`, '_self');
+    window.open(`${url}/auth/vkontakte`, '_self');
   };
 
   function importAll(r) {
@@ -77,7 +77,7 @@ const Header = () => {
     });
   };
 
-  // dispatch({ type: 'updateUser', payload: { ...data } });
+  dispatch({ type: 'updateUser', payload: { ...data } });
 
   useEffect(() => {
     socket.on('aaa', data => console.log(data));
