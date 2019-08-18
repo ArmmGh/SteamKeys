@@ -45,7 +45,7 @@ auth.get(
       userID: req.user.id,
       profileurl: req.user.profileUrl,
       imgurl: req.user._json.photo,
-      ip: req.ipInfo,
+      // ip: req.ipInfo,
     };
     db.update(data);
     res.redirect(`${url}`);
