@@ -5,8 +5,8 @@ const port = process.env.PORT || 3000;
 
 exports.returnURLSteam =
   process.env.NODE_ENV === 'development'
-    ? `http://${host}:${port}/steam/return`
-    : `https://${host}/steam/return`;
+    ? `http://${host}:${port}/auth/steam/return`
+    : `https://${host}/auth/steam/return`;
 
 exports.defaultURLSteam =
   process.env.NODE_ENV === 'development'

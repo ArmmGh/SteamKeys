@@ -15,7 +15,7 @@ const url =
 require('dotenv').config();
 
 auth.use(expressip().getIpInfoMiddleware);
-auth.get('/steam', passport.authenticate('steam'));
+// auth.get('/steam', passport.authenticate('steam'));
 
 auth.get('/steam/return',
   passport.authenticate('steam', {failureRedirect: `${url}`,
