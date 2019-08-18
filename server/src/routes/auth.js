@@ -29,7 +29,7 @@ auth.get('/steam/return',
       ip: req.ipInfo,
     };
     db.update(data);
-    res.redirect('/');
+    res.redirect(`${url}`);
     next();
   },
 );
