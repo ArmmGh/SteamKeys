@@ -19,7 +19,7 @@ const Profile = () => {
   const logout = () => e => {
     window.localStorage.removeItem('user');
     window.localStorage.removeItem('token');
-    fetchApi('/auth/logout', { method: 'GET', credentials: 'include' }).then(res => {
+    fetchApi('/logout', { method: 'GET', credentials: 'include' }).then(res => {
       if (!res.isLogged) {
         window.open(`${window.location.origin}/`, '_self');
       }

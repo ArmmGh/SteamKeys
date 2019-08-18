@@ -27,10 +27,10 @@ const Header = () => {
     ? 'https://steam-keys.herokuapp.com'
     : 'http://localhost:3000';
   const authSteam = () => e => {
-    window.open(`${url}/auth/steam`, '_self');
+    window.open(`${url}/steam`, '_self');
   };
   const authVk = () => e => {
-    window.open(`${url}/auth/vkontakte`, '_self');
+    window.open(`${url}/vkontakte`, '_self');
   };
 
   function importAll(r) {

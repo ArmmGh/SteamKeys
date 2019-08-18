@@ -34,10 +34,10 @@ function App() {
     dispatch({ type: 'getUser', payload: info });
   };
   const getFetch = () => {
-    fetchApi('/auth/user', { method: 'GET', credentials: 'include' })
+    fetchApi('/user', { method: 'GET', credentials: 'include' })
       .then(res => res)
       .then(data => {
-        fetchApi('/auth/login', {
+        fetchApi('/login', {
           method: 'POST',
           credentials: 'include',
           headers: {
