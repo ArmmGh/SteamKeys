@@ -15,8 +15,8 @@ exports.defaultURLSteam =
 
 exports.returnURLVk =
   process.env.NODE_ENV === 'development'
-    ? `http://${host}:${port}/auth/vkontakte/callback`
-    : `https://${host}/auth/vkontakte/callback`;
+    ? `http://${host}:${port}/vkontakte/callback`
+    : `https://${host}/vkontakte/callback`;
 exports.defaultURLVk =
   process.env.NODE_ENV === 'development'
     ? `http://${host}:${port}/`
