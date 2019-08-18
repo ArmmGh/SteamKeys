@@ -57,6 +57,7 @@ app.use(
     credentials: true, // allow session cookie from browser to pass through
   }),
 );
+app.use('auth/steam/return',require('./routes/auth'))
 app.use(auth);
 app.use(livedrop);
 app.use(games);
