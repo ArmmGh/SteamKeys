@@ -17,8 +17,8 @@ passport.deserializeUser((obj, done) => {
 passport.use(
   new SteamStrategy(
     {
-      realm: defaultURLSteam,
       returnURL: returnURLSteam,
+      realm: defaultURLSteam,
       apiKey: KEY,
     },
     (identifier, profile, done) => {

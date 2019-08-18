@@ -37,18 +37,18 @@ userbalance.get('/addbalance', (req, res) => {
         });
     }
   });
-  // const data = {
-  //   merchant_id: process.env.merchant_id,
-  //   pay_id: uuid(),
-  //   amount: req.body.sum,
-  //   currency: 'RUB',
-  //   desc: 'Пополнение счёта',
-  // };
-  // data.sign = md5(
-  //   `${data.currency}:${data.amount}:${process.env.api_key}:${
-  //     data.merchant_id
-  //   }:${data.pay_id}`,
-  // );
+  const data = {
+    merchant_id: process.env.merchant_id,
+    pay_id: uuid(),
+    amount: req.body.sum,
+    currency: 'RUB',
+    desc: 'Пополнение счёта',
+  };
+  data.sign = md5(
+    `${data.currency}:${data.amount}:${process.env.api_key}:${
+      data.merchant_id
+    }:${data.pay_id}`,
+  );
 });
 
 module.exports = userbalance;
