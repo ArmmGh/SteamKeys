@@ -36,22 +36,22 @@ auth.get('/steam/return',
 
 auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
-// auth.get('/vkontakte/callback',
-//   passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
-//   }),
-//   (req, res, next) => {
-//     const data = {
-//       username: req.user.displayName,
-//       userID: req.user.id,
-//       profileurl: req.user.profileUrl,
-//       imgurl: req.user._json.photo,
-//       ip: req.ipInfo,
-//     };
-//     db.update(data);
-//     res.redirect('https://keyforu.net');
-//     next();
-//   },
-// );
+auth.get('/vkontakte/callback',
+  passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
+  }),
+  (req, res, next) => {
+    const data = {
+      username: req.user.displayName,
+      userID: req.user.id,
+      profileurl: req.user.profileUrl,
+      imgurl: req.user._json.photo,
+      ip: req.ipInfo,
+    };
+    db.update(data);
+    res.redirect(`${url}`);
+    next();
+  },
+);
 
 auth.get('/logout', (req, res) => {
   req.logOut();
