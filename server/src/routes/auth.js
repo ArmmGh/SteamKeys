@@ -37,7 +37,7 @@ auth.get('/steam/return',
 auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
 auth.get('/vkontakte/callback',
-  passport.authenticate('vkontakte', { failureRedirect: `${url}` ,
+  passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
   }),
   (req, res, next) => {
     const data = {
@@ -48,7 +48,7 @@ auth.get('/vkontakte/callback',
       ip: req.ipInfo,
     };
     db.update(data);
-    res.redirect(`${url}`);
+    res.redirect('https://keyforu.net');
     next();
   },
 );
