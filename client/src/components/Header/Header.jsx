@@ -59,7 +59,7 @@ const Header = () => {
   const openModal = () => e => {
     fetchApi('/addbalance').then(res => console.log(res));
     setModal(true);
-    setSum(1000);
+    setSum('');
   };
   const storeData = () => e => {
     // console.log(data);
