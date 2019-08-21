@@ -72,7 +72,7 @@ const Header = () => {
       body: JSON.stringify({
         id: user.userID,
         sum,
-        pay_id: 1000,
+        // pay_id: random,
       }),
     });
   };
@@ -118,12 +118,12 @@ const Header = () => {
                 name="merchant_id"
                 defaultValue="4183"
               />
-              <input
+              {/* <input
                 className="hide"
                 type="text"
                 name="pay_id"
-                defaultValue="1000"
-              />
+                defaultValue={random}
+              /> */}
               <input
                 className="hide"
                 type="text"
