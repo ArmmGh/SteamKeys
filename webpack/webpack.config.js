@@ -33,7 +33,7 @@ const common = {
   },
   plugins: [
     new CnameWebpackPlugin({
-      domain: 'keyforu.net',
+      domain: 'keyforall.net',
     }),
     new CopyWebpackPlugin([
       { from: 'src/assets/*', to: 'assets/', flatten: true },
