@@ -61,7 +61,7 @@ auth.get('/logout', (req, res) => {
   });
 });
 
-auth.post('/storedata', (req, res) => {
+auth.get('/storedata', (req, res) => {
   global.balanceHistory =
     global.balanceHistory && global.balanceHistory.length
       ? [
@@ -82,42 +82,37 @@ auth.post('/storedata', (req, res) => {
 });
 
 auth.post('/result', (reqq, ress) => {
-  if (reqq.query.merchant_id === process.env.merchant_id) {
-    const info = {
-    tiv: reqq.query.amount,
-    mucox: reqq.query.pay_id,
-  };
-  console.log(info);
-  // console.log(reqq);
-  // const elem = global.balanceHistory.find(
-  //   el => el.pay_id === reqq.query.pay_id,
-  // );
-  // if (
-  //   reqq.query.merchant_id === process.env.merchant_id &&
-  //   reqq.query.amount &&
-  //   reqq.query.pay_id
-  // ) {
-  //   db.addBalance(
-  //     {
-  //       userID: elem.userID,
-  //     },
-  //     {
-  //       merchant_id: reqq.merchant_id,
-  //       pay_id: reqq.query.pay_id,
-  //       amount: reqq.query.amount,
-  //     },
-  //   )
-  //     .then(data => {
-  //       global.balanceHistory = global.balanceHistory.filter(
-  //         (el, i) => el.pay_id === reqq.query.pay_id,
-  //       );
-  //       return ress.send({ ...data });
-  //     })
-  //     .catch(err => ress.send(err));
-  // } else {
-  //   ress.send('error');
+  console.log(reqq);
+  const elem = global.balanceHistory.find(
+    el => el.pay_id === reqq.query.pay_id,
+  );
+  if (
+    reqq.query.merchant_id === process.env.merchant_id &&
+    reqq.query.amount &&
+    reqq.query.pay_id
+  ) {
+    db.addBalance(
+      {
+        userID: elem.userID,
+      },
+      {
+        merchant_id: reqq.merchant_id,
+        pay_id: reqq.query.pay_id,
+        amount: reqq.query.amount,
+      },
+    )
+      .then(data => {
+        global.balanceHistory = global.balanceHistory.filter(
+          (el, i) => el.pay_id === reqq.query.pay_id,
+        );
+        return ress.send({ ...data });
+      })
+      .catch(err => ress.send(err));
+  } else {
+    ress.send('error');
   }
 });
+
 auth.get('/user', (req, res) => {
   if (
     req &&
