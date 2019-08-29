@@ -81,7 +81,13 @@ auth.post('/storedata', (req, res) => {
         ];
 });
 
-// auth.post('/result', (reqq, ress) => {
+auth.post('/result', (reqq, ress) => {
+  if (reqq.query.merchant_id === process.env.merchant_id) {
+    const info = {
+    tiv: reqq.query.amount,
+    mucox: reqq.query.pay_id,
+  };
+  console.log(info);
   // console.log(reqq);
   // const elem = global.balanceHistory.find(
   //   el => el.pay_id === reqq.query.pay_id,
@@ -110,7 +116,8 @@ auth.post('/storedata', (req, res) => {
   //     .catch(err => ress.send(err));
   // } else {
   //   ress.send('error');
-  // }
+  }
+});
 auth.get('/user', (req, res) => {
   if (
     req &&
