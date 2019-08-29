@@ -40,7 +40,7 @@ userbalance.get('/addbalance', (req, res) => {
   });
   const data = {
     merchant_id: process.env.merchant_id,
-    pay_id: uuid(),
+    pay_id: req.body.id,
     amount: req.body.sum,
     currency: 'RUB',
     desc: 'Пополнение счёта',

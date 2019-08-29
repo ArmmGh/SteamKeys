@@ -122,7 +122,7 @@ const Header = () => {
                 className="hide"
                 type="text"
                 name="pay_id"
-                defaultValue={random}
+                defaultValue={req.body.id}
               />
               <input
                 className="hide"

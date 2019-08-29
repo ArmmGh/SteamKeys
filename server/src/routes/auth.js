@@ -61,7 +61,7 @@ auth.get('/logout', (req, res) => {
   });
 });
 
-auth.get('/storedata', (req, res) => {
+auth.post('/storedata', (req, res) => {
   global.balanceHistory =
     global.balanceHistory && global.balanceHistory.length
       ? [
@@ -82,7 +82,7 @@ auth.get('/storedata', (req, res) => {
 });
 
 auth.post('/result', (reqq, ress) => {
-  console.log(reqq);
+  // console.log(reqq);
   const elem = global.balanceHistory.find(
     el => el.pay_id === reqq.query.pay_id,
   );
