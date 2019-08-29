@@ -130,12 +130,6 @@ const Header = () => {
                 name="currency"
                 defaultValue="RUB"
               />
-              <input
-                className="hide"
-                type="text"
-                name="desc"
-                defaultValue="Пополнение счёта"
-              />
               <button onClick={storeData()} type="submit">
                 Пополнить
               </button>
