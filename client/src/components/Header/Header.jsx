@@ -20,7 +20,7 @@ const Header = () => {
   const [modalIsOpen, setModal] = useState(false);
   const [sum, setSum] = useState(1000);
   const [random, setRandom] = useState(
-    Math.floor(100000 + Math.random() * 900000),
+    Math.floor(100000 + Math.random() * 100000),
   );
 
   const url = window.location.origin.match('keyforu')

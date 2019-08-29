@@ -39,15 +39,12 @@ userbalance.get('/addbalance', (req, res) => {
   });
   const data = {
     merchant_id: process.env.merchant_id,
-    pay_id: uuid(),
+    pay_id: Math.floor(100000 + Math.random() * 100000),
     amount: req.body.sum,
     currency: 'RUB',
-    desc: 'Пополнение счёта',
   };
   data.sign = md5(
-    `${data.currency}:${data.amount}:${process.env.api_key}:${
-      data.merchant_id
-    }:${data.pay_id}`,
+    `${data.currency}:${data.amount}:${process.env.api_key}:${data.merchant_id}:${data.pay_id}`,
   );
 });
 
