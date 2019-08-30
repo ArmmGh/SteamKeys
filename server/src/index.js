@@ -43,20 +43,20 @@ const allowedOrigins = [
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(
-//   cors({
-//     origin: function(origin, callback) {
-//       // console.log(origin);
-//     //   if (origin == undefined || allowedOrigins.indexOf(origin) !== -1) {
-//     //     callback(null, true);
-//     //   } else {
-//     //     callback(new Error(`aaaaa - ${origin}`));
-//     //   }
-//     // },
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     credentials: true, // allow session cookie from browser to pass through
-//   }),
-// );
+app.use(
+  cors({
+    origin: function(origin, callback) {
+      // console.log(origin);
+      if (origin == undefined || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error(`aaaaa - ${origin}`));
+      }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // allow session cookie from browser to pass through
+  }),
+);
 app.use(auth);
 app.use(livedrop);
 app.use(games);
