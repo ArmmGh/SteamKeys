@@ -62,7 +62,6 @@ const Header = () => {
     setSum('');
   };
   const storeData = () => e => {
-    // console.log(data);
     fetchApi('/storedata', {
       method: 'POST',
       credentials: 'include',
@@ -77,7 +76,6 @@ const Header = () => {
     });
   };
 
-  // dispatch({ type: 'updateUser', payload: { ...data } });
 
   useEffect(() => {
     socket.on('aaa', data => console.log(data));
