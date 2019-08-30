@@ -14,11 +14,14 @@ require('dotenv').config();
 redirect(userbalance);
 userbalance.get('/addbalance', (req, res) => {
   userbalance.post('/result', (reqq, ress) => {
-    if (
-      reqq.query.merchant_id === process.env.merchant_id &&
-      reqq.query.amount &&
-      reqq.query.pay_id
-    ) {
+    const income ={
+      amountCom = reqq.query.amount,
+      payCom = reqq.query.pay_id,
+    }
+    const resultCom = md5(`${income.amountCom.amount}:${process.env.api_key}:${
+      process.env.merchant_id
+    }:${income.payCom.pay_id}`,);
+    if ( resultCom === sign) {
       console.log('user', req.user);
       console.log('pass', req.session.passport);
       db.addBalance(
@@ -45,8 +48,8 @@ userbalance.get('/addbalance', (req, res) => {
     currency: 'RUB',
     desc: 'Пополнение счёта',
   };
-  data.sign = md5(
-    `${data.currency}:${data.amount}:${process.env.api_key}:${
+  const sign = md5(
+    `${data.amount}:${process.env.api_key}:${
       data.merchant_id
     }:${data.pay_id}`,
   );
