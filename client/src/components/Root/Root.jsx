@@ -7,7 +7,7 @@ import fetchApi from '../../utils/fetchApi';
 import EN from '../../trans/en.json';
 import RU from '../../trans/ru.json';
 import App from '../App';
-// import '../../../71520c5957f682a7807934a73c201932.txt';
+import '../../payeer_892778523.txt';
 
 const Root = () => {
   const host = process.env.HOST || 'localhost';
