@@ -9,7 +9,7 @@ const Agreement = () => {
     <div className="agreement">
       <div className="main-width">
         <div className="mainTitle">
-          <h1>ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</h1>
+          <h1>ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ hn araaaaa</h1>
         </div>
         <section>
           <p>
