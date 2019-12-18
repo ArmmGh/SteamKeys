@@ -135,9 +135,9 @@ const Cases = ({ history }) => {
     <div className="cases_holder">
       <div className="main-width">
         <h1>{translate('keys')}</h1>
-        <ul className="ourKeys">
+        <table className="ourKeys">
           {otherCases.map((item, i) => (
-            <li key={i} className="item">
+            <tr key={i} className="item">
               <Link to={`/case/${item.url}`} href={`/case/${item.url}`}>
                 <div className="image">
                   <img src={imagesCases[item.img]} alt={item.name} />
@@ -149,9 +149,9 @@ const Cases = ({ history }) => {
                   <div className="price">{item.priceRUB}₽</div>
                 </div>
               </Link>
-            </li>
+            </tr>
           ))}
-        </ul>
+        </table>
         <div className="gameKeysHolder">
           <h1>{translate('chooseGame')}</h1>
           {!hideAlert && (
