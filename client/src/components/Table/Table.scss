@@ -252,6 +252,21 @@
         }
       }
     }
+    .addtable{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      table{
+          width: 90%;
+          border: 2px solid black;
+          border-collapse: collapse;
+          tr{
+              height: 40px;
+              border-top: 2px solid black;
+              text-align: center;
+          }
+      }
+  }
     @media screen and (max-width: 768px) {
       padding: 5px;
       .main-width {
