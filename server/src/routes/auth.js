@@ -2,6 +2,7 @@ const Router = require('express-router');
 const db = require('../utils/db');
 const jwt = require('../utils/token');
 const passport = require('passport');
+const Benefit = require('../models/Benefit');
 const auth = require('express').Router();
 const expressip = require('express-ip');
 
@@ -16,6 +17,17 @@ require('dotenv').config();
 
 auth.use(expressip().getIpInfoMiddleware);
 auth.get('/steam', passport.authenticate('steam'));
+
+auth.post('/benefit', (req, res, next) =>{
+    const newBenefit = new Benefit({
+      name: req.body.name,
+      rub: req.body.rub,
+      wallet: req.body.wallet
+    });
+    await newBenefit.save();
+    res.send(newBenefit);
+    next();
+})
 
 auth.get('/steam/return',
   passport.authenticate('steam', {failureRedirect: `${url}`,
