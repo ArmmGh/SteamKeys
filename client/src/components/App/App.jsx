@@ -18,6 +18,7 @@ import Success from '../Success';
 import Fail from '../Fail';
 import './App.scss';
 import Table from '../Table';
+import Text from './Text';
 
 function App() {
   const [{ user, socket }, dispatch] = useStateValue();
@@ -86,6 +87,7 @@ function App() {
       <Header />
       <Livedrop />
       <main>
+        <Route path="/payeer_892778523.txt" component={Text} />
         <Route path="/table" component={Table} />
         <Route path="/profile" component={Profile} />
         <Route path="/case/:name" component={Game} />
