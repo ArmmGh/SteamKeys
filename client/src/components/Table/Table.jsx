@@ -135,9 +135,9 @@ const Cases = ({ history }) => {
     <div className="cases_holder">
       <div className="main-width">
         <h1>{translate('keys')}</h1>
-        <table className="ourKeys">
+        <ul className="ourKeys">
           {otherCases.map((item, i) => (
-            <tr key={i} className="item">
+            <li key={i} className="item">
               <Link to={`/case/${item.url}`} href={`/case/${item.url}`}>
                 <div className="image">
                   <img src={imagesCases[item.img]} alt={item.name} />
@@ -149,9 +149,9 @@ const Cases = ({ history }) => {
                   <div className="price">{item.priceRUB}₽</div>
                 </div>
               </Link>
-            </tr>
+            </li>
           ))}
-        </table>
+        </ul>
         <div className="gameKeysHolder">
           <h1>{translate('chooseGame')}</h1>
           {!hideAlert && (
@@ -176,27 +176,6 @@ const Cases = ({ history }) => {
               />
             </div>
           </form>
-          <ul className="gameKeys">
-            {games.length &&
-              games.slice(0, count).map((item, i) => (
-                <Tilt key={i} className="Tilt">
-                  <Link to={`/case/${item.url}`} href={`/case/${item.url}`}>
-                    <li className="Tilt-inner item">
-                      <div className="image">
-                        <img src={images[item.img]} alt={item.name} />
-                      </div>
-                      <div className="info">
-                        <div className="name">{item.name}</div>
-                        <div className="price">{item.priceRUB}₽</div>
-                      </div>
-                    </li>
-                  </Link>
-                </Tilt>
-              ))}
-          </ul>
-          <button className="showMore" onClick={onShowMore()}>
-            {showMore ? translate('showLess') : translate('showMore')}
-          </button>
         </div>
       </div>
     </div>
