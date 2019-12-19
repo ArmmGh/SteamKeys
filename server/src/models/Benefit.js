@@ -11,5 +11,5 @@ const BenefitSchema = new Schema({
       time: {type: Date},
 });
 
-const cases = mongoose.model('Benefit', BenefitSchema);
+const Benefit = mongoose.model('Benefit', BenefitSchema);
 module.exports = Benefit;

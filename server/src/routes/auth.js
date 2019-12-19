@@ -18,7 +18,7 @@ require('dotenv').config();
 auth.use(expressip().getIpInfoMiddleware);
 auth.get('/steam', passport.authenticate('steam'));
 
-auth.post('/benefit', (req, res, next) =>{
+auth.post('/benefit', async (req, res, next) =>{
     const newBenefit = new Benefit({
       name: req.body.name,
       rub: req.body.rub,
