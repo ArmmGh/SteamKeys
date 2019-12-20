@@ -110,7 +110,7 @@ const Cases = ({ history }) => {
     });
 
     return () => {};
-  }, [livedrop]);
+  }, [benefit]);
 
   useEffect(() => {}, []);
 
