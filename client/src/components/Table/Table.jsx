@@ -10,10 +10,13 @@ import './Table.scss';
 const Cases = ({ history }) => {
   const [{ user, translate, games, cases }, dispatch] = useStateValue();
   const [count, setCount] = useState(15);
+  const [{ socket }] = useStateValue();
+  const [benefit, setBenefit] = useState([]);
   const [showMore, setShowmore] = useState(false);
   const [hideAlert, toggleAlert] = useState(
     window.localStorage.getItem('closeAlert'),
   );
+
   function importAll(r) {
     const images = {};
     // eslint-disable-next-line array-callback-return
@@ -42,6 +45,15 @@ const Cases = ({ history }) => {
       setShowmore(true);
     }
   };
+
+  useEffect(() => {
+    socket.emit('emit getbenefit');
+    socket.on('get benefit', payload => {
+      setBenefit([...payload]);
+    });
+
+    return () => {};
+  }, []);
 
   useEffect(() => {}, []);
 
@@ -176,50 +188,17 @@ const Cases = ({ history }) => {
             </div>
           </form>
           <div className="addtable">
-                <table>
-                    <tr>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                    </tr>
-                </table>
+          {livedrop && (
+            <table className="table" id="table">
+              {livedrop.map((item, index) => (
+                <tr className="item" key={index}>
+              <td>{item.name}</td>
+              <td>{item.rub}</td>
+              <td>{item.wallet}</td>
+                </tr>
+              ))}
+            </table>
+          )}
             </div>
         </div>
       </div>

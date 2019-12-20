@@ -69,12 +69,19 @@ const update = async user => {
 const getCase = type => Cases.findOne({ type }).then(res => res);
 
 const getLivedrop = () => Livedrop.find({});
+const getBenefit = () => Benefit.find({});
 
 const setLivedrop = async data => {
   const drop = await new Livedrop(data.game);
   await drop.save();
   return drop;
 };
+
+const setBenefit = async data =>{
+  const benef = await new Benefit(data.benefit);
+  await benef.save();
+  return benef;
+}
 
 const getGames = () => Games.find({});
 
@@ -200,6 +207,7 @@ module.exports = {
   getCase,
   setLivedrop,
   getLivedrop,
+  getBenefit,
   getGames,
   getLiveinfo,
   removeBalance,

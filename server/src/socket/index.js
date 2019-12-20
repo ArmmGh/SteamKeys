@@ -30,5 +30,15 @@ module.exports = io => {
       });
       socket.sentLivedrop = true;
     }
+
+    if (!socket.sentBenefit) {
+      socket.on('emit getbenefit', res => {
+        db.getBenefit().then(data => {
+          data = data.reverse().slice(0, 10);
+          socket.emit('get benefit', data);
+        });
+      });
+      socket.sentBenefit = true;
+    }
   });
 };
