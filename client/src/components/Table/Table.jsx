@@ -188,9 +188,9 @@ const Cases = ({ history }) => {
             </div>
           </form>
           <div className="addtable">
-          {livedrop && (
+          {benefit && (
             <table className="table" id="table">
-              {livedrop.map((item, index) => (
+              {benefit.map((item, index) => (
                 <tr className="item" key={index}>
               <td>{item.name}</td>
               <td>{item.rub}</td>
