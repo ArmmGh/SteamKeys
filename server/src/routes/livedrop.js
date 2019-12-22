@@ -5,7 +5,7 @@ const livedrop = require('express').Router();
 require('dotenv').config();
 
 livedrop.get('/live', (req, res) => {
-  db.getLivedrop().then(data => res.send(data.reverse().slice(0, 10)));
+  db.getLivedrop().then(data => res.send(data.reverse().slice(0, 20)));
 });
 
 livedrop.get('/liveinfo', (req, res) => {
