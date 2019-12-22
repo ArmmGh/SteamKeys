@@ -4,7 +4,7 @@ const benefit = require('express').Router();
 require('dotenv').config();
 
 benefit.get('/benefitlive', (req, res) => {
-  db.getBenefit().then(data => res.send(data.reverse().slice(0, 10)));
+  db.getBenefit().then(data => res.send(data.reverse().slice(0, 20)));
 });
 
 benefit.get('/benefitliveinfo', (req, res) => {
