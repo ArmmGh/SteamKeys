@@ -64,23 +64,23 @@ const Cases = ({ history }) => {
         const elems = document.querySelectorAll('table#tbl tr');
         let lastElem;
         if (window.innerWidth >= 1616) {
-          lastElem = elems[9];
+          lastElem = elems[15];
         } else if (window.innerWidth >= 1456) {
-          lastElem = elems[8];
+          lastElem = elems[14];
         } else if (window.innerWidth >= 1296) {
-          lastElem = elems[7];
+          lastElem = elems[13];
         } else if (window.innerWidth >= 1136) {
-          lastElem = elems[6];
+          lastElem = elems[12];
         } else if (window.innerWidth >= 976) {
-          lastElem = elems[5];
+          lastElem = elems[11];
         } else if (window.innerWidth >= 816) {
-          lastElem = elems[4];
+          lastElem = elems[10];
         } else if (window.innerWidth >= 656) {
-          lastElem = elems[3];
+          lastElem = elems[9];
         } else if (window.innerWidth >= 486) {
-          lastElem = elems[2];
+          lastElem = elems[8];
         } else if (window.innerWidth >= 326) {
-          lastElem = elems[1];
+          lastElem = elems[7];
         } else {
           lastElem = elems[0];
         }
