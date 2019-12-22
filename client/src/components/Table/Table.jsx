@@ -39,7 +39,7 @@ const Cases = ({ history }) => {
 
   useEffect(() => {
     socket.on('update benefitlive', payload => {
-      if (payload.type !== 'xujan' && benefit.length >= 15) {
+      if (payload.type !== 'xujan' && benefit.length >= 16) {
         if (document.getElementById('helper')) {
           document.getElementById('helper').remove();
         }
@@ -64,7 +64,7 @@ const Cases = ({ history }) => {
         } else if (window.innerWidth >= 326) {
           lastElem = elems[7];
         } else {
-          lastElem = elems[6];
+          lastElem = elems[0];
         }
         const firstElem = elems[0];
         const newElem = document.createElement('tr');
@@ -99,7 +99,8 @@ const Cases = ({ history }) => {
   return (
     <div className="cases_holder">
       <div className="main-width">
-          {benefit && (
+        <div className="addtable">
+        {benefit && (
             <table className="table" id="tbl">
               {benefit.map((item, index) => (
                 <tr className="item" key={index}>
@@ -110,6 +111,7 @@ const Cases = ({ history }) => {
               ))}
             </table>
           )}
+        </div>
             </div>
         </div>
   );
