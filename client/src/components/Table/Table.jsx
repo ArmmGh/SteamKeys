@@ -57,7 +57,7 @@ const Cases = ({ history }) => {
 
   useEffect(() => {
     socket.on('update benefitlive', payload => {
-      if (payload.type !== 'xujan' && livedrop.length >= 10) {
+      if (payload.type !== 'xujan' && benefit.length >= 15) {
         if (document.getElementById('helper')) {
           document.getElementById('helper').remove();
         }
