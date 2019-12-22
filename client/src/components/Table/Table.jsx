@@ -82,7 +82,7 @@ const Cases = ({ history }) => {
         } else if (window.innerWidth >= 326) {
           lastElem = elems[7];
         } else {
-          lastElem = elems[0];
+          lastElem = elems[6];
         }
         const firstElem = elems[0];
         const newElem = document.createElement('tr');
