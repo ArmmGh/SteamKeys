@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useStateValue } from '../../context';
 import { MdPerson, MdInput, MdClose } from "react-icons/md";
 import { GiPayMoney, GiReceiveMoney, GiTakeMyMoney } from "react-icons/gi";
 import { Link } from 'react-router-dom';
 import './Menu.scss';
 
 const Menu = () =>{
+    const [{ user, translate }, dispatch] = useStateValue();
     return(
         <React.Fragment>
             <div className="menuall">
