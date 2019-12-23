@@ -15,7 +15,9 @@ const Adding = () =>{
         </div>
         <div className="paymethod">
         <p>вибирите метод попалнении</p>
-        <img src={log} alt="payeer" />
+        <div className="imgholder">
+            <img src={log} alt="payeer" />
+        </div>
         </div>
             </div>
                 </div>
