@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import { MdPerson, MdInput, MdClose } from "react-icons/md";
 import { GiPayMoney, GiReceiveMoney, GiTakeMyMoney } from "react-icons/gi";
+import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { useStateValue } from '../../context';
 import fetchApi from '../../utils/fetchApi';
