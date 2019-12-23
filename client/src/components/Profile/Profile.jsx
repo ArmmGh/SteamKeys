@@ -2,7 +2,8 @@
 /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
-import { MdClose } from 'react-icons/md';
+import { MdPerson, MdInput, MdClose } from "react-icons/md";
+import { GiPayMoney, GiReceiveMoney, GiTakeMyMoney } from "react-icons/gi";
 import Modal from 'react-modal';
 import { useStateValue } from '../../context';
 import fetchApi from '../../utils/fetchApi';
@@ -71,79 +72,12 @@ const Profile = () => {
     setSum(1000);
   };
 
-  const addBalance = () => e => {
-    const data = {
-      shop: 4285,
-      payment: 110857,
-      amount: sum,
-      description: 'Оплата товара',
-      currency: 3,
-      sign: 'OirW4Mt+i0g3v6Yb+0yenYeqPqKYoimjehJEKZC1v+w=',
-      via: 'qiwi',
-    };
-    console.log(data);
-    fetch('https://primepayer.com/api/110857/pay', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization:
-          'Bearer w46kofoy10afthh95ir4z8cx2k0mr4hcob9s6bd7f0dxxzboianmnpgwxfx1yhba',
-      },
-      body: JSON.stringify(data),
-    }).then(res => {
-      console.log(res);
-    });
-    fetchApi('/addbalance', {
-      method: 'POST',
-      body: JSON.stringify({ sum }),
-    });
-  };
-  const handeleChange = val => {
-    if (val.match(/^[0-9]+$/)) {
-      setSum(val);
-    }
-  };
-
   useEffect(() => {
     return () => {};
   }, []);
 
   return (
     <React.Fragment>
-      <Modal
-        closeTimeoutMS={200}
-        ariaHideApp={false}
-        onRequestClose={() => setModal(false)}
-        shouldCloseOnOverlayClick={true}
-        isOpen={modalIsOpen}
-        className="Modal"
-        overlayClassName="OverlayHeader"
-      >
-        <div className="header">
-          <div />
-          <h1>ПОПОЛНЕНИЕ БАЛАНСА</h1>
-          <div className="close">
-            <MdClose onClick={() => setModal(false)} />
-          </div>
-        </div>
-        <div className="body">
-          <h1>Введите сумму</h1>
-          <div className="inpHolder">
-            <input
-              type="text"
-              className="input"
-              name="sum"
-              value={sum}
-              onChange={e => handeleChange(e.target.value)}
-            />
-            <button onClick={addBalance()}>Пополнить</button>
-          </div>
-          <div className="info">
-            Средства приходят моментально, но могут быть задержки до 5-10 минут.
-          </div>
-        </div>
-      </Modal>
       <div className="profile">
         <div className="main-width">
           <div className="info">
@@ -152,12 +86,53 @@ const Profile = () => {
               <img src={user.imgurl} alt="" />
             </div>
             <div className="actions">
-              <button className="auth" onClick={openModal()}>
-                {translate('add_balance')}
-              </button>
-              <button className="auth" onClick={logout()}>
-                Выйти
-              </button>
+            <ul>
+              <div className="profitem"><li>
+                  <div className="ico"><GiPayMoney /></div>
+                  <div className="infm">
+                  <Link
+                    to="/adding" href="adding">
+                  пополнить
+                   </Link>
+                  </div>
+                  </li></div>
+               <div className="profitem"><li>
+                   <div className="ico"><GiReceiveMoney /></div>
+                   <div className="infm">
+                   <Link to="/output" href="/output">
+                   ввывести
+                   </Link>
+                   </div>
+                   </li></div>
+               <div className="profitem"><li>
+                   <div className="ico"><GiTakeMyMoney /></div>
+                   <div className="infm">
+                   <Link to="/invest" href="/invest">
+                 вкладивать
+                   </Link>
+                   </div>
+                   </li></div>
+               <div className="profitem"><li>
+                   <div className="ico">
+                       <MdPerson />
+                   </div>
+                   <div className="infm">
+                   <Link to="/cabinet" href="/cabinet">
+                   кабинет
+                   </Link>
+                   </div>
+                   </li></div>
+               <div className="profitem"><li>
+                  <div className="ico">
+                      <MdInput />
+                   </div>
+                  <div className="infm">
+                  <Link to="/logout" href="/logout">
+                  выход
+                   </Link>
+                 </div>
+                 </li></div>
+           </ul>
             </div>
             <div className="gamesHistory">
               <div className="tableHeader">

@@ -24,6 +24,23 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      border-bottom: 2px solid black;
+        ul{
+            display: flex;
+            justify-content: space-around;
+            li{
+                list-style-type: none;
+            }
+            a{
+                text-decoration: none;
+                color: blue;
+            }
+        }
+        .ico{
+            display: flex;
+            justify-content: center;
+            font-size: 22px;
+        }
       .auth {
         margin-right: 10px;
         display: flex;
