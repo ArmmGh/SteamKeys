@@ -1,4 +1,5 @@
 import React from 'react';
+import Menu from '../Menu/index';
 import log from '../../assets/profile/payeer-logo.png'
 import './Adding.scss';
 
@@ -8,11 +9,12 @@ const Adding = () =>{
         <React.Fragment>
         <div className="addcontainer">
             <div className="alladd">
+                <Menu />
         <div className="heading">
-            <h3>Пополнение баланса</h3>
+            <h2>Пополнение баланса</h2>
         </div>
         <div className="paymethod">
-        <h5>вибирите метод попалнении</h5>
+        <p>вибирите метод попалнении</p>
         <img src={log} alt="payeer" />
         </div>
             </div>
