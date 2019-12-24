@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from '../Menu/index';
-import log from '../../assets/profile/payeer-logo.png'
+import log from '../../assets/profile/payeer-logo.png';
+import des from '../../assets/profile/money.png'
 import './Adding.scss';
 
 
@@ -10,9 +11,9 @@ const Adding = () =>{
         <div className="addcontainer">
             <div className="alladd">
                 <Menu />
-        <div className="heading">
-            <h2>Пополнение баланса</h2>
-        </div>
+                <div className="design">
+                    <img src={des} alt="money"/>
+                </div>
         <div className="paymethod">
         <p>вибирите метод попалнении</p>
         <div className="imgholder">

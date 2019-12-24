@@ -1,6 +1,15 @@
 .addcontainer{
     padding: 10px 0;
     .alladd{
+        .design{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            img{
+                height: 120px;
+                width: 150px;
+            }
+        }
         .paymethod{
             display: flex;
             flex-direction: column;
