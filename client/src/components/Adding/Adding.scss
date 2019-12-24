@@ -1,6 +1,14 @@
 .addcontainer{
     padding: 10px 0;
     .alladd{
+        .suminput{
+            margin-top: 13px;
+            input{
+                padding: 10px 10px;
+                cursor: pointer;
+                background-color: #F3EFEF;
+            }
+        }
         .design{
             display: flex;
             justify-content: center;
@@ -16,8 +24,9 @@
             justify-content: center;
             align-items: center;
             .amount{
+                margin-top: 25px;
                 p{
-                font-size: 20px;
+                font-size: 18px;
                 opacity: 0.7;
                 }
                 span{
@@ -25,13 +34,14 @@
                     justify-content: center;
                     color: #93b1f7;
                     font-weight: bold;
+                    margin-top: 3px;
                 }
             }
             img{
                 border: 1px solid black;
                 border-radius: 10px;
-                height: 100px;
-                width: 140px;
+                height: 90px;
+                width: 110px;
             }
         }
     }

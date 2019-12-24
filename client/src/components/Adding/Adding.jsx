@@ -23,6 +23,9 @@ const Adding = () =>{
             <p>Укажите сумму, которую хотите вывести</p>
             <span>Максимум: {user.balance}</span>
             </div>
+            <div className="suminput">
+                <input type="text" />
+            </div>
         <div className="imgholder">
             <img src={log} alt="payeer" />
         </div>
