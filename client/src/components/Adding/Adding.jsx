@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import Menu from '../Menu/index';
-import { log, des} from '../../assets/profile/payeer-logo.png';
+import log from '../../assets/profile/payeer-logo.png';
+import des from '../../assets/profile/money.png';
+import adv from '../../assets/profile/adv.png';
+import perf from '../../assets/profile/perfect.png';
+import qiwi from '../../assets/profile/qiwi.png';
 import { useStateValue } from '../../context';
 import './Adding.scss';
 
@@ -27,6 +31,9 @@ const Adding = () =>{
             </div>
         <div className="imgholder">
             <img src={log} alt="payeer" />
+            <img src={adv} alt="advacash" />
+            <img src={perf} alt="perfect" />
+            <img src={qiwi} alt="qiwi" />
         </div>
         </div>
             </div>
