@@ -1,12 +1,18 @@
 .addcontainer{
     padding: 10px 0;
+    input:focus{
+        overflow: hidden;
+    }
     .alladd{
+        .imgholder{
+            margin-top: 70px;
+        }
         .suminput{
             margin-top: 13px;
             input{
                 padding: 10px 10px;
                 cursor: pointer;
-                background-color: #F3EFEF;
+                background-color: #bdc3c7;
             }
         }
         .design{
@@ -38,8 +44,8 @@
                 }
             }
             img{
-                border: 1px solid black;
-                border-radius: 10px;
+                border: 1px solid #bdc3c7;
+                border-radius: 8px;
                 height: 90px;
                 width: 110px;
             }
