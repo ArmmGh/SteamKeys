@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Menu from '../Menu/index';
 import log from '../../assets/profile/payeer-logo.png';
-import des from '../../assets/profile/money.png'
+import des from '../../assets/profile/money.png';
+import { useStateValue } from '../../context';
 import './Adding.scss';
 
 
-const Adding = () =>{
+const Adding = () =>{    
+    const [
+        { user }
+      ] = useStateValue();
     return(
         <React.Fragment>
         <div className="addcontainer">
@@ -15,7 +19,8 @@ const Adding = () =>{
                     <img src={des} alt="money"/>
                 </div>
         <div className="paymethod">
-        <p>вибирите метод попалнении</p>
+        <p>Укажите сумму, которую хотите вывести
+            Максимум {user.balance}</p>
         <div className="imgholder">
             <img src={log} alt="payeer" />
         </div>
