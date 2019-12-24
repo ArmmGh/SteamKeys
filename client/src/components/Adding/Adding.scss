@@ -6,8 +6,8 @@
             justify-content: center;
             text-align: center;
             img{
-                height: 90px;
-                width: 120px;
+                height: 80px;
+                width: 100px;
             }
         }
         .paymethod{
@@ -15,6 +15,18 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            .amount{
+                p{
+                font-size: 20px;
+                opacity: 0.7;
+                }
+                span{
+                    display: flex;
+                    justify-content: center;
+                    color: #93b1f7;
+                    font-weight: bold;
+                }
+            }
             img{
                 border: 1px solid black;
                 border-radius: 10px;

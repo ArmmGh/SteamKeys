@@ -19,8 +19,10 @@ const Adding = () =>{
                     <img src={des} alt="money"/>
                 </div>
         <div className="paymethod">
-        <p>Укажите сумму, которую хотите вывести
-            Максимум {user.balance}</p>
+            <div className="amount">
+            <p>Укажите сумму, которую хотите вывести</p>
+            <span>Максимум: {user.balance}</span>
+            </div>
         <div className="imgholder">
             <img src={log} alt="payeer" />
         </div>
