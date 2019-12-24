@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Menu from '../Menu/index';
-import log from '../../assets/profile/payeer-logo.png';
-import des from '../../assets/profile/money.png';
+import { log, des} from '../../assets/profile/payeer-logo.png';
 import { useStateValue } from '../../context';
 import './Adding.scss';
 
