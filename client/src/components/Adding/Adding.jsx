@@ -27,7 +27,7 @@ const Adding = () =>{
             <span>Максимум: {user.balance}</span>
             </div>
             <div className="suminput">
-                <input type="text" />
+                <input type="text" defaultValue={user.balance}/>
             </div>
         <div className="imgholder">
             <img src={log} alt="payeer" />
