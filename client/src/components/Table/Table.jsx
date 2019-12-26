@@ -104,7 +104,7 @@ const Cases = ({ history }) => {
               <td>{item.name}</td>
               <td>{item.rub}</td>
               <td>{item.wallet}</td>
-              <td>{item.date}</td>
+              <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.time} /></td>
                 </tr>
               ))}
             </table>
