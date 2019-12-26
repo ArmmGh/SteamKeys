@@ -8,7 +8,7 @@ const Invest = () =>{
         <React.Fragment>
             <div>
             <Menu />
-        <p>hello</p>
+            <p>hello</p>
             </div>
         </React.Fragment>
     )

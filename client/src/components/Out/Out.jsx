@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Menu from '../Menu/index';
 import Table from '../Table/index';
 import log from '../../assets/profile/payeer-logo.png';
-import des from '../../assets/profile/money.png';
+import get from '../../assets/profile/get.jpg';
 import adv from '../../assets/profile/adv.png';
 import perf from '../../assets/profile/perfect.jpg';
 import qiwi from '../../assets/profile/qiwi.png';
@@ -20,7 +20,7 @@ const Out = () =>{
             <div className="alladd">
                 <Menu />
                 <div className="design">
-                    <img src={des} alt="money"/>
+                    <img src={get} alt="money"/>
                 </div>
         <div className="paymethod">
             <div className="amount">
