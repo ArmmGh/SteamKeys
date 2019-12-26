@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Menu from '../Menu/index';
+import Table from '../Table/index';
 import log from '../../assets/profile/payeer-logo.png';
 import des from '../../assets/profile/money.png';
 import adv from '../../assets/profile/adv.png';
@@ -34,6 +35,12 @@ const Adding = () =>{
             <img src={perf} alt="perfect" />
             <img src={qiwi} alt="qiwi" />
         </div>
+        </div>
+        <div className="tabl">
+            <div className="header">
+                <h3>История Пополнении</h3>
+            </div>
+            <Table />
         </div>
             </div>
                 </div>
