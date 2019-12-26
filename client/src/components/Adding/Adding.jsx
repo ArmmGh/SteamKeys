@@ -23,8 +23,7 @@ const Adding = () =>{
                 </div>
         <div className="paymethod">
             <div className="amount">
-            <p>Укажите сумму, которую хотите вывести</p>
-            <span>Максимум: {user.balance}</span>
+            <p>Укажите сумму и способ пополнения</p>
             </div>
             <div className="suminput">
                 <input type="text" defaultValue={user.balance}/>
