@@ -1,0 +1,62 @@
+.addcontainer{
+    padding: 10px 0;
+    input:focus{
+        outline: none;
+    }
+    .alladd{
+        .imgholder{
+            margin-top: 30px;
+        }
+        .suminput{
+            margin-top: 13px;
+            font-size: 20px;
+            input{
+                padding: 10px 10px;
+            }
+        }
+        .design{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            img{
+                height: 80px;
+                width: 100px;
+            }
+        }
+        .paymethod{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .amount{
+                margin-top: 25px;
+                p{
+                font-size: 18px;
+                opacity: 0.7;
+                }
+                span{
+                    display: flex;
+                    justify-content: center;
+                    color: #93b1f7;
+                    font-weight: bold;
+                    margin-top: 3px;
+                }
+            }
+            img{
+                margin-left: 15px;
+                border: 1px solid #bdc3c7;
+                border-radius: 8px;
+                height: 80px;
+                width: 110px;
+            }
+        }
+        .tabl{
+            margin-top: 5px;
+            .header{
+                h3{
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
