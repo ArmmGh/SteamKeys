@@ -31,13 +31,13 @@ const userSchema = new Schema({
       date: Date,
     },
   ],
-  profitHistory: [
-    {
-      summary: String || Number,
-      method: String,
-      time: Date,
-    },
-  ],
+  // profitHistory: [
+  //   {
+  //     summary: String || Number,
+  //     method: String,
+  //     time: Date,
+  //   },
+  // ],
 });
 
 const user = mongoose.model('User', userSchema);
