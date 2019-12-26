@@ -107,6 +107,7 @@ const Cases = ({ history }) => {
               <td>{item.name}</td>
               <td>{item.rub}</td>
               <td>{item.wallet}</td>
+              <td>{item.time}</td>
                 </tr>
               ))}
             </table>
