@@ -20,6 +20,7 @@ import './App.scss';
 import Table from '../Table';
 import Adding from '../Adding';
 import Out from '../Out';
+import Invest from '../Invest';
 
 function App() {
   const [{ user, socket }, dispatch] = useStateValue();
@@ -88,6 +89,7 @@ function App() {
       <Header />
       <Livedrop />
       <main>
+        <Route path="/invest" component={Invest} />
         <Route path="/output" component={Out} />
         <Route path="/adding" component={Adding} />
         <Route path="/table" component={Table} />
