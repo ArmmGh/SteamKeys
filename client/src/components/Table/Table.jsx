@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Tilt from 'react-tilt';
-import { MdClose } from 'react-icons/md';
-import otherCases from '../../utils/otherCases.json';
-import fetchApi from '../../utils/fetchApi';
+import Moment from 'react-moment';
 import { useStateValue } from '../../context';
 import './Table.scss';
 
@@ -107,7 +104,7 @@ const Cases = ({ history }) => {
               <td>{item.name}</td>
               <td>{item.rub}</td>
               <td>{item.wallet}</td>
-              <td>{item.time}</td>
+              <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
                 </tr>
               ))}
             </table>
