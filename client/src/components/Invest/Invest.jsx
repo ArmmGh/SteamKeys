@@ -1,13 +1,15 @@
 import React from 'react';
 import Menu from '../Menu/index';
-import './Invest.scss'
+import './Invest.scss';
 
 
 const Invest = () =>{
     return(
         <React.Fragment>
-        <Menu />
+            <div>
+            <Menu />
         <p>hello</p>
+            </div>
         </React.Fragment>
     )
 }

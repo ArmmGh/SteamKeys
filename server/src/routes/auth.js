@@ -164,7 +164,6 @@ auth.get('/user', (req, res) => {
             gameHistory:
               (req.user.gameHistory && req.user.gameHistory.reverse()) || [],
             balanceHistory: req.user.balanceHistory || [],
-            // profitHistory: (req.user.profitHistory && req.user.profitHistory.reverse()) || [],
             ip: newUser.ip,
           });
         });
@@ -177,7 +176,6 @@ auth.get('/user', (req, res) => {
           profileurl: req.user._json.profileurl,
           gameHistory: user ? user.gameHistory.reverse() : [],
           balanceHistory: user ? user.balanceHistory : [],
-          // profitHistory: user ? user.profitHistory.reverse() : [],
           ip: req.ipInfo,
         });
       }
@@ -212,7 +210,6 @@ auth.post('/login', (req, res) => {
       }
       // Old User
       user.gameHistory.reverse();
-      // user.profitHistory.reverse();
       const userToken = jwt({ user });
       res.send({ user: userToken, token, newUser: false, isLogged: true });
       return false;
