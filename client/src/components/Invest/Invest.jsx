@@ -19,6 +19,12 @@ const Invest = () =>{
                         <p>Укажите сумму, которую хотите вкладивать</p>
                         <span>Максимум: {user.balance}</span>
                     </div>
+                    <div className="sumbit">
+                    <form>
+                        <input type="text" defaultValue={user.balance} />
+                        <button>Вкладивать</button>
+                    </form>
+                    </div>
                 </div>
             </div>
         </React.Fragment>
