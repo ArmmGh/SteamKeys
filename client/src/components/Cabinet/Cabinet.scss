@@ -11,15 +11,21 @@
         }
         .inputes{
             display: flex;
+            margin-left: 15px;
             .names{
+                font-size: 20px;
                 display: flex;
                 flex-direction: column;
-                width: 10%;
+                width: 15%;
             }
             .field{
                 display: flex;
                 flex-direction: column;
-                width: 90%;
+                width: 85%;
+                input{
+                    width: 200px;
+                    height: 60px;
+                }
             }
         }
     }
