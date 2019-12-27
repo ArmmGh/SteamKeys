@@ -21,11 +21,13 @@ const Cabinet = () =>{
                         <div className="column">New Password:</div>
                         <div className="column">Confrim Password:</div>
                     </div>
+                    <div className="field">
                     <form>
-                       <input type="text" id="hello" />
-                       <input type="text" />
-                       <input type="text" />
+                       <div><input type="text" /></div>
+                       <div><input type="text" /></div>
+                       <div><input type="text" /></div>
                     </form>
+                    </div>
                     </div>
                 </div>
             </div>

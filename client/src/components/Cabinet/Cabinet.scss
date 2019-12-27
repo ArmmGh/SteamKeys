@@ -6,13 +6,18 @@
         }
         .inputes{
             display: flex;
-            flex-direction: column;
             .names{
                 display: flex;
                 flex-direction: column;
+                width: 25%;
             }
             h3{
                 text-align: center;
+            }
+            .field{
+                display: flex;
+                flex-direction: column;
+                width: 75%;
             }
         }
     }
