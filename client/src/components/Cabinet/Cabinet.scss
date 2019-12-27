@@ -4,20 +4,22 @@
             display: flex;
             justify-content: center;
         }
+        .formhead{
+            h3{
+                text-align: center;
+            }
+        }
         .inputes{
             display: flex;
             .names{
                 display: flex;
                 flex-direction: column;
-                width: 25%;
-            }
-            h3{
-                text-align: center;
+                width: 10%;
             }
             .field{
                 display: flex;
                 flex-direction: column;
-                width: 75%;
+                width: 90%;
             }
         }
     }

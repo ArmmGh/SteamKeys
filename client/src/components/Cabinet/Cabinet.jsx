@@ -14,8 +14,10 @@ const Cabinet = () =>{
                     <div className="head">
                         <h1>Личний Кабинет</h1>
                     </div>
+                        <div className="formhead">
+                        <h3>Данные аккаунта</h3>
+                        </div>
                     <div className="inputes">
-                    <h3>Данные аккаунта</h3>
                     <div className="names">
                         <div className="column">Mail:</div>
                         <div className="column">New Password:</div>
