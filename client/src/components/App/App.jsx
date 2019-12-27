@@ -21,6 +21,7 @@ import Table from '../Table';
 import Adding from '../Adding';
 import Out from '../Out';
 import Invest from '../Invest';
+import Cabinet from '../Cabinet';
 
 function App() {
   const [{ user, socket }, dispatch] = useStateValue();
@@ -89,6 +90,7 @@ function App() {
       <Header />
       <Livedrop />
       <main>
+        <Route path="/cabinet" component={Cabinet} />
         <Route path="/invest" component={Invest} />
         <Route path="/output" component={Out} />
         <Route path="/adding" component={Adding} />
