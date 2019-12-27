@@ -17,9 +17,9 @@ const Cabinet = () =>{
                     <div className="inputes">
                     <h3>Данные аккаунта</h3>
                     <form>
-                        Mail:<input type="text" />
-                        New Password:<input type="text" />
-                        Confirm Password:<input type="text" />
+                       <div>Mail:<input type="text" /></div>
+                       <div>New Password:<input type="text" /></div>
+                       <div>Confirm Password:<input type="text" /></div>
                     </form>
                     </div>
                 </div>
