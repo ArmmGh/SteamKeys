@@ -6,6 +6,7 @@ import './Cabinet.scss';
 
 
 const Cabinet = () =>{
+    document.getElementById('hello').disabled = true;
     return(
         <React.Fragment>
             <Menu />
@@ -16,10 +17,15 @@ const Cabinet = () =>{
                     </div>
                     <div className="inputes">
                     <h3>Данные аккаунта</h3>
+                    <div className="names">
+                        <div className="column">Mail:</div>
+                        <div className="column">New Password:</div>
+                        <div className="column">Confrim Password:</div>
+                    </div>
                     <form>
-                       <div>Mail:<input type="text" /></div>
-                       <div>New Password:<input type="text" /></div>
-                       <div>Confirm Password:<input type="text" /></div>
+                       <input type="text" id="hello" />
+                       <input type="text" />
+                       <input type="text" />
                     </form>
                     </div>
                 </div>
