@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import Menu from '../Menu/index';
+import Table from '../Table/index';
 import invest from '../../assets/profile/invest.png';
 import './Invest.scss';
 import { useStateValue } from '../../context';
@@ -22,9 +23,13 @@ const Invest = () =>{
                     <div className="sumbit">
                     <form>
                         <div><input type="text" defaultValue={user.balance} /></div>
-                        <div><button>Вкладивать</button></div>
+                        <div className="btnholder"><button>Вкладивать</button></div>
                     </form>
                     </div>
+                    <div className="tbleheader">
+                        <h3>Вклады</h3>
+                    </div>
+                    <Table />
                 </div>
             </div>
         </React.Fragment>

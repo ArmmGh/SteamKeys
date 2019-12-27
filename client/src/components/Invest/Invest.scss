@@ -40,10 +40,21 @@
                 padding: 2px 3px;
                 text-align: center;
             }
-            button{
-                margin-top: 2px;
-                padding: 4px 6px;
-                font-size: 19px;
+            .btnholder{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 5px;
+                button{
+                    margin-top: 2px;
+                    padding: 4px 6px;
+                    font-size: 19px;
+                }
+            }
+        }
+        ․tbleheader{
+            h3{
+                text-align: center;
             }
         }
     }
