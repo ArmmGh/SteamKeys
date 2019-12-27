@@ -31,6 +31,10 @@
         }
         .sumbit{
             margin-top: 13px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             input{
                 font-size: 21px;
                 padding: 2px 3px;
@@ -38,7 +42,7 @@
             }
             button{
                 margin-top: 2px;
-                padding: 2px 3px;
+                padding: 4px 6px;
                 font-size: 19px;
             }
         }
