@@ -6,7 +6,6 @@ import './Cabinet.scss';
 
 
 const Cabinet = () =>{
-    document.getElementById('hello').disabled = true;
     return(
         <React.Fragment>
             <Menu />
