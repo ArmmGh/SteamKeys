@@ -21,8 +21,8 @@ const Invest = () =>{
                     </div>
                     <div className="sumbit">
                     <form>
-                        <input type="text" defaultValue={user.balance} />
-                        <button>Вкладивать</button>
+                        <div><input type="text" defaultValue={user.balance} /></div>
+                        <div><button>Вкладивать</button></div>
                     </form>
                     </div>
                 </div>
