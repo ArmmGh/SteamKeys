@@ -1,4 +1,7 @@
 .cabinetcontainer{
+    input:focus{
+        outline: none;
+    }
     .cabinetall{
         .head{
             display: flex;
@@ -11,6 +14,7 @@
         }
         .inputes{
             display: flex;
+            justify-content: center;
             margin-left: 15px;
             .names{
                 .column{
