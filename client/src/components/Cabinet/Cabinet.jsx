@@ -1,7 +1,8 @@
 import React from 'react';
 import Menu from '../Menu/index';
+import sett from '../../assets/profile/sett.png';
 import { MdMailOutline } from "react-icons/md";
-import { FaLock, FaUnlock } from "react-icons/fa";
+import { FaLock, FaUnlock, FaCoins } from "react-icons/fa";
 import './Cabinet.scss';
 
 
@@ -11,6 +12,9 @@ const Cabinet = () =>{
             <Menu />
             <div className="cabinetcontainer">
                 <div className="cabinetall">
+                <div className="investlog">
+                        <img src={sett} alt="settings" />
+                    </div>
                     <div className="head">
                         <h1>Личний Кабинет</h1>
                     </div>
@@ -38,8 +42,8 @@ const Cabinet = () =>{
                     </div>
                     <div className="inputesp">
                         <div className="namesp">
-                            <div className="columnp">Payeer</div>
-                            <div className="columnp">Qiwi</div>
+                            <div className="columnp"><FaCoins />Payeer</div>
+                            <div className="columnp"><FaCoins />Qiwi</div>
                         </div>
                         <div className="fieldp">
                             <div><input type="text" /></div>

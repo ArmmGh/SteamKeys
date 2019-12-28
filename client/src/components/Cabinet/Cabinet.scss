@@ -4,6 +4,15 @@
         outline: none;
     }
     .cabinetall{
+        .investlog{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                height: 80px;
+                width: 100px;
+            }
+        }
         .head{
             margin-top: 5px;
             display: flex;
