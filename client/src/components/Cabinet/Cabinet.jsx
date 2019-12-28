@@ -22,14 +22,29 @@ const Cabinet = () =>{
                         <div className="column">Mail:</div>
                         <div className="column">New Password:</div>
                         <div className="column">Confrim Password:</div>
+                        <div className="column">Old Password:</div>
                     </div>
                     <div className="field">
                     <form>
                        <div><input type="text" /></div>
                        <div><input type="text" /></div>
                        <div><input type="text" /></div>
+                       <div><input type="text" /></div>
                     </form>
                     </div>
+                    </div>
+                    <div className="headp">
+                        <h3>Платежние Данные</h3>
+                    </div>
+                    <div className="inputesp">
+                        <div className="namesp">
+                            <div className="columnp">Payeer</div>
+                            <div className="columnp">Qiwi</div>
+                        </div>
+                        <div className="fieldp">
+                            <div><input type="text" /></div>
+                            <div><input type="text" /></div>
+                        </div>
                     </div>
                 </div>
             </div>

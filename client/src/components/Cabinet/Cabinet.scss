@@ -4,6 +4,7 @@
     }
     .cabinetall{
         .head{
+            margin-top: 5px;
             display: flex;
             justify-content: center;
         }
@@ -26,6 +27,35 @@
                     width: 15%;
                 }
                 .field{
+                    display: flex;
+                    flex-direction: column;
+                    width: 85%;
+                    input{
+                        margin-top: 5px;
+                        width: 200px;
+                        height: 30px;
+                    }
+                }
+            }
+            .headp{
+                h3{
+                    text-align: center;
+                }
+            }
+            .inputesp{
+                display: flex;
+                justify-content: center;
+                margin-left: 15px;
+                .namesp{
+                .columnp{
+                    margin-top: 10px;
+                    }
+                    font-size: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    width: 15%;
+                }
+                .fieldp{
                     display: flex;
                     flex-direction: column;
                     width: 85%;
