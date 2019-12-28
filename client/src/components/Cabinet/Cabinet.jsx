@@ -1,8 +1,8 @@
 import React from 'react';
 import Menu from '../Menu/index';
+import { MdMailOutline } from "react-icons/md";
+import { FaLock, FaUnlock } from "react-icons/fa";
 import './Cabinet.scss';
-
-
 
 
 const Cabinet = () =>{
@@ -19,10 +19,10 @@ const Cabinet = () =>{
                         </div>
                     <div className="inputes">
                     <div className="names">
-                        <div className="column">Mail:</div>
-                        <div className="column">New Password:</div>
-                        <div className="column">Confrim Password:</div>
-                        <div className="column">Old Password:</div>
+                        <div className="column"><MdMailOutline />Mail:</div>
+                        <div className="column"><FaLock />New Password:</div>
+                        <div className="column"><FaLock />Confrim Password:</div>
+                        <div className="column"><FaUnlock />Old Password:</div>
                     </div>
                     <div className="field">
                     <form>
