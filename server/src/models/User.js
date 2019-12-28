@@ -31,6 +31,13 @@ const userSchema = new Schema({
       date: Date,
     },
   ],
+  benefitHistory: [
+    {
+      wallet: String || Number,
+      amount: Number,
+      date: Date,
+    },
+  ],
 });
 
 const user = mongoose.model('User', userSchema);
