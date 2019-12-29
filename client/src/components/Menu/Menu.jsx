@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStateValue } from '../../context';
+import fetchApi from '../../utils/fetchApi';
 import { MdPerson, MdInput, MdClose } from "react-icons/md";
 import { GiPayMoney, GiReceiveMoney, GiTakeMyMoney } from "react-icons/gi";
 import { Link } from 'react-router-dom';
@@ -7,6 +8,16 @@ import './Menu.scss';
 
 const Menu = () =>{
     const [{ user, translate }, dispatch] = useStateValue();
+
+    const logout = () => e => {
+        window.localStorage.removeItem('user');
+        window.localStorage.removeItem('token');
+        fetchApi('/logout', { method: 'GET', credentials: 'include' }).then(res => {
+          if (!res.isLogged) {
+            window.open(`${window.location.origin}/`, '_self');
+          }
+        });
+      };
     return(
         <React.Fragment>
             <div className="menuall">
@@ -56,7 +67,7 @@ const Menu = () =>{
                       <MdInput />
                    </div>
                   <div className="infm">
-                  <Link to="/logout" href="/logout">
+                  <Link onClick={logout}>
                   выход
                    </Link>
                  </div>
