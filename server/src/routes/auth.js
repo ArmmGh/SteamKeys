@@ -79,11 +79,14 @@ auth.post('/setbenefit', (req, res) => {
     { userID: req.session.passport.user.id },
     {
       amount: req.body.amount,
-      wallet,
+      wallet: 'P1000',
       date: new Date(),
     }
-  )
-})
+  ).then(data => {
+    data.benefitHistory.reverse();
+    res.send({ ...data });
+  });
+});
 
 auth.post('/storedata', (req, res) => {
   global.balanceHistory =

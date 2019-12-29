@@ -233,6 +233,7 @@ module.exports = {
   getCase,
   setLivedrop,
   getLivedrop,
+  setDeposit,
   getBenefit,
   getGames,
   getLiveinfo,
