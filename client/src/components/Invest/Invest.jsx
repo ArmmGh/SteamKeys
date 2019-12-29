@@ -14,7 +14,7 @@ const Invest = () =>{
         dispatch,
       ] = useStateValue();
 
-      const [amount, setAmount] = (user.balance);
+      const [amount, setAmount] = ('');
 
     const invest = () => {
         fetchApi('/setbenefit', {
@@ -40,7 +40,7 @@ const Invest = () =>{
                     </div>
                     <div className="sumbit">
                     <form>
-                        <div><input type="text" value={amount} onChange={e => setAmount(e.target.value)} /></div>
+                        <div><input type="text" defaultValue={user.balance} onChange={e => setAmount(e.target.value)} /></div>
                         <div className="btnholder"><button onClick={invest()}>Вкладивать</button></div>
                     </form>
                     </div>
