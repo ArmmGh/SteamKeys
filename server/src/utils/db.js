@@ -102,6 +102,32 @@ const getLiveinfo = async () => {
   );
 };
 
+const setDeposit = () => 
+  new Promise((resolve, reject) =>{
+    User.findOne({ userID: user.userID }).then(res =>{
+      User.findOneAndUpdate(
+        {
+          userID: user.userID,
+        },
+        {
+        $set: {
+          benefitHistory: [
+            ...res.benefitHistory,
+            {
+              amount: data.amount,
+              wallet: data.wallet,
+              date: new Date(),
+            },
+          ],
+        },
+      },
+      {new: true},
+      (err,doc) => resolve(doc._doc || {}),
+      );
+    });
+  });
+
+
 const addBalance = (user, data) =>
   new Promise((resolve, reject) => {
     User.findOne({ userID: user.userID }).then(res => {
