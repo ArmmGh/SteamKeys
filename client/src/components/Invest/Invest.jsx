@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
 import Table from '../Table/index';
 import investlog from '../../assets/profile/invest.png';
