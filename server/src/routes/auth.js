@@ -79,7 +79,7 @@ auth.post('/setbenefit', (req, res) => {
     { userID: req.session.passport.user.id },
     {
       amount: req.body.amount,
-      wallet: 'P1200',
+      wallet,
       date: new Date(),
     }
   )

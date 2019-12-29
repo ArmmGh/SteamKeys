@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import Menu from '../Menu/index';
 import Table from '../Table/index';
-import invest from '../../assets/profile/invest.png';
+import investlog from '../../assets/profile/invest.png';
 import fetchApi from '../../utils/fetchApi';
 import './Invest.scss';
 import { useStateValue } from '../../context';
@@ -14,7 +14,7 @@ const Invest = () =>{
         dispatch,
       ] = useStateValue();
 
-      const [amount, setAmount] = ('');
+      const [amount, setAmount] = useState('');
 
     const invest = () => {
         fetchApi('/setbenefit', {
@@ -32,7 +32,7 @@ const Invest = () =>{
             <div className="investcontainer">
                 <div className="investall">
                     <div className="investlog">
-                        <img src={invest} alt="invest" />
+                        <img src={investlog} alt="invest" />
                     </div>
                     <div className="txt">
                         <p>Укажите сумму, которую хотите вкладивать</p>
