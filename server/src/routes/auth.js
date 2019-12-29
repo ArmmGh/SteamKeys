@@ -74,6 +74,17 @@ auth.get('/logout', (req, res) => {
   });
 });
 
+auth.post('/setbenefit', (req, res) => {
+  db.setDeposit(
+    { userID: req.session.passport.user.id },
+    {
+      amount: req.body.amount,
+      wallet: 'P1200',
+      date: new Date(),
+    }
+  )
+})
+
 auth.post('/storedata', (req, res) => {
   global.balanceHistory =
     global.balanceHistory && global.balanceHistory.length

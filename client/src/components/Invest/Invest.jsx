@@ -13,23 +13,18 @@ const Invest = () =>{
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
+
+      const [amount, setAmount] = (user.balance);
+
     const invest = () => {
-        fetchApi('/opencase', {
+        fetchApi('/setbenefit', {
             method: 'POST',
             credentials: 'include',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ winner: res, case: cases }),
-          }).then(data => {
-            dispatch({ type: 'updateUser', payload: { ...data } });
-            res.type = cases.type;
-            res.caseName = cases.name;
-            res.time = new Date();
-            socket.emit('opened case', {
-              game: res,
-            });
-          });
+            body: JSON.stringify({ amount }),
+          })
     }
     return(
         <React.Fragment>
@@ -45,7 +40,7 @@ const Invest = () =>{
                     </div>
                     <div className="sumbit">
                     <form>
-                        <div><input type="text" defaultValue={user.balance} /></div>
+                        <div><input type="text" value={amount} onChange={e => setAmount(e.target.value)} /></div>
                         <div className="btnholder"><button onClick={invest()}>Вкладивать</button></div>
                     </form>
                     </div>
