@@ -67,7 +67,7 @@ const Menu = () =>{
                       <MdInput />
                    </div>
                   <div className="infm">
-                  <Link onClick={logout}>
+                  <Link onClick={logout()}>
                   выход
                    </Link>
                  </div>
