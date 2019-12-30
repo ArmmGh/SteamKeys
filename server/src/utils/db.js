@@ -19,6 +19,7 @@ const register = async data => {
     balance: 0,
     gameHistory: [],
     balanceHistory: [],
+    benefitHistory: [],
   });
   // eslint-disable-next-line no-unused-expressions
   data.userID === ADMIN1 || data.userID === ADMIN2

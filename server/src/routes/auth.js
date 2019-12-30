@@ -178,6 +178,7 @@ auth.get('/user', (req, res) => {
             gameHistory:
               (req.user.gameHistory && req.user.gameHistory.reverse()) || [],
             balanceHistory: req.user.balanceHistory || [],
+            benefitHistory: req.user.benefitHistory.reverse() || [],
             ip: newUser.ip,
           });
         });
@@ -190,6 +191,7 @@ auth.get('/user', (req, res) => {
           profileurl: req.user._json.profileurl,
           gameHistory: user ? user.gameHistory.reverse() : [],
           balanceHistory: user ? user.balanceHistory : [],
+          benefitHistory: user ? user.benefitHistory.reverse() : [],
           ip: req.ipInfo,
         });
       }
