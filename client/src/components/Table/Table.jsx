@@ -95,7 +95,6 @@ const Cases = ({ history }) => {
 
   return (
     <div className="cases_holder">
-      <div class="mailru-login-button" data-ui="login_as userpic" data-type="login" style="width: 300px; height: 48px;"></div>
       <div className="main-width">
         <div className="addtable">
         {benefit && (
