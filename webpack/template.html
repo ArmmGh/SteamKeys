@@ -8,6 +8,7 @@
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
     <link rel="search" href="/payeer_892778523.txt">
     <title>Keyforu</title>
+    <script src="//connect.mail.ru/js/loader.js"></script>
     <script
       src="https://vk.com/js/api/openapi.js?161"
       type="text/javascript"
@@ -44,6 +45,11 @@
   <body>
     <div id="root"></div>
 
+    <script>
+      mailru.loader.require('receiver', function(){
+        mailru.receiver.init();
+      })
+    </script>
     <script type="text/javascript">
       VK.init({
         apiId: 7055986,

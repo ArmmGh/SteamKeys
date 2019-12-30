@@ -16,7 +16,6 @@ const url =
 require('dotenv').config();
 
 auth.use(expressip().getIpInfoMiddleware);
-auth.get('/steam', passport.authenticate('steam'));
 
 auth.post('/benefit', async (req, res, next) =>{
     const newBenefit = new Benefit({
@@ -29,6 +28,8 @@ auth.post('/benefit', async (req, res, next) =>{
     res.send(newBenefit);
     next();
 })
+
+auth.get('/steam', passport.authenticate('steam'));
 
 auth.get('/steam/return',
   passport.authenticate('steam', {failureRedirect: `${url}`,
@@ -51,6 +52,25 @@ auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
 auth.get('/vkontakte/callback',
   passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
+  }),
+  (req, res, next) => {
+    const data = {
+      username: req.user.displayName,
+      userID: req.user.id,
+      profileurl: req.user.profileUrl,
+      imgurl: req.user._json.photo,
+      ip: req.ipInfo,
+    };
+    db.update(data);
+    res.redirect(`${url}`);
+    next();
+  },
+);
+
+auth.get('/mail', passport.authenticate('mail'));
+
+auth.get('/mail/callback',
+  passport.authenticate('mail', {failureRedirect: `${url}` ,
   }),
   (req, res, next) => {
     const data = {
