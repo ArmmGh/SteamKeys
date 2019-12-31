@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStateValue } from '../../context';
+import queryString from 'query-string';
 import fetchApi from '../../utils/fetchApi';
 import { MdPerson, MdInput, MdClose } from "react-icons/md";
 import { GiPayMoney, GiReceiveMoney, GiTakeMyMoney } from "react-icons/gi";
@@ -9,6 +10,12 @@ import './Menu.scss';
 const Menu = () =>{
     const [{ user, translate }, dispatch] = useStateValue();
 
+
+    someFunction = () =>{
+      let params = queryString.parse(this.props.location.search)
+      console.log(params);
+    }
+  
     const logout = () => e => {
         window.localStorage.removeItem('user');
         window.localStorage.removeItem('token');
