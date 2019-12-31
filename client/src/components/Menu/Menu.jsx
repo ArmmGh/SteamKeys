@@ -11,10 +11,12 @@ const Menu = () =>{
     const [{ user, translate }, dispatch] = useStateValue();
 
 
-    someFunction = () =>{
+    const someFunction = () =>{
       let params = queryString.parse(this.props.location.search)
       console.log(params);
     }
+
+    console.log(someFunction);
   
     const logout = () => e => {
         window.localStorage.removeItem('user');
