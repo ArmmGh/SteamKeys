@@ -31,6 +31,14 @@ auth.post('/benefit', async (req, res, next) =>{
 
 auth.get('/steam', passport.authenticate('steam'));
 
+auth.get('/callback', (req,res) =>{
+  const data ={
+    param: req.params.code,
+    param2: req.query.code
+  }
+  res.send(data);
+})
+
 auth.get('/steam/return',
   passport.authenticate('steam', {failureRedirect: `${url}`,
   }),

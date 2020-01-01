@@ -11,13 +11,6 @@ import './Menu.scss';
 const Menu = () =>{
     const [{ user, translate }, dispatch] = useStateValue();
 
-
-    axios.post(`https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code=cef91c1f5f75708baad4aa1074544718bf5e336e37363830&redirect_uri=https://keyforu.net/callback&grant_type=authorization_code`).then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-      // let params = queryString.parse(this.props.location.search)
-
     const exp = window.location.search.split("=")[1];
     const exp2 = window.location.search.split("=");
 
