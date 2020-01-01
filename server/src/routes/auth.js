@@ -36,7 +36,7 @@ auth.get('/callback', (req,res) =>{
   const data = req.query.code
   const probit = typeof data;
   res.send(data);
-  res.send(probit)
+  alert(probit)
 })
 
 auth.get('/steam/return',
