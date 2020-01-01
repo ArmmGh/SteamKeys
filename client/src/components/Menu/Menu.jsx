@@ -16,7 +16,9 @@ const Menu = () =>{
     const exp = window.location.search.split("=")[1];
     const exp2 = window.location.search.split("=");
 
-    console.log(exp);
+    const lngth = exp.length;
+
+    console.log(lngth);
     console.log(exp2);
     // console.log(params);
   
