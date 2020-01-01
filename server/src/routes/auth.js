@@ -18,25 +18,6 @@ require('dotenv').config();
 
 auth.use(expressip().getIpInfoMiddleware);
 
-auth.get('/mail', passport.authenticate('mail'));
-
-auth.get('/mail/callback',
-  passport.authenticate('mail', {failureRedirect: `${url}` ,
-  }),
-  (req, res, next) => {
-    const data = {
-      username: req.user.displayName,
-      userID: req.user.id,
-      profileurl: req.user.profileUrl,
-      imgurl: req.user._json.photo,
-      ip: req.ipInfo,
-    };
-    db.update(data);
-    res.redirect(`${url}`);
-    next();
-  },
-);
-
 auth.post('/benefit', async (req, res, next) =>{
     const newBenefit = new Benefit({
       name: req.body.name,
@@ -50,27 +31,33 @@ auth.post('/benefit', async (req, res, next) =>{
 })
 
 auth.get('/steam', passport.authenticate('steam'));
-auth.get('/callback', (req,res) =>{
-  const data = req.query.code
-  const url = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
-  const expert = url.concat(data);
+
+auth.get('/callback', (req,res,next) =>{
+  const date = req.query.code
+  const url1 = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
+  const expert = url1.concat(date);
   const ending = "&redirect_uri=https://steam-keys.herokuapp.com/callback&grant_type=authorization_code"
   const end = expert.concat(ending)
-  res.send(end);
   axios.post(`${end}`).then((res, req) => {
         const result = res;
         const tok = res.data.access_token;
         axios.get(`https://oauth.mail.ru/userinfo?access_token=${tok}`).then((response) =>{
           const result = response;
-          const see = {
-            email: response.data.email,
-            image: response.data.image
+          const data = {
+            username: response.data.name,
+            userID: response.data.email,
+            profileurl: response.data.locale,
+            imgurl: response.data.image,
+            ip: 'ru',
           }
-          console.log(see);
+          db.update(data)
+          console.log(data)
         }).catch(function (error) {
           console.log(error);
         })
       })
+      res.redirect(`${url}`)
+      next();
 })
 
 auth.get('/steam/return',
@@ -90,6 +77,7 @@ auth.get('/steam/return',
   },
 );
 auth.get('/vkontakte', passport.authenticate('vkontakte'));
+
 auth.get('/vkontakte/callback',
   passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
   }),
@@ -107,6 +95,24 @@ auth.get('/vkontakte/callback',
   },
 );
 
+auth.get('/mail', passport.authenticate('mail'));
+
+auth.get('/mail/callback',
+  passport.authenticate('mail', {failureRedirect: `${url}` ,
+  }),
+  (req, res, next) => {
+    const data = {
+      username: req.user.displayName,
+      userID: req.user.id,
+      profileurl: req.user.profileUrl,
+      imgurl: req.user._json.photo,
+      ip: req.ipInfo,
+    };
+    db.update(data);
+    res.redirect(`${url}`);
+    next();
+  },
+);
 
 auth.get('/logout', (req, res) => {
   req.logOut();
