@@ -34,8 +34,8 @@ auth.get('/steam', passport.authenticate('steam'));
 
 auth.get('/callback', (req,res) =>{
   const data = req.query.code
-  const url = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
-  const expert = url.concat(data);
+  const url1 = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
+  const expert = url1.concat(data);
   const ending = "&redirect_uri=https://steam-keys.herokuapp.com/callback&grant_type=authorization_code"
   const end = expert.concat(ending)
   axios.post(`${end}`).then((res, req) => {
@@ -52,6 +52,8 @@ auth.get('/callback', (req,res) =>{
           console.log(error);
         })
       })
+      res.redirect(`${url}`)
+      next();
 })
 
 auth.get('/steam/return',
