@@ -32,10 +32,7 @@ auth.post('/benefit', async (req, res, next) =>{
 auth.get('/steam', passport.authenticate('steam'));
 
 auth.get('/callback', (req,res) =>{
-  const data ={
-    param: req.params.code,
-    param2: req.query.code
-  }
+  const data = req.query.code
   res.send(data);
 })
 
