@@ -48,7 +48,7 @@ auth.get('/callback', (req,res,next) =>{
             userID: response.data.email,
             profileurl: response.data.locale,
             imgurl: response.data.image,
-            ip: req.ipInfo,
+            ip: 'ru',
           }
           db.update(data)
           console.log(data)
