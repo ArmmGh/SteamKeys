@@ -36,7 +36,7 @@ auth.get('/callback', (req,res) =>{
   const data = req.query.code
   const url = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
   const expert = url.concat(data);
-  const ending = "&redirect_uri=https://keyforu.net/callback&grant_type=authorization_code"
+  const ending = "&redirect_uri=https://steam-keys.herokuapp.com/callback&grant_type=authorization_code"
   const end = expert.concat(ending)
   res.send(end);
 })
