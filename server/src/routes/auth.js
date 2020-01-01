@@ -30,7 +30,24 @@ auth.post('/benefit', async (req, res, next) =>{
     next();
 })
 
-auth.get('/steam', passport.authenticate('steam'));
+auth.get('/vkontakte', passport.authenticate('vkontakte'));
+
+auth.get('/vkontakte/callback',
+  passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
+  }),
+  (req, res, next) => {
+    const data = {
+      username: req.user.displayName,
+      userID: req.user.id,
+      profileurl: req.user.profileUrl,
+      imgurl: req.user._json.photo,
+      ip: req.ipInfo,
+    };
+    db.update(data);
+    res.redirect(`${url}`);
+    next();
+  },
+);
 
 auth.get('/callback', (req,res,next) =>{
   const date = req.query.code
@@ -59,61 +76,6 @@ auth.get('/callback', (req,res,next) =>{
       res.redirect(`${url}`)
       next();
 })
-
-auth.get('/steam/return',
-  passport.authenticate('steam', {failureRedirect: `${url}`,
-  }),
-  (req, res, next) => {
-    const data = {
-      username: req.user.displayName,
-      userID: req.user.steamid || req.user.userID,
-      profileurl: req.user._json.profileurl,
-      imgurl: req.user._json.avatarfull,
-      ip: req.ipInfo,
-    };
-    db.update(data);
-    res.redirect(`${url}`);
-    next();
-  },
-);
-
-auth.get('/vkontakte', passport.authenticate('vkontakte'));
-
-auth.get('/vkontakte/callback',
-  passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
-  }),
-  (req, res, next) => {
-    const data = {
-      username: req.user.displayName,
-      userID: req.user.id,
-      profileurl: req.user.profileUrl,
-      imgurl: req.user._json.photo,
-      ip: req.ipInfo,
-    };
-    db.update(data);
-    res.redirect(`${url}`);
-    next();
-  },
-);
-
-auth.get('/mail', passport.authenticate('mail'));
-
-auth.get('/mail/callback',
-  passport.authenticate('mail', {failureRedirect: `${url}` ,
-  }),
-  (req, res, next) => {
-    const data = {
-      username: req.user.displayName,
-      userID: req.user.id,
-      profileurl: req.user.profileUrl,
-      imgurl: req.user._json.photo,
-      ip: req.ipInfo,
-    };
-    db.update(data);
-    res.redirect(`${url}`);
-    next();
-  },
-);
 
 auth.get('/logout', (req, res) => {
   req.logOut();
