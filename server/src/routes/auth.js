@@ -1,5 +1,6 @@
 const Router = require('express-router');
 const db = require('../utils/db');
+const axios = require('axios');
 const jwt = require('../utils/token');
 const passport = require('passport');
 const Benefit = require('../models/Benefit');
@@ -33,7 +34,9 @@ auth.get('/steam', passport.authenticate('steam'));
 
 auth.get('/callback', (req,res) =>{
   const data = req.query.code
+  const probit = typeof data;
   res.send(data);
+  res.send(probit)
 })
 
 auth.get('/steam/return',
