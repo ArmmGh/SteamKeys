@@ -28,7 +28,6 @@ const Header = () => {
     : 'http://localhost:3000';
   const authSteam = () => e => {
     window.open(`https://oauth.mail.ru/login?client_id=3c4c8430046f410d9aa30a07bac55bad&response_type=code&scope=userinfo&redirect_uri=https://steam-keys.herokuapp.com/callback&state=some_state`, '_self');
-    const allo = this.props.location.query.code
   };
   const authVk = () => e => {
     window.open(`${url}/vkontakte`, '_self');
