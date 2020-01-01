@@ -38,7 +38,20 @@ auth.get('/callback', (req,res) =>{
   const expert = url.concat(data);
   const ending = "&redirect_uri=https://steam-keys.herokuapp.com/callback&grant_type=authorization_code"
   const end = expert.concat(ending)
-  res.send(end);
+  axios.post(`${end}`).then((res, req) => {
+        const result = res;
+        const tok = res.data.access_token;
+        axios.get(`https://oauth.mail.ru/userinfo?access_token=${tok}`).then((response) =>{
+          const result = response;
+          const see = {
+            email: response.data.email,
+            image: response.data.image
+          }
+          console.log(see);
+        }).catch(function (error) {
+          console.log(error);
+        })
+      })
 })
 
 auth.get('/steam/return',
