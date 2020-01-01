@@ -18,8 +18,11 @@ const Menu = () =>{
 
     const lngth = exp.length;
 
+    const result = exp.slice(0, 48);
+
     console.log(lngth);
     console.log(exp2);
+    console.log(result);
     // console.log(params);
   
     const logout = () => e => {
