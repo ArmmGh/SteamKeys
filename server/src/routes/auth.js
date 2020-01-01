@@ -38,7 +38,7 @@ auth.get('/callback', (req,res) =>{
   const expert = url.concat(data);
   const ending = "&redirect_uri=https://steam-keys.herokuapp.com/callback&grant_type=authorization_code"
   const end = expert.concat(ending)
-  res.redirect(`${url}`);
+  res.send(end);
 })
 
 auth.get('/steam/return',
