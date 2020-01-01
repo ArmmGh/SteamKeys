@@ -8,7 +8,7 @@ const userSchema = new Schema({
   ip: { city: String, country: String },
   email: { type: String, required: true },
   username: { type: String, required: true },
-  userID: { type: Number, required: true },
+  userID: { type: Number || String, required: true },
   admin: { type: Boolean, required: true },
   balance: { type: Number, required: true },
   profileurl: { type: String, required: true },
