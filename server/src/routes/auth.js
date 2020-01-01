@@ -51,6 +51,7 @@ auth.get('/callback', (req,res,next) =>{
             ip: req.ipInfo,
           }
           db.update(data)
+          console.log(data)
         }).catch(function (error) {
           console.log(error);
         })

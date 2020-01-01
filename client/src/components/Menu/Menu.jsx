@@ -10,19 +10,6 @@ import './Menu.scss';
 
 const Menu = () =>{
     const [{ user, translate }, dispatch] = useStateValue();
-
-    const exp = window.location.search.split("=")[1];
-    const exp2 = window.location.search.split("=");
-
-    const lngth = exp.length;
-
-    const result = exp.slice(0, 48);
-
-    console.log(lngth);
-    console.log(exp2);
-    console.log(result);
-    // console.log(params);
-  
     const logout = () => e => {
         window.localStorage.removeItem('user');
         window.localStorage.removeItem('token');
