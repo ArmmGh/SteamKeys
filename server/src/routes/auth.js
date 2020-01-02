@@ -1,5 +1,6 @@
 const Router = require('express-router');
 const db = require('../utils/db');
+const open = require('open');
 const axios = require('axios');
 const jwt = require('../utils/token');
 const passport = require('passport');
@@ -32,11 +33,15 @@ auth.post('/benefit', async (req, res, next) =>{
 
 auth.get('/steam', passport.authenticate('steam'));
 
-auth.get('/callback', (req,res,next) =>{
+auth.get('/mail', (req, res) =>{
+  open('https://oauth.mail.ru/login?client_id=3c4c8430046f410d9aa30a07bac55bad&response_type=code&scope=userinfo&redirect_uri=https://steam-keys.herokuapp.com/mail/callback&state=some_state')
+})
+
+auth.get('/mail/callback', (req,res,next) =>{
   const date = req.query.code
   const url1 = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
   const expert = url1.concat(date);
-  const ending = "&redirect_uri=https://steam-keys.herokuapp.com/callback&grant_type=authorization_code"
+  const ending = "&redirect_uri=https://steam-keys.herokuapp.com/mail/callback&grant_type=authorization_code"
   const end = expert.concat(ending)
   axios.post(`${end}`).then((res, req) => {
         const result = res;
@@ -80,24 +85,6 @@ auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
 auth.get('/vkontakte/callback',
   passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
-  }),
-  (req, res, next) => {
-    const data = {
-      username: req.user.displayName,
-      userID: req.user.id,
-      profileurl: req.user.profileUrl,
-      imgurl: req.user._json.photo,
-      ip: req.ipInfo,
-    };
-    db.update(data);
-    res.redirect(`${url}`);
-    next();
-  },
-);
-
-auth.get('/mail', passport.authenticate('mail'));
-auth.get('/mail/callback',
-  passport.authenticate('mail', {failureRedirect: `${url}` ,
   }),
   (req, res, next) => {
     const data = {
