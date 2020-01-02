@@ -56,9 +56,10 @@ auth.get('/mail/callback', (req,res,next) =>{
             imgurl: response.data.image,
             ip: 'ru',
           }
-          db.update(data)
-          mex()
           console.log(result);
+          db.update(data)
+          response.redirect(`${url}`)
+          next();
         }).catch(function (error) {
           console.log(error);
         })
