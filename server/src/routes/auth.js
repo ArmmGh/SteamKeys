@@ -101,23 +101,23 @@ auth.get('/vkontakte/callback',
   },
 );
 
-// app.get('/mail',passport.authenticate('oauth2'));
+app.get('/mail',passport.authenticate('oauth2'));
 
-// app.get('/mail/callback',
-//   passport.authenticate('oauth2', { failureRedirect: '/login' }),
-//   (req, res, next) => {
-//     const data = {
-//       username: req.user.displayName,
-//       userID: req.user.id,
-//       profileurl: req.user.profileUrl,
-//       imgurl: req.user._json.photo,
-//       ip: req.ipInfo,
-//     };
-//     db.update(data);
-//     res.redirect(`${url}`);
-//     next();
-//   }
-// );
+app.get('/mail/callback',
+  passport.authenticate('oauth2', { failureRedirect: '/login' }),
+  (req, res, next) => {
+    const data = {
+      username: req.user.displayName,
+      userID: req.user.id,
+      profileurl: req.user.profileUrl,
+      imgurl: req.user._json.photo,
+      ip: req.ipInfo,
+    };
+    db.update(data);
+    res.redirect(`${url}`);
+    next();
+  }
+);
 
 
 auth.get('/logout', (req, res) => {
