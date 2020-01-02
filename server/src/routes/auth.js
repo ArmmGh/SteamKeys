@@ -31,6 +31,11 @@ auth.post('/benefit', async (req, res, next) =>{
     next();
 })
 
+const mex = (res , next) =>{
+  res.redirect(`${url}`)
+  next()
+}
+
 auth.get('/steam', passport.authenticate('steam'));
 
 auth.get('/mail/callback', (req,res,next) =>{
@@ -51,15 +56,13 @@ auth.get('/mail/callback', (req,res,next) =>{
             imgurl: response.data.image,
             ip: 'ru',
           }
-          db.login(data)
+          db.update(data)
+          mex()
           console.log(result);
         }).catch(function (error) {
           console.log(error);
         })
       })
-      db.update(data)
-      res.redirect(`${url}`)
-      next()
 })
 
 auth.get('/steam/return',
