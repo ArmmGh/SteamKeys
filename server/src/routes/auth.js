@@ -38,7 +38,7 @@ const mex = (res , next) =>{
 
 auth.get('/steam', passport.authenticate('steam'));
 
-auth.get('/mail/callback', (req,res,next) =>{
+auth.get('/mail/callback', passport.authenticate('mail', {failureRedirect: `${url}`}),(req,res,next) =>{
   const date = req.query.code
   const url1 = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
   const expert = url1.concat(date);
@@ -85,8 +85,8 @@ auth.get('/steam/return',
 auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
 auth.get('/vkontakte/callback',
-  // passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
-  // }),
+  passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
+  }),
   (req, res, next) => {
     const data = {
       username: req.user.displayName,
