@@ -56,7 +56,7 @@ auth.get('/mail/callback', (req,res,next) =>{
             imgurl: response.data.image,
             ip: 'ru',
           }
-          console.log(result);
+          console.log(data)
           db.update(data)
         }).catch(function (error) {
           console.log(error);
@@ -85,8 +85,8 @@ auth.get('/steam/return',
 auth.get('/vkontakte', passport.authenticate('vkontakte'));
 
 auth.get('/vkontakte/callback',
-  passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
-  }),
+  // passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
+  // }),
   (req, res, next) => {
     const data = {
       username: req.user.displayName,
