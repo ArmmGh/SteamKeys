@@ -96,7 +96,6 @@ auth.get('/vkontakte/callback',
 );
 
 auth.get('/mail', passport.authenticate('mail'));
-
 auth.get('/mail/callback',
   passport.authenticate('mail', {failureRedirect: `${url}` ,
   }),
