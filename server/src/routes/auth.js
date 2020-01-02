@@ -88,11 +88,12 @@ auth.get('/vkontakte/callback',
   passport.authenticate('vkontakte', {failureRedirect: `${url}` ,
   }),
   (req, res, next) => {
+    console.log(res);
     const data = {
       username: req.user.displayName,
       userID: req.user.id,
       profileurl: req.user.profileUrl,
-      imgurl: req.user._json.photo,
+      imgurl: 'hay.png',
       ip: req.ipInfo,
     };
     db.update(data);
@@ -110,7 +111,7 @@ auth.get('/mail/callback',
       username: req.user.displayName,
       userID: req.user.id,
       profileurl: req.user.profileUrl,
-      imgurl: req.user._json.photo,
+      // imgurl: req.user._json.photo,
       ip: req.ipInfo,
     };
     db.update(data);
