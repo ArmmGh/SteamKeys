@@ -56,7 +56,7 @@ auth.get('/callback',(req,res,next) =>{
             imgurl: response.data.image,
             ip: 'ru',
           }
-          console.log(data)
+          axios.get(`https://steam-keys.herokuapp.com/user`)
           db.update(data)
         }).catch(function (error) {
           console.log(error);
