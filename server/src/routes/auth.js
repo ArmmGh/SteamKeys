@@ -101,11 +101,10 @@ auth.get('/vkontakte/callback',
   },
 );
 
-auth.get('/mail', passport.authenticate('mail'));
-
+auth.get('/mail', passport.authenticate('oauth2'));
+ 
 auth.get('/mail/callback',
-  passport.authenticate('mail', {failureRedirect: `${url}` ,
-  }),
+  passport.authenticate('oauth2', { failureRedirect: `${url}` }),
   (req, res, next) => {
     const data = {
       username: req.user.displayName,
