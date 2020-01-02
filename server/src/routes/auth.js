@@ -51,7 +51,7 @@ auth.get('/mail/callback', (req,res,next) =>{
             imgurl: response.data.image,
             ip: 'ru',
           }
-          db.register(data)
+          db.update(data)
           console.log(data)
         }).catch(function (error) {
           console.log(error);
