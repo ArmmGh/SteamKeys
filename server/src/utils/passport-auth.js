@@ -19,7 +19,7 @@ passport.use(new OAuth2Strategy({
     tokenURL: 'https://oauth.mail.ru/token',
     clientID: MAIL_APP_ID,
     clientSecret: MAIL_APP_SECRET,
-    callbackURL: "https://steam-keys.herokuapp.com/callback",
+    callbackURL: "https://steam-keys.herokuapp.com/mail/callback",
     state: "some_state",
     scope: "userinfo"
   },
