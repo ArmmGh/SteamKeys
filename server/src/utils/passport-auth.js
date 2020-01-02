@@ -23,7 +23,7 @@ passport.use(new OAuth2Strategy({
     state: "some_state",
     scope: "userinfo"
   },
-  function(accessToken, refreshToken, profile, cb) {
+  function(accessToken, refreshToken, profile, cb, done) {
     profile.email = profile.id;
       done(null, profile);
   }
