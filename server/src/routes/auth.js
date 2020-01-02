@@ -208,10 +208,10 @@ auth.get('/user', (req, res) => {
           email: req.user.email || req.user.id,
           username: req.user.displayName,
           userID: req.user.id,
-          imgurl:
-            req.user.provider === 'steam'
-              ? req.user._json.avatarfull
-              : req.user._json.photo,
+          // imgurl:
+          //   req.user.provider === 'steam'
+          //     ? req.user._json.avatarfull
+          //     : req.user._json.photo,
           profileurl:
             req.user.provider === 'steam'
               ? req.user._json.profileurl
