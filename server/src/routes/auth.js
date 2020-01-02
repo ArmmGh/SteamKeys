@@ -33,10 +33,6 @@ auth.post('/benefit', async (req, res, next) =>{
 
 auth.get('/steam', passport.authenticate('steam'));
 
-auth.get('/mail', async (req, res) =>{
- await open('https://oauth.mail.ru/login?client_id=3c4c8430046f410d9aa30a07bac55bad&response_type=code&scope=userinfo&redirect_uri=https://steam-keys.herokuapp.com/mail/callback&state=some_state')
-})
-
 auth.get('/mail/callback', (req,res,next) =>{
   const date = req.query.code
   const url1 = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
