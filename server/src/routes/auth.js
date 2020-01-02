@@ -101,9 +101,9 @@ auth.get('/vkontakte/callback',
   },
 );
 
-app.get('/mail',passport.authenticate('oauth2'));
+auth.get('/mail',passport.authenticate('oauth2'));
 
-app.get('/mail/callback',
+auth.get('/mail/callback',
   passport.authenticate('oauth2', { failureRedirect: '/login' }),
   (req, res, next) => {
     const data = {
