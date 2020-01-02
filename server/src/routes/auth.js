@@ -47,7 +47,7 @@ auth.get('/mail/callback', (req,res,next) =>{
   axios.post(`${end}`).then((res, req) => {
         const result = res;
         const tok = res.data.access_token;
-        axios.get(`https://oauth.mail.ru/userinfo?access_token=${tok}`).then((response, next) =>{
+        axios.get(`https://oauth.mail.ru/userinfo?access_token=${tok}`).then((response) =>{
           const result = response;
           const data = {
             username: response.data.name,
@@ -58,12 +58,12 @@ auth.get('/mail/callback', (req,res,next) =>{
           }
           console.log(result);
           db.update(data)
-          response.redirect(`${url}`)
-          next();
         }).catch(function (error) {
           console.log(error);
         })
       })
+      res.redirect(`${url}`)
+      next();
 })
 
 auth.get('/steam/return',
