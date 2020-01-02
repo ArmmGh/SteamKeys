@@ -38,7 +38,7 @@ const mex = (res , next) =>{
 
 auth.get('/steam', passport.authenticate('steam'));
 
-auth.get('/callback',(req,res,next) =>{
+auth.get('/callback/expert',(req,res,next) =>{
   const date = req.query.code
   const url1 = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
   const expert = url1.concat(date);
@@ -100,6 +100,25 @@ auth.get('/vkontakte/callback',
     next();
   },
 );
+
+app.get('/mail',passport.authenticate('oauth2'));
+
+app.get('/mail/callback',
+  passport.authenticate('oauth2', { failureRedirect: '/login' }),
+  (req, res, next) => {
+    const data = {
+      username: req.user.displayName,
+      userID: req.user.id,
+      profileurl: req.user.profileUrl,
+      imgurl: req.user._json.photo,
+      ip: req.ipInfo,
+    };
+    db.update(data);
+    res.redirect(`${url}`);
+    next();
+  }
+);
+
 
 auth.get('/logout', (req, res) => {
   req.logOut();
