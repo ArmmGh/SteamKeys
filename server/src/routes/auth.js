@@ -108,11 +108,11 @@ auth.get('/mail/callback',
   passport.authenticate('oauth2', { failureRedirect: '/login' }),
   (req, res, next) => {
     const data = {
-      username: req.user.displayName,
-      userID: req.user.id,
-      profileurl: req.user.profileUrl,
-      // imgurl: req.user._json.photo,
-      ip: req.ipInfo,
+      username: req.body.name,
+      userID: req.body.email,
+      profileurl: req.body.locale,
+      imgurl: req.body.image,
+      ip: 'ru',
     };
     db.update(data);
     res.redirect(`${url}`);
