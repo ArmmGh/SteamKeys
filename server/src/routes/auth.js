@@ -46,8 +46,8 @@ auth.get('/steam', passport.authenticate('steam'));
 // );
 
 auth.get('/mail' , (req, res)=>{
-  ( () => {
-    open('https://sindresorhus.com?code=11111');
+  ( async () => {
+    await open('https://sindresorhus.com');
 })();
 })
 
