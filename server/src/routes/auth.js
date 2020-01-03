@@ -1,6 +1,5 @@
 const Router = require('express-router');
 const db = require('../utils/db');
-const open = require('open');
 const axios = require('axios');
 const jwt = require('../utils/token');
 const passport = require('passport');
