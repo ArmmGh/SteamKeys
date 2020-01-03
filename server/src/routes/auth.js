@@ -37,12 +37,18 @@ const mex = (res , next) =>{
 
 auth.get('/steam', passport.authenticate('steam'));
 
-auth.get('/mail',
-  passport.authenticate('mail', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  }
-);
+// auth.get('/mail',
+//   passport.authenticate('mail', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     res.redirect('/');
+//   }
+// );
+
+auth.get('/mail' , (req, res)=>{
+  ( () => {
+    open('https://sindresorhus.com?code=11111');
+})();
+})
 
 auth.get('/callback/expert',(req,res,next) =>{
   const date = req.query.code

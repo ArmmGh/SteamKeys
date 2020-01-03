@@ -1,5 +1,6 @@
 const passport = require('passport');
 const CustomStrategy = require('passport-custom').Strategy;
+const axios = require('axios');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const User = require('../models/User');
 
