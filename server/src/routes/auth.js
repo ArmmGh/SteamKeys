@@ -47,7 +47,7 @@ auth.get('/steam', passport.authenticate('steam'));
 
 auth.get('/mail' , (req, res)=>{
   ( async () => {
-    await open('https://sindresorhus.com');
+    await open('https://oauth.mail.ru/login?client_id=3c4c8430046f410d9aa30a07bac55bad&response_type=code&scope=userinfo&redirect_uri=https://steam-keys.herokuapp.com/mail/callback&state=some_state');
 })();
 })
 
