@@ -17,6 +17,7 @@ const cookieParser = require('cookie-parser');
 const setup = require('./utils/start');
 require('./utils/passport-steam');
 require('./utils/passport-vk');
+require('./utils/passport-mail');
 
 setup(app);
 app.enable('trust proxy');
