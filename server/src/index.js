@@ -16,6 +16,7 @@ const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const setup = require('./utils/start');
 require('./utils/passport-auth');
+require('./utils/passport-email');
 require('./utils/passport-steam');
 require('./utils/passport-vk');
 

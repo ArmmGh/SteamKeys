@@ -93,7 +93,7 @@ auth.get('/vkontakte/callback',
       username: req.user.displayName,
       userID: req.user.id,
       profileurl: req.user.profileUrl,
-      imgurl: 'hay.png',
+      imgurl: req.user._json.photo,
       ip: req.ipInfo,
     };
     db.update(data);
@@ -102,9 +102,9 @@ auth.get('/vkontakte/callback',
   },
 );
 
-auth.get('/mail',passport.authenticate('oauth2'));
+auth.get('/mail/hero',passport.authenticate('oauth2'));
 
-auth.get('/mail/callback',
+auth.get('/mail/callback/hero',
   passport.authenticate('oauth2', { failureRedirect: '/login' }),
   (req, res, next) => {
     const data = {
@@ -120,6 +120,23 @@ auth.get('/mail/callback',
   }
 );
 
+auth.get('/mail',passport.authenticate('mailru'));
+
+auth.get('/mail/callback',
+  passport.authenticate('mailru', { failureRedirect: '/login' }),
+  (req, res, next) => {
+    const data = {
+      username: req.user.displayName,
+      userID: req.user.id,
+      profileurl: req.user.profileUrl,
+      imgurl: req.user._json.photo,
+      ip: req.ipInfo,
+    };
+    db.update(data);
+    res.redirect(`${url}`);
+    next();
+  }
+);
 
 auth.get('/logout', (req, res) => {
   req.logOut();
