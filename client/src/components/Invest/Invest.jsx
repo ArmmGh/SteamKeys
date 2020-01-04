@@ -16,6 +16,13 @@ const Invest = () =>{
 
       const [amount, setAmount] = useState('');
 
+      const handeleChange = val => {
+        if (val.match(/^[0-9]+$/)) {
+          setSum(val);
+        }
+      };
+    
+
     const invest = () => {
         fetchApi('/setbenefit', {
             method: 'POST',
@@ -40,7 +47,7 @@ const Invest = () =>{
                     </div>
                     <div className="sumbit">
                     <form>
-                        <div><input type="text" defaultValue={user.balance} onChange={e => setAmount(e.target.value)} /></div>
+                        <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
                         <div className="btnholder"><button onClick={invest()}>Вкладивать</button></div>
                     </form>
                     </div>
