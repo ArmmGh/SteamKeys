@@ -31,11 +31,6 @@ auth.post('/benefit', async (req, res, next) =>{
     next();
 })
 
-const mex = (res , next) =>{
-  res.redirect(`${url}`)
-  next()
-}
-
 auth.get('/steam', passport.authenticate('steam'));
 
 auth.get('/steam/return',

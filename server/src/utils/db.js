@@ -103,7 +103,7 @@ const getLiveinfo = async () => {
   );
 };
 
-const setDeposit = () => 
+const setDeposit = (user, data) => 
   new Promise((resolve, reject) =>{
     User.findOne({ userID: user.userID }).then(res =>{
       User.findOneAndUpdate(

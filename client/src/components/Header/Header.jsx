@@ -34,10 +34,6 @@ const Header = () => {
   const authVk = () => e => {
     window.open(`${url}/vkontakte`, '_self');
   };
-  
-  const authMail = () => e => {
-    window.open(`https://oauth.mail.ru/login?client_id=3c4c8430046f410d9aa30a07bac55bad&response_type=code&scope=userinfo&redirect_uri=https://steam-keys.herokuapp.com/mail/callback&state=some_state`, '_self');
-  };
 
   function importAll(r) {
     const images = {};
@@ -63,7 +59,7 @@ const Header = () => {
   const addBalance = () => e => {};
 
   const openModal = () => e => {
-    axios.get('https://steam-keys.herokuapp.com/addbalance').then(res => console.log(res));
+    fetchApi('/addbalance').then(res => console.log(res));
     setModal(true);
     setSum('');
   };
@@ -199,6 +195,9 @@ const Header = () => {
                     <FaVk />
                     {translate('login')} <span>vk</span>
                   </button>
+                  {/* <button className="auth" onClick={authMail()}>
+                    Mail
+                  </button> */}
                 </React.Fragment>
               )}
             </div>
