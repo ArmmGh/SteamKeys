@@ -112,6 +112,7 @@ const setDeposit = (user, data) =>
         },
         {
         $set: {
+          balance: res.balance - Number(data.amount),
           benefitHistory: [
             ...res.benefitHistory,
             {

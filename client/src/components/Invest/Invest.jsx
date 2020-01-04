@@ -25,7 +25,8 @@ const Invest = () =>{
 
     const invest = () => e => {
         if (amount !== ''){
-        fetchApi('/setbenefit', {
+            if(user.balance >= amount){
+            fetchApi('/setbenefit', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -33,6 +34,7 @@ const Invest = () =>{
             },
             body: JSON.stringify({ amount }),
           })
+            }
         }
     }
     return(
