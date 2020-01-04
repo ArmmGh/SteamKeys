@@ -58,7 +58,19 @@ const Invest = () =>{
                     <div className="tbleheader">
                         <h3>Вклады</h3>
                     </div>
-                    <Table />
+                    <div className="addtable">
+                {user.benefitHistory && (
+                    <table className="table" id="tbl">
+                    {user.benefitHistory.map((item, index) => (
+                        <tr className="item" key={index}>
+                    <td>{item.amount}</td>
+                    <td>{item.wallet}</td>
+                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
+                        </tr>
+                    ))}
+                    </table>
+                )}
+                    </div>
                 </div>
             </div>
         </React.Fragment>
