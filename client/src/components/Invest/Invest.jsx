@@ -24,6 +24,7 @@ const Invest = () =>{
     
 
     const invest = () => {
+        if (amount !== ''){
         fetchApi('/setbenefit', {
             method: 'POST',
             credentials: 'include',
@@ -32,6 +33,7 @@ const Invest = () =>{
             },
             body: JSON.stringify({ amount }),
           })
+        }
     }
     return(
         <React.Fragment>
