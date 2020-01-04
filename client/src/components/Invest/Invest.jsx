@@ -18,7 +18,7 @@ const Invest = () =>{
 
       const handeleChange = val => {
         if (val.match(/^[0-9]+$/)) {
-          setSum(val);
+          setAmount(val);
         }
       };
     
