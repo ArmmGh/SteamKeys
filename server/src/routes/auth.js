@@ -83,6 +83,7 @@ auth.post('/setbenefit', (req, res) => {
     {
       amount: req.body.amount,
       wallet: 'P1000',
+      action: 'waiting',
       date: new Date(),
     }
   ).then(data => {

@@ -16,6 +16,8 @@ const register = async data => {
     imgurl: data.imgurl,
     admin: false,
     profileurl: data.profileurl,
+    walletq: '',
+    walletp: '',
     balance: 0,
     gameHistory: [],
     balanceHistory: [],
