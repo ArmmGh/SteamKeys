@@ -23,7 +23,7 @@ const Invest = () =>{
       };
     
 
-    const invest = () => {
+    const invest = () => e => {
         if (amount !== ''){
         fetchApi('/setbenefit', {
             method: 'POST',
