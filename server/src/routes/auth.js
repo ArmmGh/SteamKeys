@@ -56,7 +56,11 @@ auth.get('/mail/callback',(req,res,next) =>{
           }
           console.log(data);
           db.update(data)
-          axios.get('https://steam-keys.herokuapp.com/user')
+          axios.get('https://steam-keys.herokuapp.com/user').then(() =>{
+            axios.post('https://steam-keys.herokuapp.com/login')
+          }).catch(() =>{
+            console.log(error);
+          })
         }).catch(function (error) {
           console.log(error);
         })
