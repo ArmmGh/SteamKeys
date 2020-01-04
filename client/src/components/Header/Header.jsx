@@ -73,12 +73,11 @@ const Header = () => {
       body: JSON.stringify({
         id: user.userID,
         sum,
-        pay_id: random,
+        pay_id: user.userID,
       }),
     });
   };
 
-    console.log(random);
   useEffect(() => {
     socket.on('aaa', data => console.log(data));
   }, []);
@@ -105,37 +104,10 @@ const Header = () => {
           <h1>Введите сумму</h1>
           <div className="inpHolder">
             <form action="https://any-pay.org/merchant" method="post">
-              <input
-                type="text"
-                className="input"
-                name="amount"
-                value={sum}
-                onChange={e => handeleChange(e.target.value)}
-              />
-              <input
-                className="hide"
-                type="text"
-                name="merchant_id"
-                defaultValue="4183"
-              />
-              <input
-                className="hide"
-                type="text"
-                name="pay_id"
-                defaultValue={random}
-              />
-              <input
-                className="hide"
-                type="text"
-                name="currency"
-                defaultValue="RUB"
-              />
-              <input
-                className="hide"
-                type="text"
-                name="desc"
-                defaultValue="Пополнение счёта"
-              />
+              <input type='hidden' name="merchant_id" defaultValue="4183" id="merchant_id" />
+              <input type='hidden' name="secret_key" defaultValue={process.env.api_key} id="secret_key" />
+              <input type='hidden' name="pay_id" defaultValue={user.userID} id="pay_id"/>'
+              <input type='text' name="amount" value={sum} onChange={e => handeleChange(e.target.value)} id="amount"/>
               <button onClick={storeData()} type="submit">
                 Пополнить
               </button>
