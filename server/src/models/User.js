@@ -12,8 +12,8 @@ const userSchema = new Schema({
   admin: { type: Boolean, required: true },
   balance: { type: Number, required: true },
   profileurl: { type: String, required: true },
-  walletq: { type: String || Number, required: true },
-  walletp: { type: String || Number, required: true },
+  walletq: { type: String || Number },
+  walletp: { type: String || Number },
   imgurl: { type: String },
   gameHistory: [
     {
