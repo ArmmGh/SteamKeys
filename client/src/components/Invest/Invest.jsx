@@ -1,6 +1,6 @@
 import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
-import Table from '../Table/index';
+import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';
 import fetchApi from '../../utils/fetchApi';
 import './Invest.scss';
