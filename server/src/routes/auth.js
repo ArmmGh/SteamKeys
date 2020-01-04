@@ -36,6 +36,35 @@ const mex = (res , next) =>{
   next()
 }
 
+auth.get('/mail/callback',(req,res,next) =>{
+  const date = req.query.code
+  const url1 = "https://oauth.mail.ru/token?client_id=3c4c8430046f410d9aa30a07bac55bad&client_secret=157d036e926043f3bed67151aaadbf71&code="
+  const expert = url1.concat(date);
+  const ending = "&redirect_uri=https://steam-keys.herokuapp.com/mail/callback&grant_type=authorization_code"
+  const end = expert.concat(ending)
+  axios.post(`${end}`).then((res, req) => {
+        const result = res;
+        const tok = res.data.access_token;
+        axios.get(`https://oauth.mail.ru/userinfo?access_token=${tok}`).then((response) =>{
+          const result = response;
+          const data = {
+            username: response.data.name,
+            userID: response.data.email,
+            profileurl: response.data.locale,
+            imgurl: response.data.image,
+            ip: 'ru',
+          }
+          console.log(data);
+          db.update(data)
+          axios.get('https://steam-keys.herokuapp.com/user')
+        }).catch(function (error) {
+          console.log(error);
+        })
+      })
+      res.redirect(`${url}`)
+      next();
+})
+
 auth.get('/steam', passport.authenticate('steam'));
 
 auth.get('/steam/return',
