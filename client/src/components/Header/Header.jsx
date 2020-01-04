@@ -32,9 +32,6 @@ const Header = () => {
   const authVk = () => e => {
     window.open(`${url}/vkontakte`, '_self');
   };
-  // const authMail = () =>{
-  //   window.open(`${url}/steam`, '_self')
-  // }
 
   function importAll(r) {
     const images = {};
