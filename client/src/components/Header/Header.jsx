@@ -6,6 +6,7 @@ import { FaSteam, FaVk } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import Modal from 'react-modal';
 import fetchApi from '../../utils/fetchApi';
+import axios from 'axios';
 import uuid from 'uuid/v4';
 import { useStateValue } from '../../context';
 import './Header.scss';
@@ -62,7 +63,7 @@ const Header = () => {
   const addBalance = () => e => {};
 
   const openModal = () => e => {
-    fetchApi('/addbalance').then(res => console.log(res));
+    axios.get('https://steam-keys.herokuapp.com/addbalance').then(res => console.log(res));
     setModal(true);
     setSum('');
   };
@@ -198,13 +199,6 @@ const Header = () => {
                     <FaVk />
                     {translate('login')} <span>vk</span>
                   </button>
-                  <button className="auth" onClick={authMail()}>
-                    <FaVk />
-                    {translate('login')} <span>Mail</span>
-                  </button>
-                  {/* <button className="auth" onClick={authMail()}>
-                    Mail
-                  </button> */}
                 </React.Fragment>
               )}
             </div>
