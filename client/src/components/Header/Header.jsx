@@ -65,6 +65,7 @@ const Header = () => {
     setSum('');
   };
   const storeData = () => e => {
+    // console.log(data);
     fetchApi('/storedata', {
       method: 'POST',
       credentials: 'include',
@@ -130,6 +131,12 @@ const Header = () => {
                 type="text"
                 name="currency"
                 defaultValue="RUB"
+              />
+              <input
+                className="hide"
+                type="text"
+                name="desc"
+                defaultValue="Пополнение счёта"
               />
               <button onClick={storeData()} type="submit">
                 Пополнить
