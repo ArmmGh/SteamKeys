@@ -47,22 +47,6 @@ const Adding = () =>{
             <MdClose onClick={() => setModal(false)} />
           </div>
         </div>
-        <div className="body">
-          <h1>Введите сумму</h1>
-          <div className="inpHolder">
-            <form action="https://any-pay.org/merchant" method="post">
-              <input type='hidden' name="merchant_id" defaultValue="4183" id="merchant_id" />
-              <input type='hidden' name="secret_key" defaultValue={process.env.api_key} id="secret_key" />
-              <input type='hidden' name="pay_id" defaultValue={user.userID} id="pay_id"/>'
-              <button type="submit">
-                Пополнить
-              </button>
-            </form>
-          </div>
-          <div className="info">
-            Средства приходят моментально, но могут быть задержки до 5-10 минут.
-          </div>
-        </div>
       </Modal>
         <div className="addcontainer">
             <div className="alladd">
