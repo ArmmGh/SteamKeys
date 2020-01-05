@@ -17,7 +17,7 @@ const Adding = () =>{
 
     const openModal = () => e => {
         setModal(true);
-        setSum('');
+        setAmount(100);
       };
 
       const alert = () => e =>{
@@ -54,7 +54,6 @@ const Adding = () =>{
               <input type='hidden' name="merchant_id" defaultValue="4183" id="merchant_id" />
               <input type='hidden' name="secret_key" defaultValue={process.env.api_key} id="secret_key" />
               <input type='hidden' name="pay_id" defaultValue={user.userID} id="pay_id"/>'
-              <input type='text' name="amount" value={sum} onChange={e => handeleChange(e.target.value)} id="amount"/>
               <button type="submit">
                 Пополнить
               </button>
