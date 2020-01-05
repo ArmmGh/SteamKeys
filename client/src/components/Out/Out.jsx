@@ -31,10 +31,8 @@ const Out = () =>{
                 <input type="text" defaultValue={user.balance}/>
             </div>
         <div className="imgholder">
-            <img src={log} alt="payeer" />
-            <img src={adv} alt="advacash" />
-            <img src={perf} alt="perfect" />
-            <img src={qiwi} alt="qiwi" />
+            <button><img src={log} alt="payeer" /></button>
+            <button><img src={qiwi} alt="qiwi" /></button>
         </div>
         </div>
         <div className="tabl">
