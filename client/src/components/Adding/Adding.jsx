@@ -11,6 +11,9 @@ import './Adding.scss';
 
 
 const Adding = () =>{    
+    const alert = () => e =>{
+        console.log("hello");
+    }
     const [
         { user }
       ] = useStateValue();
@@ -30,7 +33,7 @@ const Adding = () =>{
                 <input type="text" defaultValue={user.balance}/>
             </div>
         <div className="imgholder">
-            <img src={log} alt="payeer" />
+            <button onClick={alert()}><img src={log} alt="payeer" /></button>
             <img src={adv} alt="advacash" />
             <img src={perf} alt="perfect" />
             <img src={qiwi} alt="qiwi" />
