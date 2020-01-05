@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Menu from '../Menu/index';
 import Table from '../Table/index';
+import { MdClose } from 'react-icons/md';
 import log from '../../assets/profile/payeer-logo.png';
 import des from '../../assets/profile/money.png';
-import adv from '../../assets/profile/adv.png';
-import perf from '../../assets/profile/perfect.jpg';
-import qiwi from '../../assets/profile/qiwi.png';
 import { useStateValue } from '../../context';
 import './Adding.scss';
 
