@@ -47,6 +47,12 @@
             button{
                 height: 80px;
                 width: 110px;
+                border: 1px solid black;
+                img{
+                    border-bottom: 1px solid black;
+                    border-right: 1px solid black;
+                }
+
             }
         }
         }

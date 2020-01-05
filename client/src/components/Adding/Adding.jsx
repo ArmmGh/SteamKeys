@@ -34,9 +34,6 @@ const Adding = () =>{
             </div>
         <div className="imgholder">
             <button onClick={alert()}><img src={log} alt="payeer" /></button>
-            <img src={adv} alt="advacash" />
-            <img src={perf} alt="perfect" />
-            <img src={qiwi} alt="qiwi" />
         </div>
         </div>
         <div className="tabl">
