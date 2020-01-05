@@ -46,6 +46,14 @@ const Adding = () =>{
           <div className="close">
             <MdClose onClick={() => setModal(false)} />
           </div>
+          <div className="body">
+            <div className="checkpoint">
+            <p>Сумма к выплате: <span>{amount}</span></p>
+            <p>Система: <span>Payeer</span></p>
+            </div>
+          </div>
+          <div className="info">
+          </div>
         </div>
       </Modal>
         <div className="addcontainer">
