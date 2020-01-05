@@ -1,4 +1,7 @@
 .addcontainer{
+    button:focus{
+        outline: none;
+    }
     padding: 10px 0;
     input:focus{
         outline: none;
