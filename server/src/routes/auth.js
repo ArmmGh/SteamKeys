@@ -96,7 +96,7 @@ auth.post('/setwallet', (req, res) =>{
   db.setWallet(
     { userID: req.session.passport.user.id },
     {
-      amount: req.body.walletp,
+      walletp: req.body.walletp,
     }
   ).then(data => {
     res.send({ ...data });
