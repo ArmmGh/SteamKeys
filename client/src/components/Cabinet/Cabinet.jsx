@@ -10,6 +10,7 @@ import './Cabinet.scss';
 
 const Cabinet = () =>{
     const [disabled, setDisabled] = useState(false);
+    const [disabledq, setDisabledq] = useState(false);
     const [{ user, socket }, dispatch] = useStateValue();
     const [walletp, setWalletp] = useState(user.walletp);
     const [walletq, setWalletq] = useState(user.walletq);
@@ -37,9 +38,9 @@ const Cabinet = () =>{
 
     const disq = () => e => {
         if(user.walletq !== ''){
-            setDisabled(true);
+            setDisabledq(true);
         }else{
-            setDisabled(false)
+            setDisabledq(false)
         }
     }
 
@@ -73,7 +74,7 @@ const Cabinet = () =>{
                         </div>
                         <div className="qiwi">
                             <div className="center"><img src={q} alt="qiwi" /></div>
-                            <div className="metr"><input type="text" value={walletq} onChange={e => handeleChanger(e.target.value)} onClick={disq()} disabled={disabled} /></div>
+                            <div className="metr"><input type="text" value={walletq} onChange={e => handeleChanger(e.target.value)} onClick={disq()} disabled={disabledq} /></div>
                         </div>
                     </div>
                     <div className="save">
