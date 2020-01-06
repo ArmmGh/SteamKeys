@@ -9,6 +9,10 @@ import './Cabinet.scss';
 
 const Cabinet = () =>{
     const [{ user, socket }, dispatch] = useStateValue();
+
+    const hello = user.walletp;
+    console.log(hello);
+    
         return (
         <React.Fragment>
             <Menu />
