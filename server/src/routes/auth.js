@@ -92,6 +92,17 @@ auth.post('/setbenefit', (req, res) => {
   });
 });
 
+auth.post('/setwalllet', (req, res) =>{
+  db.setWallet(
+    { userID: req.session.passport.user.id },
+    {
+      amount: req.body.walletp,
+    }
+  ).then(data => {
+    res.send({ ...data });
+  });
+})
+
 auth.post('/storedata', (req, res) => {
   global.balanceHistory =
     global.balanceHistory && global.balanceHistory.length

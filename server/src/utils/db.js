@@ -131,6 +131,24 @@ const setDeposit = (user, data) =>
     });
   });
 
+  const setWallet = (user, data) => 
+  new Promise((resolve, reject) =>{
+    User.findOne({ userID: user.userID }).then(res =>{
+      User.findOneAndUpdate(
+        {
+          userID: user.userID,
+        },
+        {
+        $set: {
+          walletp: data.walletp,
+        },
+      },
+      {new: true},
+      (err,doc) => resolve(doc._doc || {}),
+      );
+    });
+  });
+
 
 const addBalance = (user, data) =>
   new Promise((resolve, reject) => {
@@ -238,6 +256,7 @@ module.exports = {
   setLivedrop,
   getLivedrop,
   setDeposit,
+  setWallet,
   getBenefit,
   getGames,
   getLiveinfo,
