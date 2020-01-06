@@ -8,11 +8,15 @@ import './Cabinet.scss';
 
 
 const Cabinet = () =>{
+    const [disabled, setDisabled] = useState(false);
     const [{ user, socket }, dispatch] = useStateValue();
 
-    const hello = user.walletp;
-    console.log(hello);
-    
+    const dis = () => {
+        if(user.walletp !== ''){
+            setDisabled(true);
+        }
+    }
+
         return (
         <React.Fragment>
             <Menu />
@@ -27,7 +31,7 @@ const Cabinet = () =>{
                     <div className="infs">
                         <div className="payeer">
                             <div className="center"><img src={p} alt="payeer" /></div>
-                            <div className="metr"><input type="text" value={user.walletp} /></div>
+                            <div className="metr"><input type="text" value={user.walletp} disabled={disabled} /></div>
                         </div>
                         <div className="qiwi">
                             <div className="center"><img src={q} alt="qiwi" /></div>
