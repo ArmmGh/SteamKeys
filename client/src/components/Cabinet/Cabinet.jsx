@@ -21,11 +21,11 @@ const Cabinet = () =>{
                     <div className="infs">
                         <div className="payeer">
                             <img src={p} alt="payeer" />
-                            <input type="text" value="hello" />
+                            <div className="metr"><input type="text" value="hello" /></div>
                         </div>
                         <div className="qiwi">
                             <img src={q} alt="payeer" />
-                            <input type="text" value="hello qiwi" />
+                            <div className="metr"><input type="text" value="hello" /></div>
                         </div>
                     </div>
                 </div>
