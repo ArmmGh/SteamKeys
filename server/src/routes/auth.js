@@ -92,7 +92,7 @@ auth.post('/setbenefit', (req, res) => {
   });
 });
 
-auth.post('/setwalllet', (req, res) =>{
+auth.post('/setwallet', (req, res) =>{
   db.setWallet(
     { userID: req.session.passport.user.id },
     {
