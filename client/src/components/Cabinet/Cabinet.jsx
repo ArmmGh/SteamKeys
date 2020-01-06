@@ -3,11 +3,13 @@ import Menu from '../Menu/index';
 import set from '../../assets/profile/settings.png';
 import p from '../../assets/profile/p.png';
 import q from '../../assets/profile/q.png';
+import { useStateValue } from '../../context';
 import './Cabinet.scss';
 
 
 const Cabinet = () =>{
-    return(
+    const [{ user, socket }, dispatch] = useStateValue();
+        return (
         <React.Fragment>
             <Menu />
             <div className="cabinetcontainer">
@@ -21,11 +23,11 @@ const Cabinet = () =>{
                     <div className="infs">
                         <div className="payeer">
                             <div className="center"><img src={p} alt="payeer" /></div>
-                            <div className="metr"><input type="text" value="hello" /></div>
+                            <div className="metr"><input type="text" value={user.walletp} /></div>
                         </div>
                         <div className="qiwi">
-                            <div className="center"><img src={q} alt="payeer" /></div>
-                            <div className="metr"><input type="text" value="hello" /></div>
+                            <div className="center"><img src={q} alt="qiwi" /></div>
+                            <div className="metr"><input type="text" value={user.walletq} /></div>
                         </div>
                     </div>
                     <div className="save">
