@@ -49,6 +49,7 @@ const Cabinet = () =>{
                     <div className="heading">
                         <h1>Платежные данные</h1>
                     </div>
+                    <form>
                     <div className="infs">
                         <div className="payeer">
                             <div className="center"><img src={p} alt="payeer" /></div>
@@ -62,6 +63,7 @@ const Cabinet = () =>{
                     <div className="save">
                         <button onClick={info()}>Сохранить</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </React.Fragment>
