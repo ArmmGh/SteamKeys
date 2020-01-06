@@ -20,13 +20,16 @@ const Cabinet = () =>{
                     </div>
                     <div className="infs">
                         <div className="payeer">
-                            <img src={p} alt="payeer" />
+                            <div className="center"><img src={p} alt="payeer" /></div>
                             <div className="metr"><input type="text" value="hello" /></div>
                         </div>
                         <div className="qiwi">
-                            <img src={q} alt="payeer" />
+                            <div className="center"><img src={q} alt="payeer" /></div>
                             <div className="metr"><input type="text" value="hello" /></div>
                         </div>
+                    </div>
+                    <div className="save">
+                        <button>Сохранить</button>
                     </div>
                 </div>
             </div>

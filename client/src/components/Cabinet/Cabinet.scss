@@ -23,6 +23,10 @@
             justify-content: space-around;
             align-items: baseline;
             .payeer, .qiwi{
+                .center{
+                    display: flex;
+                    justify-content: center;
+                }
                 img{
                     width: 44px;
                     height: 42px;
@@ -34,6 +38,11 @@
                     margin-bottom: 10px;
                 }
             }
+        }
+        .save{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
