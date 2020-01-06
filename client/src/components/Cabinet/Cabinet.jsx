@@ -12,6 +12,7 @@ const Cabinet = () =>{
     const [disabled, setDisabled] = useState(false);
     const [{ user, socket }, dispatch] = useStateValue();
     const [walletp, setWalletp] = useState(user.walletp);
+    const [walletq, setWalletq] = useState(user.walletq);
 
     const handeleChange = val => {
         if (val.match(/^[0-9]+$/)) {
@@ -19,8 +20,23 @@ const Cabinet = () =>{
         }
       };
 
+      const handeleChanger = val => {
+        if (val.match(/^[0-9]+$/)) {
+          setWalletq(val);
+        }
+      };
+
+
     const dis = () => e => {
         if(user.walletp !== ''){
+            setDisabled(true);
+        }else{
+            setDisabled(false)
+        }
+    }
+
+    const disq = () => e => {
+        if(user.walletq !== ''){
             setDisabled(true);
         }else{
             setDisabled(false)
@@ -34,7 +50,7 @@ const Cabinet = () =>{
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ walletp }),
+            body: JSON.stringify({ walletp, walletq }),
           })
     }
 
@@ -57,7 +73,7 @@ const Cabinet = () =>{
                         </div>
                         <div className="qiwi">
                             <div className="center"><img src={q} alt="qiwi" /></div>
-                            <div className="metr"><input type="text" value={user.walletq} /></div>
+                            <div className="metr"><input type="text" value={walletq} onChange={e => handeleChanger(e.target.value)} onClick={disq()} disabled={disabled} /></div>
                         </div>
                     </div>
                     <div className="save">
