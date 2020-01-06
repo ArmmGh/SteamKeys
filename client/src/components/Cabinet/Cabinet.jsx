@@ -1,8 +1,8 @@
 import React from 'react';
 import Menu from '../Menu/index';
-import sett from '../../assets/profile/sett.png';
-import { MdMailOutline } from "react-icons/md";
-import { FaLock, FaUnlock, FaCoins } from "react-icons/fa";
+import set from '../../assets/profile/settings.png';
+import p from '../../assets/profile/p.png';
+import q from '../../assets/profile/q.png';
 import './Cabinet.scss';
 
 
@@ -12,42 +12,20 @@ const Cabinet = () =>{
             <Menu />
             <div className="cabinetcontainer">
                 <div className="cabinetall">
-                <div className="investlog">
-                        <img src={sett} alt="settings" />
+                    <div className="backfone">
+                        <img src={set} alt="settings" />
                     </div>
-                    <div className="head">
-                        <h1>Личний Кабинет</h1>
+                    <div className="heading">
+                        <h1>Платежные данные</h1>
                     </div>
-                        <div className="formhead">
-                        <h3>Данные аккаунта</h3>
+                    <div className="infs">
+                        <div className="payeer">
+                            <img src={p} alt="payeer" />
+                            <input type="text" value="hello" />
                         </div>
-                    <div className="inputes">
-                    <div className="names">
-                        <div className="column"><MdMailOutline />Mail:</div>
-                        <div className="column"><FaLock />New Password:</div>
-                        <div className="column"><FaLock />Confrim Password:</div>
-                        <div className="column"><FaUnlock />Old Password:</div>
-                    </div>
-                    <div className="field">
-                    <form>
-                       <div><input type="text" /></div>
-                       <div><input type="text" /></div>
-                       <div><input type="text" /></div>
-                       <div><input type="text" /></div>
-                    </form>
-                    </div>
-                    </div>
-                    <div className="headp">
-                        <h3>Платежние Данные</h3>
-                    </div>
-                    <div className="inputesp">
-                        <div className="namesp">
-                            <div className="columnp"><FaCoins />Payeer</div>
-                            <div className="columnp"><FaCoins />Qiwi</div>
-                        </div>
-                        <div className="fieldp">
-                            <div><input type="text" /></div>
-                            <div><input type="text" /></div>
+                        <div className="qiwi">
+                            <img src={q} alt="payeer" />
+                            <input type="text" value="hello qiwi" />
                         </div>
                     </div>
                 </div>

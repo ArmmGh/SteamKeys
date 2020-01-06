@@ -4,7 +4,7 @@
         outline: none;
     }
     .cabinetall{
-        .investlog{
+        .backfone{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -13,68 +13,21 @@
                 width: 100px;
             }
         }
-        .head{
-            margin-top: 5px;
-            display: flex;
-            justify-content: center;
+        .heading{
+            h1{
+                text-align: center;
+            }
         }
-            .formhead{
-                h3{
-                    text-align: center;
+        .infs{
+            display: flex;
+            justify-content: space-around;
+            .payeer, .qiwi{
+                img{
+                    width: 25px;
+                    height: 20px;
                 }
+
             }
-            .inputes{
-                display: flex;
-                justify-content: center;
-                margin-left: 15px;
-                .names{
-                .column{
-                    margin-top: 10px;
-                    }
-                    font-size: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    width: 15%;
-                }
-                .field{
-                    display: flex;
-                    flex-direction: column;
-                    width: 85%;
-                    input{
-                        margin-top: 5px;
-                        width: 200px;
-                        height: 30px;
-                    }
-                }
-            }
-            .headp{
-                h3{
-                    text-align: center;
-                }
-            }
-            .inputesp{
-                display: flex;
-                justify-content: center;
-                margin-left: 15px;
-                .namesp{
-                .columnp{
-                    margin-top: 10px;
-                    }
-                    font-size: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    width: 15%;
-                }
-                .fieldp{
-                    display: flex;
-                    flex-direction: column;
-                    width: 85%;
-                    input{
-                        margin-top: 5px;
-                        width: 200px;
-                        height: 30px;
-                    }
-                }
-            }
+        }
     }
 }
