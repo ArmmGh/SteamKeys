@@ -11,9 +11,11 @@ const Cabinet = () =>{
     const [disabled, setDisabled] = useState(false);
     const [{ user, socket }, dispatch] = useStateValue();
 
-    const dis = () => {
+    const dis = () => e => {
         if(user.walletp !== ''){
             setDisabled(true);
+        }else{
+            setDisabled(false)
         }
     }
 
@@ -31,7 +33,7 @@ const Cabinet = () =>{
                     <div className="infs">
                         <div className="payeer">
                             <div className="center"><img src={p} alt="payeer" /></div>
-                            <div className="metr"><input type="text" value={user.walletp} disabled={disabled} /></div>
+                            <div className="metr"><input type="text" value={user.walletp} onClick={dis()} disabled={disabled}  /></div>
                         </div>
                         <div className="qiwi">
                             <div className="center"><img src={q} alt="qiwi" /></div>
