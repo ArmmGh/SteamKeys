@@ -70,7 +70,7 @@ const Invest = () =>{
                         <tr className="item" key={index}>
                     <td>{item.amount}</td>
                     <td>{item.wallet}</td>
-                    <td>{item.time}</td>
+                    <td>{item.time - new Date().getTime()}</td>
                     <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
                         </tr>
                     ))}
