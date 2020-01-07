@@ -141,6 +141,7 @@ const setDeposit = (user, data) =>
         {
         $set: {
           walletp: data.walletp,
+          walletq: data.walletq
         },
       },
       {new: true},
