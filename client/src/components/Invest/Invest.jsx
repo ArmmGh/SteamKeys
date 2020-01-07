@@ -13,7 +13,8 @@ const Invest = () =>{
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
-
+      
+      const [storage, setStorage] = useState(user.walletp)
       const [amount, setAmount] = useState('');
 
       const handeleChange = val => {
@@ -22,6 +23,12 @@ const Invest = () =>{
         }
       };
     
+      const hide = () => {
+          const get = storage.slice(0,4);
+          const charts = "*****" ; 
+         const cont = get.concat(charts);
+         setStorage(cont);
+      }
 
     const invest = () => e => {
         if (amount !== ''){
@@ -39,7 +46,7 @@ const Invest = () =>{
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ rub: amount, wallet: user.walletp }),
+            body: JSON.stringify({ rub: amount, wallet: storage }),
           }))
             }
         }
