@@ -120,6 +120,7 @@ const setDeposit = (user, data) =>
             {
               amount: data.amount,
               wallet: data.wallet,
+              time: data.time,
               date: new Date(),
             },
           ],

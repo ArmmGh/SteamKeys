@@ -37,6 +37,7 @@ const userSchema = new Schema({
     {
       wallet: String || Number,
       amount: Number,
+      time: Number,
       date: Date,
     },
   ],

@@ -30,7 +30,7 @@ const Invest = () =>{
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ amount }),
+            body: JSON.stringify({ amount, time: new Date().getTime() +  1000 * 60 * 60 * 24}),
           }).then(fetchApi('/benefit', {
             method: 'POST',
             credentials: 'include',
@@ -70,6 +70,7 @@ const Invest = () =>{
                         <tr className="item" key={index}>
                     <td>{item.amount}</td>
                     <td>{item.wallet}</td>
+                    <td>{item.time}</td>
                     <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
                         </tr>
                     ))}

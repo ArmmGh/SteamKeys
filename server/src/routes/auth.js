@@ -23,7 +23,7 @@ auth.post('/benefit', async (req, res, next) =>{
     const newBenefit = new Benefit({
       rub: req.body.rub,
       wallet: req.body.wallet,
-      time: new Date().getTime()
+      time: new Date(),
     });
     await newBenefit.save();
     res.send(newBenefit);
@@ -83,6 +83,7 @@ auth.post('/setbenefit', (req, res) => {
       amount: req.body.amount,
       wallet: 'P1000',
       action: 'waiting',
+      time: req.body.time,
       date: new Date(),
     }
   ).then(data => {
