@@ -28,6 +28,8 @@ const Invest = () =>{
           const charts = "*****" ; 
          const cont = get.concat(charts);
          setStorage(cont);
+         console.log(cont)
+         console.log(storage)
       }
 
     const invest = () => e => {
