@@ -5,7 +5,6 @@ mongoose.Promise = require('bluebird');
 const { Schema } = mongoose;
 
 const BenefitSchema = new Schema({
-      name: { type: String, required: true },
       rub: { type: Number, required: true },
       wallet: { type: String, required: true },
       time: {type: Date},
