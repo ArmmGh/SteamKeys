@@ -23,7 +23,7 @@ auth.post('/benefit', async (req, res, next) =>{
     const newBenefit = new Benefit({
       rub: req.body.rub,
       wallet: req.body.wallet,
-      time: new Date()
+      time: new Date().getTime()
     });
     await newBenefit.save();
     res.send(newBenefit);

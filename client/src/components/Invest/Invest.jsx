@@ -1,6 +1,5 @@
 import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
-import Timer from 'react-compound-timer';
 import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';
 import fetchApi from '../../utils/fetchApi';
@@ -14,9 +13,6 @@ const Invest = () =>{
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
-      
-      const [storage, setStorage] = useState(user.walletp)
-      const [amount, setAmount] = useState('');
 
       const handeleChange = val => {
         if (val.match(/^[0-9]+$/)) {
@@ -24,14 +20,7 @@ const Invest = () =>{
         }
       };
 
-
     const invest = () => e => {
-        const get = storage.slice(0,4);
-        const charts = "*****" ; 
-         const cont = get.concat(charts);
-         setStorage(cont);
-         console.log(cont)
-         console.log(storage)
         if (amount !== ''){
             if(user.balance >= amount){
             fetchApi('/setbenefit', {
@@ -47,7 +36,7 @@ const Invest = () =>{
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ rub: amount, wallet: storage }),
+            body: JSON.stringify({ rub: amount, wallet: user.walletp }),
           }))
             }
         }
@@ -80,21 +69,7 @@ const Invest = () =>{
                         <tr className="item" key={index}>
                     <td>{item.amount}</td>
                     <td>{item.wallet}</td>
-                    <td>
-                <Timer
-                initialTime={30000 * 60 * 48 + 5000}
-                lastUnit="h"
-                direction="backward"
-                >
-                {() => (
-                    <React.Fragment>
-                        <Timer.Hours />:
-                        <Timer.Minutes />:
-                        <Timer.Seconds />
-                    </React.Fragment>
-                )}
-            </Timer>
-                    </td>
+                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
                         </tr>
                     ))}
                     </table>
