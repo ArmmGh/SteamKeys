@@ -101,10 +101,9 @@ const Cases = ({ history }) => {
             <table className="table" id="tbl">
               {benefit.map((item, index) => (
                 <tr className="item" key={index}>
-              <td>{item.name}</td>
-              <td>{item.rub}</td>
               <td>{item.wallet}</td>
-              <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.time} /></td>
+              <td>{item.rub}</td>
+              <td><Moment format="HH:mm" date={item.time} /></td>
                 </tr>
               ))}
             </table>

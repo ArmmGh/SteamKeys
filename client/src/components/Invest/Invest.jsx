@@ -33,7 +33,14 @@ const Invest = () =>{
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ amount }),
-          })
+          }).then(fetchApi('/benefit', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ rub: amount, wallet: user.walletp }),
+          }))
             }
         }
     }
