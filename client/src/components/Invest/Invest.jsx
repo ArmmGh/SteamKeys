@@ -22,17 +22,15 @@ const Invest = () =>{
           setAmount(val);
         }
       };
-    
-      const hide = () => {
-          const get = storage.slice(0,4);
-          const charts = "*****" ; 
+
+
+    const invest = () => e => {
+        const get = storage.slice(0,4);
+        const charts = "*****" ; 
          const cont = get.concat(charts);
          setStorage(cont);
          console.log(cont)
          console.log(storage)
-      }
-
-    const invest = () => e => {
         if (amount !== ''){
             if(user.balance >= amount){
             fetchApi('/setbenefit', {
