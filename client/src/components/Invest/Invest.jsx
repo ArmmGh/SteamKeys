@@ -8,11 +8,12 @@ import { useStateValue } from '../../context';
 
 
 const Invest = () =>{
-
     const [
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
+      const [storage, setStorage] = useState(user.walletp)
+      const [amount, setAmount] = useState('');
 
       const handeleChange = val => {
         if (val.match(/^[0-9]+$/)) {
