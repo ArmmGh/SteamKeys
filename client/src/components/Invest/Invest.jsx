@@ -1,5 +1,6 @@
 import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
+import Timer from 'react-compound-timer';
 import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';
 import fetchApi from '../../utils/fetchApi';
@@ -79,7 +80,21 @@ const Invest = () =>{
                         <tr className="item" key={index}>
                     <td>{item.amount}</td>
                     <td>{item.wallet}</td>
-                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
+                    <td>
+                <Timer
+                initialTime={30000 * 60 * 48 + 5000}
+                lastUnit="h"
+                direction="backward"
+                >
+                {() => (
+                    <React.Fragment>
+                        <Timer.Hours />:
+                        <Timer.Minutes />:
+                        <Timer.Seconds />
+                    </React.Fragment>
+                )}
+            </Timer>
+                    </td>
                         </tr>
                     ))}
                     </table>
