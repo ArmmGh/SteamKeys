@@ -31,7 +31,7 @@ const Invest = () =>{
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ amount, time: new Date().getTime() +  1000 * 60 * 60 * 24}),
+            body: JSON.stringify({ amount}),
           }).then(fetchApi('/benefit', {
             method: 'POST',
             credentials: 'include',
