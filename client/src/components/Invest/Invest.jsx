@@ -89,7 +89,7 @@ const Invest = () =>{
                                             headers: {
                                               'Content-Type': 'application/json',
                                             },
-                                            body: JSON.stringify({ ...items }),
+                                            body: JSON.stringify({ ...items, amount: items.amount }),
                                           }).then(data => {
                                             dispatch({ type: 'updateUser', payload: { ...data } });
                                           });
