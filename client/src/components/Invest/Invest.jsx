@@ -67,10 +67,10 @@ const Invest = () =>{
                     <div className="addtable">
                 {user.benefitHistory && (
                     <table className="table" id="tbl">
-                    {user.benefitHistory.reverse().map((item, index) => (
+                    {user.benefitHistory.reverse().map((items, index) => (
                         <tr className="item" key={index}>
-                    <td>{item.amount}</td>
-                    <td>{item.wallet}</td>
+                    <td>{items.amount}</td>
+                    <td>{items.wallet}</td>
                     <td id="geting"><Timer
                             initialTime={10000}
                             direction="backward"
@@ -87,7 +87,7 @@ const Invest = () =>{
                                         const node = document.createElement('button');
                                         const textNode = document.createTextNode("Получить")
                                         node.appendChild(textNode);
-                                        document.querySelector('.item').appendChild(node).setAttribute('class', 'test');
+                                        document.querySelector('.items').appendChild(node).setAttribute('class', 'test');
                                     },
                                 }
                             ]}
@@ -96,7 +96,7 @@ const Invest = () =>{
                             <Timer.Minutes />:
                             <Timer.Seconds />
                         </Timer></td>
-                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
+                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={items.date} /></td>
                         </tr>
                     ))}
                     </table>
