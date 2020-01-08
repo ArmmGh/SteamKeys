@@ -71,8 +71,8 @@ const Invest = () =>{
                         <tr className="item" key={index}>
                     <td>{item.amount}</td>
                     <td>{item.wallet}</td>
-                    <td><Timer
-                            initialTime={item.time - new Date().getTime()}
+                    <td id="geting"><Timer
+                            initialTime={10000}
                             direction="backward"
                             checkpoints={[
                                 {
@@ -80,9 +80,14 @@ const Invest = () =>{
                                     callback: () => console.log('Checkpoint A'),
                                 },
                                 {
-                                    time: 1000,
+                                    time: 0,
                                     callback: () => {
-                                        console.log("hello")
+                                        const del = document.querySelector('#getting')
+                                        del.parentNode.removeChild(del)
+                                        const node = document.createElement('button');
+                                        const textNode = document.createTextNode("Получить")
+                                        node.appendChild(textNode);
+                                        document.querySelector('.item').appendChild(node).setAttribute('class', 'test');
                                     },
                                 }
                             ]}
