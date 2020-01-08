@@ -71,7 +71,8 @@ const Invest = () =>{
                         <tr className="items" key={index}>
                     <td>{items.amount}</td>
                     <td>{items.wallet}</td>
-                    <td id="geting"><Timer
+                    <td id="geting">
+                       <span id="change"><Timer
                             initialTime={10000}
                             direction="backward"
                             checkpoints={[
@@ -82,14 +83,14 @@ const Invest = () =>{
                                 {
                                     time: 0,
                                     callback: () => {
-                                        const del = document.querySelector('#geting')
-                                        del.parentNode.removeChild(del)
-                                        const row = document.createElement('td')
+                                        // const del = document.querySelector('#geting')
+                                        // del.parentNode.removeChild(del)
+                                        // const row = document.createElement('td')
                                         const node = document.createElement('button');
                                         const textNode = document.createTextNode("Получить")
                                         node.appendChild(textNode);
-                                        row.appendChild(node)
-                                        document.querySelector('.items').appendChild(row).setAttribute('class', 'test');
+                                        // row.appendChild(node)
+                                        document.querySelector('#change').replaceChild(node, Timer).setAttribute('class', 'test');
                                     },
                                 }
                             ]}
@@ -97,7 +98,7 @@ const Invest = () =>{
                             <Timer.Hours />:
                             <Timer.Minutes />:
                             <Timer.Seconds />
-                        </Timer></td>
+                        </Timer></span></td>
                     <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={items.date} /></td>
                         </tr>
                     ))}
