@@ -81,7 +81,6 @@ auth.post('/setbenefit', (req, res) => {
     { userID: req.session.passport.user.id },
     {
       amount: req.body.amount,
-      wallet: 'P1000',
       action: 'waiting',
       time: new Date().getTime() + 1000 * 60 * 60 * 24,
       date: new Date(),
@@ -102,6 +101,18 @@ auth.post('/setwallet', (req, res) =>{
   ).then(data => {
     res.send({ ...data });
   });
+})
+
+auth.post('/getmoney', (req,res) =>{
+  db.getMoney(
+    { userID: req.session.passport.user.id },
+    {
+      _id: req.body._id,
+      amount: req.body.amount
+    }
+  ).then(data => {
+    res.send({ ...data });
+  })
 })
 
 auth.post('/storedata', (req, res) => {

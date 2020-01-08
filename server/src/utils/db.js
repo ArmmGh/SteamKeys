@@ -119,7 +119,6 @@ const setDeposit = (user, data) =>
             ...res.benefitHistory,
             {
               amount: data.amount,
-              wallet: data.wallet,
               action: 'waiting',
               time: new Date().getTime() + 1000 * 60 * 60 * 24,
               date: new Date(),
@@ -209,8 +208,8 @@ const sellGame = (user, data) =>
         },
         {
           $set: {
-            balance: res.balance + data.sellPrice,
-            'benefitHistory.$.action': 'selled',
+            balance: res.balance + data.amount,
+            'benefitHistory.$.action': 'paid',
           },
         },
         { new: true },
@@ -281,6 +280,7 @@ module.exports = {
   setDeposit,
   setWallet,
   getBenefit,
+  getMoney,
   getGames,
   getLiveinfo,
   removeBalance,

@@ -35,7 +35,6 @@ const userSchema = new Schema({
   ],
   benefitHistory: [
     {
-      wallet: String || Number,
       amount: Number,
       action: String,
       time: Number,

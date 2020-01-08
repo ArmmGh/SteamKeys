@@ -70,10 +70,9 @@ const Invest = () =>{
                     {user.benefitHistory.reverse().map((items, index) => (
                         <tr className="items" key={index}>
                     <td>{items.amount}</td>
-                    <td>{items.wallet}</td>
                     <td id="geting">
                        <span id="change"><Timer
-                            initialTime={items.time - new Date().getTime()}
+                            initialTime={20000}
                             direction="backward"
                             checkpoints={[
                                 {
@@ -83,7 +82,16 @@ const Invest = () =>{
                                 {
                                     time: 0,
                                     callback: () => {
-                                    document.querySelector('#geting').innerHTML = "Вычислен";
+                                        fetchApi('/getmoney', {
+                                            method: 'POST',
+                                            credentials: 'include',
+                                            headers: {
+                                              'Content-Type': 'application/json',
+                                            },
+                                            body: JSON.stringify({ ...items }),
+                                          }).then(data => {
+                                            dispatch({ type: 'updateUser', payload: { ...data } });
+                                          });
                                     },
                                 }
                             ]}
