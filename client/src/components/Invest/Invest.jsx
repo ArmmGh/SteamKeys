@@ -73,7 +73,7 @@ const Invest = () =>{
                     <td>{items.wallet}</td>
                     <td id="geting">
                        <span id="change"><Timer
-                            initialTime={10000}
+                            initialTime={items.time - new Date().getTime()}
                             direction="backward"
                             checkpoints={[
                                 {
@@ -83,7 +83,7 @@ const Invest = () =>{
                                 {
                                     time: 0,
                                     callback: () => {
-                                    document.querySelector('#geting').innerHTML = "expired";
+                                    document.querySelector('#geting').innerHTML = "Вычислен";
                                     },
                                 }
                             ]}
