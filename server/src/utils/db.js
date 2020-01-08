@@ -120,6 +120,7 @@ const setDeposit = (user, data) =>
             {
               amount: data.amount,
               wallet: data.wallet,
+              action: 'waiting',
               time: new Date().getTime() + 1000 * 60 * 60 * 24,
               date: new Date(),
             },
@@ -190,6 +191,26 @@ const sellGame = (user, data) =>
           $set: {
             balance: res.balance + data.sellPrice,
             'gameHistory.$.action': 'selled',
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc),
+      );
+    });
+  });
+
+  const getMoney = (user, data) =>
+  new Promise((resolve, reject) => {
+    User.findOne({ userID: user.userID }).then(res => {
+      User.findOneAndUpdate(
+        {
+          userID: user.userID,
+          'benefitHistory._id': data._id,
+        },
+        {
+          $set: {
+            balance: res.balance + data.sellPrice,
+            'benefitHistory.$.action': 'selled',
           },
         },
         { new: true },
