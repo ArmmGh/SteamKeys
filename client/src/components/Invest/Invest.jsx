@@ -84,10 +84,12 @@ const Invest = () =>{
                                     callback: () => {
                                         const del = document.querySelector('#geting')
                                         del.parentNode.removeChild(del)
+                                        const row = document.createElement('td')
                                         const node = document.createElement('button');
                                         const textNode = document.createTextNode("Получить")
                                         node.appendChild(textNode);
-                                        document.querySelector('.items').appendChild(node).setAttribute('class', 'test');
+                                        row.appendChild(node)
+                                        document.querySelector('.items').appendChild(row).setAttribute('class', 'test');
                                     },
                                 }
                             ]}
