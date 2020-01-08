@@ -1,5 +1,6 @@
 import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
+import Timer from 'react-compound-timer';
 import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';
 import fetchApi from '../../utils/fetchApi';
@@ -70,7 +71,26 @@ const Invest = () =>{
                         <tr className="item" key={index}>
                     <td>{item.amount}</td>
                     <td>{item.wallet}</td>
-                    <td>{item.time - new Date().getTime()} /></td>
+                    <td><Timer
+                            initialTime={item.time - new Date().getTime()}
+                            direction="backward"
+                            checkpoints={[
+                                {
+                                    time: 60000 * 60 * 48,
+                                    callback: () => console.log('Checkpoint A'),
+                                },
+                                {
+                                    time: 1000,
+                                    callback: () => {
+                                        console.log("hello")
+                                    },
+                                }
+                            ]}
+                                >   
+                            <Timer.Hours />:
+                            <Timer.Minutes />:
+                            <Timer.Seconds />
+                        </Timer></td>
                     <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
                         </tr>
                     ))}
