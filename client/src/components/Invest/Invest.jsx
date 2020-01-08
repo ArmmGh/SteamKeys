@@ -68,7 +68,7 @@ const Invest = () =>{
                 {user.benefitHistory && (
                     <table className="table" id="tbl">
                     {user.benefitHistory.reverse().map((items, index) => (
-                        <tr className="item" key={index}>
+                        <tr className="items" key={index}>
                     <td>{items.amount}</td>
                     <td>{items.wallet}</td>
                     <td id="geting"><Timer
