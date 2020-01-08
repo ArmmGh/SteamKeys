@@ -83,14 +83,7 @@ const Invest = () =>{
                                 {
                                     time: 0,
                                     callback: () => {
-                                        // const del = document.querySelector('#geting')
-                                        // del.parentNode.removeChild(del)
-                                        // const row = document.createElement('td')
-                                        const node = document.createElement('button');
-                                        const textNode = document.createTextNode("Получить")
-                                        node.appendChild(textNode);
-                                        // row.appendChild(node)
-                                        document.querySelector('#change').replaceChild(node, Timer).setAttribute('class', 'test');
+                                    document.querySelector('#td').innerHTML = "expired";
                                     },
                                 }
                             ]}
