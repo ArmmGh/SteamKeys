@@ -82,7 +82,7 @@ const Invest = () =>{
                                 {
                                     time: 0,
                                     callback: () => {
-                                        const del = document.querySelector('#getting')
+                                        const del = document.querySelector('#geting')
                                         del.parentNode.removeChild(del)
                                         const node = document.createElement('button');
                                         const textNode = document.createTextNode("Получить")
