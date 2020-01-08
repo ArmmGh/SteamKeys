@@ -83,7 +83,7 @@ const Invest = () =>{
                                 {
                                     time: 0,
                                     callback: () => {
-                                    document.querySelector('#td').innerHTML = "expired";
+                                    document.querySelector('#geting').innerHTML = "expired";
                                     },
                                 }
                             ]}
