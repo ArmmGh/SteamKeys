@@ -71,7 +71,8 @@ const Invest = () =>{
                         <tr className="items" key={index}>
                     <td>{items.amount}</td>
                     <td id="geting">
-                       <span id="change"><Timer
+                        {items.action === 'waiting' ? (
+                            <Timer
                             initialTime={20000}
                             direction="backward"
                             checkpoints={[
@@ -99,7 +100,14 @@ const Invest = () =>{
                             <Timer.Hours />:
                             <Timer.Minutes />:
                             <Timer.Seconds />
-                        </Timer></span></td>
+                        </Timer>
+                        ) : items.action === 'paid' ? (
+                           <span>Выплачено</span>
+                        ) : (
+                            ''
+                        )
+                    }
+                    </td>
                     <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={items.date} /></td>
                         </tr>
                     ))}
