@@ -208,7 +208,7 @@ const sellGame = (user, data) =>
         },
         {
           $set: {
-            balance: res.balance + data.amount,
+            balance: res.balance + data.amount * 0.2,
             'benefitHistory.$.action': 'paid',
           },
         },
