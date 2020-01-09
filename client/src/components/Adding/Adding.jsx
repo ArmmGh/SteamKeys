@@ -14,9 +14,9 @@ const Adding = () =>{
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
     const [ { user } ] = useStateValue();
+    const [invoice, setInvoice] = Math.floor(Math.random() * 100)
 
     const openModal = () => e => {
-        localStorage.setItem('sum', amount);
         setModal(true);
       };
 
@@ -49,6 +49,7 @@ const Adding = () =>{
           <div className="body">
             <div className="checkpoint">
             <p>Сумма к выплате: <span>{amount}</span></p>
+            <p>Invoice code:</p> <span>{invoice}</span>
             <p>Система: <span>Payeer</span></p>
             </div>
           </div>

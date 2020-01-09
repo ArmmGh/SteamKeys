@@ -91,6 +91,35 @@ auth.post('/setbenefit', (req, res) => {
   });
 });
 
+auth.post('/setbenefit', (req, res) => {
+  db.investIn(
+    { userID: req.session.passport.user.id },
+    {
+      amount: req.body.amount,
+      action: 'waiting',
+      date: new Date(),
+    }
+  ).then(data => {
+    data.inHistory.reverse();
+    res.send({ ...data });
+  });
+});
+
+auth.post('/setbenefit', (req, res) => {
+  db.investIn(
+    { userID: req.session.passport.user.id },
+    {
+      amount: req.body.amount,
+      action: 'waiting',
+      wallet: req.body.wallet,
+      date: new Date(),
+    }
+  ).then(data => {
+    data.outHistory.reverse();
+    res.send({ ...data });
+  });
+});
+
 auth.post('/setwallet', (req, res) =>{
   db.setWallet(
     { userID: req.session.passport.user.id },

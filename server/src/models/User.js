@@ -41,6 +41,22 @@ const userSchema = new Schema({
       date: Date,
     },
   ],
+  inHistory: [
+    {
+      amount: Number,
+      invoice: Number,
+      action: String,
+      date: Date,
+    }
+  ],
+  outHistory: [
+    {
+      amount: Number,
+      action: String,
+      wallet: String || Number,
+      date: Date,
+    }
+  ]
 });
 
 const user = mongoose.model('User', userSchema);

@@ -178,6 +178,57 @@ const addBalance = (user, data) =>
     });
   });
 
+  const investIn = (user, data) =>
+  new Promise((resolve, reject) => {
+    User.findOne({ userID: user.userID }).then(res => {
+      User.findOneAndUpdate(
+        {
+          userID: user.userID,
+        },
+        {
+          $set: {
+            inHistory: [
+              ...res.inHistory,
+              {
+                amount: data.amount,
+                action: data.action,
+                date: new Date(),
+              },
+            ],
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc || {}),
+      );
+    });
+  });
+
+  const outIn = (user, data) =>
+  new Promise((resolve, reject) => {
+    User.findOne({ userID: user.userID }).then(res => {
+      User.findOneAndUpdate(
+        {
+          userID: user.userID,
+        },
+        {
+          $set: {
+            outHistory: [
+              ...res.inHistory,
+              {
+                amount: data.amount,
+                action: data.action,
+                wallet: data.wallet,
+                date: new Date(),
+              },
+            ],
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc || {}),
+      );
+    });
+  });
+
 const sellGame = (user, data) =>
   new Promise((resolve, reject) => {
     User.findOne({ userID: user.userID }).then(res => {
@@ -277,6 +328,8 @@ module.exports = {
   getCase,
   setLivedrop,
   getLivedrop,
+  investIn,
+  outIn,
   setDeposit,
   setWallet,
   getBenefit,
