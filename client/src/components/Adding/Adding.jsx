@@ -16,8 +16,8 @@ const Adding = () =>{
     const [ { user } ] = useStateValue();
 
     const openModal = () => e => {
+        localStorage.setItem('sum', amount);
         setModal(true);
-        setAmount(100);
       };
 
       const alert = () => e =>{
@@ -48,7 +48,7 @@ const Adding = () =>{
           </div>
           <div className="body">
             <div className="checkpoint">
-            <p>Сумма к выплате: <span>{amount}</span></p>
+            <p>Сумма к выплате: <span>{localStorage.getItem('sum')}</span></p>
             <p>Система: <span>Payeer</span></p>
             </div>
           </div>
