@@ -73,7 +73,7 @@ const Invest = () =>{
                     <td id="geting">
                         {items.action === 'waiting' ? (
                             <Timer
-                            initialTime={30000}
+                            initialTime={items.time - new Date().getTime()}
                             direction="backward"
                             checkpoints={[
                                 {
