@@ -14,7 +14,7 @@ const Adding = () =>{
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
     const [ { user } ] = useStateValue();
-    const [invoice, setInvoice] = Math.floor(Math.random() * 100)
+    const [invoice, setInvoice] = useState(Math.floor(Math.random() * 1000))
 
     const openModal = () => e => {
         setModal(true);
