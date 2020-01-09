@@ -48,7 +48,7 @@ const Adding = () =>{
           </div>
           <div className="body">
             <div className="checkpoint">
-            <p>Сумма к выплате: <span>{localStorage.getItem('sum')}</span></p>
+            <p>Сумма к выплате: <span>{amount}</span></p>
             <p>Система: <span>Payeer</span></p>
             </div>
           </div>
