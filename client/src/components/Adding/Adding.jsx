@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Menu from '../Menu/index';
-import Table from '../Table/index';
+import Moment from 'react-moment';
 import { MdClose } from 'react-icons/md';
 import log from '../../assets/profile/payeer-logo.png';
 import des from '../../assets/profile/money.png';
