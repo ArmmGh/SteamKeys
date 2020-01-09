@@ -191,6 +191,7 @@ const addBalance = (user, data) =>
               ...res.inHistory,
               {
                 amount: data.amount,
+                invoice: data.invoice,
                 action: data.action,
                 date: new Date(),
               },

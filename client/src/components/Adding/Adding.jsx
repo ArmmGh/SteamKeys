@@ -7,6 +7,7 @@ import log from '../../assets/profile/payeer-logo.png';
 import des from '../../assets/profile/money.png';
 import { useStateValue } from '../../context';
 import './Adding.scss';
+import fetchApi from '../../utils/fetchApi';
 
 
 const Adding = () =>{    
@@ -14,7 +15,21 @@ const Adding = () =>{
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
     const [ { user } ] = useStateValue();
-    const [invoice, setInvoice] = useState(Math.floor(Math.random() * 1000))
+    const [invoice, setInvoice] = useState(Math.floor(Math.random() * 1000));
+
+
+    const sendDate = () => e =>{
+      fetchApi('/investin', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ amount, invoice: invoice }),
+      }).then(data => {
+        dispatch({ type: 'updateUser', payload: { ...data } });
+      });
+    }
 
     const openModal = () => e => {
         setModal(true);
@@ -54,6 +69,7 @@ const Adding = () =>{
             </div>
           </div>
           <div className="info">
+            <button onClick={sendDate()}>fetch</button>
           </div>
         </div>
       </Modal>
@@ -78,7 +94,19 @@ const Adding = () =>{
             <div className="header">
                 <h3>История Пополнении</h3>
             </div>
-            <Table />
+            <div className="addtable">
+                {user.inHistory && (
+                    <table className="table" id="tbl">
+                    {user.inHistory.reverse().map((item, index) => (
+                        <tr className="items" key={index}>
+                    <td>{item.amount}</td>
+                    <td>{item.action}</td>
+                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
+                        </tr>
+                    ))}
+                    </table>
+                )}
+                    </div>
         </div>
             </div>
                 </div>

@@ -91,11 +91,12 @@ auth.post('/setbenefit', (req, res) => {
   });
 });
 
-auth.post('/setbenefit', (req, res) => {
+auth.post('/investin', (req, res) => {
   db.investIn(
     { userID: req.session.passport.user.id },
     {
       amount: req.body.amount,
+      invoice: req.body.invoice,
       action: 'waiting',
       date: new Date(),
     }
