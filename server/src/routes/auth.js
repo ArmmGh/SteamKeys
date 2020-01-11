@@ -107,7 +107,7 @@ auth.post('/investin', (req, res) => {
   }, function (error, response, body) {
     const hallo = JSON.parse(body);
     console.log('Response:', hallo);
-    if(params.infoInvoice == hallo.info.comment && params.infoSum == hallo.info.sumIn){
+    if(params.infoInvoice == hallo.info.comment && params.infoSum == hallo.info.sumOut){
       db.investIn(
         { userID: req.session.passport.user.id },
         {
