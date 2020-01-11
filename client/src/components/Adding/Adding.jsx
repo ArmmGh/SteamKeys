@@ -55,13 +55,15 @@ const Adding = () =>{
         className="Modal"
         overlayClassName="OverlayHeader"
       >
+          <div className="gener">
         <div className="header">
           <div />
           <h1>ПОПОЛНЕНИЕ БАЛАНСА</h1>
           <div className="close">
             <MdClose onClick={() => setModal(false)} />
           </div>
-          <div className="body">
+        </div>
+        <div className="body">
             <div className="checkpoint">
             <p>Сумма к выплате: <span>{amount}</span></p>
             <p>Invoice code:</p> <span>{invoice}</span>
@@ -71,7 +73,7 @@ const Adding = () =>{
           <div className="info">
             <button onClick={sendDate()}>fetch</button>
           </div>
-        </div>
+            </div>
       </Modal>
         <div className="addcontainer">
             <div className="alladd">

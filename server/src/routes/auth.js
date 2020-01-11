@@ -133,6 +133,10 @@ auth.post('/setwallet', (req, res) =>{
   });
 })
 
+// auth.post('/getpost', (req,res) =>{
+//   const infoId = req.body.infoId,
+// })
+
 auth.post('/getmoney', (req,res) =>{
   db.getMoney(
     { userID: req.session.passport.user.id },
