@@ -1,7 +1,7 @@
 const Router = require('express-router');
 const open = require('open');
 const db = require('../utils/db');
-const axios = require('axios');
+const request = require('request');
 const jwt = require('../utils/token');
 const passport = require('passport');
 const Benefit = require('../models/Benefit');
@@ -92,17 +92,37 @@ auth.post('/setbenefit', (req, res) => {
 });
 
 auth.post('/investin', (req, res) => {
-  db.investIn(
-    { userID: req.session.passport.user.id },
-    {
-      amount: req.body.amount,
-      invoice: req.body.invoice,
-      action: 'waiting',
-      date: new Date(),
+  const params = {
+    infoId: req.body.infoId,
+    infoSum: req.body.amount,
+    infoInvoice: req.body.invoice,
+  };
+  request({
+    method: 'POST',
+    url: 'https://payeer.com/ajax/api/api.php?historyInfo',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: `account=P61234106&apiId=892776478&apiPass=778899&action=historyInfo&historyId=${params.infoId}`
+  }, function (error, response, body) {
+    const hallo = JSON.parse(body);
+    console.log('Response:', hallo);
+    if(params.infoInvoice == hallo.info.comment && params.infoSum == hallo.info.sumIn){
+      db.investIn(
+        { userID: req.session.passport.user.id },
+        {
+          amount: req.body.amount,
+          invoice: req.body.invoice,
+          action: 'waiting',
+          date: new Date(),
+        }
+      ).then(data => {
+        data.inHistory.reverse();
+        res.send({ ...data });
+      });
+    }else{
+      console.log(error)
     }
-  ).then(data => {
-    data.inHistory.reverse();
-    res.send({ ...data });
   });
 });
 

@@ -12,6 +12,7 @@ import fetchApi from '../../utils/fetchApi';
 
 const Adding = () =>{    
     const [amount, setAmount] = useState(100);
+    const [infoId, setInfoid] = useState('');
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
     const [ { user } ] = useStateValue();
@@ -25,7 +26,7 @@ const Adding = () =>{
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amount, invoice: invoice }),
+        body: JSON.stringify({ amount, invoice: invoice, infoId: infoId }),
       }).then(data => {
         dispatch({ type: 'updateUser', payload: { ...data } });
       });
@@ -42,6 +43,11 @@ const Adding = () =>{
       const handeleChange = val => {
         if (val.match(/^[0-9]+$/)) {
           setAmount(val);
+        }
+      };
+      const handeleChanger = val => {
+        if (val.match(/^[0-9]+$/)) {
+          setInfoid(val);
         }
       };
     return(
@@ -68,6 +74,7 @@ const Adding = () =>{
             <p>Сумма к выплате: <span>{amount}</span></p>
             <p>Invoice code:</p> <span>{invoice}</span>
             <p>Система: <span>Payeer</span></p>
+            <input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} />
             </div>
           </div>
           <div className="info">
