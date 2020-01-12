@@ -13,6 +13,7 @@ const Invest = () =>{
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
+      const [disableButton, disableButtons] = useState(false);
       const [storage, setStorage] = useState(user.walletp)
       const [amount, setAmount] = useState('');
 
@@ -21,6 +22,21 @@ const Invest = () =>{
           setAmount(val);
         }
       };
+
+    const get = items => e => {
+        disableButtons(true);
+        fetchApi('/getmoney', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ...items, amount: items.amount }),
+            }).then(data => {
+                dispatch({ type: 'updateUser', payload: { ...data } });
+            })
+        disableButtons(false);
+    }
 
     const invest = () => e => {
         if (amount !== ''){
@@ -72,18 +88,7 @@ const Invest = () =>{
                     <td>{items.amount}</td>
                     <td id="geting">
                         {items.time <= new Date().getTime() && items.action === 'waiting' ? (
-                            <button onClick={
-                                fetchApi('/getmoney', {
-                                    method: 'POST',
-                                    credentials: 'include',
-                                    headers: {
-                                    'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({ ...items, amount: items.amount }),
-                                    }).then(data => {
-                                        dispatch({ type: 'updateUser', payload: { ...data } });
-                                       })
-                            }>Получить</button>
+                            <button onClick={get(items)}>Получить</button>
                         ) : items.action === 'waiting' ? (
                         <Timer
                            initialTime={items.time - new Date().getTime()}
