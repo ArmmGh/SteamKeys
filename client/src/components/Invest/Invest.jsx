@@ -34,8 +34,8 @@ const Invest = () =>{
             body: JSON.stringify({ ...items, amount: items.amount }),
             }).then(data => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
+                disableButtons(false);
             })
-        disableButtons(false);
     }
 
     const invest = () => e => {
@@ -83,7 +83,7 @@ const Invest = () =>{
                     <div className="addtable">
                 {user.benefitHistory && (
                     <table className="table" id="tbl">
-                    {user.benefitHistory.reverse().map((items, index) => (
+                    {user.benefitHistory.map((items, index) => (
                         <tr className="items" key={index}>
                     <td>{items.amount}</td>
                     <td id="geting">
