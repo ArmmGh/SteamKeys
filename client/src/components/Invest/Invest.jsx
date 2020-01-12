@@ -21,14 +21,14 @@ const Invest = () =>{
           setAmount(val);
         }
       };
-    const intime = () => e =>{
+    const intime = key => e =>{
         fetchApi('/getmoney', {
             method: 'POST',
             credentials: 'include',
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ ...items, amount: items.amount }),
+            body: JSON.stringify({ ...key, amount: items.amount }),
             }).then(data => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
                });
