@@ -21,7 +21,18 @@ const Invest = () =>{
           setAmount(val);
         }
       };
-
+    const intime = () => e =>{
+        fetchApi('/getmoney', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ...items, amount: items.amount }),
+            }).then(data => {
+                dispatch({ type: 'updateUser', payload: { ...data } });
+               });
+    }
     const invest = () => e => {
         if (amount !== ''){
             if(user.balance >= amount){
@@ -71,38 +82,19 @@ const Invest = () =>{
                         <tr className="items" key={index}>
                     <td>{items.amount}</td>
                     <td id="geting">
-                        {items.time <= new Date().getTime() ? (
-                            <span>Выплачено</span>
+                        {items.time <= new Date().getTime() && items.action === 'waiting' ? (
+                            <button onClick={intime}>Получить</button>
                         ) : items.action === 'waiting' ? (
                         <Timer
                            initialTime={items.time - new Date().getTime()}
                            direction="backward"
-                           checkpoints={[
-                               {
-                                   time: 60000 * 60 * 48,
-                                   callback: () => console.log('Checkpoint A'),
-                               },
-                               {
-                                   time: 0,
-                                   callback: () => {
-                                       fetchApi('/getmoney', {
-                                           method: 'POST',
-                                           credentials: 'include',
-                                           headers: {
-                                             'Content-Type': 'application/json',
-                                           },
-                                           body: JSON.stringify({ ...items, amount: items.amount }),
-                                         }).then(data => {
-                                           dispatch({ type: 'updateUser', payload: { ...data } });
-                                         });
-                                   },
-                               }
-                           ]}
-                               >   
+                        >   
                            <Timer.Hours />:
                            <Timer.Minutes />:
                            <Timer.Seconds />
                        </Timer>
+                        ) : items.action === 'paid' ? (
+                            <span>Выплачено</span>
                         ) : (
                             ''
                         )
