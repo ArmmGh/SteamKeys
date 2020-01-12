@@ -120,7 +120,7 @@ const setDeposit = (user, data) =>
             {
               amount: data.amount,
               action: 'waiting',
-              time: new Date().getTime() + 1000 * 60 * 60 * 24,
+              time: new Date().getTime() + 10000,
               date: new Date(),
             },
           ],

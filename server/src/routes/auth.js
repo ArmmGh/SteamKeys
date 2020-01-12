@@ -82,7 +82,7 @@ auth.post('/setbenefit', (req, res) => {
     {
       amount: req.body.amount,
       action: 'waiting',
-      time: new Date().getTime() + 1000 * 60 * 60 * 24,
+      time: new Date().getTime() + 10000,
       date: new Date(),
     }
   ).then(data => {
@@ -91,7 +91,7 @@ auth.post('/setbenefit', (req, res) => {
   });
 });
 
-auth.post('/investin', (req, res) => {
+auth.post('/investin', (req, res, next) => {
   const params = {
     infoId: req.body.infoId,
     infoSum: req.body.amount,
@@ -119,6 +119,8 @@ auth.post('/investin', (req, res) => {
       ).then(data => {
         data.inHistory.reverse();
         res.send({ ...data });
+        res.redirect(`${url}/adding`)
+        next()
       });
     }else{
       console.log(error)
