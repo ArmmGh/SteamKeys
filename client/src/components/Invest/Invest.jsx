@@ -88,7 +88,9 @@ const Invest = () =>{
                     <td>{items.amount}</td>
                     <td id="geting">
                         {items.time <= new Date().getTime() && items.action === 'waiting' ? (
-                            <button onClick={get(items)}>Получить</button>
+                            <button 
+                            disabled={disableButton}
+                            onClick={get(items)}>Получить</button>
                         ) : items.action === 'waiting' ? (
                         <Timer
                            initialTime={items.time - new Date().getTime()}
