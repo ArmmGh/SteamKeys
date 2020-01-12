@@ -119,12 +119,12 @@ auth.post('/investin', (req, res, next) => {
       ).then(data => {
         data.inHistory.reverse();
         res.send({ ...data });
-        res.redirect(`${url}/adding`)
-        next()
       });
     }else{
       console.log(error)
     }
+    res.redirect(`${url}/adding`)
+    next()
   });
 });
 
@@ -309,6 +309,7 @@ auth.post('/login', (req, res) => {
       }
       // Old User
       user.gameHistory.reverse();
+      user.benefitHistory.reverse();
       const userToken = jwt({ user });
       res.send({ user: userToken, token, newUser: false, isLogged: true });
       return false;
