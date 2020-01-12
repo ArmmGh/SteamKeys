@@ -101,7 +101,7 @@ const Invest = () =>{
                             <Timer.Minutes />:
                             <Timer.Seconds />
                         </Timer>
-                        ) : items.action === 'paid' ? (
+                        ) : items.time <= new Date().getTime() ? (
                            <span>Выплачено</span>
                         ) : (
                             ''

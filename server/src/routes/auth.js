@@ -309,7 +309,6 @@ auth.post('/login', (req, res) => {
       }
       // Old User
       user.gameHistory.reverse();
-      user.benefitHistory.reverse();
       const userToken = jwt({ user });
       res.send({ user: userToken, token, newUser: false, isLogged: true });
       return false;
