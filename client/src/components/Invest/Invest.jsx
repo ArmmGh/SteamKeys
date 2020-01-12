@@ -21,18 +21,7 @@ const Invest = () =>{
           setAmount(val);
         }
       };
-    const intime = key => e =>{
-        fetchApi('/getmoney', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ ...key, amount: items.amount }),
-            }).then(data => {
-                dispatch({ type: 'updateUser', payload: { ...data } });
-               });
-    }
+
     const invest = () => e => {
         if (amount !== ''){
             if(user.balance >= amount){
@@ -83,7 +72,18 @@ const Invest = () =>{
                     <td>{items.amount}</td>
                     <td id="geting">
                         {items.time <= new Date().getTime() && items.action === 'waiting' ? (
-                            <button onClick={intime()}>Получить</button>
+                            <button onClick={
+                                fetchApi('/getmoney', {
+                                    method: 'POST',
+                                    credentials: 'include',
+                                    headers: {
+                                    'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ ...items, amount: items.amount }),
+                                    }).then(data => {
+                                        dispatch({ type: 'updateUser', payload: { ...data } });
+                                       })
+                            }>Получить</button>
                         ) : items.action === 'waiting' ? (
                         <Timer
                            initialTime={items.time - new Date().getTime()}
