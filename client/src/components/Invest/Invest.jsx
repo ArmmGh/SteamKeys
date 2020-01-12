@@ -87,21 +87,21 @@ const Invest = () =>{
                         <tr className="items" key={index}>
                     <td>{items.amount}</td>
                     <td id="geting">
-                        {items.time <= new Date().getTime() && items.action === 'waiting' ? (
+                        {items.action === 'paid' ? (
+                            <span>Выплачено</span>
+                        ) : items.time <= new Date().getTime() && items.action === 'waiting' ? (
                             <button 
                             disabled={disableButton}
                             onClick={get(items)}>Получить</button>
                         ) : items.action === 'waiting' ? (
-                        <Timer
-                           initialTime={items.time - new Date().getTime()}
-                           direction="backward"
-                        >   
-                           <Timer.Hours />:
-                           <Timer.Minutes />:
-                           <Timer.Seconds />
-                       </Timer>
-                        ) : items.action === 'paid' ? (
-                            <span>Выплачено</span>
+                            <Timer
+                            initialTime={items.time - new Date().getTime()}
+                            direction="backward"
+                         >   
+                            <Timer.Hours />:
+                            <Timer.Minutes />:
+                            <Timer.Seconds />
+                        </Timer>
                         ) : (
                             ''
                         )
