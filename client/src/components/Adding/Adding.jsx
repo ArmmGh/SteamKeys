@@ -32,6 +32,13 @@ const Adding = () =>{
         dispatch({ type: 'updateUser', payload: { ...data } });
       });
     }
+    const opn = () => e =>{
+      window.open("https://payeer.com/ru/account/history/", '_self')
+    }
+
+    const opnI = () => e =>{
+      window.open("https://payeer.com/ru/account/send/", '_self')
+    }
 
     const openModal = () => e => {
         setModal(true);
@@ -74,13 +81,13 @@ const Adding = () =>{
             <div className="checkpoint">
               <ul>
                 <h3>Действие в Payeer</h3>
-                <li>Перейдите на эту <Link href="https://payeer.com/ru/account/send/">страницу</Link></li>
+                <li>Перейдите на эту <Link onClick={opnI()}>страницу</Link></li>
                 <li>В поле <span className="underline">Номер счета, e-mail или телефон</span> заполнитье: <span className="inform">P61234106</span></li>
                 <li>В поле <span className="underline">Комментарий</span> заполнитье: <span className="inform">{invoice}</span></li>
                 <li>В поле <span className="underline">Сумма</span> заполнитье: <span className="inform">{amount}</span></li>
                 <li>Нажать <span className="underline">Перевести</span></li>
                 <h3>Действие в нашем сайте</h3>
-                <li>Перейдите на эту <Link href="https://payeer.com/ru/account/history/">страницу</Link> </li>
+                <li>Перейдите на эту <Link onClick={opn()}>страницу</Link> </li>
                 <li>Скопировать и вставить в нижнем форме <span className="underline">ID ТРАНЗАКЦИИ</span></li>
                 <li>Нажать <span className="underline">Проверить</span></li>
               </ul>
