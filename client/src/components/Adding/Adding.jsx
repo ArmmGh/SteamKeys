@@ -15,6 +15,7 @@ const Adding = () =>{
     const [amount, setAmount] = useState(100);
     const [infoId, setInfoid] = useState('');
     const [disableButton, disableButtons] = useState(false);
+    const [brainact, setBrainAct] = useState('')
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
     const [ { user } ] = useStateValue();
@@ -45,12 +46,13 @@ const Adding = () =>{
       };
 
       const hisopenModal = item => e => {
+        setBrainAct(item);
         setModal(true);
         setInvoice(item.invoice);
         setAmount(item.amount)
       };
 
-      const brain = () => e =>{
+      const brain = brainact => e =>{
         disableButtons(true);
         fetchApi('/check', {
           method: 'POST',
@@ -58,7 +60,7 @@ const Adding = () =>{
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ amount, invoice: invoice, infoId: infoId}),
+          body: JSON.stringify({ amount, invoice: invoice, infoId: infoId, ...brainact}),
         }).then(data => {
           dispatch({ type: 'updateUser', payload: { ...data } });
           disableButtons(false);
