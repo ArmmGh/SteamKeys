@@ -33,11 +33,11 @@ const Adding = () =>{
       });
     }
     const opn = () => e =>{
-      window.open("https://payeer.com/ru/account/history/", '_self')
+      window.open("https://payeer.com/ru/account/history/", '_blank')
     }
 
     const opnI = () => e =>{
-      window.open("https://payeer.com/ru/account/send/", '_self')
+      window.open("https://payeer.com/ru/account/send/", '_blank')
     }
 
     const openModal = () => e => {
@@ -92,10 +92,10 @@ const Adding = () =>{
                 <li>Нажать <span className="underline">Проверить</span></li>
               </ul>
             </div>
-          <div className="info">
+          <div className="informik">
             <form>
-            <input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} />
-            <button onClick={sendDate()}>Проверить</button>
+            <div className="formik"><input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} /></div>
+            <div className="formik"><button onClick={sendDate()}>Проверить</button></div>
             </form>
           </div>
             </div>
