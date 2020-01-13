@@ -91,6 +91,40 @@ auth.post('/setbenefit', (req, res) => {
   });
 });
 
+auth.post('/check', (req, res, next) => {
+  const params = {
+    infoId: req.body.infoId,
+    infoSum: req.body.amount,
+    infoInvoice: req.body.invoice,
+  };
+  request({
+    method: 'POST',
+    url: 'https://payeer.com/ajax/api/api.php?historyInfo',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: `account=P61234106&apiId=892776478&apiPass=778899&action=historyInfo&historyId=${params.infoId}`
+  }, function (error, response, body) {
+    const hallo = JSON.parse(body);
+    console.log('Response:', hallo);
+    if(params.infoInvoice == hallo.info.comment && params.infoSum == hallo.info.sumOut){
+      db.takeIn(
+        { userID: req.session.passport.user.id },
+        {
+          action: 'sent',
+          date: new Date(),
+        }
+      ).then(data => {
+        data.inHistory.reverse();
+        res.send({ ...data });
+      });
+    }else{
+      console.log(error)
+    }
+  });
+});
+
+
 auth.post('/investin', (req, res, next) => {
       db.investIn(
         { userID: req.session.passport.user.id },

@@ -50,6 +50,21 @@ const Adding = () =>{
         setAmount(item.amount)
       };
 
+      const brain = item => e =>{
+        disableButtons(true);
+        fetchApi('/check', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ amount, invoice: invoice, infoId: infoId}),
+        }).then(data => {
+          dispatch({ type: 'updateUser', payload: { ...data } });
+          disableButtons(false);
+        });
+      }
+
       const alert = () => e =>{
         console.log("hello");
     }
@@ -101,7 +116,7 @@ const Adding = () =>{
           <div className="informik">
             <form>
             <div className="formik"><input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} /></div>
-            <div className="formik"><button>Проверить</button></div>
+            <div className="formik"><button onClick={brain(item)}>Проверить</button></div>
             </form>
           </div>
             </div>
@@ -136,6 +151,8 @@ const Adding = () =>{
                     <td>{item.amount}</td>
                     <td>{item.action === 'waiting' ? (
                       <button onClick={hisopenModal(item)}>Подтвердить</button>
+                    ) : item.action === 'sent' ? (
+                      <span>Перечислен</span>
                     ) : (
                       ''
                     )

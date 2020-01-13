@@ -204,6 +204,27 @@ const addBalance = (user, data) =>
     });
   });
 
+  const takeIn = (user, data) =>
+  new Promise((resolve, reject) => {
+    User.findOne({ userID: user.userID }).then(res => {
+      User.findOneAndUpdate(
+        {
+          userID: user.userID,
+          'inHistory._id': data._id,
+        },
+        {
+          $set: {
+            balance: res.balance + data.amount,
+            date: new Date(),
+            'inHistory.$.action': 'sent',
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc),
+      );
+    });
+  });
+
   const outIn = (user, data) =>
   new Promise((resolve, reject) => {
     User.findOne({ userID: user.userID }).then(res => {
@@ -329,6 +350,7 @@ module.exports = {
   getCase,
   setLivedrop,
   getLivedrop,
+  takeIn,
   investIn,
   outIn,
   setDeposit,
