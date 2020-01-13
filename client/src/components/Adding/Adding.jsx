@@ -44,6 +44,12 @@ const Adding = () =>{
         });
       };
 
+      const hisopenModal = item => e => {
+        setModal(true);
+        setInvoice(item.invoice);
+        setAmount(item.amount)
+      };
+
       const alert = () => e =>{
         console.log("hello");
     }
@@ -128,7 +134,12 @@ const Adding = () =>{
                     {user.inHistory.map((item, index) => (
                         <tr className="items" key={index}>
                     <td>{item.amount}</td>
-                    <td>{item.action}</td>
+                    <td>{item.action === 'waiting' ? (
+                      <button onClick={hisopenModal(item)}>Подтвердить</button>
+                    ) : (
+                      ''
+                    )
+                    }</td>
                     <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
                         </tr>
                     ))}
