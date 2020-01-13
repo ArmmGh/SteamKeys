@@ -27,7 +27,7 @@ const Adding = () =>{
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amount, invoice: invoice, infoId: infoId }),
+        body: JSON.stringify({ amount, invoice: invoice}),
       }).then(data => {
         dispatch({ type: 'updateUser', payload: { ...data } });
       });
@@ -82,7 +82,7 @@ const Adding = () =>{
               <ul>
                 <h3>Действие в Payeer</h3>
                 <li>Перейдите на эту <Link onClick={opnI()}>страницу</Link></li>
-                <li>В поле <span className="underline">Номер счета, e-mail или телефон</span> заполнитье: <span className="inform">P61234106</span></li>
+                <li>В поле <span className="underline">Номер счета, e-mail или телефон</span> заполнитье: <span className="inform">P44911742</span></li>
                 <li>В поле <span className="underline">Комментарий</span> заполнитье: <span className="inform">{invoice}</span></li>
                 <li>В поле <span className="underline">Сумма</span> заполнитье: <span className="inform">{amount}</span></li>
                 <li>Нажать <span className="underline">Перевести</span></li>
@@ -125,7 +125,7 @@ const Adding = () =>{
             <div className="addtable">
                 {user.inHistory && (
                     <table className="table" id="tbl">
-                    {user.inHistory.reverse().map((item, index) => (
+                    {user.inHistory.map((item, index) => (
                         <tr className="items" key={index}>
                     <td>{item.amount}</td>
                     <td>{item.action}</td>

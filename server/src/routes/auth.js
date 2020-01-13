@@ -92,22 +92,6 @@ auth.post('/setbenefit', (req, res) => {
 });
 
 auth.post('/investin', (req, res, next) => {
-  const params = {
-    infoId: req.body.infoId,
-    infoSum: req.body.amount,
-    infoInvoice: req.body.invoice,
-  };
-  request({
-    method: 'POST',
-    url: 'https://payeer.com/ajax/api/api.php?historyInfo',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: `account=P61234106&apiId=892776478&apiPass=778899&action=historyInfo&historyId=${params.infoId}`
-  }, function (error, response, body) {
-    const hallo = JSON.parse(body);
-    console.log('Response:', hallo);
-    if(params.infoInvoice == hallo.info.comment && params.infoSum == hallo.info.sumOut){
       db.investIn(
         { userID: req.session.passport.user.id },
         {
@@ -120,12 +104,8 @@ auth.post('/investin', (req, res, next) => {
         data.inHistory.reverse();
         res.send({ ...data });
       });
-    }else{
-      console.log(error)
-    }
     res.redirect(`${url}/adding`)
     next()
-  });
 });
 
 auth.post('/setbenefit', (req, res) => {
@@ -310,6 +290,7 @@ auth.post('/login', (req, res) => {
       // Old User
       user.benefitHistory.reverse();
       user.gameHistory.reverse();
+      user.inHistory.reverse();
       const userToken = jwt({ user });
       res.send({ user: userToken, token, newUser: false, isLogged: true });
       return false;
