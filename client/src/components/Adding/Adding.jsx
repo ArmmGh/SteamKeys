@@ -72,11 +72,14 @@ const Adding = () =>{
         <div className="body">
             <div className="checkpoint">
               <ul>
-                <li>Перейти на эту страницу</li>
-                <li>В поле <span className="underline">Номер счета, e-mail или телефон</span> заполнитье <span className="inform">P61234106</span></li>
-                <li>В поле <span className="underline">Комментарий</span> заполнитье <span className="inform">{invoice}</span></li>
-                <li>В поле <span className="underline">Сумма</span> заполнитье <span className="inform">{amount}</span></li>
+                <li>Перейдите на эту страницу</li>
+                <li>В поле <span className="underline">Номер счета, e-mail или телефон</span>заполнитье:<span className="inform">P61234106</span></li>
+                <li>В поле <span className="underline">Комментарий</span>заполнитье:<span className="inform">{invoice}</span></li>
+                <li>В поле <span className="underline">Сумма</span>заполнитье:<span className="inform">{amount}</span></li>
                 <li>Нажать <span className="underline">Перевести</span></li>
+                <li>Перейдите на эту страницу</li>
+                <li>Скопировать и вставить в нижнем форме<span className="underline">ID ТРАНЗАКЦИИ</span></li>
+                <li>Нажать <span className="underline">Проверить</span></li>
               </ul>
             </div>
           <div className="info">
