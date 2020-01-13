@@ -69,12 +69,12 @@
         padding: 30px;
         .checkpoint{
             width: 90%;
-            p{
-              margin-top: 3px;
-            }
-            span{
-              color: #93b1f7;
-            }
+          .underline{
+            text-decoration: underline;
+          }
+          .inform{
+            color: #93b1f7;
+          }
         }
       }
     }

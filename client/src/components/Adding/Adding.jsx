@@ -71,19 +71,22 @@ const Adding = () =>{
         </div>
         <div className="body">
             <div className="checkpoint">
-            <p>Сумма к выплате: <span>{amount}</span></p>
-            <p>Invoice code: <span>{invoice}</span></p>
-            <p>Система: <span>Payeer</span></p>
-            <input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} />
+              <ul>
+                <li>Перейти на эту страницу</li>
+                <li>В поле <span className="underline">Номер счета, e-mail или телефон</span> заполнитье <span className="inform">P61234106</span></li>
+                <li>В поле <span className="underline">Комментарий</span> заполнитье <span className="inform">{invoice}</span></li>
+                <li>В поле <span className="underline">Сумма</span> заполнитье <span className="inform">{amount}</span></li>
+                <li>Нажать <span className="underline">Перевести</span></li>
+              </ul>
             </div>
-            <div className="checkpoint">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam alias veniam dolorem non, natus quam pariatur vero laborum eum corporis in debitis architecto saepe. Quae dolore aspernatur in minus blanditiis?</p>
-            </div>
-          </div>
           <div className="info">
-            <button onClick={sendDate()}>fetch</button>
+            <form>
+            <input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} />
+            <button onClick={sendDate()}>Проверить</button>
+            </form>
           </div>
             </div>
+        </div>
       </Modal>
         <div className="addcontainer">
             <div className="alladd">
