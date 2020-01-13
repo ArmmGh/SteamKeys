@@ -70,6 +70,15 @@
         .checkpoint{
             width: 90%;
             ul{
+              h3{
+                text-align: center;
+                text-decoration: underline;
+                text-decoration-color: #93b1f7;
+              }
+              a{
+                text-decoration: none;
+                color: #93b1f7;
+              }
               list-style-type: decimal;
             }
           .underline{
