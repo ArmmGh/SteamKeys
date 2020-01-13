@@ -19,19 +19,6 @@ const Adding = () =>{
     const [ { user } ] = useStateValue();
     const [invoice, setInvoice] = useState(Math.floor(Math.random() * 1000));
 
-
-    const sendDate = () => e =>{
-      fetchApi('/investin', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ amount, invoice: invoice}),
-      }).then(data => {
-        dispatch({ type: 'updateUser', payload: { ...data } });
-      });
-    }
     const opn = () => e =>{
       window.open("https://payeer.com/ru/account/history/", '_blank')
     }
@@ -42,6 +29,16 @@ const Adding = () =>{
 
     const openModal = () => e => {
         setModal(true);
+        fetchApi('/investin', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ amount, invoice: invoice}),
+        }).then(data => {
+          dispatch({ type: 'updateUser', payload: { ...data } });
+        });
       };
 
       const alert = () => e =>{
