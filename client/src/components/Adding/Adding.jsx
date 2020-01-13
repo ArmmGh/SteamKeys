@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import Menu from '../Menu/index';
 import Moment from 'react-moment';
 import { MdClose } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import log from '../../assets/profile/payeer-logo.png';
 import des from '../../assets/profile/money.png';
 import { useStateValue } from '../../context';
