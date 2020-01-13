@@ -50,7 +50,7 @@ const Adding = () =>{
         setAmount(item.amount)
       };
 
-      const brain = item => e =>{
+      const brain = () => e =>{
         disableButtons(true);
         fetchApi('/check', {
           method: 'POST',
@@ -116,7 +116,7 @@ const Adding = () =>{
           <div className="informik">
             <form>
             <div className="formik"><input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} /></div>
-            <div className="formik"><button onClick={brain(item)}>Проверить</button></div>
+            <div className="formik"><button onClick={brain()}>Проверить</button></div>
             </form>
           </div>
             </div>
