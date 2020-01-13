@@ -92,7 +92,7 @@ const Adding = () =>{
           <div className="informik">
             <form>
             <div className="formik"><input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} /></div>
-            <div className="formik"><button onClick={sendDate()}>Проверить</button></div>
+            <div className="formik"><button>Проверить</button></div>
             </form>
           </div>
             </div>
