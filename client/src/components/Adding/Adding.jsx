@@ -71,8 +71,8 @@ const Adding = () =>{
         </div>
         <div className="body">
             <div className="checkpoint">
-            <p>Сумма к выплате: <span>{amount}</span></p>
-            <p>Invoice code:</p> <span>{invoice}</span>
+            <p>Сумма к выплате:<span>{amount}</span></p>
+            <p>Invoice code:<span>{invoice}</span></p>
             <p>Система: <span>Payeer</span></p>
             <input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} />
             </div>
