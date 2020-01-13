@@ -14,6 +14,7 @@ import fetchApi from '../../utils/fetchApi';
 const Adding = () =>{    
     const [amount, setAmount] = useState(100);
     const [infoId, setInfoid] = useState('');
+    const [disableButton, disableButtons] = useState(false);
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
     const [ { user } ] = useStateValue();
@@ -29,6 +30,7 @@ const Adding = () =>{
 
     const openModal = () => e => {
         setModal(true);
+        disableButtons(true);
         fetchApi('/investin', {
           method: 'POST',
           credentials: 'include',
@@ -38,6 +40,7 @@ const Adding = () =>{
           body: JSON.stringify({ amount, invoice: invoice}),
         }).then(data => {
           dispatch({ type: 'updateUser', payload: { ...data } });
+          disableButtons(false);
         });
       };
 
@@ -112,7 +115,7 @@ const Adding = () =>{
                 <input type="text" value={amount} onChange={e => handeleChange(e.target.value)} />
             </div>
         <div className="imgholder">
-            <button onClick={openModal()}><img src={log} alt="payeer" /></button>
+            <button onClick={openModal()} disabled={disableButton} ><img src={log} alt="payeer" /></button>
         </div>
         </div>
         <div className="tabl">
