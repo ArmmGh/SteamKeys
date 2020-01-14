@@ -115,7 +115,7 @@ auth.post('/check', (req, res, next) => {
         _id: req.params._id },
         {
           _id: req.body._id,
-          action: 'sent',
+          amount: req.body.amount
         }
       ).then(data => {
         data.inHistory.reverse();

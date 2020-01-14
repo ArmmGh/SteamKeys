@@ -219,7 +219,7 @@ const addBalance = (user, data) =>
           },
         },
         { new: true },
-        (err, doc) => resolve(doc._doc || {}),
+        (err, doc) => resolve(doc._doc),
       );
     });
   });
