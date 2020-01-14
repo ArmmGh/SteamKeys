@@ -59,7 +59,7 @@ const Adding = () =>{
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ amount, invoice: invoice, infoId: infoId, ...brainact}),
+          body: JSON.stringify({ amount: amount, invoice: invoice, infoId: infoId}),
         }).then(data => {
           dispatch({ type: 'updateUser', payload: { ...data } });
           disableButtons(false);
