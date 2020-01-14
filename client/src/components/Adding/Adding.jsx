@@ -13,7 +13,7 @@ import fetchApi from '../../utils/fetchApi';
 
 const Adding = () =>{    
     const [amount, setAmount] = useState(100);
-    const [id, setId] = useState('')
+    const [id, setId] = useState('');
     const [infoId, setInfoid] = useState('');
     const [disableButton, disableButtons] = useState(false);
     const [isActive, setActive] = useState(false);
@@ -60,7 +60,7 @@ const Adding = () =>{
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ amount: amount, invoice: invoice, infoId: infoId, _id: id}),
+          body: JSON.stringify({ ...brainact, infoId: infoId}),
         }).then(data => {
           dispatch({ type: 'updateUser', payload: { ...data } });
           disableButtons(false);
@@ -118,7 +118,7 @@ const Adding = () =>{
           <div className="informik">
             <form>
             <div className="formik"><input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} /></div>
-            <div className="formik"><button onClick={brain()}>Проверить</button></div>
+            <div className="formik"><button onClick={brain(id)}>Проверить</button></div>
             </form>
           </div>
             </div>
