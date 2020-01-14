@@ -15,7 +15,6 @@ const Adding = () =>{
     const [amount, setAmount] = useState(100);
     const [infoId, setInfoid] = useState('');
     const [disableButton, disableButtons] = useState(false);
-    const [brainact, setBrainAct] = useState('')
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
     const [ { user } ] = useStateValue();
@@ -46,12 +45,10 @@ const Adding = () =>{
       };
 
       const hisopenModal = item => e => {
-        console.log(item)
-        setBrainAct(item);
         setModal(true);
         setInvoice(item.invoice);
         setAmount(item.amount)
-        console.log(brainact)
+        console.log(item)
       };
 
       const brain = brainact => e =>{
