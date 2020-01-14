@@ -13,6 +13,7 @@ import fetchApi from '../../utils/fetchApi';
 
 const Adding = () =>{    
     const [amount, setAmount] = useState(100);
+    const [id, setId] = useState('')
     const [infoId, setInfoid] = useState('');
     const [disableButton, disableButtons] = useState(false);
     const [isActive, setActive] = useState(false);
@@ -48,7 +49,7 @@ const Adding = () =>{
         setModal(true);
         setInvoice(item.invoice);
         setAmount(item.amount)
-        console.log(item)
+        setId(item._id)
       };
 
       const brain = brainact => e =>{
@@ -59,7 +60,7 @@ const Adding = () =>{
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ amount: amount, invoice: invoice, infoId: infoId}),
+          body: JSON.stringify({ amount: amount, invoice: invoice, infoId: infoId, _id: id}),
         }).then(data => {
           dispatch({ type: 'updateUser', payload: { ...data } });
           disableButtons(false);

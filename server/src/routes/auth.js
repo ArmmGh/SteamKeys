@@ -96,6 +96,7 @@ auth.post('/check', (req, res, next) => {
     infoId: req.body.infoId,
     infoSum: req.body.amount,
     infoInvoice: req.body.invoice,
+    _id: req.body._id
   };
   request({
     method: 'POST',
@@ -107,10 +108,13 @@ auth.post('/check', (req, res, next) => {
   }, function (error, response, body) {
     const hallo = JSON.parse(body);
     console.log('Response:', hallo);
+    console.log(params._id)
     if(params.infoInvoice == hallo.info.comment && params.infoSum == hallo.info.sumOut){
       db.takeIn(
-        { userID: req.session.passport.user.id },
+        { userID: req.session.passport.user.id,
+        _id: req.params._id },
         {
+          _id: req.body._id,
           action: 'sent',
           date: new Date(),
         }
