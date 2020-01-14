@@ -215,7 +215,6 @@ const addBalance = (user, data) =>
         {
           $set: {
             balance: res.balance + data.amount,
-            date: new Date(),
             'inHistory.$.action': 'sent',
           },
         },

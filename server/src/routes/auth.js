@@ -116,7 +116,6 @@ auth.post('/check', (req, res, next) => {
         {
           _id: req.body._id,
           action: 'sent',
-          date: new Date(),
         }
       ).then(data => {
         data.inHistory.reverse();
