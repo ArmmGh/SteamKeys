@@ -49,7 +49,7 @@ const Adding = () =>{
         setModal(true);
         setInvoice(item.invoice);
         setAmount(item.amount)
-        setId(item._id)
+        setId(item)
       };
 
       const brain = brainact => e =>{

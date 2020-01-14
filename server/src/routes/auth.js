@@ -279,6 +279,7 @@ auth.get('/user', (req, res) => {
               (req.user.gameHistory && req.user.gameHistory.reverse()) || [],
             balanceHistory: req.user.balanceHistory || [],
             benefitHistory: req.user.benefitHistory.reverse() || [],
+            inHistory: req.user.inHistory.reverse() || [],
             ip: newUser.ip,
           });
         });
@@ -292,6 +293,7 @@ auth.get('/user', (req, res) => {
           gameHistory: user ? user.gameHistory.reverse() : [],
           balanceHistory: user ? user.balanceHistory : [],
           benefitHistory: user ? user.benefitHistory.reverse() : [],
+          intHistory: user ? user.inHistory.reverse() : [],
           ip: req.ipInfo,
         });
       }
