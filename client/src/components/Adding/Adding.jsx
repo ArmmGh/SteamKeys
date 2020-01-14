@@ -46,10 +46,12 @@ const Adding = () =>{
       };
 
       const hisopenModal = item => e => {
+        console.log(item)
         setBrainAct(item);
         setModal(true);
         setInvoice(item.invoice);
         setAmount(item.amount)
+        console.log(brainact)
       };
 
       const brain = brainact => e =>{
