@@ -127,6 +127,35 @@ auth.post('/check', (req, res, next) => {
   });
 });
 
+auth.post('/outin', (req,res) =>{
+  const parames = {
+    sum: req.body.amount,
+    wallet: req.body.wallet,
+  };
+  request({
+    method: 'POST',
+    url: 'https://payeer.com/ajax/api/api.php?transfer',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: `account=P61234106&apiId=892776478&apiPass=778899&action=transfer&curIn=RUB&sum=${parames.sum}&curOut=RUB&to=${parames.wallet}`
+  }, function (error, response, body) {
+    const searcher = JSON.parse(body);
+    console.log(searcher)
+    if(searcher.errors === false){
+      db.outIn(
+        { userID: req.session.passport.user.id },
+        {
+          amount: req.body.amount,
+          wallet: req.body.wallet,
+          date: new Date()
+        }
+      )
+    }else{
+      console.log('error')
+    }
+  });
+})
 
 auth.post('/investin', (req, res, next) => {
       db.investIn(

@@ -238,7 +238,6 @@ const addBalance = (user, data) =>
               {
                 amount: data.amount,
                 wallet: data.wallet,
-                action: data.action,
                 date: new Date(),
               },
             ],

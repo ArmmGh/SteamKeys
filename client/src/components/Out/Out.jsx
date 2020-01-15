@@ -11,6 +11,7 @@ import './Out.scss';
 
 const Out = () =>{    
     const [{ user }, dispatch] = useStateValue();
+    const [disableButton, disableButtons] = useState(false);
     const [modalIsOpen, setModal] = useState(false)
     const [amount, setAmount] = useState(user.balance)
 
@@ -27,6 +28,21 @@ const Out = () =>{
             }
         }
     };
+
+    const checker = () =>{
+        disableButtons(true);
+        fetchApi('/outin', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ amount: amount, wallet: user.walletp }),
+            }).then(data => {
+                dispatch({ type: 'updateUser', payload: { ...data } });
+                disableButtons(false);
+            })
+    }
     return(
         <React.Fragment>
         <Modal
@@ -53,7 +69,7 @@ const Out = () =>{
             </div>
           <div className="informik">
             <form>
-            <div className="formik"><button>Проверить</button></div>
+            <div className="formik"><button onClick={checker()} disabled={disableButton}>Проверить</button></div>
             </form>
           </div>
             </div>
