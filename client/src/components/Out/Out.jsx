@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Modal from 'react-modal';
 import Menu from '../Menu/index';
 import log from '../../assets/profile/payeer-logo.png';
 import get from '../../assets/profile/get.png';
