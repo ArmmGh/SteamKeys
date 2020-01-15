@@ -5,6 +5,7 @@ import { MdClose } from 'react-icons/md';
 import Menu from '../Menu/index';
 import log from '../../assets/profile/payeer-logo.png';
 import get from '../../assets/profile/get.png';
+import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import './Out.scss';
 
