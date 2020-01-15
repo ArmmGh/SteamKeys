@@ -29,7 +29,7 @@ const Cabinet = () =>{
 
 
     const dis = () => e => {
-        if(user.walletp !== ''){
+        if(user.walletp !== '' || user.walletp !== null){
             setDisabled(true);
         }else{
             setDisabled(false)
@@ -37,7 +37,7 @@ const Cabinet = () =>{
     }
 
     const disq = () => e => {
-        if(user.walletq !== ''){
+        if(user.walletq !== '' || user.walletq !== null){
             setDisabledq(true);
         }else{
             setDisabledq(false)

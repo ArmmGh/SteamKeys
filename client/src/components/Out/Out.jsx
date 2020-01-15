@@ -5,7 +5,6 @@ import { MdClose } from 'react-icons/md';
 import Menu from '../Menu/index';
 import log from '../../assets/profile/payeer-logo.png';
 import get from '../../assets/profile/get.png';
-import qiwi from '../../assets/profile/qiwi.png';
 import { useStateValue } from '../../context';
 import './Out.scss';
 
@@ -20,10 +19,14 @@ const Out = () =>{
           setAmount(val);
         }
       };
-    
-      const openModal = () => e => {
-        setModal(true);
-      };
+
+    const openModal = () => e => {
+    if(amount !== '' || amount !== 0){
+        if(amount <= user.balance){
+            setModal(true);
+            }
+        }
+    };
     return(
         <React.Fragment>
         <Modal
@@ -72,7 +75,6 @@ const Out = () =>{
             </div>
         <div className="imgholder">
             <div className="imgpos"><button onClick={openModal()}><img src={log} alt="payeer" /></button></div>
-            <div className="imgpos"><button><img src={qiwi} alt="qiwi" /></button></div>
         </div>
         </div>
         <div className="tabl">
