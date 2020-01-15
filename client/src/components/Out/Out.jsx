@@ -30,7 +30,7 @@ const Out = () =>{
         }
     };
 
-    const checker = () =>{
+    const checker = () => e =>{
         disableButtons(true);
         fetchApi('/outin', {
             method: 'POST',
