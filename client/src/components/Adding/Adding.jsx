@@ -18,7 +18,7 @@ const Adding = () =>{
     const [disableButton, disableButtons] = useState(false);
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
-    const [ { user } ] = useStateValue();
+    const [ { user }, dispatch ] = useStateValue();
     const [invoice, setInvoice] = useState(Math.floor(Math.random() * 1000));
 
     const opn = () => e =>{

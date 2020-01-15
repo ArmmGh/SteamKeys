@@ -8,11 +8,51 @@ import './Out.scss';
 
 
 const Out = () =>{    
-    const [
-        { user }
-      ] = useStateValue();
+    const [{ user }, dispatch] = useStateValue();
+    const [modalIsOpen, setModal] = useState(false)
+    const [amount, setAmount] = useState(user.balance)
+
+    const handeleChange = val => {
+        if (val.match(/^[0-9]+$/)) {
+          setAmount(val);
+        }
+      };
+    
+      const openModal = () => e => {
+        setModal(true);
+      };
     return(
         <React.Fragment>
+        <Modal
+        closeTimeoutMS={200}
+        ariaHideApp={false}
+        onRequestClose={() => setModal(false)}
+        shouldCloseOnOverlayClick={true}
+        isOpen={modalIsOpen}
+        className="Modal"
+        overlayClassName="OverlayHeader"
+      >
+          <div className="gener">
+        <div className="header">
+          <div />
+          <h1>ПОПОЛНЕНИЕ БАЛАНСА</h1>
+          <div className="close">
+            <MdClose onClick={() => setModal(false)} />
+          </div>
+        </div>
+        <div className="body">
+            <div className="checkpoint">
+            <p>{amount}</p>
+            <p>{user.walletp}</p>
+            </div>
+          <div className="informik">
+            <form>
+            <div className="formik"><button>Проверить</button></div>
+            </form>
+          </div>
+            </div>
+        </div>
+      </Modal>
         <div className="addcontainer">
             <div className="alladd">
                 <Menu />
@@ -25,11 +65,11 @@ const Out = () =>{
     <span>Максимум: {user.balance}</span>
             </div>
             <div className="suminput">
-                <input type="text" defaultValue={user.balance}/>
+                <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
             </div>
         <div className="imgholder">
-            <button><img src={log} alt="payeer" /></button>
-            <button><img src={qiwi} alt="qiwi" /></button>
+            <div className="imgpos"><button onClick={openModal()}><img src={log} alt="payeer" /></button></div>
+            <div className="imgpos"><button><img src={qiwi} alt="qiwi" /></button></div>
         </div>
         </div>
         <div className="tabl">
