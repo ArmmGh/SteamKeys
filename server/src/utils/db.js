@@ -234,10 +234,9 @@ const addBalance = (user, data) =>
         {
           $set: {
             outHistory: [
-              ...res.inHistory,
+              ...res.outHistory,
               {
                 amount: data.amount,
-                action: data.action,
                 wallet: data.wallet,
                 date: new Date(),
               },

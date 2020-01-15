@@ -280,6 +280,7 @@ auth.get('/user', (req, res) => {
             balanceHistory: req.user.balanceHistory || [],
             benefitHistory: req.user.benefitHistory.reverse() || [],
             inHistory: req.user.inHistory.reverse() || [],
+            outHistory: req.user.outHistory.reverse() || [],
             ip: newUser.ip,
           });
         });
@@ -294,6 +295,7 @@ auth.get('/user', (req, res) => {
           balanceHistory: user ? user.balanceHistory : [],
           benefitHistory: user ? user.benefitHistory.reverse() : [],
           intHistory: user ? user.inHistory.reverse() : [],
+          outHistory: user ? user.outHistory.reverse() : [],
           ip: req.ipInfo,
         });
       }
@@ -330,6 +332,7 @@ auth.post('/login', (req, res) => {
       user.benefitHistory.reverse();
       user.gameHistory.reverse();
       user.inHistory.reverse();
+      user.outHistory.reverse();
       const userToken = jwt({ user });
       res.send({ user: userToken, token, newUser: false, isLogged: true });
       return false;

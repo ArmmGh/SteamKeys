@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Menu from '../Menu/index';
-import Table from '../Table/index';
 import log from '../../assets/profile/payeer-logo.png';
 import get from '../../assets/profile/get.png';
 import qiwi from '../../assets/profile/qiwi.png';
@@ -37,8 +36,20 @@ const Out = () =>{
             <div className="header">
                 <h3>История Выплат</h3>
             </div>
-            <Table />
         </div>
+        <div className="addtable">
+                {user.outHistory && (
+                    <table className="table" id="tbl">
+                    {user.outHistory.map((item, index) => (
+                <tr className="items" key={index}>
+                    <td>{item.amount}</td>
+                    <td>{item.wallet}</td>
+                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
+                </tr>
+                    ))}
+                    </table>
+                )}
+                    </div>
             </div>
                 </div>
         </React.Fragment>
