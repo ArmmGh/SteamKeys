@@ -19,7 +19,7 @@ const Out = () =>{
     const [amount, setAmount] = useState(user.balance)
 
     const handeleChange = val => {
-        if (val.match(/^[0-9]+$/)) {
+        if (val.match(/^[1-9][0-9]*$/)) {
           setAmount(val);
         }
       };

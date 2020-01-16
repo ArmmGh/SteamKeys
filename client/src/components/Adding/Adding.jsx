@@ -72,12 +72,12 @@ const Adding = () =>{
     }
 
       const handeleChange = val => {
-        if (val.match(/^[0-9]+$/)) {
+        if (val.match(/^[1-9][0-9]*$/)) {
           setAmount(val);
         }
       };
       const handeleChanger = val => {
-        if (val.match(/^[0-9]+$/)) {
+        if (val.match(/^[0-9]*$/)) {
           setInfoid(val);
         }
       };
