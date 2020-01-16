@@ -248,33 +248,6 @@ const Game = params => {
           </div>
         </div>
       </Modal>
-      {/* <Modal
-        ariaHideApp={false}
-        isOpen={modalIsOpen}
-        onAfterOpen={this.afterOpenModal}
-        onRequestClose={this.closeModal}
-        className="Modal"
-        overlayClassName="OverlayGame"
-      >
-        <div className="header">
-          <h1>Внимание!!!</h1>
-        </div>
-        <div className="body">
-          <div className="text">
-            В этом кейсе существует контент для взрослых, пожалуйста если вы
-            меньше 18 просим вас покинуть данный раздел.
-            <span>Игры из этого кейса не входят в Лайв ленту</span>
-          </div>
-        </div>
-        <div className="actions">
-          <button className="success" onClick={() => setModal(false)}>
-            Мне 18 или больше
-          </button>
-          <button className="danger" onClick={() => params.history.push('/')}>
-            Мне меньше 18
-          </button>
-        </div>
-      </Modal> */}
       <div className="game">
         {(authenticated || (!authenticated && cases)) && (
           <div className="main-width game_holder">

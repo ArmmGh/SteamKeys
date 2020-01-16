@@ -35,19 +35,25 @@ const Out = () =>{
     };
 
     const checker = () => e =>{
-        disableButtons(true);
-        fetchApi('/outin', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ amount: amount, wallet: user.walletp }),
-            }).then(data => {
-                dispatch({ type: 'updateUser', payload: { ...data } });
-                disableButtons(false);
-            })
-    }
+        if(user.walletp == '' || user.walletp == null){
+            toast("С начала сохраняйте кошелек в кабинет")
+        }else{
+            disableButtons(true);
+            fetchApi('/outin', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ amount: amount, wallet: user.walletp }),
+                }).then(data => {
+                    dispatch({ type: 'updateUser', payload: { ...data } });
+                    disableButtons(false);
+                    setModal(false);
+                    toast("Оплата пошла успешно")
+                })
+            }
+        }
     return(
         <React.Fragment>
             <ToastContainer
