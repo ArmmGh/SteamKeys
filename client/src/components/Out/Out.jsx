@@ -8,7 +8,6 @@ import log from '../../assets/profile/payeer-logo.png';
 import get from '../../assets/profile/get.png';
 import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
-import 'react-toastify/dist/ReactToastify.scss';
 import './Out.scss';
 
 
