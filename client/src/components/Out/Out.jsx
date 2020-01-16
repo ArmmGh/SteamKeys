@@ -24,7 +24,7 @@ const Out = () =>{
         }
       };
 
-const openModal = () => e => {
+    const openModal = () => e => {
     if(user.walletp == '' || user.walletp == null){
         toast("С начала сохраняйте кошелек в кабинет")
     }else{
