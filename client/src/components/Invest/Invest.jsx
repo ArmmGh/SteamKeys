@@ -42,7 +42,7 @@ const Invest = () =>{
     }
 
     const invest = () => e => {
-        if (amount !== ''){
+        if (amount !== '' || amount !== 0){
             if(user.balance >= amount){
             fetchApi('/setbenefit', {
             method: 'POST',

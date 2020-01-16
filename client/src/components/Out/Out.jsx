@@ -24,22 +24,21 @@ const Out = () =>{
         }
       };
 
-    const openModal = () => e => {
-    if(user.walletp !== '' || user.walletp !== null){
-        if(amount !== 0 || amount !== ''){
-            if(amount <= user.balance){
-            setModal(true);
-            }else{
-                toast("Недостаточно средств");
-            }
-        }else{
-            toast("Поле не может быть пустым")
-        }
-    }else{
+const openModal = () => e => {
+    if(user.walletp == '' || user.walletp == null){
         toast("С начала сохраняйте кошелек в кабинет")
+    }else{
+        if(amount == 0 || amount == ''){
+            toast("Поле не может быть пустым")
+        }else{
+            if(amount <= user.balance){
+                setModal(true);
+                }else{
+                    toast("Недостаточно средств");
+                }
+        }
     }
 }
-
     const checker = () => e =>{
             disableButtons(true);
             fetchApi('/outin', {
