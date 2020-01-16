@@ -20,7 +20,7 @@ const Invest = () =>{
       const [amount, setAmount] = useState('');
 
       const handeleChange = val => {
-        if (val.match(/^[A-Z0-9]*$/)) {
+        if (val.match(/^[1-9][0-9]*$/)) {
           setAmount(val);
         }
       };
@@ -42,7 +42,7 @@ const Invest = () =>{
     }
 
     const invest = () => e => {
-        if (amount !== 0 && amount !== ''){
+        if (amount !== ''){
             if(user.balance >= amount){
             fetchApi('/setbenefit', {
             method: 'POST',
