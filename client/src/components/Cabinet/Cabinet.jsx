@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Menu from '../Menu/index';
+import { ToastContainer, toast } from 'react-toastify';
 import set from '../../assets/profile/settings.png';
 import p from '../../assets/profile/p.png';
 import q from '../../assets/profile/q.png';
 import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
+import '../toast/toast.scss';
 import './Cabinet.scss';
 
 
@@ -29,16 +31,18 @@ const Cabinet = () =>{
 
 
     const dis = () => e => {
-        if(user.walletp !== '' || user.walletp !== null){
+        if(user.walletp !== '' && user.walletp !== null){
             setDisabled(true);
+            toast("Данные нельзя поменять")
         }else{
             setDisabled(false)
         }
     }
 
     const disq = () => e => {
-        if(user.walletq !== '' || user.walletq !== null){
+        if(user.walletq !== '' && user.walletq !== null){
             setDisabledq(true);
+            toast("Данные нельзя поменять")
         }else{
             setDisabledq(false)
         }
@@ -57,6 +61,18 @@ const Cabinet = () =>{
 
         return (
         <React.Fragment>
+            <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            />
+            <ToastContainer />
             <Menu />
             <div className="cabinetcontainer">
                 <div className="cabinetall">

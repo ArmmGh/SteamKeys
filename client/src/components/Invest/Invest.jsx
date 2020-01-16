@@ -1,10 +1,12 @@
 import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
 import Timer from 'react-compound-timer';
+import { ToastContainer, toast } from 'react-toastify';
 import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';
 import fetchApi from '../../utils/fetchApi';
 import './Invest.scss';
+import '../toast/toast.scss';
 import { useStateValue } from '../../context';
 
 
@@ -36,6 +38,7 @@ const Invest = () =>{
                 dispatch({ type: 'updateUser', payload: { ...data } });
                 disableButtons(false);
             })
+            toast("Средства перечислени")
     }
 
     const invest = () => e => {
@@ -56,11 +59,27 @@ const Invest = () =>{
             },
             body: JSON.stringify({ rub: amount, wallet: user.walletp }),
           }))
+            }else{
+                toast("Недостаточно средств")
             }
+        }else{
+            toast("Поле не может быть пустым")
         }
     }
     return(
         <React.Fragment>
+            <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            />
+            <ToastContainer />
             <Menu />
             <div className="investcontainer">
                 <div className="investall">
@@ -72,10 +91,8 @@ const Invest = () =>{
                         <span>Максимум: {user.balance}</span>
                     </div>
                     <div className="sumbit">
-                    <form>
                         <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
                         <div className="btnholder"><button onClick={invest()}>Вкладивать</button></div>
-                    </form>
                     </div>
                     <div className="tbleheader">
                         <h3>Вклады</h3>
