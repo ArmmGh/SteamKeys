@@ -2,6 +2,8 @@ import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
 import Timer from 'react-compound-timer';
 import Moment from 'react-moment';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.scss';
 import investlog from '../../assets/profile/invest.png';
 import fetchApi from '../../utils/fetchApi';
 import './Invest.scss';

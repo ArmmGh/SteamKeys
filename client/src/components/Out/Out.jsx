@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Moment from 'react-moment';
 import { MdClose } from 'react-icons/md';
+import { ToastContainer, toast } from 'react-toastify';
 import Menu from '../Menu/index';
 import log from '../../assets/profile/payeer-logo.png';
 import get from '../../assets/profile/get.png';
 import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
+import 'react-toastify/dist/ReactToastify.scss';
 import './Out.scss';
 
 
@@ -23,9 +25,13 @@ const Out = () =>{
       };
 
     const openModal = () => e => {
-    if(amount !== '' || amount !== 0){
+    if(amount !== 0 || amount !== ''){
         if(amount <= user.balance){
             setModal(true);
+            }else{
+                const notify = () => e =>{
+                        toast("Недостаточно средств");
+                }
             }
         }
     };
@@ -46,6 +52,18 @@ const Out = () =>{
     }
     return(
         <React.Fragment>
+            <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            />
+            <ToastContainer />
         <Modal
         closeTimeoutMS={200}
         ariaHideApp={false}
