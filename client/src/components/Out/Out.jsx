@@ -28,9 +28,7 @@ const Out = () =>{
         if(amount <= user.balance){
             setModal(true);
             }else{
-                const notify = () => e =>{
-                        toast("Недостаточно средств");
-                }
+                toast("Недостаточно средств");
             }
         }
     };
