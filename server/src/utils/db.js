@@ -233,6 +233,7 @@ const addBalance = (user, data) =>
         },
         {
           $set: {
+            balance: res.balance - data.amount,
             outHistory: [
               ...res.outHistory,
               {

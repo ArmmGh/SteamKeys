@@ -38,7 +38,7 @@ const Invest = () =>{
                 dispatch({ type: 'updateUser', payload: { ...data } });
                 disableButtons(false);
             })
-            toast("Средства перечислени")
+            toast("Средства перечислен")
     }
 
     const invest = () => e => {
