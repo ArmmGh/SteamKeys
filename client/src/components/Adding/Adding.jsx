@@ -9,6 +9,7 @@ import des from '../../assets/profile/money.png';
 import { useStateValue } from '../../context';
 import './Adding.scss';
 import fetchApi from '../../utils/fetchApi';
+import { toast } from 'react-toastify';
 
 
 const Adding = () =>{    
@@ -46,7 +47,11 @@ const Adding = () =>{
       };
 
       const hisopenModal = item => e => {
-        setModal(true);
+        if(amount == ''){
+          toast("Поле не может быть пустым")
+        }else{
+          setModal(true);
+        }
         setInvoice(item.invoice);
         setAmount(item.amount)
         setId(item)
