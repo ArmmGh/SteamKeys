@@ -18,13 +18,13 @@ const Cabinet = () =>{
     const [walletq, setWalletq] = useState(user.walletq);
 
     const handeleChange = val => {
-        if (val.match(/^[P]*[0-9]*$/)) {
+        if (val.match(/^([P][0-9]*)*$/)) {
           setWalletp(val);
         }
       };
 
       const handeleChanger = val => {
-        if (val.match(/^[0-9]+$/)) {
+        if (val.match(/^([+][0-9]*)*$/)) {
           setWalletq(val);
         }
       };
