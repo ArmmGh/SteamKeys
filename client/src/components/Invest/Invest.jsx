@@ -20,7 +20,7 @@ const Invest = () =>{
       const [amount, setAmount] = useState('');
 
       const handeleChange = val => {
-        if (val.match(/^[1-9][0-9]*$/)) {
+        if (val.match(/^[1-9]*[0-9]*$/)) {
           setAmount(val);
         }
       };

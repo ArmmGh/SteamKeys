@@ -24,7 +24,7 @@ const Cabinet = () =>{
       };
 
       const handeleChanger = val => {
-        if (val.match(/^[0-9]+$/)) {
+        if (val.match(/^[+]*[0-9]*$/)) {
           setWalletq(val);
         }
       };
