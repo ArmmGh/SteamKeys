@@ -318,7 +318,7 @@ const Game = params => {
 
                 {authenticated && user && cases && !caseOpening && (
                   <div className="action">
-                    {user.balance >= cases.priceRUB ? (
+                    {user.bonus === 'none' ? (
                       <button className="btn" onClick={openCase()}>
                         {`Открыть кейс за ${cases.priceRUB}₽`}
                       </button>
