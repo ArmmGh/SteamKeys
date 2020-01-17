@@ -16,6 +16,7 @@ const register = async data => {
     imgurl: data.imgurl,
     admin: false,
     profileurl: data.profileurl,
+    bonus: 'none',
     walletq: '',
     walletp: '',
     balance: 0,
@@ -300,6 +301,7 @@ const removeBalance = (user, data) =>
             { userID: user.userID },
             {
               $set: {
+                bonus: 'done',
                 balance: res.balance - data.price,
                 gameHistory: [
                   ...res.gameHistory,
