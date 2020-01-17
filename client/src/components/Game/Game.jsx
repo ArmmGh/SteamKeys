@@ -18,7 +18,6 @@ const Game = params => {
   const [winner, setWinner] = useState(null);
   const [caseOpening, setOpening] = useState(false);
   const [demoOpen, setDemoOpen] = useState('false');
-  const [modalIsOpen, setModal] = useState(false);
   const [sum, setSum] = useState(1000);
 
   const url = window.location.origin.match('keyforu')
@@ -78,7 +77,7 @@ const Game = params => {
   }
 
   const openCase = () => e => {
-    if (user.balance >= cases.priceRUB || cases.type === 'demo') {
+    if (cases.type === 'demo') {
       setOpening(true);
       const d = Math.random();
       let randomMargin = 0;
@@ -144,12 +143,6 @@ const Game = params => {
     setWinner(null);
     setMatrix(0);
   };
-
-  const openModal = () => e => {
-    setModal(true);
-    setSum(1000);
-  };
-
   const addBalance = () => e => {
     const data = {
       shop: 4285,
@@ -215,39 +208,6 @@ const Game = params => {
 
   return (
     <React.Fragment>
-      <Modal
-        closeTimeoutMS={200}
-        ariaHideApp={false}
-        onRequestClose={() => setModal(false)}
-        shouldCloseOnOverlayClick={true}
-        isOpen={modalIsOpen}
-        className="Modal"
-        overlayClassName="OverlayHeader"
-      >
-        <div className="header">
-          <div />
-          <h1>ПОПОЛНЕНИЕ БАЛАНСА</h1>
-          <div className="close">
-            <MdClose onClick={() => setModal(false)} />
-          </div>
-        </div>
-        <div className="body">
-          <h1>Введите сумму</h1>
-          <div className="inpHolder">
-            <input
-              type="text"
-              className="input"
-              name="sum"
-              value={sum}
-              onChange={e => handeleChange(e.target.value)}
-            />
-            <button onClick={openModal()}>Пополнить</button>
-          </div>
-          <div className="info">
-            Средства приходят моментально, но могут быть задержки до 5-10 минут.
-          </div>
-        </div>
-      </Modal>
       <div className="game">
         {(authenticated || (!authenticated && cases)) && (
           <div className="main-width game_holder">
@@ -311,7 +271,7 @@ const Game = params => {
                   <div className="action">
                     {user.bonus === 'none' ? (
                       <button className="btn" onClick={openCase()}>
-                        {`Открыть кейс за ${cases.priceRUB}₽`}
+                        Получить бонус
                       </button>
                     ) : (
                       <React.Fragment>
