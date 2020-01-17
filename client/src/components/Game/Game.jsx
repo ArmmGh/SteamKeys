@@ -278,17 +278,8 @@ const Game = params => {
                   </div>
                 ) : (
                   <div className="actions actionsWinner">
-                    <button onClick={tryAgain()} className="tryAgain">
-                      {translate('tryAgain')}
-                    </button>
                     <Link to="/profile" href="/profile">
-                      {(winner.name === 'other' ||
-                        (winner.type === 'bronze' ||
-                          winner.type === 'metalliic' ||
-                          winner.type === 'silver' ||
-                          winner.type === 'gold')) &&
-                        'Продать или '}
-                      Взять ключ можно в профиле
+                      Бонус можно получить в профиле
                     </Link>
                   </div>
                 )}
@@ -325,11 +316,8 @@ const Game = params => {
                     ) : (
                       <React.Fragment>
                         <div className="text">
-                          Цена кейса: <span>{cases.priceRUB}₽</span>
+                        <span>Бонус уже зачислен</span>
                         </div>
-                        <button className="btn" onClick={addBalance()}>
-                          {translate('addBalance')}
-                        </button>
                       </React.Fragment>
                     )}
                   </div>
