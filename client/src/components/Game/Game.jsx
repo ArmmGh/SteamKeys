@@ -280,7 +280,7 @@ const Game = params => {
                   <div className="action">
                     {user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
-                        {`Открыть кейс за ${cases.priceRUB}₽`}
+                        Открыть кейс
                       </button>
                     ) : (
                       <React.Fragment>
