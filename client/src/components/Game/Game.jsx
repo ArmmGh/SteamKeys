@@ -77,7 +77,7 @@ const Game = params => {
   }
 
   const openCase = () => e => {
-    if (user.balance >= cases.priceRUB || cases.type === 'demo') {
+    if (user.bonus == 'none' || cases.type === 'demo') {
       setOpening(true);
       const d = Math.random();
       let randomMargin = 0;
@@ -278,7 +278,7 @@ const Game = params => {
 
                 {authenticated && user && cases && !caseOpening && (
                   <div className="action">
-                    {user.balance >= cases.priceRUB ? (
+                    {user.bonus === 'none' ? (
                       <button className="btn" onClick={openCase()}>
                         Открыть кейс
                       </button>

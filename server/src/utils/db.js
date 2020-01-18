@@ -301,7 +301,6 @@ const removeBalance = (user, data) =>
             { userID: user.userID },
             {
               $set: {
-                balance: res.balance - data.price,
                 bonus: 'done',
                 gameHistory: [
                   ...res.gameHistory,
