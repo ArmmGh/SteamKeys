@@ -238,8 +238,17 @@ const Game = params => {
                   </div>
                 ) : (
                   <div className="actions actionsWinner">
+                    <button onClick={tryAgain()} className="tryAgain">
+                      {translate('tryAgain')}
+                    </button>
                     <Link to="/profile" href="/profile">
-                      Бонус можно получить в профиле
+                      {(winner.name === 'other' ||
+                        (winner.type === 'bronze' ||
+                          winner.type === 'metalliic' ||
+                          winner.type === 'silver' ||
+                          winner.type === 'gold')) &&
+                        'Продать или '}
+                      Взять ключ можно в профиле
                     </Link>
                   </div>
                 )}
@@ -269,15 +278,18 @@ const Game = params => {
 
                 {authenticated && user && cases && !caseOpening && (
                   <div className="action">
-                    {user.bonus === 'none' ? (
+                    {user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
-                        Получить бонус
+                        {`Открыть кейс за ${cases.priceRUB}₽`}
                       </button>
                     ) : (
                       <React.Fragment>
                         <div className="text">
-                        <span>Бонус уже зачислен</span>
+                          Цена кейса: <span>{cases.priceRUB}₽</span>
                         </div>
+                        <button className="btn" onClick={addBalance()}>
+                          {translate('addBalance')}
+                        </button>
                       </React.Fragment>
                     )}
                   </div>
