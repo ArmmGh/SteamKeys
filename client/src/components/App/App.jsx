@@ -100,7 +100,7 @@ function App() {
         <Route path="/profile" component={Profile} />
         <Route path="/case/:name" component={Game} />
         <Route exact path="/" component={Game} />
-        <Route exact path="/" component={Cases} />
+        <Route exact path="/" component={Table} />
         <Route path="/faq" component={Faq} />
         <Route path="/agreement" component={Agreement} />
         <Route path="/reviews" component={Reviews} />
