@@ -73,16 +73,16 @@
         font-size: 20px;
         .textout{
           p{
-            margin-top: 4px;
+            margin-top: 6px;
           }
         }
         .infout{
-          display: flex;
-          flex-direction: column;
           .preinfo{
+            display: flex;
+            flex-direction: column;
             margin-left: 6px;
             span{
-              margin-top: 4px;
+              margin-top: 6px;
               color: #93b1f7;
             }
           }

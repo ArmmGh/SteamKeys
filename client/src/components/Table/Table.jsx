@@ -101,7 +101,7 @@ const Cases = ({ history }) => {
             <table className="table" id="tbl">
               {benefit.map((item, index) => (
                 <tr className="item" key={index}>
-              <td>{item.wallet}</td>
+              <td>{concat(item.wallet.slice(0,5), '****')}</td>
               <td>{item.rub}</td>
               <td><Moment format="HH:mm" date={item.time} /></td>
                 </tr>

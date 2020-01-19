@@ -81,7 +81,7 @@ const Out = () =>{
           <div className="gener">
         <div className="header">
           <div />
-          <h1>ПОПОЛНЕНИЕ БАЛАНСА</h1>
+          <h1>Выплата</h1>
           <div className="close">
             <MdClose onClick={() => setModal(false)} />
           </div>
@@ -89,8 +89,8 @@ const Out = () =>{
     <div className="body">
         <div className="modout">
             <div className="textout">
-                <p>Сумма к выплате:</p>
-                <p>Кошелек транзакции:</p>
+                <p>Сумма:</p>
+                <p>Кошелек:</p>
             </div>
             <div className="infout">
                 <div className="preinfo">
@@ -101,7 +101,7 @@ const Out = () =>{
             </div>
           <div className="informik">
             <form>
-            <div className="formik"><button onClick={checker()} disabled={disableButton}>Проверить</button></div>
+            <div className="formik"><button onClick={checker()} disabled={disableButton}>Получить</button></div>
             </form>
           </div>
             </div>
