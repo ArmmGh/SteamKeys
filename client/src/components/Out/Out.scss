@@ -67,54 +67,42 @@
       }
       .body {
         padding: 30px;
-        .checkpoint{
-            width: 90%;
-            ul{
-              h3{
-                text-align: center;
-                text-decoration: underline;
-                text-decoration-color: #93b1f7;
-                padding-bottom: 2px;
-              }
-              a{
-                text-decoration: none;
-                color: #93b1f7;
-              }
-              list-style-type: decimal;
-            }
-          .underline{
-            text-decoration: underline;
-          }
-          .inform{
+      }
+      .modout{
+        display: flex;
+        font-size: 20px;
+        .infout{
+          span{
             color: #93b1f7;
           }
         }
-        .informik{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 5px;
-          form{
-            .formik{
+      }
+      .informik{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        form{
+          .formik{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            button{
+              margin-top: 3px;
               display: flex;
-              justify-content: center;
-              align-items: center;
-              button{
-                margin-top: 3px;
-                display: flex;
-                padding: 10px 15px;
-              }
-              input{
-                font-size: 20px;
-              }
+              padding: 10px 15px;
+            }
+            input{
+              font-size: 20px;
             }
           }
-          button,input:focus{
-            outline: none;
-          }
+        }
+        button,input:focus{
+          outline: none;
         }
       }
-    }
+
+    }  
   }
 .addcontainer{
     padding: 10px 0;

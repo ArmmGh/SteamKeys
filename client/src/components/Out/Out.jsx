@@ -86,10 +86,16 @@ const Out = () =>{
             <MdClose onClick={() => setModal(false)} />
           </div>
         </div>
-        <div className="body">
-            <div className="checkpoint">
-            <p>{amount}</p>
-            <p>{user.walletp}</p>
+    <div className="body">
+        <div className="modout">
+            <div className="textout">
+                <p>Сумма к выплате:</p>
+                <p>Кошелек транзакции:</p>
+            </div>
+            <div className="infout">
+            <span>{amount}</span>
+            <span>{user.walletp}</span>
+            </div>
             </div>
           <div className="informik">
             <form>
