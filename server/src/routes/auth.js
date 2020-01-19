@@ -20,9 +20,13 @@ require('dotenv').config();
 auth.use(expressip().getIpInfoMiddleware);
 
 auth.post('/benefit', async (req, res, next) =>{
+  const wallet = req.body.wallet;
+  const resp = wallet.slice(0,5);
+  const ansr = '****';
+  const end = resp.concat(ansr)
     const newBenefit = new Benefit({
       rub: req.body.rub,
-      wallet: req.body.wallet,
+      wallet: end,
       time: new Date(),
     });
     await newBenefit.save();
