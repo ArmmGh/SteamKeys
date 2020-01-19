@@ -93,8 +93,10 @@ const Out = () =>{
                 <p>Кошелек транзакции:</p>
             </div>
             <div className="infout">
-            <span>{amount}</span>
-            <span>{user.walletp}</span>
+                <div className="preinfo">
+                <span>{amount}</span>
+                <span>{user.walletp}</span>
+                </div>
             </div>
             </div>
           <div className="informik">
