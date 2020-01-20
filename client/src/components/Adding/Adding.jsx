@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import log from '../../assets/profile/payeer-logo.png';
 import des from '../../assets/profile/money.png';
 import { useStateValue } from '../../context';
-import iman from '../../assets/profile/formik.png';
 import './Adding.scss';
 import fetchApi from '../../utils/fetchApi';
 import { toast } from 'react-toastify';
@@ -32,7 +31,7 @@ const Adding = () =>{
     }
 
     const openImage = () => e =>{
-      window.open(`${iman}`, '_blank')
+      window.open(`https://snipboard.io/pkz0DU.jpg`, '_blank')
     }
 
     const openModal = () => e => {
