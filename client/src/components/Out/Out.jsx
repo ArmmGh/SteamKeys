@@ -133,6 +133,11 @@ const Out = () =>{
         <div className="addtable">
                 {user.outHistory && (
                     <table className="table" id="tbl">
+                    <tr>
+                    <th>Сумма</th>
+                    <th>Статус</th>
+                    <th>Дата</th>
+                        </tr>
                     {user.outHistory.map((item, index) => (
                 <tr className="items" key={index}>
                     <td>{item.amount}</td>

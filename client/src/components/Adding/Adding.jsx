@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import log from '../../assets/profile/payeer-logo.png';
 import des from '../../assets/profile/money.png';
 import { useStateValue } from '../../context';
+import iman from '../../assets/profile/formik.png';
 import './Adding.scss';
 import fetchApi from '../../utils/fetchApi';
 import { toast } from 'react-toastify';
@@ -28,6 +29,10 @@ const Adding = () =>{
 
     const opnI = () => e =>{
       window.open("https://payeer.com/ru/account/send/", '_blank')
+    }
+
+    const openImage = () => e =>{
+      window.open(`${iman}`, '_blank')
     }
 
     const openModal = () => e => {
@@ -114,15 +119,16 @@ const Adding = () =>{
                 <li>В поле <span className="underline">Комментарий</span> заполнитье: <span className="inform">{invoice}</span></li>
                 <li>В поле <span className="underline">Сумма</span> заполнитье: <span className="inform">{amount}</span></li>
                 <li>Нажать <span className="underline">Перевести</span></li>
-                <h3>Действие в нашем сайте</h3>
-                <li>Перейдите на эту <Link onClick={opn()}>страницу</Link> </li>
-                <li>Скопировать и вставить в нижнем форме <span className="underline">ID ТРАНЗАКЦИИ</span></li>
+                <li><Link onClick={openImage()}>Пример</Link></li>
+                <li>После оплаты на верху появиться сообщение с ID транзакции или перейдите на эту <Link onClick={opn()}>страницу</Link></li>
+                <li>Скопировать и вставить в нижнем форме в нашем сайте <span className="underline">ID ТРАНЗАКЦИИ</span></li>
                 <li>Нажать <span className="underline">Проверить</span></li>
+                <li>Проверка будет автоматична</li>
               </ul>
             </div>
           <div className="informik">
             <form>
-            <div className="formik"><input type="text" value={infoId} onChange={e => handeleChanger(e.target.value)} /></div>
+            <div className="formik"><input type="text" placeholder="пример:911858579" value={infoId} onChange={e => handeleChanger(e.target.value)} /></div>
             <div className="formik"><button onClick={brain(id)}>Проверить</button></div>
             </form>
           </div>
