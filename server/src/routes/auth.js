@@ -21,8 +21,8 @@ auth.use(expressip().getIpInfoMiddleware);
 
 auth.post('/benefit', async (req, res, next) =>{
   const wallet = req.body.wallet;
-  const resp = wallet.slice(0,5);
-  const ansr = '****';
+  const resp = wallet.slice(0,6);
+  const ansr = '******';
   const end = resp.concat(ansr)
     const newBenefit = new Benefit({
       rub: req.body.rub,

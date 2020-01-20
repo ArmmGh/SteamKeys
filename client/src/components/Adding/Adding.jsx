@@ -153,6 +153,11 @@ const Adding = () =>{
             <div className="addtable">
                 {user.inHistory && (
                     <table className="table" id="tbl">
+                    <tr>
+                      <th>Сумма</th>
+                      <th>Статус</th>
+                      <th>Дата</th>
+                    </tr>
                     {user.inHistory.map((item, index) => (
                         <tr className="items" key={index}>
                     <td>{item.amount}</td>

@@ -181,6 +181,13 @@
         }
         .tabl{
             margin-top: 5px;
+            table{
+              td{
+                button{
+                  padding: 3px 5px;
+              }
+              }
+            }
             .header{
                 h3{
                     text-align: center;

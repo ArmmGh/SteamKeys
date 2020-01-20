@@ -99,6 +99,11 @@ const Cases = ({ history }) => {
         <div className="addtable">
         {benefit && (
             <table className="table" id="tbl">
+              <tr>
+                <th>Сумма</th>
+                <th>Кошелек</th>
+                <th>Дата</th>
+              </tr>
               {benefit.map((item, index) => (
                 <tr className="item" key={index}>
               <td>{item.wallet}</td>
