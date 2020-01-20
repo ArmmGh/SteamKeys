@@ -153,11 +153,6 @@ const Header = () => {
                   Контакты
                 </Link>
               </li>
-              <li>
-                <Link to="/case/xujan" href="/case/xujan">
-                  {translate('xujanKeys')}
-                </Link>
-              </li>
             </ul>
             <div className="logo_holder">
               <div className="logo">

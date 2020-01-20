@@ -194,5 +194,21 @@
                 }
             }
         }
+        .adddtable{
+          margin-top: 7px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          table{
+              width: 80%;
+              border: 2px solid black;
+              border-collapse: collapse;
+              tr{
+                  height: 40px;
+                  border-top: 2px solid black;
+                  text-align: center;
+              }
+          }
+      }
     }
 }
