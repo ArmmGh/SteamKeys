@@ -99,7 +99,7 @@ const Cases = ({ history }) => {
         <div className="addtable">
         {benefit && (
             <table className="table" id="tbl">
-              <tr>
+              <tr className="thd">
                 <th>Сумма</th>
                 <th>Кошелек</th>
                 <th>Дата</th>
