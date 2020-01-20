@@ -169,7 +169,7 @@ const Adding = () =>{
                       ''
                     )
                     }</td>
-                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
+                    <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={item.date} /></td>
                         </tr>
                     ))}
                     </table>

@@ -137,7 +137,7 @@ const Out = () =>{
                 <tr className="items" key={index}>
                     <td>{item.amount}</td>
                     <td>{item.wallet}</td>
-                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} /></td>
+                    <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={item.date} /></td>
                 </tr>
                     ))}
                     </table>

@@ -129,7 +129,7 @@ const Invest = () =>{
                         )
                     }
                     </td>
-                    <td><Moment format="YYYY-MM-DD  HH:mm:ss" date={items.date} /></td>
+                    <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={items.date} /></td>
                         </tr>
                     ))}
                     </table>
