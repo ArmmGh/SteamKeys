@@ -2,8 +2,6 @@ import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
 import Timer from 'react-compound-timer';
 import { ToastContainer, toast } from 'react-toastify';
-import { MdClose } from 'react-icons/md';
-import Modal from 'react-modal';
 import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';
 import fetchApi from '../../utils/fetchApi';
@@ -17,42 +15,15 @@ const Invest = () =>{
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
-      const [ref, setRef] = useState('');
       const [disableButton, disableButtons] = useState(false);
-      const [modalIsOpen, setModal] = useState(false)
       const [storage, setStorage] = useState(user.walletp)
       const [amount, setAmount] = useState('');
-
-      const handeleChangeref = val => {
-        if (val.match(/^([1-9][0-9]*)*$/)) {
-          setRef(val);
-        }
-      };
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9]*)*$/)) {
           setAmount(val);
         }
       };
-
-    const refModal = () =>{
-        setModal(true);
-    }
-
-    const refGet = () => {
-        if(ref === user.refcode){
-            toast('Вы не можете употреблять собственный реферальный код')
-        }else{
-            fetchApi('/ref', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ ref: ref}),
-              }).then(invest())
-        }
-    }
 
     const get = items => e => {
         disableButtons(true);
@@ -73,21 +44,21 @@ const Invest = () =>{
     const invest = () => e => {
         if (amount !== ''){
             if(user.balance >= amount){
-                    fetchApi('/setbenefit', {
-                        method: 'POST',
-                        credentials: 'include',
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ amount}),
-                      }).then(fetchApi('/benefit', {
-                        method: 'POST',
-                        credentials: 'include',
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ rub: amount, wallet: user.walletp }),
-                      }))
+            fetchApi('/setbenefit', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ amount}),
+          }).then(fetchApi('/benefit', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ rub: amount, wallet: user.walletp }),
+          }))
             }else{
                 toast("Недостаточно средств")
             }
@@ -109,39 +80,6 @@ const Invest = () =>{
             pauseOnHover
             />
             <ToastContainer />
-            <Modal
-        closeTimeoutMS={200}
-        ariaHideApp={false}
-        onRequestClose={() => setModal(false)}
-        shouldCloseOnOverlayClick={true}
-        isOpen={modalIsOpen}
-        className="Modal"
-        overlayClassName="OverlayHeader"
-      >
-          <div className="gener">
-        <div className="header">
-          <div />
-          <h1>Реферальный код</h1>
-          <div className="close">
-            <MdClose onClick={() => setModal(false)} />
-          </div>
-        </div>
-    <div className="body">
-        <div className="textref">
-           <p>Если у вас есть реферальный код заполните ниже или нажимайте нету</p>
-        </div>
-        <div className="informiik">
-        <form>
-        <div className="formiik"><input type="text" value={ref} onChange={e => handeleChangeref(e.target.value)} /></div>
-        <div className="buttons">
-        <div><button onClick={refGet()}>Проверить</button></div>
-        <div><button onClick={invest()}>Нету</button></div>
-        </div>
-           </form>
-        </div>
-    </div>
-        </div>
-      </Modal>
             <Menu />
             <div className="investcontainer">
                 <div className="investall">
@@ -154,12 +92,7 @@ const Invest = () =>{
                     </div>
                     <div className="sumbit">
                         <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
-                        {user.benefitHistory == [] ? (
-                        <div className="btnholder"><button onClick={refModal()}>Вкладивать</button></div>
-                        ) : (
                         <div className="btnholder"><button onClick={invest()}>Вкладивать</button></div>
-                        )
-                        }
                     </div>
                     <div className="tbleheader">
                         <h3>Вклады</h3>
