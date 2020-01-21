@@ -2,6 +2,7 @@ import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
 import Timer from 'react-compound-timer';
 import { ToastContainer, toast } from 'react-toastify';
+import { MdClose } from 'react-icons/md';
 import Modal from 'react-modal';
 import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';
