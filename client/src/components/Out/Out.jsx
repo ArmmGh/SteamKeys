@@ -135,7 +135,7 @@ const Out = () =>{
                     <table className="table" id="tbl">
                     <tr>
                     <th>Сумма</th>
-                    <th>Статус</th>
+                    <th>Кошелек</th>
                     <th>Дата</th>
                         </tr>
                     {user.outHistory.map((item, index) => (

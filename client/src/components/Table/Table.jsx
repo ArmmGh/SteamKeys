@@ -96,6 +96,9 @@ const Cases = ({ history }) => {
   return (
     <div className="cases_holder">
       <div className="main-width">
+        <div className="tableheader">
+          <h1>Последних 20 вкладов</h1>
+        </div>
         <div className="adddtable">
         {benefit && (
             <table className="table" id="tbl">

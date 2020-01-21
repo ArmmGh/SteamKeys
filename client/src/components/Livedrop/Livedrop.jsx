@@ -121,7 +121,7 @@ const Livedrop = () => {
     <React.Fragment>
       <div className="livedrop_holder">
         <div className="livedrop">
-          <h1>{translate('live')}</h1>
+          <h1>LIVE BONUS</h1>
           {livedrop && (
             <ul className="list" id="list">
               {livedrop.map((item, index) => (
