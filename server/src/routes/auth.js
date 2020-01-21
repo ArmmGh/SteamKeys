@@ -131,6 +131,18 @@ auth.post('/check', (req, res, next) => {
   });
 });
 
+auth.post('/ref', (req,res) =>{
+  db.referalCode(
+    { userID: req.session.passport.user.id },
+    {
+      ref: req.body.ref,
+      date: new Date(),
+    }
+  ).then(data => {
+    res.send({ ...data });
+  });
+})
+
 auth.post('/outin', (req,res) =>{
   const parames = {
     sum: req.body.amount,

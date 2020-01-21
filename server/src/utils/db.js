@@ -17,6 +17,7 @@ const register = async data => {
     admin: false,
     profileurl: data.profileurl,
     bonus: 'none',
+    refcode: Math.floor(Math.random() * 10000),
     walletq: '',
     walletp: '',
     balance: 0,
@@ -171,6 +172,24 @@ const addBalance = (user, data) =>
                 date: new Date(),
               },
             ],
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc || {}),
+      );
+    });
+  });
+
+  const referalCode = (user, data) =>
+  new Promise((resolve, reject) => {
+    User.getUsers({ filter: { refcode: data.ref } }).then(res => {
+      User.findOneAndUpdate(
+        {
+          userID: user.userID,
+        },
+        {
+          $set: {
+            balance: res.balance + 3,
           },
         },
         { new: true },
@@ -350,6 +369,7 @@ module.exports = {
   getCase,
   setLivedrop,
   getLivedrop,
+  referalCode,
   takeIn,
   investIn,
   outIn,
