@@ -140,7 +140,9 @@ const Cases = ({ history }) => {
   return (
     <div className="cases_holder">
       <div className="main-width">
+        <div className="nameing">
         <h1>{translate('keys')}</h1>
+        </div>
         <ul className="ourKeys">
           {otherCases.map((item, i) => (
             <li key={i} className="item">

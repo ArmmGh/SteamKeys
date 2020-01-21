@@ -6,8 +6,13 @@
   
 
 .tableheader{
-  text-align: center;
-  color: black;
+  h1{
+    text-align: center;
+    color: black;
+    font-size: 40px;
+    text-shadow: 1px 1px #93b1f7, 2px 2px #93b1f7, 3px 3px #93b1f7;
+    margin-bottom: 10px;
+  }
 }
 .adddtable{
     margin-top: 7px;

@@ -102,8 +102,7 @@ const Profile = () => {
                       </div>
                     ) : item.action === 'waiting' ? (
                       <div className="action">
-                        {(item.caseType === 'bronze' ||
-                          item.caseType === 'metallic' ||
+                        {(item.caseType === 'metallic' ||
                           item.caseType === 'silver' ||
                           item.caseType === 'gold' ||
                           item.name === 'other') && (
@@ -120,12 +119,12 @@ const Profile = () => {
                           className="btn"
                           onClick={getKey(item)}
                         >
-                          Взять ключ
+                          Взять бонус
                         </button>
                       </div>
                     ) : item.action === 'selled' ? (
                       <div className="action">
-                        <p>Продано</p>
+                        <p>Получено</p>
                       </div>
                     ) : item.action === 'key' ? (
                       <div className="action">
@@ -139,10 +138,6 @@ const Profile = () => {
                     </div>
                   </div>
                 ))}
-
-              <button className="showMore" onClick={onShowMore()}>
-                {showMore ? translate('showLess') : translate('showMore')}
-              </button>
             </div>
           </div>
         </div>
