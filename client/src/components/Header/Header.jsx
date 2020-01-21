@@ -156,7 +156,9 @@ const Header = () => {
             </ul>
             <div className="logo_holder">
               <div className="logo">
-                <img src={Logo} alt="logo" />
+              <Link to="/" href="/">
+              <img src={Logo} alt="logo" />
+              </Link>
               </div>
             </div>
             <div className="actions">
@@ -166,7 +168,9 @@ const Header = () => {
                     <p>
                       {translate('balance')}: <span>{user.balance}</span>
                     </p>
-                    <FiPlusCircle onClick={openModal()} />
+                    <Link to="/adding" href="/adding">
+                    <FiPlusCircle/>
+                    </Link>
                   </div>
                   <div className="avatar">
                     <Link to="/profile" href="/profile">
