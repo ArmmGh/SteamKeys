@@ -117,7 +117,7 @@ const Profile = () => {
                         <button
                           disabled={disableButton}
                           className="btn"
-                          onClick={getKey(item)}
+                          onClick={sellGame(item)}
                         >
                           Взять бонус
                         </button>
