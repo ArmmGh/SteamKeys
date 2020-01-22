@@ -174,8 +174,6 @@ auth.post('/investin', (req, res, next) => {
         data.inHistory.reverse();
         res.send({ ...data });
       });
-    res.redirect(`${url}/adding`)
-    next()
 });
 
 auth.post('/setbenefit', (req, res) => {
