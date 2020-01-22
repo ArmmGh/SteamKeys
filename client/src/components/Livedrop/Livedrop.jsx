@@ -180,7 +180,7 @@ const Livedrop = () => {
                 <FaRegFolderOpen />
               </div>
               <div className="text">
-                {translate('openCase')}: <span>{openCases}</span>
+                Вкладов: <span>{openCases}</span>
               </div>
             </div>
             <div className="item">
