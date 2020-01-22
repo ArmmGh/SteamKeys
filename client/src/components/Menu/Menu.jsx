@@ -3,6 +3,7 @@ import { useStateValue } from '../../context';
 import queryString from 'query-string';
 import axios from 'axios';
 import fetchApi from '../../utils/fetchApi';
+import { FaMoneyBill } from "react-icons/fa";
 import { MdPerson, MdInput, MdClose } from "react-icons/md";
 import { GiPayMoney, GiReceiveMoney, GiTakeMyMoney } from "react-icons/gi";
 import { Link } from 'react-router-dom';
@@ -60,6 +61,16 @@ const Menu = () =>{
                    <div className="infm">
                    <Link to="/cabinet" href="/cabinet">
                    кабинет
+                   </Link>
+                   </div>
+                   </li></div>
+                   <div className="profitem"><li>
+                   <div className="ico">
+                   <FaMoneyBill />
+                   </div>
+                   <div className="infm">
+                   <Link to="/case/bronze" href="/case/bronze">
+                   бонус
                    </Link>
                    </div>
                    </li></div>

@@ -93,7 +93,7 @@ const getLiveinfo = async () => {
   // Cases.deleteOne({ _id: {} }).then(res => console.log('done', res));
   const openCasesLength = () =>
     new Promise((resolve, reject) => {
-      Livedrop.collection.countDocuments({}, {}, (err, res) => resolve(res));
+      Benefit.collection.countDocuments({}, {}, (err, res) => resolve(res));
     });
 
   const usersLength = () =>
