@@ -47,7 +47,6 @@ const Invest = () =>{
     }
 
     const invest = () => e => {
-        if(user.inHistory !== undefined || user.inHistory.length !== 0){
             if(user.payment === 'yes'){
                 if(user.walletp !== '' || user.walletp !== null){
                     if (amount !== ''){
@@ -74,17 +73,14 @@ const Invest = () =>{
                         toast("Недостаточно средств")
                     }
                 }else{
-                toast("Поле не может быть пустым")
+                    toast("Поле не может быть пустым")
                 }
                 }else{
-                    toast("С начала сохраняйте кошелек в кабинет")
+                    toast("Сохраняйте кошелек в кабинет")
                 }
             }else{
                 toast("С начала пополнитье баланс")
             }
-        }else{
-            toast("С начала пополнитье баланс")
-        }
     }
     const closeAlert = () => e => {
         toggleAlert(true);
