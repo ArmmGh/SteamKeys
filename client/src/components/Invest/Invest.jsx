@@ -38,7 +38,7 @@ const Invest = () =>{
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ ...items, amount: items.amount }),
+            body: JSON.stringify({ ...items, amount: (Math.floor(items.amount * 100) / 100) }),
             }).then(data => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
                 disableButtons(false);
@@ -60,14 +60,14 @@ const Invest = () =>{
                     headers: {
                       'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ amount}),
+                    body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
                   }).then(fetchApi('/benefit', {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
                       'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ rub: amount, wallet: user.walletp }),
+                    body: JSON.stringify({ rub: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
                   })).then(
                     disableButtons(false),
                       toast("Вклад принят")
@@ -123,7 +123,7 @@ const Invest = () =>{
                         <span>Максимум: {(Math.floor(user.balance * 100) / 100)}</span>
                     </div>
                     <div className="sumbit">
-                        <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
+                        <div><input type="text" value={(Math.floor(amount * 100) / 100)} onChange={e => handeleChange(e.target.value)} /></div>
                         <div className="btnholder"><button disabled={disableButton} onClick={invest()}>Вкладивать</button></div>
                     </div>
                     <div className="tbleheader">
@@ -139,7 +139,7 @@ const Invest = () =>{
                         </tr>
                     {user.benefitHistory.map((items, index) => (
                         <tr className="items" key={index}>
-                    <td>{items.amount}</td>
+                    <td>{(Math.floor(items.amount * 100) / 100)}</td>
                     <td id="geting">
                         {items.action === 'paid' ? (
                             <span>Выплачено</span>

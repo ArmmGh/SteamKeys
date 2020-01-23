@@ -46,7 +46,7 @@ const Adding = () =>{
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ amount, invoice: invoice}),
+          body: JSON.stringify({amount: (Math.floor(amount * 100) / 100), invoice: invoice}),
         }).then(data => {
           dispatch({ type: 'updateUser', payload: { ...data } });
           disableButtons(false);
@@ -84,7 +84,7 @@ const Adding = () =>{
     }
 
       const handeleChange = val => {
-        if (val.match(/^([1-9][0-9]*)*$/)) {
+        if (val.match(/^([1-9][0-9.]*)*$/)) {
           setAmount(val);
         }
       };
@@ -124,7 +124,7 @@ const Adding = () =>{
                 <li>Перейдите на эту <Link onClick={opnI()}>страницу</Link></li>
                 <li>В поле <span className="underline">Номер счета, e-mail или телефон</span> заполнитье: <span className="inform">P44911742</span></li>
                 <li>В поле <span className="underline">Комментарий</span> заполнитье: <span className="inform">{invoice}</span></li>
-                <li>В поле <span className="underline">Сумма</span> заполнитье: <span className="inform">{amount}</span></li>
+                <li>В поле <span className="underline">Сумма</span> заполнитье: <span className="inform">{(Math.floor(amount * 100) / 100)}</span></li>
                 <li>Нажать <span className="underline">Перевести</span></li>
                 <li><Link onClick={openImage()}>Пример</Link></li>
                 <li>После оплаты на верху появиться сообщение с ID транзакции или перейдите на эту <Link onClick={opn()}>страницу</Link></li>
@@ -164,7 +164,7 @@ const Adding = () =>{
             <p>Укажите сумму и способ пополнения</p>
             </div>
             <div className="suminput">
-                <input type="text" value={amount} onChange={e => handeleChange(e.target.value)} />
+                <input type="text" value={(Math.floor(amount * 100) / 100)} onChange={e => handeleChange(e.target.value)} />
             </div>
         <div className="imgholder">
             <button onClick={openModal()} disabled={disableButton} ><img src={log} alt="payeer" /></button>
@@ -184,7 +184,7 @@ const Adding = () =>{
                     </tr>
                     {user.inHistory.map((item, index) => (
                         <tr className="items" key={index}>
-                    <td>{item.amount}</td>
+                    <td>{(Math.floor(item.amount * 100) / 100)}</td>
                     <td>{item.action === 'waiting' ? (
                       <button onClick={hisopenModal(item)}>Подтвердить</button>
                     ) : item.action === 'sent' ? (

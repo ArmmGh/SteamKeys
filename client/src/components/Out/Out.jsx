@@ -19,7 +19,7 @@ const Out = () =>{
     const [amount, setAmount] = useState(user.balance)
 
     const handeleChange = val => {
-        if (val.match(/^([1-9][0-9]*)*$/)) {
+        if (val.match(/^([1-9][0-9.]*)*$/)) {
           setAmount(val);
         }
       };
@@ -47,7 +47,7 @@ const Out = () =>{
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ amount: amount, wallet: user.walletp }),
+                body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
                 }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
                     disableButtons(false);
@@ -94,7 +94,7 @@ const Out = () =>{
             </div>
             <div className="infout">
                 <div className="preinfo">
-                <span>{amount}</span>
+                <span>{(Math.floor(amount * 100) / 100)}</span>
                 <span>{user.walletp}</span>
                 </div>
             </div>
@@ -116,10 +116,10 @@ const Out = () =>{
         <div className="paymethod">
             <div className="amount">
             <p>Укажите сумму, которую хотите вывести</p>
-    <span>Максимум: {(Math.floor(user.balance * 100) / 100)}</span>
+            <span>Максимум: {(Math.floor(user.balance * 100) / 100)}</span>
             </div>
             <div className="suminput">
-                <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
+                <input type="text" value={(Math.floor(amount * 100) / 100)} onChange={e => handeleChange(e.target.value)}/>
             </div>
         <div className="imgholder">
             <div className="imgpos"><button onClick={openModal()}><img src={log} alt="payeer" /></button></div>
@@ -140,7 +140,7 @@ const Out = () =>{
                         </tr>
                     {user.outHistory.map((item, index) => (
                 <tr className="items" key={index}>
-                    <td>{item.amount}</td>
+                    <td>{(Math.floor(item.amount * 100) / 100)}</td>
                     <td>{item.wallet}</td>
                     <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={item.date} /></td>
                 </tr>

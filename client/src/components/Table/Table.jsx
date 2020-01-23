@@ -103,8 +103,8 @@ const Cases = ({ history }) => {
         {benefit && (
             <table className="table" id="tbl">
               <tr className="thd">
-                <th>Сумма</th>
                 <th>Кошелек</th>
+                <th>Сумма</th>
                 <th>Дата</th>
               </tr>
               {benefit.map((item, index) => (
