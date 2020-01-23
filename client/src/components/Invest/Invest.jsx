@@ -49,8 +49,10 @@ const Invest = () =>{
     const invest = () => e => {
         if(user.inHistory !== undefined || user.inHistory.length !== 0){
             if(user.payment === 'yes'){
-                if (amount !== ''){
-                    if(user.balance >= amount){
+                if(user.walletp !== null || user.walletp !== ''){
+                    if (amount !== ''){
+                        if(user.balance >= amount){
+                    disableButtons(true);
                     fetchApi('/setbenefit', {
                     method: 'POST',
                     credentials: 'include',
@@ -65,12 +67,17 @@ const Invest = () =>{
                       'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ rub: amount, wallet: user.walletp }),
-                  })).then(toast("Вклад принят"))
+                  })).then(
+                      toast("Вклад принят")
+                      )
                     }else{
                         toast("Недостаточно средств")
                     }
                 }else{
-                    toast("Поле не может быть пустым")
+                toast("Поле не может быть пустым")
+                }
+                }else{
+                    toast("С начала сохраняйте кошелек в кабинет")
                 }
             }else{
                 toast("С начала пополнитье баланс")
@@ -120,7 +127,7 @@ const Invest = () =>{
                     </div>
                     <div className="sumbit">
                         <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
-                        <div className="btnholder"><button onClick={invest()}>Вкладивать</button></div>
+                        <div className="btnholder"><button disabled={disableButton} onClick={invest()}>Вкладивать</button></div>
                     </div>
                     <div className="tbleheader">
                         <h3>Вклады</h3>
