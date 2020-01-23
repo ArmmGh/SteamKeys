@@ -17,6 +17,7 @@ const register = async data => {
     admin: false,
     profileurl: data.profileurl,
     bonus: 'none',
+    payment: 'no',
     walletq: '',
     walletp: '',
     balance: 0,
@@ -215,6 +216,7 @@ const addBalance = (user, data) =>
         },
         {
           $set: {
+            payment: 'yes',
             balance: res.balance + data.amount,
             'inHistory.$.action': 'sent',
           },

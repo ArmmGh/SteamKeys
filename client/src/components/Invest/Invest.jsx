@@ -47,28 +47,34 @@ const Invest = () =>{
     }
 
     const invest = () => e => {
-        if (amount !== ''){
-            if(user.balance >= amount){
-            fetchApi('/setbenefit', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ amount}),
-          }).then(fetchApi('/benefit', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ rub: amount, wallet: user.walletp }),
-          })).then(toast("Вклад принят"))
-            }else{
-                toast("Недостаточно средств")
+        if(user.inHistory === undefined || user.inHistory.length == 0){
+            if(user.payment === 'no'){
+                toast("С начала пополнитье баланс")
             }
         }else{
-            toast("Поле не может быть пустым")
+            if (amount !== ''){
+                if(user.balance >= amount){
+                fetchApi('/setbenefit', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ amount}),
+              }).then(fetchApi('/benefit', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ rub: amount, wallet: user.walletp }),
+              })).then(toast("Вклад принят"))
+                }else{
+                    toast("Недостаточно средств")
+                }
+            }else{
+                toast("Поле не может быть пустым")
+            }
         }
     }
     const closeAlert = () => e => {
