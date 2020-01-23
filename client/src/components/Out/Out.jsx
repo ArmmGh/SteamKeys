@@ -16,7 +16,7 @@ const Out = () =>{
     const [{ user }, dispatch] = useStateValue();
     const [disableButton, disableButtons] = useState(false);
     const [modalIsOpen, setModal] = useState(false)
-    const [amount, setAmount] = useState(user.balance)
+    const [amount, setAmount] = useState(Math.floor(user.balance * 100) / 100)
 
     const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
