@@ -49,7 +49,7 @@ const Invest = () =>{
     const invest = () => e => {
         if(user.inHistory !== undefined || user.inHistory.length !== 0){
             if(user.payment === 'yes'){
-                if(user.walletp == null || user.walletp == ''){
+                if(user.walletp !== '' || user.walletp !== null){
                     if (amount !== ''){
                         if(user.balance >= amount){
                     disableButtons(true);
