@@ -48,33 +48,35 @@ const Invest = () =>{
 
     const invest = () => e => {
         if(user.inHistory === undefined || user.inHistory.length == 0){
-            if(user.payment === 'no'){
+            if(user.payment === 'yes'){
+                if (amount !== ''){
+                    if(user.balance >= amount){
+                    fetchApi('/setbenefit', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ amount}),
+                  }).then(fetchApi('/benefit', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ rub: amount, wallet: user.walletp }),
+                  })).then(toast("Вклад принят"))
+                    }else{
+                        toast("Недостаточно средств")
+                    }
+                }else{
+                    toast("Поле не может быть пустым")
+                }
+            }else{
                 toast("С начала пополнитье баланс")
             }
         }else{
-            if (amount !== ''){
-                if(user.balance >= amount){
-                fetchApi('/setbenefit', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ amount}),
-              }).then(fetchApi('/benefit', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ rub: amount, wallet: user.walletp }),
-              })).then(toast("Вклад принят"))
-                }else{
-                    toast("Недостаточно средств")
-                }
-            }else{
-                toast("Поле не может быть пустым")
-            }
+            toast("С начала пополнитье баланс")
         }
     }
     const closeAlert = () => e => {
