@@ -25,7 +25,7 @@ const Invest = () =>{
       );
 
       const handeleChange = val => {
-        if (val.match(/^([1-9][0-9]*)*$/)) {
+        if (val.match(/^([1-9][0-9.]*)*$/)) {
           setAmount(val);
         }
       };
@@ -69,6 +69,7 @@ const Invest = () =>{
                     },
                     body: JSON.stringify({ rub: amount, wallet: user.walletp }),
                   })).then(
+                    disableButtons(false),
                       toast("Вклад принят")
                       )
                     }else{
