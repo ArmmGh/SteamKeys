@@ -149,7 +149,7 @@ const Adding = () =>{
               </div>
               <div className="title">Внимание!!!</div>
               <div className="text">
-                Нижние цены написано для одного открывания кейса
+              Прежде чем пополнить баланс в проекте внимательно читайте <Link to="/agreement" href="/agreement">Правила</Link> и <Link to="/agreement" href="/agreement">Условия</Link> сайта․
               </div>
             </div>
           )}

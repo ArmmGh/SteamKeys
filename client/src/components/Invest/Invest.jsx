@@ -1,6 +1,7 @@
 import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
 import Timer from 'react-compound-timer';
+import { MdClose } from 'react-icons/md';
 import { ToastContainer, toast } from 'react-toastify';
 import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';
@@ -8,6 +9,7 @@ import fetchApi from '../../utils/fetchApi';
 import './Invest.scss';
 import '../toast/toast.scss';
 import { useStateValue } from '../../context';
+import { Link } from 'react-router-dom';
 
 
 const Invest = () =>{
@@ -18,6 +20,9 @@ const Invest = () =>{
       const [disableButton, disableButtons] = useState(false);
       const [storage, setStorage] = useState(user.walletp)
       const [amount, setAmount] = useState('');
+      const [hideAlert, toggleAlert] = useState(
+        window.localStorage.getItem('closeAlertI'),
+      );
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9]*)*$/)) {
@@ -58,7 +63,7 @@ const Invest = () =>{
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ rub: amount, wallet: user.walletp }),
-          }))
+          })).then(toast("Вклад принят"))
             }else{
                 toast("Недостаточно средств")
             }
@@ -66,6 +71,10 @@ const Invest = () =>{
             toast("Поле не может быть пустым")
         }
     }
+    const closeAlert = () => e => {
+        toggleAlert(true);
+        window.localStorage.setItem('closeAlertI', true);
+      };
     return(
         <React.Fragment>
             <ToastContainer
@@ -80,6 +89,17 @@ const Invest = () =>{
             pauseOnHover
             />
             <ToastContainer />
+            {!hideAlert && (
+            <div className="alert">
+              <div className="close" onClick={closeAlert()}>
+                <MdClose />
+              </div>
+              <div className="title">Внимание!!!</div>
+              <div className="text">
+              Прежде чем вкладивать в проекте внимательно читайте <Link to="/agreement" href="/agreement">Правила</Link> и <Link to="/agreement" href="/agreement">Условия</Link> сайта.
+              </div>
+            </div>
+          )}
             <Menu />
             <div className="investcontainer">
                 <div className="investall">
