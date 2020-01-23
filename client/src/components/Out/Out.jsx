@@ -94,7 +94,7 @@ const Out = () =>{
             </div>
             <div className="infout">
                 <div className="preinfo">
-                <span>{(Math.floor(amount * 100) / 100)}</span>
+                <span>{amount}</span>
                 <span>{user.walletp}</span>
                 </div>
             </div>
@@ -116,10 +116,10 @@ const Out = () =>{
         <div className="paymethod">
             <div className="amount">
             <p>Укажите сумму, которую хотите вывести</p>
-            <span>Максимум: {(Math.floor(user.balance * 100) / 100)}</span>
+            <span>Максимум: {user.balance}</span>
             </div>
             <div className="suminput">
-                <input type="text" value={(Math.floor(amount * 100) / 100)} onChange={e => handeleChange(e.target.value)}/>
+                <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
             </div>
         <div className="imgholder">
             <div className="imgpos"><button onClick={openModal()}><img src={log} alt="payeer" /></button></div>
@@ -140,7 +140,7 @@ const Out = () =>{
                         </tr>
                     {user.outHistory.map((item, index) => (
                 <tr className="items" key={index}>
-                    <td>{(Math.floor(item.amount * 100) / 100)}</td>
+                    <td>{item.amount}</td>
                     <td>{item.wallet}</td>
                     <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={item.date} /></td>
                 </tr>

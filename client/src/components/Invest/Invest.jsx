@@ -120,10 +120,10 @@ const Invest = () =>{
                     </div>
                     <div className="txt">
                         <p>Укажите сумму, которую хотите вкладивать</p>
-                        <span>Максимум: {(Math.floor(user.balance * 100) / 100)}</span>
+                        <span>Максимум: {user.balance}</span>
                     </div>
                     <div className="sumbit">
-                        <div><input type="text" value={(Math.floor(amount * 100) / 100)} onChange={e => handeleChange(e.target.value)} /></div>
+                        <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
                         <div className="btnholder"><button disabled={disableButton} onClick={invest()}>Вкладивать</button></div>
                     </div>
                     <div className="tbleheader">

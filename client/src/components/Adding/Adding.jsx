@@ -164,7 +164,7 @@ const Adding = () =>{
             <p>Укажите сумму и способ пополнения</p>
             </div>
             <div className="suminput">
-                <input type="text" value={(Math.floor(amount * 100) / 100)} onChange={e => handeleChange(e.target.value)} />
+                <input type="text" value={amount} onChange={e => handeleChange(e.target.value)} />
             </div>
         <div className="imgholder">
             <button onClick={openModal()} disabled={disableButton} ><img src={log} alt="payeer" /></button>
@@ -184,7 +184,7 @@ const Adding = () =>{
                     </tr>
                     {user.inHistory.map((item, index) => (
                         <tr className="items" key={index}>
-                    <td>{(Math.floor(item.amount * 100) / 100)}</td>
+                    <td>{item.amount}</td>
                     <td>{item.action === 'waiting' ? (
                       <button onClick={hisopenModal(item)}>Подтвердить</button>
                     ) : item.action === 'sent' ? (
