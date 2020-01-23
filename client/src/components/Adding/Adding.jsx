@@ -21,7 +21,7 @@ const Adding = () =>{
     const [modalIsOpen, setModal] = useState(false);
     const [ { user }, dispatch ] = useStateValue();
     const [hideAlert, toggleAlert] = useState(
-      window.localStorage.getItem('closeAlert'),
+      window.localStorage.getItem('closeAlertA'),
     );
     const [invoice, setInvoice] = useState(Math.floor(Math.random() * 1000));
 
@@ -96,7 +96,7 @@ const Adding = () =>{
 
       const closeAlert = () => e => {
         toggleAlert(true);
-        window.localStorage.setItem('closeAlert', true);
+        window.localStorage.setItem('closeAlertA', true);
       };
     return(
         <React.Fragment>
