@@ -48,7 +48,9 @@ const Invest = () =>{
 
     const invest = () => e => {
             if(user.payment === 'yes'){
-                if(user.walletp !== '' || user.walletp !== null){
+                if(user.walletp == '' || user.walletp == null){
+                    toast("Сохраняйте кошелек в кабинет")
+                }else{
                     if (amount !== ''){
                         if(user.balance >= amount){
                     disableButtons(true);
@@ -75,9 +77,7 @@ const Invest = () =>{
                 }else{
                     toast("Поле не может быть пустым")
                 }
-                }else{
-                    toast("Сохраняйте кошелек в кабинет")
-                }
+        }
             }else{
                 toast("С начала пополнитье баланс")
             }
