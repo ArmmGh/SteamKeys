@@ -166,7 +166,7 @@ const Header = () => {
                 <React.Fragment>
                   <div className="balance">
                     <p>
-                      {translate('balance')}: <span>{user.balance}</span>
+                      {translate('balance')}: <span>{(Math.floor(user.balance * 100) / 100)}</span>
                     </p>
                     <Link to="/adding" href="/adding">
                     <FiPlusCircle/>

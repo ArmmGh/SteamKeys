@@ -116,7 +116,7 @@ const Out = () =>{
         <div className="paymethod">
             <div className="amount">
             <p>Укажите сумму, которую хотите вывести</p>
-    <span>Максимум: {user.balance}</span>
+    <span>Максимум: {(Math.floor(user.balance * 100) / 100)}</span>
             </div>
             <div className="suminput">
                 <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
