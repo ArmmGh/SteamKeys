@@ -116,6 +116,44 @@
       }
     }
   }
+  .alert {
+    background: #ce352c;
+    // width: max-content;
+    position: relative;
+    border-radius: 5px;
+    color: #f5f5f5;
+    margin: 15px auto;
+    padding: 20px;
+    .close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #f5f5f5;
+      padding: 1px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      transition: all 0.3s;
+      svg {
+        font-size: 16px;
+      }
+      &:hover {
+        transition: all 0.3s;
+        background: #f5f5f5;
+        svg {
+          color: #ce352c;
+        }
+      }
+    }
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .text {
+    }
+  }
 .addcontainer{
     button:focus{
         outline: none;

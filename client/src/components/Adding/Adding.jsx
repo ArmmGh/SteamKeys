@@ -20,6 +20,9 @@ const Adding = () =>{
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
     const [ { user }, dispatch ] = useStateValue();
+    const [hideAlert, toggleAlert] = useState(
+      window.localStorage.getItem('closeAlert'),
+    );
     const [invoice, setInvoice] = useState(Math.floor(Math.random() * 1000));
 
     const opn = () => e =>{
@@ -90,6 +93,11 @@ const Adding = () =>{
           setInfoid(val);
         }
       };
+
+      const closeAlert = () => e => {
+        toggleAlert(true);
+        window.localStorage.setItem('closeAlert', true);
+      };
     return(
         <React.Fragment>
         <Modal
@@ -134,6 +142,17 @@ const Adding = () =>{
             </div>
         </div>
       </Modal>
+      {!hideAlert && (
+            <div className="alert">
+              <div className="close" onClick={closeAlert()}>
+                <MdClose />
+              </div>
+              <div className="title">Внимание!!!</div>
+              <div className="text">
+                Нижние цены написано для одного открывания кейса
+              </div>
+            </div>
+          )}
         <div className="addcontainer">
             <div className="alladd">
                 <Menu />

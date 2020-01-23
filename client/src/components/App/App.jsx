@@ -98,7 +98,6 @@ function App() {
         <Route path="/adding" component={Adding} />
         <Route path="/table" component={Table} />
         <Route path="/profile" component={Profile} />
-        <Route path="/case/bronze" component={Menu} />
         <Route path="/case/:name" component={Game} />
         <Route exact path="/" component={Table} />
         <Route path="/faq" component={Faq} />
