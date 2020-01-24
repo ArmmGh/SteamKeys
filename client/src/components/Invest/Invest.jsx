@@ -18,6 +18,7 @@ const Invest = () =>{
         dispatch,
       ] = useStateValue();
       const [disableButton, disableButtons] = useState(false);
+      const [disble, setDisble] = useState(false);
       const [storage, setStorage] = useState(user.walletp)
       const [amount, setAmount] = useState('');
       const [hideAlert, toggleAlert] = useState(
@@ -53,7 +54,7 @@ const Invest = () =>{
                 }else{
                     if (amount !== ''){
                         if(user.balance >= amount){
-                    disableButtons(true);
+                   setDisble(true);
                     fetchApi('/setbenefit', {
                     method: 'POST',
                     credentials: 'include',
@@ -69,7 +70,7 @@ const Invest = () =>{
                     },
                     body: JSON.stringify({ rub: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
                   })).then(
-                    disableButtons(false),
+                    setDisble(false),
                       toast("Вклад принят")
                       )
                     }else{
@@ -120,11 +121,11 @@ const Invest = () =>{
                     </div>
                     <div className="txt">
                         <p>Укажите сумму, которую хотите вкладивать</p>
-                        <span>Максимум: {user.balance.toFixed(2)}</span>
+                        <span>Максимум: {Math.floor(user.balance * 100) / 100}</span>
                     </div>
                     <div className="sumbit">
                         <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
-                        <div className="btnholder"><button disabled={disableButton} onClick={invest()}>Вкладивать</button></div>
+                        <div className="btnholder"><button disabled={disble} onClick={invest()}>Вкладивать</button></div>
                     </div>
                     <div className="tbleheader">
                         <h3>Вклады</h3>
@@ -139,7 +140,7 @@ const Invest = () =>{
                         </tr>
                     {user.benefitHistory.map((items, index) => (
                         <tr className="items" key={index}>
-                    <td>{items.amount.toFixed(2)}</td>
+                    <td>{(Math.floor(items.amount * 100) / 100)}</td>
                     <td id="geting">
                         {items.action === 'paid' ? (
                             <span>Выплачено</span>
