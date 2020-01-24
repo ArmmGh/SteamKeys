@@ -4,6 +4,12 @@
         outline: none;
     }
     .cabinetall{
+        .warning{
+            p{
+                color: red;
+                font-size: 22px;
+            }
+        }
         .backfone{
             display: flex;
             justify-content: center;

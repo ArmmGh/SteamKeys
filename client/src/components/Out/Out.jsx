@@ -40,6 +40,7 @@ const Out = () =>{
     }
 }
     const checker = () => e =>{
+            if(user.payment === 'yes'){
             disableButtons(true);
             fetchApi('/outin', {
                 method: 'POST',
@@ -54,7 +55,10 @@ const Out = () =>{
                 })
                 setModal(false);
                 toast("Оплата пошла успешно")
+            }else{
+                toast("С начала пополнитье баланс")
             }
+        }
     return(
         <React.Fragment>
             <ToastContainer

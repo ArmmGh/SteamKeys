@@ -82,6 +82,9 @@ const Cabinet = () =>{
                     <div className="heading">
                         <h1>Платежные данные</h1>
                     </div>
+                    <div className="warning">
+                        <p>Запомнитье платежные данные нельзя менять заполните данные корректно.</p>
+                    </div>
                     <form>
                     <div className="infs">
                         <div className="payeer">
