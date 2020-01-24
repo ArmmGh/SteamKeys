@@ -120,7 +120,7 @@ const Invest = () =>{
                     </div>
                     <div className="txt">
                         <p>Укажите сумму, которую хотите вкладивать</p>
-                        <span>Максимум: {Math.floor(user.balance * 100) / 100}</span>
+                        <span>Максимум: {user.balance.toFixed(2)}</span>
                     </div>
                     <div className="sumbit">
                         <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
@@ -139,7 +139,7 @@ const Invest = () =>{
                         </tr>
                     {user.benefitHistory.map((items, index) => (
                         <tr className="items" key={index}>
-                    <td>{(Math.floor(items.amount * 100) / 100)}</td>
+                    <td>{items.amount.toFixed(2)}</td>
                     <td id="geting">
                         {items.action === 'paid' ? (
                             <span>Выплачено</span>

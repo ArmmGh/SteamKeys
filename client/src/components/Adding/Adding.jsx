@@ -163,9 +163,6 @@ const Adding = () =>{
             <div className="amount">
             <p>Укажите сумму и способ пополнения</p>
             </div>
-            <div className="say">
-              <p>Укажите сумму с учетом комисси для перевода если сумма будет </p>
-            </div>
             <div className="suminput">
                 <input type="text" value={amount} onChange={e => handeleChange(e.target.value)} />
             </div>
