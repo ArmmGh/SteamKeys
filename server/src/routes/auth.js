@@ -102,6 +102,10 @@ auth.post('/check', (req, res, next) => {
     infoInvoice: req.body.invoice,
     _id: req.body._id
   };
+  const tax = Math.floor(params.infoSum * 0.0095 * 100) / 100 + params.infoSum + 0.01;
+  const end = Math.round(tax * 100) / 100;
+  console.log(tax)
+  console.log(end);
   request({
     method: 'POST',
     url: 'https://payeer.com/ajax/api/api.php?historyInfo',
@@ -113,7 +117,7 @@ auth.post('/check', (req, res, next) => {
     const hallo = JSON.parse(body);
     console.log('Response:', hallo);
     console.log(params._id)
-    if(params.infoInvoice == hallo.info.comment && params.infoSum == hallo.info.sumOut){
+    if(params.infoInvoice == hallo.info.comment && params.infoSum || end == hallo.info.sumOut){
       db.takeIn(
         { userID: req.session.passport.user.id,
         _id: req.params._id },
