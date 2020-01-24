@@ -31,16 +31,19 @@ const Out = () =>{
         if(amount == 0 || amount == ''){
             toast("Поле не может быть пустым")
         }else{
+        if(user.payment === 'yes'){
             if(amount <= user.balance){
                 setModal(true);
                 }else{
                     toast("Недостаточно средств");
+                }         
+        }else{
+            toast("С начала пополнитье баланс")
                 }
+             }
         }
     }
-}
     const checker = () => e =>{
-            if(user.payment === 'yes'){
             disableButtons(true);
             fetchApi('/outin', {
                 method: 'POST',
@@ -55,10 +58,7 @@ const Out = () =>{
                 })
                 setModal(false);
                 toast("Оплата пошла успешно")
-            }else{
-                toast("С начала пополнитье баланс")
             }
-        }
     return(
         <React.Fragment>
             <ToastContainer
