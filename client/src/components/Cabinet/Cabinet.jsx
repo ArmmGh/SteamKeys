@@ -73,6 +73,10 @@ const Cabinet = () =>{
             pauseOnHover
             />
             <ToastContainer />
+            {!authenticated ? (
+                <div>wrong door please tik tok next door</div>
+            ) : (
+            <React.Fragment>
             <Menu />
             <div className="cabinetcontainer">
                 <div className="cabinetall">
@@ -102,6 +106,8 @@ const Cabinet = () =>{
                     </form>
                 </div>
             </div>
+            </React.Fragment>   
+            )}
         </React.Fragment>
     )
 }

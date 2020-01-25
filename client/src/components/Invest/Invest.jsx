@@ -101,6 +101,10 @@ const Invest = () =>{
             pauseOnHover
             />
             <ToastContainer />
+          {!authenticated ? (
+              <div>wrong door please tik tok next door</div>
+          ) : (
+            <React.Fragment>
             {!hideAlert && (
             <div className="alert">
               <div className="close" onClick={closeAlert()}>
@@ -112,10 +116,6 @@ const Invest = () =>{
               </div>
             </div>
           )}
-          {!authenticated ? (
-              <div>wrong door please tik tok next door</div>
-          ) : (
-            <React.Fragment>
             <Menu />
             <div className="investcontainer">
                 <div className="investall">

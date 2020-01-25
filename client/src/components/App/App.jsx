@@ -23,9 +23,10 @@ import Out from '../Out';
 import Invest from '../Invest';
 import Cabinet from '../Cabinet';
 import Menu from '../Menu';
+import test from './test';
 
 function App() {
-  const [{ user, socket }, dispatch] = useStateValue();
+  const [{ user, socket, authenticated }, dispatch] = useStateValue();
 
   const getGames = () => {
     fetchApi('/games', {
@@ -93,12 +94,16 @@ function App() {
       <main>
         <Route path="/callback" component={Menu} />
         <Route path="/cabinet" component={Cabinet} />
+        {!authenticated ? (
+          <Route path="/case/:name" component={test} />
+        ) : (
+          <Route path="/case/:name" component={Game} />
+        )}
         <Route path="/invest" component={Invest} />
         <Route path="/output" component={Out} />
         <Route path="/adding" component={Adding} />
         <Route path="/table" component={Table} />
         <Route path="/profile" component={Profile} />
-        <Route path="/case/:name" component={Game} />
         <Route exact path="/" component={Table} />
         <Route path="/faq" component={Faq} />
         <Route path="/agreement" component={Agreement} />

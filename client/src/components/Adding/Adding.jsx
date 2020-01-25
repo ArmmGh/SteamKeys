@@ -142,66 +142,72 @@ const Adding = () =>{
             </div>
         </div>
       </Modal>
-      {!hideAlert && (
-            <div className="alert">
-              <div className="close" onClick={closeAlert()}>
-                <MdClose />
+      {!authenticated ? (
+        <div>wrong door please tik tok next door</div>
+      ) : (
+        <React.Fragment>
+        {!hideAlert && (
+          <div className="alert">
+            <div className="close" onClick={closeAlert()}>
+              <MdClose />
+            </div>
+            <div className="title">Внимание!!!</div>
+            <div className="text">
+            Прежде чем пополнить баланс в проекте внимательно читайте <Link to="/agreement" href="/agreement">Правила</Link> и <Link to="/agreement" href="/agreement">Условия</Link> сайта․
+            </div>
+          </div>
+        )}
+      <div className="addcontainer">
+          <div className="alladd">
+              <Menu />
+              <div className="design">
+                  <img src={des} alt="money"/>
               </div>
-              <div className="title">Внимание!!!</div>
-              <div className="text">
-              Прежде чем пополнить баланс в проекте внимательно читайте <Link to="/agreement" href="/agreement">Правила</Link> и <Link to="/agreement" href="/agreement">Условия</Link> сайта․
+      <div className="paymethod">
+          <div className="amount">
+          <p>Укажите сумму и способ пополнения</p>
+          </div>
+          <div className="suminput">
+              <input type="text" value={amount} onChange={e => handeleChange(e.target.value)} />
+          </div>
+      <div className="imgholder">
+          <button onClick={openModal()} disabled={disableButton} ><img src={log} alt="payeer" /></button>
+      </div>
+      </div>
+      <div className="tabl">
+          <div className="header">
+              <h3>История Пополнении</h3>
+          </div>
+          <div className="addtable">
+              {user.inHistory && (
+                  <table className="table" id="tbl">
+                  <tr>
+                    <th>Сумма</th>
+                    <th>Статус</th>
+                    <th>Дата</th>
+                  </tr>
+                  {user.inHistory.map((item, index) => (
+                      <tr className="items" key={index}>
+                  <td>{item.amount}</td>
+                  <td>{item.action === 'waiting' ? (
+                    <button onClick={hisopenModal(item)}>Подтвердить</button>
+                  ) : item.action === 'sent' ? (
+                    <span>Перечислен</span>
+                  ) : (
+                    ''
+                  )
+                  }</td>
+                  <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={item.date} /></td>
+                      </tr>
+                  ))}
+                  </table>
+              )}
+                  </div>
+      </div>
+          </div>
               </div>
-            </div>
-          )}
-        <div className="addcontainer">
-            <div className="alladd">
-                <Menu />
-                <div className="design">
-                    <img src={des} alt="money"/>
-                </div>
-        <div className="paymethod">
-            <div className="amount">
-            <p>Укажите сумму и способ пополнения</p>
-            </div>
-            <div className="suminput">
-                <input type="text" value={amount} onChange={e => handeleChange(e.target.value)} />
-            </div>
-        <div className="imgholder">
-            <button onClick={openModal()} disabled={disableButton} ><img src={log} alt="payeer" /></button>
-        </div>
-        </div>
-        <div className="tabl">
-            <div className="header">
-                <h3>История Пополнении</h3>
-            </div>
-            <div className="addtable">
-                {user.inHistory && (
-                    <table className="table" id="tbl">
-                    <tr>
-                      <th>Сумма</th>
-                      <th>Статус</th>
-                      <th>Дата</th>
-                    </tr>
-                    {user.inHistory.map((item, index) => (
-                        <tr className="items" key={index}>
-                    <td>{item.amount}</td>
-                    <td>{item.action === 'waiting' ? (
-                      <button onClick={hisopenModal(item)}>Подтвердить</button>
-                    ) : item.action === 'sent' ? (
-                      <span>Перечислен</span>
-                    ) : (
-                      ''
-                    )
-                    }</td>
-                    <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={item.date} /></td>
-                        </tr>
-                    ))}
-                    </table>
-                )}
-                    </div>
-        </div>
-            </div>
-                </div>
+      </React.Fragment> 
+      )}
         </React.Fragment>
     )
 }

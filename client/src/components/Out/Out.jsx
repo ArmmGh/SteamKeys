@@ -111,7 +111,11 @@ const Out = () =>{
             </div>
         </div>
       </Modal>
-        <div className="addcontainer">
+      {!authenticated ? (
+          <div>wrong door please tik tok next door</div>
+      ) : (
+        <React.Fragment>
+            <div className="addcontainer">
             <div className="alladd">
                 <Menu />
                 <div className="design">
@@ -155,6 +159,8 @@ const Out = () =>{
                     </div>
             </div>
                 </div>
+        </React.Fragment>
+      )}
         </React.Fragment>
     )
 }
