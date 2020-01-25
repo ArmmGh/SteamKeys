@@ -112,6 +112,10 @@ const Invest = () =>{
               </div>
             </div>
           )}
+          {!authenticated ? (
+              <div>wrong door please tik tok next door</div>
+          ) : (
+            <React.Fragment>
             <Menu />
             <div className="investcontainer">
                 <div className="investall">
@@ -120,6 +124,7 @@ const Invest = () =>{
                     </div>
                     <div className="txt">
                         <p>Укажите сумму, которую хотите вкладивать</p>
+                        <span>Минимум: 1</span>
                         <span>Максимум: {Math.floor(user.balance * 100) / 100}</span>
                     </div>
                     <div className="sumbit">
@@ -171,6 +176,8 @@ const Invest = () =>{
                     </div>
                 </div>
             </div>
+        </React.Fragment>
+          )}
         </React.Fragment>
     )
 }

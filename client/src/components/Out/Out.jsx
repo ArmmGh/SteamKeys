@@ -120,6 +120,7 @@ const Out = () =>{
         <div className="paymethod">
             <div className="amount">
             <p>Укажите сумму, которую хотите вывести</p>
+            <span>Минимум: 1</span>
             <span>Максимум: {Math.floor(user.balance * 100) / 100}</span>
             </div>
             <div className="suminput">
