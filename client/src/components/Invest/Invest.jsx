@@ -123,8 +123,10 @@ const Invest = () =>{
                         <span>Максимум: {Math.floor(user.balance * 100) / 100}</span>
                     </div>
                     <div className="sumbit">
+                        <form>
                         <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
                         <div className="btnholder"><button disabled={disble} onClick={invest()}>Вкладивать</button></div>
+                        </form>
                     </div>
                     <div className="tbleheader">
                         <h3>Вклады</h3>
