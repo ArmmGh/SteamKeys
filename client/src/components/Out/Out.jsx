@@ -13,7 +13,10 @@ import './Out.scss';
 
 
 const Out = () =>{    
-    const [{ user }, dispatch] = useStateValue();
+    const [
+        { user, authenticated, translate, cases, socket },
+        dispatch,
+      ] = useStateValue();
     const [disableButton, disableButtons] = useState(false);
     const [modalIsOpen, setModal] = useState(false)
     const [amount, setAmount] = useState(Math.floor(user.balance * 100) / 100)

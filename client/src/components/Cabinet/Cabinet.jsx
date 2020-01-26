@@ -13,7 +13,10 @@ import './Cabinet.scss';
 const Cabinet = () =>{
     const [disabled, setDisabled] = useState(false);
     const [disabledq, setDisabledq] = useState(false);
-    const [{ user, socket }, dispatch] = useStateValue();
+    const [
+        { user, authenticated, translate, cases, socket },
+        dispatch,
+      ] = useStateValue();
     const [walletp, setWalletp] = useState(user.walletp);
     const [walletq, setWalletq] = useState(user.walletq);
 

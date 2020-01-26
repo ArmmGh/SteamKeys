@@ -19,7 +19,10 @@ const Adding = () =>{
     const [disableButton, disableButtons] = useState(false);
     const [isActive, setActive] = useState(false);
     const [modalIsOpen, setModal] = useState(false);
-    const [ { user }, dispatch ] = useStateValue();
+    const [
+      { user, authenticated, translate, cases, socket },
+      dispatch,
+    ] = useStateValue();
     const [hideAlert, toggleAlert] = useState(
       window.localStorage.getItem('closeAlertA'),
     );
