@@ -70,6 +70,7 @@ const Invest = () =>{
                     },
                     body: JSON.stringify({ rub: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
                   })).then(
+                    window.location.reload(),
                       toast("Вклад принят")
                       )
                     }else{
