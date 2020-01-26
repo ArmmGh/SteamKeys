@@ -156,6 +156,24 @@
       text-align: center;
     }
   }
+  .alerting{
+    border: 1px solid #93b1f7;
+    justify-content: center;
+    align-items: center;
+    .alertinginfo{
+      padding: 30px 40px;
+      display: flex;
+      .alertico{
+        font-size: 25px;
+        background-color: #8D8DB4;
+        color: white;
+      }
+      .alertinfo{
+        font-size: 22px;
+        text-align: center;
+      }
+    }
+  }
 .addcontainer{
     button:focus{
         outline: none;
