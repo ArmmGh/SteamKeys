@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IoMdAlert } from "react-icons/io";
 import { FaSteam, FaVk } from 'react-icons/fa';
 import { useStateValue } from '../../context';
 import './Auth.scss';
