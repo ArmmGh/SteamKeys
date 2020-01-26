@@ -10,10 +10,10 @@ import './Invest.scss';
 import '../toast/toast.scss';
 import { useStateValue } from '../../context';
 import { Link } from 'react-router-dom';
-import Auth from '../Auth';
+import Auth from '../Auth/index';
 
 
-const Invest = () =>{
+const Invest = () => {
     const [
         { user, authenticated, translate, cases, socket },
         dispatch,

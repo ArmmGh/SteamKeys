@@ -8,7 +8,7 @@ import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import '../toast/toast.scss';
 import './Cabinet.scss';
-import Auth from '../Auth';
+import Auth from '../Auth/index';
 
 
 const Cabinet = () =>{

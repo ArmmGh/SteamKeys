@@ -8,7 +8,7 @@ import Menu from '../Menu/index';
 import { useStateValue } from '../../context';
 import fetchApi from '../../utils/fetchApi';
 import './Profile.scss';
-import Auth from '../Auth';
+import Auth from '../Auth/index';
 
 const Profile = () => {
   const [{ user, authenticated, translate, cases, socket },dispatch,] = useStateValue();

@@ -3,7 +3,7 @@ import { FaSteam, FaVk } from 'react-icons/fa';
 import { useStateValue } from '../../context';
 import './Auth.scss';
 
-const Auth = () => e => {
+const Auth = () => {
     const [
         { user, authenticated, translate, cases, socket },
         dispatch,

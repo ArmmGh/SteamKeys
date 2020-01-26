@@ -10,7 +10,7 @@ import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import '../toast/toast.scss';
 import './Out.scss';
-import Auth from '../Auth';
+import Auth from '../Auth/index';
 
 
 const Out = () =>{    

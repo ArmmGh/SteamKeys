@@ -10,7 +10,7 @@ import { useStateValue } from '../../context';
 import './Adding.scss';
 import fetchApi from '../../utils/fetchApi';
 import { toast } from 'react-toastify';
-import Auth from '../Auth';
+import Auth from '../Auth/index';
 
 
 const Adding = () =>{    
