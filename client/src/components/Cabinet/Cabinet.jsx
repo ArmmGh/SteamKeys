@@ -8,6 +8,7 @@ import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import '../toast/toast.scss';
 import './Cabinet.scss';
+import Auth from '../Auth';
 
 
 const Cabinet = () =>{
@@ -77,7 +78,7 @@ const Cabinet = () =>{
             />
             <ToastContainer />
             {!authenticated ? (
-                <div>wrong door please tik tok next door</div>
+                <Auth />
             ) : (
             <React.Fragment>
             <Menu />

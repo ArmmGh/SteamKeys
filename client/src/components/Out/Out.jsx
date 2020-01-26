@@ -10,6 +10,7 @@ import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import '../toast/toast.scss';
 import './Out.scss';
+import Auth from '../Auth';
 
 
 const Out = () =>{    
@@ -115,7 +116,7 @@ const Out = () =>{
         </div>
       </Modal>
       {!authenticated ? (
-          <div>wrong door please tik tok next door</div>
+          <Auth />
       ) : (
         <React.Fragment>
             <div className="addcontainer">

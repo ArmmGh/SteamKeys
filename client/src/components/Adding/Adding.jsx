@@ -3,8 +3,6 @@ import Modal from 'react-modal';
 import Menu from '../Menu/index';
 import Moment from 'react-moment';
 import { MdClose } from 'react-icons/md';
-import { IoMdAlert } from "react-icons/io";
-import { FaSteam, FaVk } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import log from '../../assets/profile/payeer-logo.png';
 import des from '../../assets/profile/money.png';
@@ -12,6 +10,7 @@ import { useStateValue } from '../../context';
 import './Adding.scss';
 import fetchApi from '../../utils/fetchApi';
 import { toast } from 'react-toastify';
+import Auth from '../Auth';
 
 
 const Adding = () =>{    
@@ -160,26 +159,7 @@ const Adding = () =>{
         </div>
       </Modal>
       {!authenticated ? (
-        <div className="alerting">
-      <div className="alertinginfo">
-          <div className="alertico">
-            <IoMdAlert />
-          </div>
-          <div className="alertinfo">
-            Войдите, чтобы продолжить.
-          </div>
-      </div>
-        <div className="actions">
-        <button className="auth" onClick={authSteam()}>
-             <FaSteam />
-                 {translate('login')} <span>steam</span>
-        </button>
-          <button className="auth" onClick={authVk()}>
-          <FaVk />
-          {translate('login')} <span>vk</span>
-            </button>
-        </div>
-        </div>
+        <Auth />
       ) : (
         <React.Fragment>
         {!hideAlert && (

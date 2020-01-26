@@ -8,9 +8,10 @@ import Menu from '../Menu/index';
 import { useStateValue } from '../../context';
 import fetchApi from '../../utils/fetchApi';
 import './Profile.scss';
+import Auth from '../Auth';
 
 const Profile = () => {
-  const [{ user, translate }, dispatch] = useStateValue();
+  const [{ user, authenticated, translate, cases, socket },dispatch,] = useStateValue();
   const [count, setCount] = useState(10);
   const [showMore, setShowmore] = useState(false);
   const [disableButton, disableButtons] = useState(false);
@@ -78,70 +79,76 @@ const Profile = () => {
 
   return (
     <React.Fragment>
-      <div className="profile">
-        <div className="main-width">
-          <div className="info">
-            <Menu />
-            <div className="gamesHistory">
-              <div className="tableHeader">
-                <div className="order">#</div>
-                <div className="name">Имя</div>
-                <div className="action">Действие</div>
-                <div className="date">Дата</div>
-              </div>
-              {user.gameHistory &&
-                user.gameHistory.slice(0, count).map((item, i) => (
-                  <div key={i} className="gameItem">
-                    <div className="order">{item.order}</div>
-                    <div className="name">
-                      {item.name === 'other' ? 'Игра до 419 рублей' : item.name}
+      {!authenticated ? ( 
+        <Auth />
+      ) : (
+        <React.Fragment>
+        <div className="profile">
+      <div className="main-width">
+        <div className="info">
+          <Menu />
+          <div className="gamesHistory">
+            <div className="tableHeader">
+              <div className="order">#</div>
+              <div className="name">Имя</div>
+              <div className="action">Действие</div>
+              <div className="date">Дата</div>
+            </div>
+            {user.gameHistory &&
+              user.gameHistory.slice(0, count).map((item, i) => (
+                <div key={i} className="gameItem">
+                  <div className="order">{item.order}</div>
+                  <div className="name">
+                    {item.name === 'other' ? 'Игра до 419 рублей' : item.name}
+                  </div>
+                  {item.key ? (
+                    <div className="action">
+                      <p>{item.key}</p>
                     </div>
-                    {item.key ? (
-                      <div className="action">
-                        <p>{item.key}</p>
-                      </div>
-                    ) : item.action === 'waiting' ? (
-                      <div className="action">
-                        {(item.caseType === 'metallic' ||
-                          item.caseType === 'silver' ||
-                          item.caseType === 'gold' ||
-                          item.name === 'other') && (
-                          <button
-                            disabled={disableButton}
-                            className="btn"
-                            onClick={sellGame(item)}
-                          >
-                            Продать за {item.sellPrice}
-                          </button>
-                        )}
+                  ) : item.action === 'waiting' ? (
+                    <div className="action">
+                      {(item.caseType === 'metallic' ||
+                        item.caseType === 'silver' ||
+                        item.caseType === 'gold' ||
+                        item.name === 'other') && (
                         <button
                           disabled={disableButton}
                           className="btn"
                           onClick={sellGame(item)}
                         >
-                          Взять бонус
+                          Продать за {item.sellPrice}
                         </button>
-                      </div>
-                    ) : item.action === 'selled' ? (
-                      <div className="action">
-                        <p>Получено</p>
-                      </div>
-                    ) : item.action === 'key' ? (
-                      <div className="action">
-                        <p>{item.key || 'Wait For Key'}</p>
-                      </div>
-                    ) : (
-                      ''
-                    )}
-                    <div className="date">
-                      <Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} />
+                      )}
+                      <button
+                        disabled={disableButton}
+                        className="btn"
+                        onClick={sellGame(item)}
+                      >
+                        Взять бонус
+                      </button>
                     </div>
+                  ) : item.action === 'selled' ? (
+                    <div className="action">
+                      <p>Получено</p>
+                    </div>
+                  ) : item.action === 'key' ? (
+                    <div className="action">
+                      <p>{item.key || 'Wait For Key'}</p>
+                    </div>
+                  ) : (
+                    ''
+                  )}
+                  <div className="date">
+                    <Moment format="YYYY-MM-DD  HH:mm:ss" date={item.date} />
                   </div>
-                ))}
-            </div>
+                </div>
+              ))}
           </div>
         </div>
       </div>
+    </div>
+      </React.Fragment>
+      )}
     </React.Fragment>
   );
 };

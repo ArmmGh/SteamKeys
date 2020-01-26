@@ -10,6 +10,7 @@ import './Invest.scss';
 import '../toast/toast.scss';
 import { useStateValue } from '../../context';
 import { Link } from 'react-router-dom';
+import Auth from '../Auth';
 
 
 const Invest = () =>{
@@ -102,7 +103,7 @@ const Invest = () =>{
             />
             <ToastContainer />
           {!authenticated ? (
-              <div>wrong door please tik tok next door</div>
+              <Auth />
           ) : (
             <React.Fragment>
             {!hideAlert && (
