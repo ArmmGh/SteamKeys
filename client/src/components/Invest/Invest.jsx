@@ -54,22 +54,22 @@ const Invest = () =>{
                 }else{
                     if (amount !== ''){
                         if(user.balance >= amount){
-                fetchApi('/benefit', {
-                 method: 'POST',
-                 credentials: 'include',
-                 headers: {
-                'Content-Type': 'application/json',
-                  },
-                body: JSON.stringify({ rub: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
-                  }).then(fetchApi('/setbenefit', {
-                  method: 'POST',
-                  credentials: 'include',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
+                    setDisble(true);
+                    fetchApi('/setbenefit', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
+                  }).then(fetchApi('/benefit', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ rub: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
                   })).then(
-                      window.location.reload(),
                       toast("Вклад принят")
                       )
                     }else{
