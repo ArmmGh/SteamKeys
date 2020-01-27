@@ -63,7 +63,7 @@ const Invest = () => {
                       'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
-                  }).then(data => {
+                  }).then((data,res) => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
                     res.rub = amount;
                     res.wallet = user.walletp;
