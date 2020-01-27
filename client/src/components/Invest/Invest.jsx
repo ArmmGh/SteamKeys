@@ -70,6 +70,7 @@ const Invest = () => {
                     res.rub = amount;
                     res.wallet = user.walletp;
                     res.time = new Date();
+                    console.log(res)
                     socket.emit('done benefit', {
                      benefit: res,
                     });

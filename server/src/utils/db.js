@@ -83,12 +83,12 @@ const setLivedrop = async data => {
 };
 
 const setBenefit = async data =>{
-  const walleting = data.wallet;
+  const walleting = data.benefit.wallet;
   const resp = walleting.slice(0,6);
   const ansr = '******';
   const end = resp.concat(ansr)
   const benef = await new Benefit({
-    rub: data.rub,
+    rub: data.benefit.rub,
     wallet: end,
     time: new Date(),
   });
