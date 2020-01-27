@@ -83,11 +83,15 @@ const setLivedrop = async data => {
 };
 
 const setBenefit = async data =>{
-  const wallet = req.body.wallet;
-  const resp = wallet.slice(0,6);
+  const walleting = data.wallet;
+  const resp = walleting.slice(0,6);
   const ansr = '******';
   const end = resp.concat(ansr)
-  const benef = await new Benefit(data.benefit);
+  const benef = await new Benefit({
+    rub: data.rub,
+    wallet: end,
+    time: new Date(),
+  });
   await benef.save();
   return benef;
 }
@@ -361,6 +365,7 @@ module.exports = {
   outIn,
   setDeposit,
   setWallet,
+  setBenefit,
   getBenefit,
   getMoney,
   getGames,

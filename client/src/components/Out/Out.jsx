@@ -59,11 +59,10 @@ const Out = () =>{
                 }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
                     disableButtons(false);
+                    setModal(false);
+                    toast("Оплата пошла успешно")
                 })
-                setModal(false);
-                toast("Оплата пошла успешно")
-                window.location.reload()
-            }
+       }
     return(
         <React.Fragment>
             <ToastContainer

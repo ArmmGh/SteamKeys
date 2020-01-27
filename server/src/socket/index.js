@@ -22,10 +22,10 @@ module.exports = io => {
     });
 
     socket.on('done benefit', data => {
-        db.setLivedrop(data).then(res => {
+        db.setBenefit(data).then(res => {
           setTimeout(() => {
-            io.emit('update live', res);
-          }, 5500);
+            io.emit('update benefit', res);
+          }, 1500);
         });
     });
 

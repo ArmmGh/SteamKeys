@@ -63,15 +63,14 @@ const Invest = () => {
                       'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
-                  }).then(fetchApi('/benefit', {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ rub: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
-                  })).then(data => {
+                  }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
+                    res.rub = amount;
+                    res.wallet = user.walletp;
+                    res.time = new Date();
+                    socket.emit('done benefit', {
+                     benefit: res,
+                    });
                     toast("Вклад принят")
                     setDisble(false);
                   })

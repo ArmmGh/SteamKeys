@@ -35,7 +35,7 @@ const Cases = ({ history }) => {
   }, []);
 
   useEffect(() => {
-    socket.on('update benefitlive', payload => {
+    socket.on('update benefit', payload => {
       if (benefit.length >= 16) {
         if (document.getElementById('helper')) {
           document.getElementById('helper').remove();
