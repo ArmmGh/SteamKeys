@@ -48,7 +48,7 @@ const Invest = () => {
             toast("Средства перечислен")
     }
 
-    const invest = () => e => {
+    const invest = () => res => {
             if(user.payment === 'yes'){
                 if(user.walletp == '' || user.walletp == null){
                     toast("Сохраняйте кошелек в кабинет")
@@ -65,18 +65,16 @@ const Invest = () => {
                     body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
                   }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
-                    res =>{
-                        setDisble(false);
-                        console.log(amount)
-                        res.rub = amount;
-                        res.wallet = user.walletp;
-                        res.time = new Date();
-                        socket.emit('done benefit', {
-                         benefit: res,
-                        });
-                        toast("Вклад принят")
-                    }
-                  })          
+                    setDisble(false);
+                    console.log(amount)
+                    res.rub = amount;
+                    res.wallet = user.walletp;
+                    res.time = new Date();
+                    socket.emit('done benefit', {
+                     benefit: res,
+                    });
+                    toast("Вклад принят")
+                  })      
                     }else{
                         toast("Недостаточно средств")
                     }
