@@ -65,17 +65,18 @@ const Invest = () => {
                     body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
                   }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
-                  }).then(res =>{
-                    setDisble(false);
-                    console.log(amount)
-                    res.rub = amount;
-                    res.wallet = user.walletp;
-                    res.time = new Date();
-                    socket.emit('done benefit', {
-                     benefit: res,
-                    });
-                    toast("Вклад принят")
-                  })               
+                    res =>{
+                        setDisble(false);
+                        console.log(amount)
+                        res.rub = amount;
+                        res.wallet = user.walletp;
+                        res.time = new Date();
+                        socket.emit('done benefit', {
+                         benefit: res,
+                        });
+                        toast("Вклад принят")
+                    }
+                  })          
                     }else{
                         toast("Недостаточно средств")
                     }
