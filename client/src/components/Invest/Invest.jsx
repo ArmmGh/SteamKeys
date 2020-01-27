@@ -63,8 +63,10 @@ const Invest = () => {
                       'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
-                  }).then((data,res) => {
+                  }).then(res =>{
+                      data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
+                    setDisble(false);
                     res.rub = amount;
                     res.wallet = user.walletp;
                     res.time = new Date();
@@ -72,8 +74,8 @@ const Invest = () => {
                      benefit: res,
                     });
                     toast("Вклад принят")
-                    setDisble(false);
-                  })
+                  }
+                })
                     }else{
                         toast("Недостаточно средств")
                     }
