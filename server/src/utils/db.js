@@ -83,6 +83,10 @@ const setLivedrop = async data => {
 };
 
 const setBenefit = async data =>{
+  const wallet = req.body.wallet;
+  const resp = wallet.slice(0,6);
+  const ansr = '******';
+  const end = resp.concat(ansr)
   const benef = await new Benefit(data.benefit);
   await benef.save();
   return benef;

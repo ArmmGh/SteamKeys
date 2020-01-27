@@ -21,6 +21,14 @@ module.exports = io => {
       }
     });
 
+    socket.on('done benefit', data => {
+        db.setLivedrop(data).then(res => {
+          setTimeout(() => {
+            io.emit('update live', res);
+          }, 5500);
+        });
+    });
+
     if (!socket.sentLivedrop) {
       socket.on('emit getlive', res => {
         db.getLivedrop().then(data => {

@@ -70,9 +70,10 @@ const Invest = () => {
                       'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ rub: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
-                  })).then(
-                      toast("Вклад принят")
-                      )
+                  })).then(data => {
+                    dispatch({ type: 'updateUser', payload: { ...data } });
+                    toast("Вклад принят")
+                  })
                     }else{
                         toast("Недостаточно средств")
                     }
