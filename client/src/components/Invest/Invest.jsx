@@ -73,6 +73,7 @@ const Invest = () => {
                   })).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
                     toast("Вклад принят")
+                    setDisble(false);
                   })
                     }else{
                         toast("Недостаточно средств")
