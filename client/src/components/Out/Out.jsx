@@ -62,6 +62,7 @@ const Out = () =>{
                 })
                 setModal(false);
                 toast("Оплата пошла успешно")
+                window.location.reload()
             }
     return(
         <React.Fragment>
