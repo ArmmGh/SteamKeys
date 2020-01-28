@@ -49,7 +49,7 @@ const Out = () =>{
     }
     const checker = () => e =>{
             disableButtons(true);
-            fetchApi('/outin', {
+            fetchApi('/outin', {mode: 'cors'}, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
