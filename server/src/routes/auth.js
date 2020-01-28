@@ -207,9 +207,6 @@ auth.post('/setwallet', (req, res) =>{
   });
 })
 
-// auth.post('/getpost', (req,res) =>{
-//   const infoId = req.body.infoId,
-// })
 
 auth.post('/getmoney', (req,res) =>{
   db.getMoney(
@@ -219,6 +216,7 @@ auth.post('/getmoney', (req,res) =>{
       amount: req.body.amount
     }
   ).then(data => {
+    data.benefitHistory.reverse();
     res.send({ ...data });
   })
 })

@@ -23,9 +23,7 @@ module.exports = io => {
 
     socket.on('done benefit', data => {
         db.setBenefit(data).then(res => {
-          setTimeout(() => {
             io.emit('update benefit', res);
-          }, 1500);
         });
     });
 
