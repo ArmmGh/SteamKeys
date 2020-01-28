@@ -47,22 +47,22 @@ const Out = () =>{
              }
         }
     }
-    const checker = () => e =>{
-            disableButtons(true);
-            fetchApi('/outin', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
-                }).then(data => {
-                    dispatch({ type: 'updateUser', payload: { ...data } });
-                    setModal(false);
-                    toast("Оплата пошла успешно")
-                    disableButtons(false);
-                })
-       }
+    const checkin = () => e =>{
+        disableButtons(true);
+        fetchApi('/outin', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
+            }).then(data => {
+                dispatch({ type: 'updateUser', payload: { ...data } });
+                setModal(false);
+                toast("Оплата пошла успешно")
+                disableButtons(false);
+            })
+   }
     return(
         <React.Fragment>
             <ToastContainer
@@ -109,7 +109,7 @@ const Out = () =>{
             </div>
           <div className="informik">
             <form>
-            <div className="formik"><button onClick={checker()} disabled={disableButton}>Получить</button></div>
+            <div className="formik"><button onClick={checkin()} disabled={disableButton}>Получить</button></div>
             </form>
           </div>
             </div>
