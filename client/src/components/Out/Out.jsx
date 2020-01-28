@@ -58,8 +58,9 @@ const Out = () =>{
                 body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
                 }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
+                    setModal(false);
+                    toast("Оплата пошла успешно")
                     disableButtons(false);
-                    window.location.reload();
                 })
        }
     return(
