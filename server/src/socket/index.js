@@ -40,7 +40,7 @@ module.exports = io => {
     if (!socket.sentBenefit) {
       socket.on('emit getbenefit', res => {
         db.getBenefit().then(data => {
-          data = data.slice(0, 20);
+          data = data.reverse().slice(0, 20);
           socket.emit('get benefit', data);
         });
       });

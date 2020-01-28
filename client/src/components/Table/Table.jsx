@@ -36,8 +36,57 @@ const Cases = ({ history }) => {
 
   useEffect(() => {
     socket.on('update benefit', payload => {
-      setBenefit([payload, ...benefit]);
-  });
+      if (benefit.length >= 16) {
+        if (document.getElementById('helper')) {
+          document.getElementById('helper').remove();
+        }
+        const elems = document.querySelectorAll('table#tbl tr');
+        let lastElem;
+        if (window.innerWidth >= 1616) {
+          lastElem = elems[15];
+        } else if (window.innerWidth >= 1456) {
+          lastElem = elems[14];
+        } else if (window.innerWidth >= 1296) {
+          lastElem = elems[13];
+        } else if (window.innerWidth >= 1136) {
+          lastElem = elems[12];
+        } else if (window.innerWidth >= 976) {
+          lastElem = elems[11];
+        } else if (window.innerWidth >= 816) {
+          lastElem = elems[10];
+        } else if (window.innerWidth >= 656) {
+          lastElem = elems[9];
+        } else if (window.innerWidth >= 486) {
+          lastElem = elems[8];
+        } else if (window.innerWidth >= 326) {
+          lastElem = elems[7];
+        } else {
+          lastElem = elems[0];
+        }
+        const firstElem = elems[0];
+        const newElem = document.createElement('tr');
+        window.addEventListener('resize', () => {
+          newElem.remove();
+        });
+        newElem.setAttribute('id', 'helper');
+        newElem.classList.add('animated', 'helper');
+        lastElem.classList.add('animated', 'fadeOutDown', 'hideElem');
+        if (window.innerWidth < 1616) {
+          lastElem.after(newElem);
+        }
+        lastElem.addEventListener('animationend', () => {
+          firstElem.classList.add('animated', 'flipInX', 'showElem');
+          newElem.classList.add('mainWidth', 'animated', 'widthDown');
+          firstElem.addEventListener('animationend', () => {
+            firstElem.classList.remove('animated', 'flipInX', 'showElem');
+            newElem.remove();
+          });
+          lastElem.classList.remove('animated', 'fadeOutDown', 'hideElem');
+          benefit.pop();
+          setBenefit([payload, ...benefit]);
+        });
+      }
+    });
 
     return () => {};
   }, [benefit]);
