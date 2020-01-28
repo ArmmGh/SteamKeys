@@ -88,7 +88,7 @@ const setProfit = async data =>{
   const ansr = '******';
   const end = resp.concat(ansr)
   const benef = await new Profit({
-    rub: data.proffit.rub,
+    rub: data.profit.rub,
     wallet: end,
     time: new Date(),
   });
