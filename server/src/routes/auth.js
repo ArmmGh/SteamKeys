@@ -4,7 +4,6 @@ const db = require('../utils/db');
 const request = require('request');
 const jwt = require('../utils/token');
 const passport = require('passport');
-const Benefit = require('../models/Benefit');
 const auth = require('express').Router();
 const expressip = require('express-ip');
 
@@ -19,20 +18,20 @@ require('dotenv').config();
 
 auth.use(expressip().getIpInfoMiddleware);
 
-auth.post('/benefit', async (req, res, next) =>{
-  const wallet = req.body.wallet;
-  const resp = wallet.slice(0,6);
-  const ansr = '******';
-  const end = resp.concat(ansr)
-    const newBenefit = new Benefit({
-      rub: req.body.rub,
-      wallet: end,
-      time: new Date(),
-    });
-    await newBenefit.save();
-    res.send(newBenefit);
-    next();
-})
+// auth.post('/benefit', async (req, res, next) =>{
+//   const wallet = req.body.wallet;
+//   const resp = wallet.slice(0,6);
+//   const ansr = '******';
+//   const end = resp.concat(ansr)
+//     const newBenefit = new Benefit({
+//       rub: req.body.rub,
+//       wallet: end,
+//       time: new Date(),
+//     });
+//     await newBenefit.save();
+//     res.send(newBenefit);
+//     next();
+// })
 
 auth.get('/steam', passport.authenticate('steam'));
 
