@@ -18,20 +18,6 @@ require('dotenv').config();
 
 auth.use(expressip().getIpInfoMiddleware);
 
-// auth.post('/benefit', async (req, res, next) =>{
-//   const wallet = req.body.wallet;
-//   const resp = wallet.slice(0,6);
-//   const ansr = '******';
-//   const end = resp.concat(ansr)
-//     const newBenefit = new Benefit({
-//       rub: req.body.rub,
-//       wallet: end,
-//       time: new Date(),
-//     });
-//     await newBenefit.save();
-//     res.send(newBenefit);
-//     next();
-// })
 
 auth.get('/steam', passport.authenticate('steam'));
 

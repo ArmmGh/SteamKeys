@@ -59,7 +59,8 @@ const Out = () =>{
                 }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
                     disableButtons(false);
-                    window.location.reload();
+                    setModal(false);
+                    toast("Оплата пошла успешно")
                 })
        }
     return(
