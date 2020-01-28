@@ -43,7 +43,7 @@ module.exports = io => {
           if(data.length <= 28){
             data = data.reverse().slice(0, 20);
           }else{
-            data = data.slice(0, 20);
+            data = data.slice(0, 20).reverse();
           }
           socket.emit('get benefit', data);
         });
