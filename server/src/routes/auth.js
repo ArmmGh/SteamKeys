@@ -219,6 +219,7 @@ auth.post('/getmoney', (req,res) =>{
       amount: req.body.amount
     }
   ).then(data => {
+    data.benefitHistory.reverse();
     res.send({ ...data });
   })
 })
