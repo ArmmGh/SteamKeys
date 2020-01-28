@@ -66,13 +66,11 @@ const Invest = () => {
                   }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
                     setDisble(false);
-                    console.log(amount)
                     res.rub = amount;
                     res.wallet = user.walletp;
                     res.time = new Date();
-                    console.log(res)
                     socket.emit('done benefit', {
-                     benefit: res,
+                     profit: res,
                     });
                     toast("Вклад принят")
                   })      

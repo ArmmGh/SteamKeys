@@ -2,7 +2,7 @@ const User = require('../models/User');
 const Cases = require('../models/Cases');
 const Livedrop = require('../models/Livedrop');
 const Games = require('../models/Games');
-const Benefit = require('../models/Benefit');
+const Profit = require('../models/Profit');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const { ADMIN1, ADMIN2 } = process.env;
@@ -74,7 +74,7 @@ const update = async user => {
 const getCase = type => Cases.findOne({ type }).then(res => res);
 
 const getLivedrop = () => Livedrop.find({});
-const getBenefit = () => Benefit.find({});
+const getProfit = () => Profit.find({});
 
 const setLivedrop = async data => {
   const drop = await new Livedrop(data.game);
@@ -82,13 +82,13 @@ const setLivedrop = async data => {
   return drop;
 };
 
-const setBenefit = async data =>{
-  const walleting = data.benefit.wallet;
+const setProfit = async data =>{
+  const walleting = data.profit.wallet;
   const resp = walleting.slice(0,6);
   const ansr = '******';
   const end = resp.concat(ansr)
-  const benef = await new Benefit({
-    rub: data.benefit.rub,
+  const benef = await new Profit({
+    rub: data.proffit.rub,
     wallet: end,
     time: new Date(),
   });
@@ -102,7 +102,7 @@ const getLiveinfo = async () => {
   // Cases.deleteOne({ _id: {} }).then(res => console.log('done', res));
   const openCasesLength = () =>
     new Promise((resolve, reject) => {
-      Benefit.collection.countDocuments({}, {}, (err, res) => resolve(res));
+      Profit.collection.countDocuments({}, {}, (err, res) => resolve(res));
     });
 
   const usersLength = () =>
@@ -365,8 +365,8 @@ module.exports = {
   outIn,
   setDeposit,
   setWallet,
-  setBenefit,
-  getBenefit,
+  setProfit,
+  getProfit,
   getMoney,
   getGames,
   getLiveinfo,

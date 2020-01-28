@@ -22,7 +22,7 @@ module.exports = io => {
     });
 
     socket.on('done benefit', data => {
-        db.setBenefit(data).then(res => {
+        db.setProfit(data).then(res => {
             io.emit('update benefit', res);
         });
     });
@@ -39,12 +39,8 @@ module.exports = io => {
 
     if (!socket.sentBenefit) {
       socket.on('emit getbenefit', res => {
-        db.getBenefit().then(data => {
-          if(data.length <= 28){
-            data = data.reverse().slice(0, 20);
-          }else{
-            data = data.slice(0, 20).reverse();
-          }
+        db.getProfit().then(data => {
+          data = data.reverse().slice(0, 20);
           socket.emit('get benefit', data);
         });
       });

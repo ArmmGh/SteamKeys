@@ -8,7 +8,7 @@ const Cases = ({ history }) => {
   const [{ user, translate, games, cases }, dispatch] = useStateValue();
   const [count, setCount] = useState(15);
   const [{ socket }] = useStateValue();
-  const [benefit, setBenefit] = useState([]);
+  const [profit, setProfit] = useState([]);
   const [showMore, setShowmore] = useState(false);
   const [hideAlert, toggleAlert] = useState(
     window.localStorage.getItem('closeAlert'),
@@ -28,7 +28,7 @@ const Cases = ({ history }) => {
   useEffect(() => {
     socket.emit('emit getbenefit');
     socket.on('get benefit', payload => {
-      setBenefit([...payload]);
+      setProfit([...payload]);
     });
 
     return () => {};
@@ -36,7 +36,7 @@ const Cases = ({ history }) => {
 
   useEffect(() => {
     socket.on('update benefit', payload => {
-      if (benefit.length >= 16) {
+      if (profit.length >= 16) {
         if (document.getElementById('helper')) {
           document.getElementById('helper').remove();
         }
@@ -82,14 +82,14 @@ const Cases = ({ history }) => {
             newElem.remove();
           });
           lastElem.classList.remove('animated', 'fadeOutDown', 'hideElem');
-          benefit.pop();
-          setBenefit([payload, ...benefit]);
+          profit.pop();
+          setProfit([payload, ...profit]);
         });
       }
     });
 
     return () => {};
-  }, [benefit]);
+  }, [profit]);
 
   useEffect(() => {}, []);
 
@@ -100,14 +100,14 @@ const Cases = ({ history }) => {
           <h1>Последних 20 вкладов</h1>
         </div>
         <div className="adddtable">
-        {benefit && (
+        {profit && (
             <table className="table" id="tbl">
               <tr className="thd">
                 <th>Кошелек</th>
                 <th>Сумма</th>
                 <th>Дата</th>
               </tr>
-              {benefit.map((item, index) => (
+              {profit.map((item, index) => (
                 <tr className="item" key={index}>
               <td>{item.wallet}</td>
               <td>{item.rub}</td>
