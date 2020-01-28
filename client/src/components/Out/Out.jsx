@@ -58,6 +58,8 @@ const Out = () =>{
             body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
             }).then(data => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
+                setModal(false);
+                toast("Выплата пошла успешно")
             })
    }
     return(
@@ -105,9 +107,7 @@ const Out = () =>{
             </div>
             </div>
           <div className="informik">
-            <form>
             <div className="formik"><button onClick={checkin()} disabled={disableButton}>Получить</button></div>
-            </form>
           </div>
             </div>
         </div>
