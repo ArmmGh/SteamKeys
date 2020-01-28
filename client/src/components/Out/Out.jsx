@@ -59,9 +59,6 @@ const Out = () =>{
             }).then(data => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
             })
-            setModal(false);
-            toast("Оплата пошла успешно")
-            disableButtons(false);
    }
     return(
         <React.Fragment>
