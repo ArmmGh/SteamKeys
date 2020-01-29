@@ -17,6 +17,7 @@ const Header = () => {
     { user, socket, authenticated, translate },
     dispatch,
   ] = useStateValue();
+  const [local, setLocal] = useState(new Date().toLocaleTimeString())
   const [isActive, setActive] = useState(false);
   const [modalIsOpen, setModal] = useState(false);
   const [sum, setSum] = useState(1000);
@@ -55,6 +56,10 @@ const Header = () => {
       setSum(val);
     }
   };
+
+  setInterval( () => {
+    setLocal(new Date().toLocaleTimeString())
+  },1000)
 
   const addBalance = () => e => {};
 
@@ -122,6 +127,16 @@ const Header = () => {
       <header>
         <div className="main-width">
           <div className="header_holder">
+            <div className="GTC">
+                <div className="maingtc">
+              <div className="logon">
+              <img src={Logo} alt="logo" />
+              </div>
+              <div className="timer">
+                  <span>{local}</span>
+              </div>
+                </div>
+            </div>
             <div className={`menu_bar ${isActive ? 'active' : ''}`}>
               <Slider
                 width={30}
@@ -186,17 +201,10 @@ const Header = () => {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  <button className="auth" onClick={authSteam()}>
-                    <FaSteam />
-                    {translate('login')} <span>steam</span>
-                  </button>
                   <button className="auth" onClick={authVk()}>
                     <FaVk />
                     {translate('login')} <span>vk</span>
                   </button>
-                  {/* <button className="auth" onClick={authMail()}>
-                    Mail
-                  </button> */}
                 </React.Fragment>
               )}
             </div>
