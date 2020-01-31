@@ -460,6 +460,9 @@ header {
         display: flex;
         width: 70%;
         .timer{
+          display: flex;
+          justify-content: center;
+          align-items: center;
           color: white;
         }
         .icona{
@@ -468,7 +471,9 @@ header {
           font-size: 20px;
           color: white;
           .children{
-            padding-top: 75%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
       }
