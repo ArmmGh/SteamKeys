@@ -212,7 +212,7 @@ const Header = () => {
                 </div>
                 <div className="authen">
                     <div className="authbut">
-                    <button onClick={() =>{authVk()}}>
+                    <button onClick={authVk()}>
                         <div className="ici">
                        <div className="vk"><FaVk /></div> 
                        <div className="login">Войти</div>
