@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiSettings, FiPlusCircle } from 'react-icons/fi';
 import { Slider } from 'react-burgers';
 import { FaSteam, FaVk } from 'react-icons/fa';
-import { MdClose } from 'react-icons/md';
+import { MdClose, MdAccessTime} from 'react-icons/md';
 import Modal from 'react-modal';
 import fetchApi from '../../utils/fetchApi';
 import axios from 'axios';
@@ -124,93 +124,134 @@ const Header = () => {
           </div>
         </div>
       </Modal>
-      <header>
-        <div className="main-width">
-          <div className="header_holder">
-            <div className="GTC">
-                <div className="maingtc">
-              <div className="logon">
-              <img src={Logo} alt="logo" />
-              </div>
-              <div className="timer">
-                  <span>{local}</span>
-              </div>
+              {authenticated ? (
+                <header>
+                <div className="main-width">
+                  <div className="header_holder">
+                    <div className={`menu_bar ${isActive ? 'active' : ''}`}>
+                      <Slider
+                        width={30}
+                        lineHeight={3}
+                        lineSpacing={5}
+                        padding="10px"
+                        onClick={() => setActive(!isActive)}
+                        active={isActive}
+                      />
+                    </div>
+                    <ul className={`nav mobile_menu ${isActive ? 'show' : 'hide'}`}>
+                      <li>
+                        <Link to="/" href="/">
+                          {translate('homepage')}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/reviews" href="/reviews">
+                          {translate('reviews')}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/faq" href="/faq">
+                          {translate('faqAndGuarant')}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/contact" href="/contact">
+                          Контакты
+                        </Link>
+                      </li>
+                    </ul>
+                    <div className="logo_holder">
+                      <div className="logo">
+                      <Link to="/" href="/">
+                      <img src={Logo} alt="logo" />
+                      </Link>
+                      </div>
+                    </div>
+                    <div className="actions">
+                          <div className="balance">
+                            <p>
+                              {translate('balance')}: <span>{(Math.floor(user.balance * 100) / 100)}</span>
+                            </p>
+                            <Link to="/adding" href="/adding">
+                            <FiPlusCircle/>
+                            </Link>
+                          </div>
+                          <div className="avatar">
+                            <Link to="/profile" href="/profile">
+                              <img src={user.imgurl} alt="" />
+                            </Link>
+                          </div>
+                          <div className="settings">
+                            <Link to="/profile" href="/profile">
+                              <FiSettings />
+                              <p>{translate('profile')}</p>
+                            </Link>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </header>
+              ) : (
+        <React.Fragment>
+        <div className="header2">
+        <header>
+            <div className="design">
+                <div className="GTC">
+                <div className="logon">
+                    <img src={Logo} alt="logo"/>
+                </div>
+                <div className="outauth">
+                    <div className="timer">
+                        <p>{local}</p>
+                    </div>
+                    <div className="icona">
+                        <div className="children">
+                    <MdAccessTime />
+                        </div>  
+                    </div>
+                </div>
+                <div className="authen">
+                    <div className="authbut">
+                    <button onClick={() =>{alert("ok")}}>
+                        <div className="ici">
+                       <div className="vk"><FaVk /></div> 
+                       <div className="login">Войти</div>
+                       </div>
+                    </button>
+                    </div>
+                </div>
                 </div>
             </div>
-            <div className={`menu_bar ${isActive ? 'active' : ''}`}>
-              <Slider
-                width={30}
-                lineHeight={3}
-                lineSpacing={5}
-                padding="10px"
-                onClick={() => setActive(!isActive)}
-                active={isActive}
-              />
-            </div>
-            <ul className={`nav mobile_menu ${isActive ? 'show' : 'hide'}`}>
-              <li>
+            <div className="headercont">
+                <div className="botcont">
+                    <ul>
+                <li>
                 <Link to="/" href="/">
-                  {translate('homepage')}
+                Главная
                 </Link>
-              </li>
-              <li>
-                <Link to="/reviews" href="/reviews">
-                  {translate('reviews')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" href="/faq">
-                  {translate('faqAndGuarant')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" href="/contact">
-                  Контакты
-                </Link>
-              </li>
-            </ul>
-            <div className="logo_holder">
-              <div className="logo">
-              <Link to="/" href="/">
-              <img src={Logo} alt="logo" />
-              </Link>
-              </div>
+                </li>
+                <li>
+                    <Link to="/reviews" href="/reviews">
+                    Отзывы
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/faq" href="/faq">
+                        FAQ
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/contact" href="/contact">
+                        Контакты
+                    </Link>
+                </li>
+                    </ul>
+                </div>
             </div>
-            <div className="actions">
-              {authenticated ? (
-                <React.Fragment>
-                  <div className="balance">
-                    <p>
-                      {translate('balance')}: <span>{(Math.floor(user.balance * 100) / 100)}</span>
-                    </p>
-                    <Link to="/adding" href="/adding">
-                    <FiPlusCircle/>
-                    </Link>
-                  </div>
-                  <div className="avatar">
-                    <Link to="/profile" href="/profile">
-                      <img src={user.imgurl} alt="" />
-                    </Link>
-                  </div>
-                  <div className="settings">
-                    <Link to="/profile" href="/profile">
-                      <FiSettings />
-                      <p>{translate('profile')}</p>
-                    </Link>
-                  </div>
-                </React.Fragment>
-              ) : (
-                <React.Fragment>
-                  <button className="auth" onClick={authVk()}>
-                    <FaVk />
-                    {translate('login')} <span>vk</span>
-                  </button>
+            </header>
+            </div>
                 </React.Fragment>
               )}
-            </div>
-          </div>
-        </div>
-      </header>
     </React.Fragment>
   );
 };

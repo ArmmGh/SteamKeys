@@ -437,3 +437,93 @@ header {
     }
   }
 }
+
+.header2{
+header {
+  background: #161415;
+  .design{
+    height: 55px;
+    width: 100%;
+    background-color: #161415;
+    .GTC{
+      display: flex;
+      padding-top: 3px;
+      padding: 5px 30px;
+      .logon{
+        width: 15%;
+        img{
+        width: 50px;
+        height: 50px;
+        }
+      }
+      .outauth{
+        display: flex;
+        width: 70%;
+        .timer{
+          color: white;
+        }
+        .icona{
+          padding-left: 2px;
+          display: flex;
+          font-size: 20px;
+          color: white;
+          .children{
+            padding-top: 75%;
+          }
+        }
+      }
+      .authen{
+        .authbut{
+          padding-top: 5%;
+          .ici{
+            display: flex;
+            justify-content: center;
+            .vk{
+              padding-top: 3px;
+              font-size: 20px;
+            }
+            .login{
+              display: flex;
+              justify-content: center;
+            }
+          }
+          button{
+            font-weight: 600;
+            min-width: 125px;
+            line-height: 35px;
+            font-size: 13px;
+            background-color: #009900;
+            color: white;
+            border-radius: 5px;
+            // border: 2px solid rgb(241, 65, 0);
+          }
+        }
+        button:focus{
+          outline: none;
+        }
+      }
+    }
+  }
+  .headercont{
+    width: 100%;
+    // height: 30px;
+    margin-bottom: 0;
+    background-color: #979797;
+    .botcont{
+      ul{
+        display: flex;
+        justify-content: center;
+        li{
+          list-style-type: none;
+          padding: 12px 25px;
+          a{
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+}
