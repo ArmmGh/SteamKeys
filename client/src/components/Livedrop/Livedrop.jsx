@@ -125,11 +125,11 @@ const Livedrop = () => {
             <div className="stats">
               <div className="blocks">
               <h1>Пользовательей</h1>
-              <span>1500</span>
+              <span>{totalUsers}</span>
               </div>
               <div className="blocks">
               <h1>Онлайн</h1>
-              <span>500</span>
+              <span>{onlineUsers}</span>
               </div>
             </div>
             <div className="slidi">
@@ -154,7 +154,7 @@ const Livedrop = () => {
             <div className="stats">
             <div className="blocks">
               <h1>Вкладов</h1>
-              <span>1500</span>
+              <span>{openCases}</span>
               </div>
               <div className="blocks">
               <h1>Резерв</h1>
