@@ -160,6 +160,7 @@
         justify-content: space-around;
         width: 70%;
         .UTC{
+          display: flex;
           .timer{
             display: flex;
             justify-content: center;
@@ -182,11 +183,8 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          .lie{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 22px;
+          .ile{
+            font-size: 23px;
             color: white;
           }
           .link{
@@ -248,6 +246,7 @@
             color: white;
           }
           span{
+            font-size: 21px;
             color: #f14100;
           }
         }

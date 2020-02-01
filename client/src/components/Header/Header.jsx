@@ -130,7 +130,7 @@ const Header = () => {
             <div className="design">
                 <div className="GTC">
                 <div className="logon">
-                    <img src={Logo} alt="logo"/>
+                    <Link to="/" href="/"><img src={Logo} alt="logo"/></Link>
                 </div>
                 <div className="outauth">
                   <div className="UTC">
