@@ -144,13 +144,13 @@ const Header = () => {
                 </div>
                   <div className="bal">
                     <div className="num">
-                    <p>Баланс:</p>
-                    <span>{user.balance}</span>
+                    <p>баланс:</p>
+                    <span>{(Math.floor(user.balance * 100) / 100)}</span>
                     </div>
                     <div className="prof">
                       <div className="link">
                         <Link to="/adding" href="/adding">
-                          Профиль
+                          ПРОФИЛЬ
                         </Link>
                       </div>
                     </div>
