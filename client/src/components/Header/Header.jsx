@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiSettings, FiPlusCircle } from 'react-icons/fi';
 import { Slider } from 'react-burgers';
 import { FaSteam, FaVk } from 'react-icons/fa';
-import { MdClose, MdAccessTime} from 'react-icons/md';
+import { MdClose, MdAccessTime, MdAccountCircle} from 'react-icons/md';
 import Modal from 'react-modal';
 import fetchApi from '../../utils/fetchApi';
 import axios from 'axios';
@@ -141,18 +141,23 @@ const Header = () => {
                     <MdAccessTime />
                         </div>  
                     </div>
-                </div>
-                  <div className="bal">
-                    <div className="num">
-                    <p>баланс:</p>
-                    <span>{(Math.floor(user.balance * 100) / 100)}</span>
-                    </div>
                     <div className="prof">
+                      <div className="ile">
+                      <MdAccountCircle />
+                      </div>
                       <div className="link">
                         <Link to="/adding" href="/adding">
                           ПРОФИЛЬ
                         </Link>
                       </div>
+                    </div>
+                </div>
+                  <div className="bal">
+                    <div className="num">
+                    <p>баланс:</p>
+                    <div className="cenzur">
+                    <span>{(Math.floor(user.balance * 100) / 100)}</span>
+                    </div>
                     </div>
                   </div>
                 </div>
