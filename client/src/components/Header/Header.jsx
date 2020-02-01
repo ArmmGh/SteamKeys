@@ -133,7 +133,8 @@ const Header = () => {
                     <img src={Logo} alt="logo"/>
                 </div>
                 <div className="outauth">
-                    <div className="timer">
+                  <div className="UTC">
+                  <div className="timer">
                         <p>{local}</p>
                     </div>
                     <div className="icona">
@@ -141,6 +142,7 @@ const Header = () => {
                     <MdAccessTime />
                         </div>  
                     </div>
+                  </div>
                     <div className="prof">
                       <div className="ile">
                       <MdAccountCircle />

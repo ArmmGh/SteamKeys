@@ -159,21 +159,23 @@
         display: flex;
         justify-content: space-around;
         width: 70%;
-        .timer{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: white;
-        }
-        .icona{
-          padding-left: 2px;
-          display: flex;
-          font-size: 20px;
-          color: white;
-          .children{
+        .UTC{
+          .timer{
             display: flex;
             justify-content: center;
             align-items: center;
+            color: white;
+          }
+          .icona{
+            padding-left: 2px;
+            display: flex;
+            font-size: 20px;
+            color: white;
+            .children{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
           }
         }
         .prof{
