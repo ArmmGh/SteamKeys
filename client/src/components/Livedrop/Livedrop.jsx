@@ -131,7 +131,7 @@ const Livedrop = () => {
             <div className="slidi">
             <Carousel
             autoPlay={true}
-            interval={3000}
+            interval={10000}
             width="100%"
             showIndicators={false}
             showStatus={false}

@@ -125,72 +125,66 @@ const Header = () => {
         </div>
       </Modal>
               {authenticated ? (
-                <header>
-                <div className="main-width">
-                  <div className="header_holder">
-                    <div className={`menu_bar ${isActive ? 'active' : ''}`}>
-                      <Slider
-                        width={30}
-                        lineHeight={3}
-                        lineSpacing={5}
-                        padding="10px"
-                        onClick={() => setActive(!isActive)}
-                        active={isActive}
-                      />
+                <div className="header2">
+        <header>
+            <div className="design">
+                <div className="GTC">
+                <div className="logon">
+                    <img src={Logo} alt="logo"/>
+                </div>
+                <div className="outauth">
+                    <div className="timer">
+                        <p>{local}</p>
                     </div>
-                    <ul className={`nav mobile_menu ${isActive ? 'show' : 'hide'}`}>
-                      <li>
-                        <Link to="/" href="/">
-                          {translate('homepage')}
+                    <div className="icona">
+                        <div className="children">
+                    <MdAccessTime />
+                        </div>  
+                    </div>
+                </div>
+                  <div className="bal">
+                    <div className="num">
+                    <p>Баланс:</p>
+                    <span>{user.balance}</span>
+                    </div>
+                    <div className="prof">
+                      <div className="link">
+                        <Link to="/adding" href="/adding">
+                          Профиль
                         </Link>
-                      </li>
-                      <li>
-                        <Link to="/reviews" href="/reviews">
-                          {translate('reviews')}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/faq" href="/faq">
-                          {translate('faqAndGuarant')}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/contact" href="/contact">
-                          Контакты
-                        </Link>
-                      </li>
-                    </ul>
-                    <div className="logo_holder">
-                      <div className="logo">
-                      <Link to="/" href="/">
-                      <img src={Logo} alt="logo" />
-                      </Link>
                       </div>
-                    </div>
-                    <div className="actions">
-                          <div className="balance">
-                            <p>
-                              {translate('balance')}: <span>{(Math.floor(user.balance * 100) / 100)}</span>
-                            </p>
-                            <Link to="/adding" href="/adding">
-                            <FiPlusCircle/>
-                            </Link>
-                          </div>
-                          <div className="avatar">
-                            <Link to="/profile" href="/profile">
-                              <img src={user.imgurl} alt="" />
-                            </Link>
-                          </div>
-                          <div className="settings">
-                            <Link to="/profile" href="/profile">
-                              <FiSettings />
-                              <p>{translate('profile')}</p>
-                            </Link>
-                          </div>
                     </div>
                   </div>
                 </div>
-              </header>
+            </div>
+            <div className="headercont">
+                <div className="botcont">
+                    <ul>
+                <li>
+                <Link to="/" href="/">
+                Главная
+                </Link>
+                </li>
+                <li>
+                    <Link to="/reviews" href="/reviews">
+                    Отзывы
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/faq" href="/faq">
+                        FAQ
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/contact" href="/contact">
+                        Контакты
+                    </Link>
+                </li>
+                    </ul>
+                </div>
+            </div>
+            </header>
+            </div>
               ) : (
         <React.Fragment>
         <div className="header2">

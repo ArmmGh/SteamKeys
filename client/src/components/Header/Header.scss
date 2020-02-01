@@ -509,6 +509,28 @@ header {
           outline: none;
         }
       }
+      .bal{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .num{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          p{
+            color: white;
+          }
+          span{
+            color: #f14100;
+          }
+        }
+        .prof{
+          .link{
+            text-decoration: none;
+            color: white;
+          }
+        }
+      }
     }
   }
   .headercont{
