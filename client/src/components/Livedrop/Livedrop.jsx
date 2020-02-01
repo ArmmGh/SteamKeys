@@ -123,10 +123,14 @@ const Livedrop = () => {
       <div className="infocont">
           <div className="infomain">
             <div className="stats">
+              <div className="blocks">
               <h1>Пользовательей</h1>
               <span>1500</span>
+              </div>
+              <div className="blocks">
               <h1>Онлайн</h1>
               <span>500</span>
+              </div>
             </div>
             <div className="slidi">
             <Carousel
@@ -148,10 +152,14 @@ const Livedrop = () => {
             </Carousel>
             </div>
             <div className="stats">
-            <h1>Вкладов</h1>
+            <div className="blocks">
+              <h1>Вкладов</h1>
               <span>1500</span>
+              </div>
+              <div className="blocks">
               <h1>Резерв</h1>
               <span>500</span>
+              </div>
             </div>
           </div>
         </div>

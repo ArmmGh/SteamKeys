@@ -540,6 +540,9 @@
   .infomain{
     display: flex;
     .stats{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
       span{
         font-size: 25px;
       }
