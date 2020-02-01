@@ -24,14 +24,15 @@
     align-items: center;
     table{
         width: 80%;
-        border: 2px solid black;
+        border: 2px solid white;
         border-collapse: collapse;
         .thd{
-          background-color: #93b1f7;
+          background-color: white;
         }
         tr{
+            color: #f14100;
             height: 40px;
-            border-top: 2px solid black;
+            border-top: 2px solid white;
             text-align: center;
         }
         tr:nth-of-type(even){
