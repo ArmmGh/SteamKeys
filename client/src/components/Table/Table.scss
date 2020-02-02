@@ -18,9 +18,17 @@
 }
 .adddtable{
     margin-top: 7px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    table tr:last-child,td:first-child {
+      border-bottom-left-radius: 10px;
+     }
+  
+    table tr:last-child,td:last-child {
+       border-bottom-right-radius: 10px;
+    }
     table{
         width: 90%;
         border: 2px solid white;
@@ -35,12 +43,5 @@
             text-align: center;
 
         }
-    }
-    table tr:last-child td:first-child {
-      border-bottom-left-radius: 10px;
-     }
-  
-    table tr:last-child td:last-child {
-       border-bottom-right-radius: 10px;
     }
 }

@@ -22,70 +22,13 @@ const Menu = () =>{
       };
     return(
         <React.Fragment>
-            <div className="menuall">
-        <h1 className="name">{user.username}</h1>
-            <div className="avatar">
-              <img src={user.imgurl} alt="" />
-            </div>
-        <div className="actions">
-            <ul>
-              <div className="profitem"><li>
-                  <div className="ico"><GiPayMoney /></div>
-                  <div className="infm">
-                  <Link
-                    to="/adding" href="adding">
-                  пополнить
-                   </Link>
-                  </div>
-                  </li></div>
-               <div className="profitem"><li>
-                   <div className="ico"><GiReceiveMoney /></div>
-                   <div className="infm">
-                   <Link to="/output" href="/output">
-                   ввывести
-                   </Link>
-                   </div>
-                   </li></div>
-               <div className="profitem"><li>
-                   <div className="ico"><GiTakeMyMoney /></div>
-                   <div className="infm">
-                   <Link to="/invest" href="/invest">
-                 вкладивать
-                   </Link>
-                   </div>
-                   </li></div>
-               <div className="profitem"><li>
-                   <div className="ico">
-                       <MdPerson />
-                   </div>
-                   <div className="infm">
-                   <Link to="/cabinet" href="/cabinet">
-                   кабинет
-                   </Link>
-                   </div>
-                   </li></div>
-                   <div className="profitem"><li>
-                   <div className="ico">
-                   <FaMoneyBill />
-                   </div>
-                   <div className="infm">
-                   <Link to="/case/bronze" href="/case/bronze">
-                   бонус
-                   </Link>
-                   </div>
-                   </li></div>
-               <div className="profitem"><li>
-                  <div className="ico">
-                      <MdInput />
-                   </div>
-                  <div className="infm">
-                  <Link onClick={logout()}>
-                  выход
-                   </Link>
-                 </div>
-                 </li></div>
-           </ul>
-            </div> 
+            <div className="menu">
+              <div className="menub">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button> 
+                <button>4</button>
+              </div>
             </div>
         </React.Fragment>
     )
