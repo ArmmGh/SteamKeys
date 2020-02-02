@@ -24,9 +24,9 @@ const Menu = () =>{
         <React.Fragment>
             <div className="menu">
               <div className="menub">
-              <label htmlFor="1"><button><Link to="/adding" href="/adding" id="1">Пополнение баланса</Link></button></label>
-                <label htmlFor="2"><button><Link to="/invest" href="/invest" id="2">Вклады</Link></button></label>
-                <label htmlFor=""><button><Link to="/output" href="/output" id="3">Выплата с баланса</Link></button> </label>
+                <button><Link to="/adding" href="/adding">Пополнение баланса</Link></button>
+                <button><Link to="/invest" href="/invest">Вклады</Link></button>
+                <button><Link to="/output" href="/output">Выплата с баланса</Link></button>
                 <button className="izbrbut" onClick={logout()}>Выход</button>
               </div>
             </div>
