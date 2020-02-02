@@ -156,98 +156,67 @@
       text-align: center;
     }
   }
-.addcontainer{
-    button:focus{
-        outline: none;
-    }
-    input:focus{
-        outline: none;
-    }
-    .alladd{
-        .imgholder{
-            margin-top: 30px;
-        }
-        .suminput{
-            margin-top: 13px;
-            input{
-                font-size: 21px;
-                padding: 2px 3px;
-                text-align: center;
-            }
-        }
-        .design{
+
+
+  .cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .cont1{
+        display: flex;
+        flex-direction: column;
+        padding: 5% 10%;
+        border: 2px solid white;
+        border-radius: 10px;
+        .sum{
             display: flex;
-            justify-content: center;
-            text-align: center;
-            img{
-                height: 80px;
-                width: 100px;
-            }
-        }
-        .paymethod{
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            .amount{
-                margin-top: 25px;
-                p{
-                font-size: 18px;
-                opacity: 0.7;
-                }
-                span{
-                    display: flex;
-                    justify-content: center;
-                    color: #93b1f7;
-                    font-weight: bold;
-                    margin-top: 3px;
-                }
+            flex-direction: column;
+            h3{
+                text-align: center;
+                color: #f14100;
             }
-        .imgholder{
+            input:focus{
+                outline: none;
+            }
+            input{
+                font-size: 22px;
+            }
+        }
+        .selection{
+            h3{
+                text-align: center;
+                color: #f14100;
+            }
+            select:focus{
+                outline: none;
+            }
+            select{
+                width: 100%;
+                height: 32px;
+                text-align-last: left;
+            }
+        }
+        .koch{
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             button{
-                height: 80px;
-                width: 110px;
-                border: 1px solid black;
-                img{
-                    border-bottom: 1px solid black;
-                    border-right: 1px solid black;
-                    height: 80px;
-                    width: 110px;
-                }
-
+                padding: 10px 10px;
             }
         }
-        }
-        .tabl{
-            margin-top: 5px;
-            table{
-              td{
-                button{
-                  padding: 3px 5px;
-              }
-              }
+        .note{
+            p{
+                color: white;
             }
-            .header{
-                h3{
-                    text-align: center;
-                }
+            a{
+                color: #f14100;
+                font-size: 18px;
+                text-decoration: none;
             }
         }
-        .addtable{
-          margin-top: 7px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          table{
-              width: 80%;
-              border: 2px solid black;
-              border-collapse: collapse;
-              tr{
-                  height: 40px;
-                  border-top: 2px solid black;
-                  text-align: center;
-              }
-          }
-      }
     }
-}
+  }
