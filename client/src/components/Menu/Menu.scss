@@ -5,19 +5,28 @@
 .menu{
   .menub{
     display: flex;
-    button{
+    label{
+      button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a{
+          text-decoration: none;
+          color: white;
+          font-size: 17px;
+        }
+        padding: 15px 1px;
+        background-color: #090;
+        width: 25%;
+        border-right: 2px solid black;
+      }
+    }
+    .izbrbut{
       display: flex;
       justify-content: center;
       align-items: center;
-      a{
-        text-decoration: none;
-        color: white;
-        font-size: 17px;
-      }
-      padding: 15px 1px;
-      background-color: #090;
-      width: 25%;
-      border-right: 2px solid black;
+      color: white;
+      font-size: 17px;
     }
   }
 }
