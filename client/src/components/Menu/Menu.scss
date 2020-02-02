@@ -6,6 +6,14 @@
   .menub{
     display: flex;
     button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a{
+        text-decoration: none;
+        color: white;
+        font-size: 17px;
+      }
       padding: 15px 1px;
       background-color: #090;
       width: 25%;

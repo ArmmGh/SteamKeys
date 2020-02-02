@@ -24,10 +24,10 @@ const Menu = () =>{
         <React.Fragment>
             <div className="menu">
               <div className="menub">
-                <button onClick={() =>{alert("1")}}>1</button>
-                <button onClick={() =>{alert("2")}}>2</button>
-                <button onClick={() =>{alert("3")}}>3</button> 
-                <button onClick={() =>{alert("4")}}>4</button>
+                <button><Link to="/adding" href="/adding">Пополнение баланса</Link></button>
+                <button><Link to="/invest" href="/invest">Вклады</Link></button>
+                <button><Link to="/output" href="/output">Выплата с баланса</Link></button> 
+                <button onClick={logout()}>Выход</button>
               </div>
             </div>
         </React.Fragment>
