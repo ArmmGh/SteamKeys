@@ -13,7 +13,8 @@ import { toast } from 'react-toastify';
 import Auth from '../Auth/index';
 
 
-const Adding = () =>{    
+const Adding = () =>{
+    const [system, setSystem] = useState('');    
     const [amount, setAmount] = useState(100);
     const [id, setId] = useState('');
     const [infoId, setInfoid] = useState('');
@@ -166,18 +167,18 @@ const Adding = () =>{
           <div className="cont1">
           <div className="sum">
             <h3>Сумма</h3>
-            <input type="text" value={local} onChange={e => handeleChange(e.target.value)}/>
+            <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
           </div>
           <div className="selection">
             <h3>Система</h3>
-          <select id="tiv" value={amount} onChange={e => setAmount(e.target.value)}>
+          <select id="tiv" value={system} onChange={e => setSystem(e.target.value)}>
           <option value="100">Payeer</option>
           <option value="barev">200</option>
           <option value="300">300</option>
           </select>
           </div>
           <div className="koch">
-          <button onClick={() =>{console.log(amount)}}>check me</button>
+          <button onClick={() => {setModal(true)}}>check me</button>
           </div>
           <div className="note">
             <p>Если вы не успели подвердить оплата <br />
