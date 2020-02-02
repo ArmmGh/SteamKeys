@@ -24,10 +24,10 @@ const Menu = () =>{
         <React.Fragment>
             <div className="menu">
               <div className="menub">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button> 
-                <button>4</button>
+                <button onClick={() =>{alert("1")}}>1</button>
+                <button onClick={() =>{alert("2")}}>2</button>
+                <button onClick={() =>{alert("3")}}>3</button> 
+                <button onClick={() =>{alert("4")}}>4</button>
               </div>
             </div>
         </React.Fragment>

@@ -1,7 +1,13 @@
+.addcontainer{
+  padding: 0;
+  background-color: black;
+}
 .menu{
   .menub{
     display: flex;
     button{
+      padding: 15px 1px;
+      background-color: #090;
       width: 25%;
       border-right: 2px solid black;
     }
