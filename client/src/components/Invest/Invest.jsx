@@ -22,13 +22,16 @@ const Invest = () => {
       const [disableButton, disableButtons] = useState(false);
       const [disble, setDisble] = useState(false);
       const [storage, setStorage] = useState(user.walletp)
-      const [amount, setAmount] = useState('');
+      const [amount, setAmount] = useState(0);
       const [amountplus, setAmountplus] = useState(0)
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
-            setAmountplus(Math.floor((Math.floor(parseInt(val) + parseInt(val * 0.2) * 100) / 100 - 1 + Math.floor(val *100) / 100) * 100) / 100)
-            setAmount(val);
+            const start = parseFloat(val);
+            const tax = Math.floor(start * 0.2 * 100) / 100 + start;
+            const end = Math.round(tax * 100) / 100;
+            setAmount(val)
+            setAmountplus(end)
         }
       };
 
@@ -72,17 +75,17 @@ const Invest = () => {
                     socket.emit('done benefit', {
                      profit: res,
                     });
-                    toast("Вклад принят")
-                  })      
+                  })
+                  window.location.reload()      
                     }else{
-                        toast("Недостаточно средств")
+                        alert("Недостаточно средств")
                     }
                 }else{
-                    toast("Поле не может быть пустым")
+                    alert("Поле не может быть пустым")
                 }
         }
             }else{
-                toast("С начала пополнитье баланс")
+                alert("С начала пополнитье баланс")
             }
     }
     return(
