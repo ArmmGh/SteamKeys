@@ -159,6 +159,8 @@
 
 
   .cont{
+    background-color: black;
+    padding: 5% 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -169,6 +171,9 @@
         padding: 5% 10%;
         border: 2px solid white;
         border-radius: 10px;
+        div{
+          padding-top: 5px;
+        }
         .sum{
             display: flex;
             justify-content: center;
