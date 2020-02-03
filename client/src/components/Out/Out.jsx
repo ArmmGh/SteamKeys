@@ -18,6 +18,7 @@ const Out = () =>{
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
+    const [wallet, setWallet] = useState('');
     const [disableButton, disableButtons] = useState(false);
     const [modalIsOpen, setModal] = useState(false)
     const [amount, setAmount] = useState(Math.floor(user.balance * 100) / 100)
@@ -25,6 +26,12 @@ const Out = () =>{
     const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
           setAmount(val);
+        }
+      };
+
+    const handeleChangep = val => {
+        if (val.match(/^([P][0-9]*)*$/)) {
+          setWallet(val);
         }
       };
 
@@ -119,51 +126,32 @@ const Out = () =>{
           <Auth />
       ) : (
         <React.Fragment>
-            <div className="addcontainer">
-            <div className="alladd">
-                <Menu />
-                <div className="design">
-                    <img src={get} alt="money"/>
-                </div>
-        <div className="paymethod">
-            <div className="amount">
-            <p>Укажите сумму, которую хотите вывести</p>
-            <span>Минимум: 1</span>
-            <span>Максимум: {Math.floor(user.balance * 100) / 100}</span>
-            </div>
-            <div className="suminput">
-                <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
-            </div>
-        <div className="imgholder">
-            <div className="imgpos"><button onClick={openModal()}><img src={log} alt="payeer" /></button></div>
-        </div>
-        </div>
-        <div className="tabl">
-            <div className="header">
-                <h3>История Выплат</h3>
-            </div>
-        </div>
-        <div className="addtable">
-                {user.outHistory && (
-                    <table className="table" id="tbl">
-                    <tr>
-                    <th>Сумма</th>
-                    <th>Кошелек</th>
-                    <th>Дата</th>
-                        </tr>
-                    {user.outHistory.map((item, index) => (
-                <tr className="items" key={index}>
-                    <td>{item.amount}</td>
-                    <td>{item.wallet}</td>
-                    <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={item.date} /></td>
-                </tr>
-                    ))}
-                    </table>
-                )}
-                    </div>
-            </div>
-                </div>
-        </React.Fragment>
+        <Menu />
+        <div className="cont">
+          <div className="cont1">
+          <div className="sum">
+            <h3>Сумма</h3>
+            <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
+          </div>
+          <div className="sum">
+            <h3>Кошелек</h3>
+            <input type="text" value={wallet} onChange={e => handeleChangep(e.target.value)}/>
+          </div>
+          <div className="selection">
+            <h3>Система</h3>
+          <select id="tiv" value={system} onChange={e => setSystem(e.target.value)}>
+          <option value="100">Payeer</option>
+          </select>
+          </div>
+          <div className="koch">
+          <button onClick={() => {setModal(true)}}>check me</button>
+          </div>
+          <div className="note">
+            <p>чек выплаты можно найти <Link to="/" href="/">Здесь</Link></p>
+          </div>
+           </div>
+         </div>
+        </React.Fragment> 
       )}
         </React.Fragment>
     )

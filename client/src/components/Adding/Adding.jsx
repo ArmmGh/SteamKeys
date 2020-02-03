@@ -137,7 +137,6 @@ const Adding = () =>{
         <div className="body">
             <div className="checkpoint">
               <ul>
-                <h3>Действие в Payeer</h3>
                 <li>Перейдите на эту <Link onClick={opnI()}>страницу</Link></li>
                 <li>В поле <span className="underline">Номер счета, e-mail или телефон</span> заполнитье: <span className="inform">P44911742</span></li>
                 <li>В поле <span className="underline">Комментарий</span> заполнитье: <span className="inform">{invoice}</span></li>
@@ -182,7 +181,7 @@ const Adding = () =>{
           <button onClick={() => {setModal(true)}}>check me</button>
           </div>
           <div className="note">
-            <p>Если вы не успели подвердить оплата <br />
+            <p>Если вы не успели подвердить оплату <br />
               чек можно найти <Link to="/" href="/">Здесь</Link></p>
           </div>
            </div>

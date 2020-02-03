@@ -1,3 +1,5 @@
+$color-favor: #f14100;
+
 .OverlayHeader {
     position: fixed;
     top: 0;
@@ -115,88 +117,75 @@
 
     }  
   }
-.addcontainer{
-    input:focus{
-        outline: none;
-    }
-    .alladd{
-        .imgholder{
-            margin-top: 30px;
+
+.cont{
+    background-color: black;
+    padding: 5% 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .cont1{
+        display: flex;
+        flex-direction: column;
+        padding: 5% 10%;
+        border: 2px solid white;
+        border-radius: 10px;
+        div{
+          padding-top: 10px;
         }
-        .suminput{
-            margin-top: 13px;
-            input{
-                font-size: 21px;
-                padding: 2px 3px;
-                text-align: center;
-            }
-        }
-        .design{
+        .sum{
             display: flex;
-            justify-content: center;
-            text-align: center;
-            img{
-                height: 80px;
-                width: 100px;
-            }
-        }
-        .paymethod{
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            .amount{
-                margin-top: 25px;
-                p{
+            flex-direction: column;
+            h3{
+                text-align: center;
+                color: #f14100;
+            }
+            input:focus{
+                outline: none;
+            }
+            input{
+                font-size: 22px;
+            }
+        }
+        .selection{
+            h3{
+                text-align: center;
+                color: #f14100;
+            }
+            select:focus{
+                outline: none;
+            }
+            select{
+                font-size: 21px;
+                width: 100%;
+                height: 32px;
+                text-align-last: left;
+                option{
+                  font-size: 21px;
+                }
+            }
+        }
+        .koch{
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            button{
+                padding: 10px 10px;
+            }
+        }
+        .note{
+            p{
+                color: white;
+            }
+            a{
+                color: #f14100;
                 font-size: 18px;
-                opacity: 0.7;
-                }
-                span{
-                    display: flex;
-                    justify-content: center;
-                    color: #93b1f7;
-                    font-weight: bold;
-                    margin-top: 3px;
-                }
-            }
-            .imgholder{
-                button{
-                    height: 80px;
-                    width: 110px;
-                    border: 1px solid black;
-                    img{
-                        border-bottom: 1px solid black;
-                        border-right: 1px solid black;
-                        height: 80px;
-                        width: 110px;
-                    }
-    
-                }
+                text-decoration: none;
             }
         }
-        .tabl{
-            margin-top: 5px;
-            .header{
-                h3{
-                    text-align: center;
-                }
-            }
-        }
-        .addtable{
-          margin-top: 7px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          table{
-              width: 80%;
-              border: 2px solid black;
-              border-collapse: collapse;
-              tr{
-                  height: 40px;
-                  border-top: 2px solid black;
-                  text-align: center;
-              }
-          }
-      }
     }
-}
+  }
