@@ -23,14 +23,14 @@ const Invest = () => {
       const [disble, setDisble] = useState(false);
       const [storage, setStorage] = useState(user.walletp)
       const [amount, setAmount] = useState('');
-      const [amountplus, setAmountplus] = useState('')
+      const [amountplus, setAmountplus] = useState(0)
       const [hideAlert, toggleAlert] = useState(
         window.localStorage.getItem('closeAlertI'),
       );
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
-            setAmountplus(Math.floor((parseInt(val) + parseInt(val * 0.1)) * 100) / 100)
+            setAmountplus(Math.floor(parseInt(val) + parseInt(val * 0.1) * 100) / 100)
           setAmount(val);
         }
       };
@@ -112,11 +112,12 @@ const Invest = () => {
           </select>
           </div>
           <div className="koch">
-          <button onClick={() => {alert("done")}}>ВЛОЖИТЬ</button>
+          <button onClick={invest()}>Вложить</button>
           </div>
           <div className="note">
-            <p>Сумма вклада будет вычислен на баланс автоматически</p>
-            <p>Чек выплаты можно найти <Link to="/" href="/">Здесь</Link></p>
+            <p>Сумма вклада будет вычислен <br/> 
+                на баланс автоматически</p>
+            <p>Чек вычислены можно найти <Link to="/" href="/">Здесь</Link></p>
           </div>
            </div>
          </div>

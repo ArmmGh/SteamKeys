@@ -116,7 +116,7 @@ const Out = () =>{
             </div>
           <div className="informik">
             <form>
-            <div className="formik"><button onClick={checkin()} disabled={disableButton}>Получить</button></div>
+            <div className="formik"><button onClick={() => {alert("exp")}} disabled={disableButton}>Получить</button></div>
             </form>
           </div>
             </div>
@@ -144,7 +144,7 @@ const Out = () =>{
           </select>
           </div>
           <div className="koch">
-          <button onClick={() => {setModal(true)}}>check me</button>
+          <button onClick={checkin()}>Получить</button>
           </div>
           <div className="note">
             <p>Чек выплаты можно найти <Link to="/" href="/">Здесь</Link></p>

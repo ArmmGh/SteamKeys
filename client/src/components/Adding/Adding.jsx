@@ -173,16 +173,14 @@ const Adding = () =>{
             <h3>Система</h3>
           <select id="tiv" value={system} onChange={e => setSystem(e.target.value)}>
           <option value="100">Payeer</option>
-          <option value="barev">200</option>
-          <option value="300">300</option>
           </select>
           </div>
           <div className="koch">
-          <button onClick={() => {setModal(true)}}>check me</button>
+          <button onClick={openModal()}>Пополнить</button>
           </div>
           <div className="note">
             <p>Если вы не успели подвердить оплату <br />
-              чек можно найти <Link to="/" href="/">Здесь</Link></p>
+              Чек для подтверждение можно найти <Link to="/" href="/">Здесь</Link></p>
           </div>
            </div>
          </div>
