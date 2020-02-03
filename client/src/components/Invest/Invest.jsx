@@ -75,8 +75,8 @@ const Invest = () => {
                     socket.emit('done benefit', {
                      profit: res,
                     });
-                  })
-                  window.location.reload()      
+                    window.location.reload()  
+                  })    
                     }else{
                         alert("Недостаточно средств")
                     }
