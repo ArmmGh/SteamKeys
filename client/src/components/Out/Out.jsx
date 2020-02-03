@@ -18,6 +18,7 @@ const Out = () =>{
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
+    const [sel, setSel] = useState('');
     const [wallet, setWallet] = useState('');
     const [disableButton, disableButtons] = useState(false);
     const [modalIsOpen, setModal] = useState(false)
@@ -139,7 +140,7 @@ const Out = () =>{
           </div>
           <div className="selection">
             <h3>Система</h3>
-          <select id="tiv" value={system} onChange={e => setSystem(e.target.value)}>
+          <select id="tiv" value={sel} onChange={e => setSel(e.target.value)}>
           <option value="100">Payeer</option>
           </select>
           </div>
