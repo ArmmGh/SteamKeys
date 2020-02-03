@@ -24,14 +24,11 @@ const Invest = () => {
       const [storage, setStorage] = useState(user.walletp)
       const [amount, setAmount] = useState('');
       const [amountplus, setAmountplus] = useState(0)
-      const [hideAlert, toggleAlert] = useState(
-        window.localStorage.getItem('closeAlertI'),
-      );
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
-            setAmountplus(Math.floor(parseInt(val) + parseInt(val * 0.1) * 100) / 100)
-          setAmount(val);
+            setAmountplus(Math.floor((Math.floor(parseInt(val) + parseInt(val * 0.2) * 100) / 100 + Math.floor(val *100) / 100) * 100) / 100)
+            setAmount(val);
         }
       };
 
@@ -103,7 +100,7 @@ const Invest = () => {
           </div>
           <div className="sum">
             <h3>Получу</h3>
-            <input type="text" value={amountplus} onChange={e => handeleChangep(e.target.value)}/>
+            <input type="text" value={amountplus} />
           </div>
           <div className="selection">
             <h3>Профит</h3>

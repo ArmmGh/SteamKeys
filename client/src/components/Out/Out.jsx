@@ -65,10 +65,8 @@ const Out = () =>{
             body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
             }).then(data => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
+                window.location.reload()
             })
-            setModal(false);
-            toast("Оплата пошла успешно")
-            disableButtons(false);
    }
     return(
         <React.Fragment>
