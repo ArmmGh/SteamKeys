@@ -30,7 +30,7 @@ const Invest = () => {
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
-            setAmountplus(Math.floor((val + val * 0.1) * 100) / 100)
+            setAmountplus(Math.floor((parseInt(val) + parseInt(val * 0.1)) * 100) / 100)
           setAmount(val);
         }
       };
@@ -106,9 +106,9 @@ const Invest = () => {
             <input type="text" value={amountplus} onChange={e => handeleChangep(e.target.value)}/>
           </div>
           <div className="selection">
-            <h3>Система</h3>
+            <h3>Профит</h3>
           <select id="tiv" value={vib} onChange={e => setVib(e.target.value)}>
-          <option value="100">120% на 24 часов</option>
+          <option value="100">20%</option>
           </select>
           </div>
           <div className="koch">
