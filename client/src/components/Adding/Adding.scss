@@ -1,3 +1,5 @@
+$color-favor: #f14100;
+
 .OverlayHeader {
     position: fixed;
     top: 0;
@@ -38,7 +40,7 @@
         h1 {
           font-size: 18px;
           padding-bottom: 3px;
-          border-bottom: 3px solid #93b1f7;
+          border-bottom: 3px solid $color-favor;
         }
         .close {
           display: flex;
@@ -46,7 +48,7 @@
           justify-content: center;
           cursor: pointer;
           border-radius: 50%;
-          border: 3px solid #93b1f7;
+          border: 3px solid $color-favor;
           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
           transition: all 0.3s;
           padding: 2px;
@@ -56,7 +58,7 @@
             transition: all 0.3s;
           }
           &:hover {
-            background: #93b1f7;
+            background: $color-favor;
             transition: all 0.3s;
             svg {
               transition: all 0.3s;
@@ -73,12 +75,12 @@
               h3{
                 text-align: center;
                 text-decoration: underline;
-                text-decoration-color: #93b1f7;
+                text-decoration-color: $color-favor;
                 padding-bottom: 2px;
               }
               a{
                 text-decoration: none;
-                color: #93b1f7;
+                color: $color-favor;
               }
               list-style-type: decimal;
             }
@@ -86,7 +88,7 @@
             text-decoration: underline;
           }
           .inform{
-            color: #93b1f7;
+            color: $color-favor;
           }
         }
         .informik{
@@ -172,7 +174,7 @@
         border: 2px solid white;
         border-radius: 10px;
         div{
-          padding-top: 5px;
+          padding-top: 10px;
         }
         .sum{
             display: flex;

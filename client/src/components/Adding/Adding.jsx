@@ -163,6 +163,7 @@ const Adding = () =>{
         <Auth />
       ) : (
         <React.Fragment>
+        <Menu />
         <div className="cont">
           <div className="cont1">
           <div className="sum">
