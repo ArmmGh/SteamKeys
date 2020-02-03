@@ -27,7 +27,7 @@ const Invest = () => {
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
-            setAmountplus(Math.floor((Math.floor(parseInt(val) + parseInt(val * 0.2) * 100) / 100 + Math.floor(val *100) / 100) * 100) / 100)
+            setAmountplus(Math.floor((Math.floor(parseInt(val) + parseInt(val * 0.2) * 100) / 100 - 1 + Math.floor(val *100) / 100) * 100) / 100)
             setAmount(val);
         }
       };

@@ -179,8 +179,8 @@ const Adding = () =>{
           <button onClick={openModal()}>Пополнить</button>
           </div>
           <div className="note">
-            <p>Если вы не успели подвердить оплату <br />
-              Чек для подтверждение можно найти <Link to="/" href="/">Здесь</Link></p>
+            <p>Если вы не успели <br/> подвердить оплату <br />
+              Чек для подтверждение <br/> можно найти <Link to="/" href="/">Здесь</Link></p>
           </div>
            </div>
          </div>
