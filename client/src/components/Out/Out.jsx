@@ -147,7 +147,7 @@ const Out = () =>{
           <button onClick={() => {setModal(true)}}>check me</button>
           </div>
           <div className="note">
-            <p>чек выплаты можно найти <Link to="/" href="/">Здесь</Link></p>
+            <p>Чек выплаты можно найти <Link to="/" href="/">Здесь</Link></p>
           </div>
            </div>
          </div>

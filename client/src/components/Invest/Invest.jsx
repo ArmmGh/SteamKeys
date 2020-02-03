@@ -18,16 +18,19 @@ const Invest = () => {
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
+      const [vib, setVib] = useState('');
       const [disableButton, disableButtons] = useState(false);
       const [disble, setDisble] = useState(false);
       const [storage, setStorage] = useState(user.walletp)
       const [amount, setAmount] = useState('');
+      const [amountplus, setAmountplus] = useState('')
       const [hideAlert, toggleAlert] = useState(
         window.localStorage.getItem('closeAlertI'),
       );
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
+            setAmountplus(Math.floor((val + val * 0.1) * 100) / 100)
           setAmount(val);
         }
       };
@@ -85,97 +88,38 @@ const Invest = () => {
                 toast("С начала пополнитье баланс")
             }
     }
-    const closeAlert = () => e => {
-        toggleAlert(true);
-        window.localStorage.setItem('closeAlertI', true);
-      };
     return(
         <React.Fragment>
-            <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnVisibilityChange
-            draggable
-            pauseOnHover
-            />
-            <ToastContainer />
           {!authenticated ? (
               <Auth />
           ) : (
-            <React.Fragment>
-            {!hideAlert && (
-            <div className="alert">
-              <div className="close" onClick={closeAlert()}>
-                <MdClose />
-              </div>
-              <div className="title">Внимание!!!</div>
-              <div className="text">
-              Прежде чем вкладивать в проекте внимательно читайте <Link to="/agreement" href="/agreement">Правила</Link> и <Link to="/agreement" href="/agreement">Условия</Link> сайта.
-              </div>
-            </div>
-          )}
-            <Menu />
-            <div className="investcontainer">
-                <div className="investall">
-                    <div className="investlog">
-                        <img src={investlog} alt="invest" />
-                    </div>
-                    <div className="txt">
-                        <p>Укажите сумму, которую хотите вкладивать</p>
-                        <span>Минимум: 1</span>
-                        <span>Максимум: {Math.floor(user.balance * 100) / 100}</span>
-                    </div>
-                    <div className="sumbit">
-                        <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
-                        <div className="btnholder"><button disabled={disble} onClick={invest()}>Вкладивать</button></div>
-                    </div>
-                    <div className="tbleheader">
-                        <h3>Вклады</h3>
-                    </div>
-                    <div className="addtable">
-                {user.benefitHistory && (
-                    <table className="table" id="tbl">
-                        <tr>
-                            <th>Сумма</th>
-                            <th>Статус</th>
-                            <th>Дата</th>
-                        </tr>
-                    {user.benefitHistory.map((items, index) => (
-                        <tr className="items" key={index}>
-                    <td>{(Math.floor(items.amount * 100) / 100)}</td>
-                    <td id="geting">
-                        {items.action === 'paid' ? (
-                            <span>Выплачено</span>
-                        ) : items.time <= new Date().getTime() && items.action === 'waiting' ? (
-                            <button 
-                            disabled={disableButton}
-                            onClick={get(items)}>Получить</button>
-                        ) : items.action === 'waiting' ? (
-                            <Timer
-                            initialTime={items.time - new Date().getTime()}
-                            direction="backward"
-                         >   
-                            <Timer.Hours />:
-                            <Timer.Minutes />:
-                            <Timer.Seconds />
-                        </Timer>
-                        ) : (
-                            ''
-                        )
-                    }
-                    </td>
-                    <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={items.date} /></td>
-                        </tr>
-                    ))}
-                    </table>
-                )}
-                    </div>
-                </div>
-            </div>
+        <React.Fragment>
+        <Menu />
+        <div className="cont">
+          <div className="cont1">
+          <div className="sum">
+            <h3>Вкладу</h3>
+            <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
+          </div>
+          <div className="sum">
+            <h3>Получу</h3>
+            <input type="text" value={amountplus} onChange={e => handeleChangep(e.target.value)}/>
+          </div>
+          <div className="selection">
+            <h3>Система</h3>
+          <select id="tiv" value={vib} onChange={e => setVib(e.target.value)}>
+          <option value="100">120% на 24 часов</option>
+          </select>
+          </div>
+          <div className="koch">
+          <button onClick={() => {alert("done")}}>ВЛОЖИТЬ</button>
+          </div>
+          <div className="note">
+            <p>Сумма вклада будет вычислен на баланс автоматически</p>
+            <p>Чек выплаты можно найти <Link to="/" href="/">Здесь</Link></p>
+          </div>
+           </div>
+         </div>
         </React.Fragment>
           )}
         </React.Fragment>
