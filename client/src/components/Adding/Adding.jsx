@@ -165,7 +165,7 @@ const Adding = () =>{
           </div>
           <div className="note">
             <p>Если вы не успели <br/> подвердить оплату <br />
-              Чек для подтверждение <br/> можно найти <Link to="/" href="/">Здесь</Link></p>
+              Чек для подтверждение <br/> можно найти <Link to="/check" href="/check">Здесь</Link></p>
           </div>
            </div>
          </div>

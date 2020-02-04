@@ -128,7 +128,11 @@ const Check = () => {
             <div className="checkmain">
                 <div className="checkall">
                     <div className="checkhead">
-                        <h1>ПОПОЛНЕНИЯ</h1>
+                        <div className="head"><Link to="/check" href="/check">ПОПОЛНЕНИЯ</Link></div>
+                        <div className="br"></div>
+                        <div className="head"><Link to="/" href="/">ВЫПЛАТА</Link></div>
+                        <div className="br"></div>
+                        <div className="head"><Link to="/" href="/">ВКЛАД</Link></div>
                     </div>
                     <div className="checktabl">
                     {user.inHistory && (
