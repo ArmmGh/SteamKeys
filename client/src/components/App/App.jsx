@@ -23,6 +23,7 @@ import Out from '../Out';
 import Invest from '../Invest';
 import Cabinet from '../Cabinet';
 import Menu from '../Menu';
+import Check from '../Check';
 
 function App() {
   const [{ user, socket }, dispatch] = useStateValue();
@@ -91,6 +92,7 @@ function App() {
       <Header />
       <Livedrop />
       <main>
+        <Route path="/check" component={Check} />
         <Route path="/callback" component={Menu} />
         <Route path="/cabinet" component={Cabinet} />
         <Route path="/invest" component={Invest} />
