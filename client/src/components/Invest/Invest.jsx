@@ -31,7 +31,11 @@ const Invest = () => {
             const tax = Math.floor(start * 0.2 * 100) / 100 + start;
             const end = Math.round(tax * 100) / 100;
             setAmount(val)
-            setAmountplus(end)
+            if(isNaN(start)){
+              setAmountplus(0)
+            }else{
+              setAmountplus(end)
+            }
         }
       };
 
