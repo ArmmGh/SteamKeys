@@ -25,7 +25,12 @@ const Out = () =>{
 
     const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
+          const pars = parseFloat(val);
+          if(isNaN(pars)){
+            setAmount(100)
+          }else{
           setAmount(val);
+          }
         }
       };
 
@@ -142,7 +147,7 @@ const Out = () =>{
           </select>
           </div>
           <div className="koch">
-          <button onClick={checkin()}>Получить</button>
+          <button disabled={disableButton} onClick={checkin()}>Получить</button>
           </div>
           <div className="note">
             <p>Чек выплаты можно найти <Link to="/" href="/">Здесь</Link></p>

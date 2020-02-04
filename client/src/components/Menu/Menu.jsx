@@ -27,6 +27,7 @@ const Menu = () =>{
                 <button><Link to="/adding" href="/adding">Пополнение баланса</Link></button>
                 <button><Link to="/invest" href="/invest">Вклады</Link></button>
                 <button><Link to="/output" href="/output">Выплата с баланса</Link></button>
+                <button><Link to="/check" href="check">Чеки</Link></button>
                 <button className="izbrbut" onClick={logout()}>Выход</button>
               </div>
             </div>

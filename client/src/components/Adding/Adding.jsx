@@ -58,17 +58,6 @@ const Adding = () =>{
         });
       };
 
-      const hisopenModal = item => e => {
-        if(amount == ''){
-          toast("Поле не может быть пустым")
-        }else{
-          setModal(true);
-        }
-        setInvoice(item.invoice);
-        setAmount(item.amount)
-        setId(item)
-      };
-
       const brain = brainact => e =>{
         disableButtons(true);
         fetchApi('/check', {
@@ -83,10 +72,6 @@ const Adding = () =>{
           disableButtons(false);
         });
       }
-
-      const alert = () => e =>{
-        console.log("hello");
-    }
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {

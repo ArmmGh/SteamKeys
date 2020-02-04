@@ -56,6 +56,7 @@ const Invest = () => {
     }
 
     const invest = () => res => {
+            disableButtons(true)
             if(user.payment === 'yes'){
                 if(user.walletp == '' || user.walletp == null){
                     toast("Сохраняйте кошелек в кабинет")
@@ -79,7 +80,8 @@ const Invest = () => {
                     socket.emit('done benefit', {
                      profit: res,
                     });
-                    window.location.reload()  
+                    window.location.reload();
+                    disableButtons(false) 
                   })    
                     }else{
                         alert("Недостаточно средств")
@@ -116,7 +118,7 @@ const Invest = () => {
           </select>
           </div>
           <div className="koch">
-          <button onClick={invest()}>Вложить</button>
+          <button disabled={disableButton} onClick={invest()}>Вложить</button>
           </div>
           <div className="note">
             <p>Сумма вклада будет вычислен <br/> 

@@ -1,0 +1,23 @@
+.checkmain{
+    background-color: black;
+    .checkall{
+        .checkhead{
+            h1{
+                color: white;
+                text-align: center;
+            }
+        }
+        .chechtabl{
+            table{
+                width: 90%;
+                border: 2px solid white;
+                border-collapse: collapse;
+                tr{
+                    height: 40px;
+                    border-top: 2px solid white;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
