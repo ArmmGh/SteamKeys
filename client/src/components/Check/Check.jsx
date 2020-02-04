@@ -130,9 +130,9 @@ const Check = () => {
                     <div className="checkhead">
                         <div className="head"><Link to="/check" href="/check">ПОПОЛНЕНИЯ</Link></div>
                         <div className="br"></div>
-                        <div className="head"><Link to="/" href="/">ВЫПЛАТА</Link></div>
+                        <div className="head"><Link to="/in" href="/in">ВЫПЛАТА</Link></div>
                         <div className="br"></div>
-                        <div className="head"><Link to="/" href="/">ВКЛАД</Link></div>
+                        <div className="head"><Link to="/in" href="/in">ВКЛАД</Link></div>
                     </div>
                     <div className="checktabl">
                     {user.inHistory && (

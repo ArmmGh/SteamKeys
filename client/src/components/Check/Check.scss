@@ -26,6 +26,7 @@ $color-favor: #f14100;
 .checkmain{
     background-color: black;
     .checkall{
+        padding: 1% 1%;
         .checkhead{
             display: flex;
             justify-content: center;
@@ -39,8 +40,10 @@ $color-favor: #f14100;
                 }
             }
             .br{
-                height: 40px;
-                color: $color-favor;
+                margin-left: 3px;
+                margin-right: 3px;
+                height: 32px;
+                background-color: $color-favor;
                 width: 4px;
             }
           }
