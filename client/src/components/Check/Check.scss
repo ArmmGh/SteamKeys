@@ -21,3 +21,47 @@
         }
     }
 }
+.checkmain{
+    background-color: black;
+ .cheakhead{
+   h1{
+     text-align: center;
+     color: white;
+     font-size: 36px;
+     margin-bottom: 5px;
+   }
+ }
+ .checktabl{
+     padding-top: 7px;
+     padding-bottom: 10px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     table tr:last-child,td:first-child {
+       border-bottom-left-radius: 10px;
+      }
+   
+     table tr:last-child,td:last-child {
+        border-bottom-right-radius: 10px;
+     }
+     table{
+         width: 90%;
+         border: 2px solid white;
+         border-collapse: collapse;
+         .tablehead{
+           color: white;
+         }
+         tr{
+             color: #f14100;
+             height: 40px;
+             border-top: 2px solid white;
+             text-align: center;
+                td{
+                    button{
+                        padding: 5px 5px;
+                    }
+                }
+         }
+     }
+ }
+}

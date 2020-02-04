@@ -133,7 +133,7 @@ const Check = () => {
                     <div className="checktabl">
                     {user.inHistory && (
                   <table className="table" id="table">
-                  <tr>
+                  <tr className="tablehead"> 
                     <th>Сумма</th>
                     <th>Статус</th>
                     <th>Дата</th>
