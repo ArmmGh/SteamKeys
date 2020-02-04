@@ -1,7 +1,6 @@
 import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
 import Timer from 'react-compound-timer';
-import { MdClose } from 'react-icons/md';
 import { ToastContainer, toast } from 'react-toastify';
 import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';

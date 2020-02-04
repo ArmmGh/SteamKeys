@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
+import { MdClose } from 'react-icons/md';
 import Menu from '../Menu';
+import fetchApi from '../../utils/fetchApi';
+import { useStateValue } from '../../context';
+import './Check.scss';
 
 
-
-const Check = () => e => {
+const Check = () => {
     const [
         { user, authenticated, translate, cases, socket },
         dispatch,
@@ -47,7 +51,7 @@ const Check = () => e => {
   
         const hisopenModal = item => e => {
           if(amount == ''){
-            toast("Поле не может быть пустым")
+            alert("Поле не может быть пустым")
           }else{
             setModal(true);
           }
