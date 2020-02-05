@@ -23,14 +23,6 @@ const Footer = () => {
             <Link to="/reviews" href="/reviews">
               {translate('reviews')}
             </Link>
-            <Link to="/agreement" href="/agreement">
-              {translate('agreement')}
-            </Link>
-          </div>
-          <div className="socialLinks">
-            <a href="https://vk.com/club184431451">
-              <FaVk /> {translate('onVk')}
-            </a>
           </div>
         </div>
         <div className="text">{translate('warningSteamText')}</div>

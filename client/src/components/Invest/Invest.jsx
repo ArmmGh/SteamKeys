@@ -51,14 +51,14 @@ const Invest = () => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
                 disableButtons(false);
             })
-            toast("Средства перечислен")
+            alert("Средства перечислен")
     }
 
     const invest = () => res => {
             disableButtons(true)
             if(user.payment === 'yes'){
-                if(user.walletp == '' || user.walletp == null){
-                    toast("Сохраняйте кошелек в кабинет")
+                if(user.username == '' || user.username == null){
+                    alert("error")
                 }else{
                     if (amount !== ''){
                         if(user.balance >= amount){
@@ -74,7 +74,7 @@ const Invest = () => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
                     setDisble(false);
                     res.rub = amount;
-                    res.wallet = user.walletp;
+                    res.wallet = user.username;
                     res.time = new Date();
                     socket.emit('done benefit', {
                      profit: res,
@@ -120,9 +120,7 @@ const Invest = () => {
           <button disabled={disableButton} onClick={invest()}>Вложить</button>
           </div>
           <div className="note">
-            <p>Сумма вклада будет вычислен <br/> 
-                на баланс автоматически</p>
-            <p>Чек вычислены можно найти <Link to="/" href="/">Здесь</Link></p>
+            <p>Сумма вклада можно получить <Link to="/" href="/">Здесь</Link></p>
           </div>
            </div>
          </div>

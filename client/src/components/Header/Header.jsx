@@ -178,11 +178,6 @@ const Header = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/faq" href="/faq">
-                        FAQ
-                    </Link>
-                </li>
-                <li>
                     <Link to="/contact" href="/contact">
                         Контакты
                     </Link>
