@@ -62,9 +62,8 @@ const In = () => {
                         {items.action === 'paid' ? (
                             <span>Выплачено</span>
                         ) : items.time <= new Date().getTime() && items.action === 'waiting' ? (
-                            <button 
-                            disabled={disableButton}
-                            onClick={get(items)}>Получить</button>
+                            get(items),
+                            <span>В ожидание</span>
                         ) : items.action === 'waiting' ? (
                             <Timer
                             initialTime={items.time - new Date().getTime()}
