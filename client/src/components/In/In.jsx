@@ -43,7 +43,7 @@ const In = () => {
                     <div className="checkhead">
                         <div className="head"><Link to="/check" href="/check">ПОПОЛНЕНИЯ</Link></div>
                         <div className="br"></div>
-                        <div className="head"><Link to="/pay" href="/pay">ВЫПЛАТА</Link></div>
+                        <div className="head"><Link to="/in" href="/in">ВЫПЛАТА</Link></div>
                         <div className="br"></div>
                         <div className="head"><Link to="/in" href="/in">ВКЛАД</Link></div>
                     </div>
@@ -62,8 +62,7 @@ const In = () => {
                         {items.action === 'paid' ? (
                             <span>Выплачено</span>
                         ) : items.time <= new Date().getTime() && items.action === 'waiting' ? (
-                            get(items),
-                            <span>В ожидание</span>
+                            get(items)
                         ) : items.action === 'waiting' ? (
                             <Timer
                             initialTime={items.time - new Date().getTime()}
