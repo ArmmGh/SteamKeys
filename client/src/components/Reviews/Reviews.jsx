@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useStateValue } from '../../context';
 import './Reviews.scss';
 import fetchApi from '../../utils/fetchApi';
 
