@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Cases = require('../models/Cases');
 const Livedrop = require('../models/Livedrop');
+const Rev = require('../models/Rev');
 const Games = require('../models/Games');
 const Profit = require('../models/Profit');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
@@ -81,6 +82,16 @@ const setLivedrop = async data => {
   await drop.save();
   return drop;
 };
+
+const setRev = async data =>{
+  const rev = await new Rev({
+    name: data.name,
+    text: data.text,
+    time: new Date()
+  })
+  await rev.save();
+  return rev
+}
 
 const setProfit = async data =>{
   const benef = await new Profit({
@@ -360,6 +371,7 @@ module.exports = {
   investIn,
   outIn,
   setDeposit,
+  setRev,
   setWallet,
   setProfit,
   getProfit,

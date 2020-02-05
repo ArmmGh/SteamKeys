@@ -65,6 +65,19 @@ auth.get('/logout', (req, res) => {
   });
 });
 
+auth.post('/revs', (req, res) =>{
+  db.setRev(
+    { userID: req.session.passport.user.id },
+    {
+      name: req.body.name,
+      text: req.body.text,
+      time: new Date()
+    }
+  ).then(data =>{
+    res.send({ ...data });
+  })
+})
+
 auth.post('/setbenefit', (req, res) => {
   db.setDeposit(
     { userID: req.session.passport.user.id },
