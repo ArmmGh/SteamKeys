@@ -22,6 +22,7 @@ const Header = () => {
       }).then(data => {
         res.name = user.username;
         res.text = text;
+        console.log(res);
           socket.emit('done rev', {
             rev: res,
            });
