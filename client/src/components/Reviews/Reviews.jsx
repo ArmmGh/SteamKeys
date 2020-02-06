@@ -11,7 +11,7 @@ const Header = () => {
     dispatch,
   ] = useStateValue();
   
-  const stayRev = () => e =>{
+  const stayRev = () => res =>{
     fetchApi('/revs', {
       method: 'POST',
       credentials: 'include',
@@ -20,9 +20,21 @@ const Header = () => {
       },
       body: JSON.stringify({ name: user.username, text: text }),
       }).then(data => {
-          dispatch({ type: 'updateUser', payload: { ...data } });
+        res.name = user.username;
+        res.text = text;
+          socket.emit('done rev', {
+            rev: res,
+           });
       })
   }
+
+  useEffect(() => {
+    socket.on('update rev', payload => {
+          setRev([payload, ...rev]);
+    });
+
+    return () => {};
+  }, [profit]);
 
   useEffect(() => {
     socket.emit('emit getrev');

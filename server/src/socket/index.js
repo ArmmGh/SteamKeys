@@ -27,6 +27,12 @@ module.exports = io => {
         });
     });
 
+    socket.on('done rev', data => {
+      db.setRev(data).then(res => {
+          io.emit('update rev', res);
+      });
+  });
+
     if (!socket.sentLivedrop) {
       socket.on('emit getlive', res => {
         db.getLivedrop().then(data => {

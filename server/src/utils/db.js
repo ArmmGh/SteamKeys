@@ -85,11 +85,7 @@ const setLivedrop = async data => {
 };
 
 const setRev = async data =>{
-  const rev = await new Rev({
-    name: data.name,
-    text: data.text,
-    time: new Date()
-  })
+  const rev = await new Rev(data.rev)
   await rev.save();
   return rev
 }
