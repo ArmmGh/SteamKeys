@@ -76,6 +76,7 @@ const getCase = type => Cases.findOne({ type }).then(res => res);
 
 const getLivedrop = () => Livedrop.find({});
 const getProfit = () => Profit.find({});
+const getRev = () => Rev.find({});
 
 const setLivedrop = async data => {
   const drop = await new Livedrop(data.game);
@@ -377,6 +378,7 @@ module.exports = {
   getProfit,
   getMoney,
   getGames,
+  getRev,
   getLiveinfo,
   removeBalance,
   sellGame,

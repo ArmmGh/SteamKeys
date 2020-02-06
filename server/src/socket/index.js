@@ -37,6 +37,16 @@ module.exports = io => {
       socket.sentLivedrop = true;
     }
 
+    if (!socket.sentRev) {
+      socket.on('emit getrev', res => {
+        db.getRev().then(data => {
+          data = data.reverse();
+          socket.emit('get rev', data);
+        });
+      });
+      socket.sentRev = true;
+    }
+
     if (!socket.sentBenefit) {
       socket.on('emit getbenefit', res => {
         db.getProfit().then(data => {

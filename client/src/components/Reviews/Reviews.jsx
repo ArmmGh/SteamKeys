@@ -5,6 +5,7 @@ import fetchApi from '../../utils/fetchApi';
 
 const Header = () => {
   const [text, setText] = useState('');
+  const [rev, setRev] = useState([]);
   const [
     { user, authenticated, translate, cases, socket },
     dispatch,
@@ -22,6 +23,17 @@ const Header = () => {
           dispatch({ type: 'updateUser', payload: { ...data } });
       })
   }
+
+  useEffect(() => {
+    socket.emit('emit getrev');
+    socket.on('get brev', payload => {
+      setRev([...payload]);
+    });
+
+    return () => {};
+  }, []);
+
+  useEffect(() => {}, []);
 
   return(
     <React.Fragment>
@@ -47,7 +59,7 @@ const Header = () => {
           )}
           </div>
           <div className="addrev">
-            <textarea value={text} cols="500" rows="10"></textarea>
+            <textarea value={text} cols="500" rows="10" onChange={e => setText(e.target.value)}></textarea>
             <button onClick={stayRev()}>Оставить отзыв</button>
           </div>
         </div>
