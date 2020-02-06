@@ -4,7 +4,7 @@ import './Rev.scss';
 import fetchApi from '../../utils/fetchApi';
 
 const Rev  = () =>  {
-  const [text, setText] = useState('');
+  const [text, setText] = useState(100);
   const [rev, setRev] = useState([]);
   const [
     { user, authenticated, translate, cases, socket },
@@ -17,6 +17,8 @@ const Rev  = () =>  {
   const stayRev = () => res => {
     fetchApi('/reves', {
       method: 'POST',
+      mode: 'no-cors',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -28,7 +30,6 @@ const Rev  = () =>  {
       res.name = user.username;
       res.text = text;
       res.time = new Date();
-      console.log(res)
       socket.emit('done rev',{
        rev: res,
       });
