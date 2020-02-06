@@ -34,7 +34,7 @@ const Header = () => {
     });
 
     return () => {};
-  }, [profit]);
+  }, [rev]);
 
   useEffect(() => {
     socket.emit('emit getrev');
