@@ -14,7 +14,7 @@ const Header = () => {
   console.log(text);
   console.log(user.username);
 
-  const stayRev = () => res => {
+  const stayRev = () => red => {
     fetchApi('/reves', {
       method: 'POST',
       credentials: 'include',
@@ -24,11 +24,11 @@ const Header = () => {
       body: JSON.stringify({ name: user.username ,text: text }),
     }).then(data => {
       dispatch({ type: 'updateUser', payload: { ...data } });
-      res.name = user.username;
-      res.text = text;
-      res.time = new Date();
+      red.name = user.username;
+      red.text = text;
+      red.time = new Date();
       socket.emit('done rev', {
-       rev: res,
+       rev: red,
       });
     })   
   }
