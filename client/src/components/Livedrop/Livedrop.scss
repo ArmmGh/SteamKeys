@@ -570,3 +570,40 @@
   font-size: 35px;
   color: white;
 }
+
+@media only screen and (max-width: 480px){
+  .infocont{
+    .infomain{
+      display: flex;
+      .stats{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        span{
+          font-size: 13px;
+        }
+        text-align: center;
+        width: 25%;
+        background-color: #c4c4c4;
+        height: 300px;
+      }
+      .slidi{
+        background-color: white;
+        width: 50%;
+        height: 300px;
+      }
+    }
+  }
+  
+  .content{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    align-items: center;
+    background-image: url('../../assets/profile/donald.jpg');
+    background-color: yellow;
+    font-size: 16px;
+    color: white;
+  }
+}

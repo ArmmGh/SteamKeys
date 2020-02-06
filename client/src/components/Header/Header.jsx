@@ -199,32 +199,6 @@ const Header = () => {
                 </div>
                 </div>
             </div>
-            <div className="headercont">
-                <div className="botcont">
-                    <ul>
-                <li>
-                <Link to="/" href="/">
-                Главная
-                </Link>
-                </li>
-                <li>
-                    <Link to="/reviews" href="/reviews">
-                    Отзывы
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/faq" href="/faq">
-                        FAQ
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/contact" href="/contact">
-                        Контакты
-                    </Link>
-                </li>
-                    </ul>
-                </div>
-            </div>
             </header>
             </div>
                 </React.Fragment>

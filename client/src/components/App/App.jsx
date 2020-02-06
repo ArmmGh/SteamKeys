@@ -10,11 +10,7 @@ import Livedrop from '../Livedrop';
 import Footer from '../Footer';
 import Agreement from '../Agreement';
 import fetchApi from '../../utils/fetchApi';
-import Profile from '../Profile';
 import Contact from '../Contact';
-import Cases from '../Cases';
-import Success from '../Success';
-import Fail from '../Fail';
 import './App.scss';
 import Table from '../Table';
 import Adding from '../Adding';
@@ -102,14 +98,10 @@ function App() {
         <Route path="/output" component={Out} />
         <Route path="/adding" component={Adding} />
         <Route path="/table" component={Table} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/case/:name" component={Game} />
         <Route exact path="/" component={Table} />
         <Route path="/faq" component={Faq} />
         <Route path="/agreement" component={Agreement} />
         <Route path="/contact" component={Contact} />
-        <Route path="/success" component={Success} />
-        <Route path="/fail" component={Fail} />
       </main>
       <Footer />
     </div>

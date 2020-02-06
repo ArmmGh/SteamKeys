@@ -284,3 +284,153 @@
   }
 }
 }
+
+@media only screen and (max-width: 480px){
+  .header2{
+    header {
+    background: #161415;
+    .design{
+      height: 55px;
+      width: 100%;
+      background-color: #161415;
+      .GTC{
+        display: flex;
+        padding-top: 3px;
+        padding: 5px 30px;
+        .logon{
+          width: 15%;
+          img{
+          width: 50px;
+          height: 50px;
+          }
+        }
+        .outauth{
+          display: flex;
+          justify-content: space-around;
+          width: 70%;
+          .UTC{
+            display: flex;
+            .timer{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: white;
+            }
+            .icona{
+              padding-left: 2px;
+              display: flex;
+              font-size: 20px;
+              color: white;
+              .children{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+          .prof{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .ile{
+              padding-top: 2px;
+              font-size: 13px;
+              color: white;
+            }
+            .link{
+              a{
+                text-decoration: none;
+                color: #f14100;
+              }
+            }
+          }
+        }
+        .authen{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .authbut{
+            .ici{
+              display: flex;
+              justify-content: center;
+              .vk{
+                padding-top: 3px;
+                font-size: 20px;
+              }
+              .login{
+                display: flex;
+                justify-content: center;
+              }
+            }
+            button{
+              font-weight: 600;
+              min-width: 125px;
+              line-height: 35px;
+              font-size: 13px;
+              background-color: #009900;
+              color: white;
+              border-radius: 5px;
+              // border: 2px solid rgb(241, 65, 0);
+            }
+          }
+          button:focus{
+            outline: none;
+          }
+        }
+        .bal{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .num{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1px;
+            .cenzur{
+              padding-top: 3px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            p{
+              font-size: 13px;
+              color: white;
+            }
+            span{
+              font-size: 12px;
+              color: #f14100;
+            }
+          }
+          .prof{
+            .link{
+              text-decoration: none;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+    .headercont{
+      width: 100%;
+      // height: 30px;
+      margin-bottom: 0;
+      background-color: #979797;
+      .botcont{
+        ul{
+          display: flex;
+          justify-content: center;
+          li{
+            list-style-type: none;
+            padding: 3px 5px;
+            a{
+              font-size: 13px;
+              text-decoration: none;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+  }
+}

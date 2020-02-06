@@ -121,7 +121,7 @@ const Invest = () => {
           <button disabled={disableButton} onClick={invest()}>Вложить</button>
           </div>
           <div className="note">
-            <p>Сумма вклада можно получить <Link to="/" href="/">Здесь</Link></p>
+            <p>Сумма вклада можно получить <Link to="/in" href="/in">Здесь</Link></p>
           </div>
            </div>
          </div>

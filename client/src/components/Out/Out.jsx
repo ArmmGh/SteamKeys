@@ -150,7 +150,7 @@ const Out = () =>{
           <button disabled={disableButton} onClick={checkin()}>Получить</button>
           </div>
           <div className="note">
-            <p>Чек выплаты можно найти <Link to="/" href="/">Здесь</Link></p>
+            <p>Чек выплаты можно найти <Link to="/pay" href="/pay">Здесь</Link></p>
           </div>
            </div>
          </div>
