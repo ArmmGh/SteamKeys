@@ -13,7 +13,7 @@ import fetchApi from '../../utils/fetchApi';
 import Profile from '../Profile';
 import Contact from '../Contact';
 import Cases from '../Cases';
-import Reviews from '../Reviews';
+import Rev from '../Rev';
 import Success from '../Success';
 import Fail from '../Fail';
 import './App.scss';
@@ -108,7 +108,7 @@ function App() {
         <Route exact path="/" component={Table} />
         <Route path="/faq" component={Faq} />
         <Route path="/agreement" component={Agreement} />
-        <Route path="/reviews" component={Reviews} />
+        <Route path="/reviews" component={Rev} />
         <Route path="/contact" component={Contact} />
         <Route path="/success" component={Success} />
         <Route path="/fail" component={Fail} />

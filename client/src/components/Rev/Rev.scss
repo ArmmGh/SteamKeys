@@ -1,0 +1,45 @@
+$color-favor: #f14100;
+
+.revcontainer{
+  background-color: black;
+  .revall{
+    padding: 5% 5%;
+    display: flex;
+    flex-direction: column;
+    .revs{
+      width: 100%;
+      .revis{
+        .allrev{
+        .namehead{
+          padding-top: 7px;
+          padding-bottom: 7px;
+          display: flex;
+          justify-content: space-between;
+          background-color: #979797;
+          color: $color-favor; 
+            .name{
+              font-size: 17px;
+            }
+            .date{
+              font-size: 17px;
+            }
+          }
+          .texthead{
+              padding-top: 5px;
+              padding-bottom: 5px;
+              font-size: 16px;
+              color: white;
+          }
+        }
+      }
+    }
+    .addrev{
+      textarea{
+        width: 80%;
+      }
+      button{
+        padding: 5px 5px;
+      }
+    }
+  }
+}
