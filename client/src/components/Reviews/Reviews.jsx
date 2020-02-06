@@ -18,13 +18,13 @@ const Header = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: user.username,text: text }),
+      body: JSON.stringify({ name: user.username ,text: text }),
     }).then(data => {
       dispatch({ type: 'updateUser', payload: { ...data } });
       res.name = user.username;
       res.text = text;
       res.time = new Date();
-      socket.emit('done benefit', {
+      socket.emit('done rev', {
        rev: res,
       });
     })   
