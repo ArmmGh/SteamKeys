@@ -4,13 +4,16 @@ import './Reviews.scss';
 import fetchApi from '../../utils/fetchApi';
 
 const Header = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState(100);
   const [rev, setRev] = useState([]);
   const [
     { user, authenticated, translate, cases, socket },
     dispatch,
   ] = useStateValue();
   
+  console.log(text);
+  console.log(user.username);
+
   const stayRev = () => res => {
     fetchApi('/reves', {
       method: 'POST',
