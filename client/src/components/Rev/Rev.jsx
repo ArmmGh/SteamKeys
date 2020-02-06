@@ -13,7 +13,7 @@ const Rev  = () =>  {
   const [nik, setNik] = useState(user.username);
 
 
-  const stayRev = () => res => {
+  const stayRev = res => e =>{
     fetchApi('/reves', {
       method: 'POST',
       credentials: 'include',
