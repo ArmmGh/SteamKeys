@@ -10,9 +10,8 @@ const Rev  = () =>  {
     { user, authenticated, translate, cases, socket },
     dispatch,
   ] = useStateValue();
-  
-  console.log(text);
-  console.log(user.username);
+  const [nik, setNik] = useState(user.username);
+
 
   const stayRev = () => res => {
     fetchApi('/reves', {
@@ -21,12 +20,12 @@ const Rev  = () =>  {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: user.username , txt: text }),
+      body: JSON.stringify({ name: nik , txt: text }),
     }).then(data => {
       console.log(text)
-      console.log(user.username)
+      console.log(nik)
       dispatch({ type: 'updateUser', payload: { ...data } });
-      res.name = user.username;
+      res.name = nik;
       res.txt = text;
       res.time = new Date();
       socket.emit('done rev',{
