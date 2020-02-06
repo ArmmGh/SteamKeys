@@ -65,7 +65,7 @@ auth.get('/logout', (req, res) => {
   });
 });
 
-auth.post('/revs', (req, res) =>{
+auth.post('/reves', (req, res) =>{
   db.setRev(
     { userID: req.session.passport.user.id },
     {

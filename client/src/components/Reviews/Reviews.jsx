@@ -12,23 +12,29 @@ const Header = () => {
   ] = useStateValue();
   
   const stayRev = () => res => {
-    console.log(text)
-    console.log(user.username)
-    fetchApi('/revs', {
+    fetchApi('/reves', {
       method: 'POST',
       credentials: 'include',
       headers: {
-      'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: user.username, text: text }),
-      }).then(data => {
-        dispatch({ type: 'updateUser', payload: { ...data } });
-          socket.emit('done rev', {
-            text: text,
-            name: user.username,
-           });
-      })
+      body: JSON.stringify({ name: user.username,text: text }),
+    }).then(data => {
+      dispatch({ type: 'updateUser', payload: { ...data } });
+      res.name = user.username;
+      res.text = text;
+      res.time = new Date();
+      socket.emit('done benefit', {
+       rev: res,
+      });
+    })   
   }
+
+  const handeleChangea = val => {
+    if (val.match(/^[A-Za-z0-9]+$/)) {
+      setText(val);
+    }
+  };
 
   useEffect(() => {
     socket.on('update rev', payload => {
@@ -73,7 +79,7 @@ const Header = () => {
           )}
           </div>
           <div className="addrev">
-            <textarea value={text} cols="500" rows="10" onChange={e => setText(e.target.value)}></textarea>
+            <textarea value={text} cols="500" rows="10" onChange={e => handeleChangea(e.target.value)}></textarea>
             <button onClick={stayRev()}>Оставить отзыв</button>
           </div>
         </div>
