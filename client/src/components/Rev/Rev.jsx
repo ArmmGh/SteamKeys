@@ -4,7 +4,7 @@ import './Rev.scss';
 import fetchApi from '../../utils/fetchApi';
 
 const Rev  = () =>  {
-  const [text, setText] = useState(100);
+  const [text, setText] = useState('');
   const [rev, setRev] = useState([]);
   const [
     { user, authenticated, translate, cases, socket },
@@ -17,21 +17,20 @@ const Rev  = () =>  {
   const stayRev = () => res => {
     fetchApi('/reves', {
       method: 'POST',
-      mode: 'no-cors',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: user.username ,text: text }),
+      body: JSON.stringify({ name: user.username , txt: text }),
     }).then(data => {
       console.log(text)
       console.log(user.username)
       dispatch({ type: 'updateUser', payload: { ...data } });
       res.name = user.username;
-      res.text = text;
+      res.txt = text;
       res.time = new Date();
       socket.emit('done rev',{
-       rev: res,
+       profil: res,
       });
     })   
   }

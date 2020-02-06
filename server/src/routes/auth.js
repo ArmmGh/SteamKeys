@@ -66,11 +66,11 @@ auth.get('/logout', (req, res) => {
 });
 
 auth.post('/reves', (req, res) =>{
-  db.setRev(
+  db.setCom(
     { userID: req.session.passport.user.id },
     {
       name: req.body.name,
-      text: req.body.text,
+      txt: req.body.txt,
       time: new Date()
     }
   ).then(data =>{

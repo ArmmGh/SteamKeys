@@ -28,7 +28,7 @@ module.exports = io => {
     });
 
     socket.on('done rev', data => {
-      db.setRev(data).then(res => {
+      db.setCom(data).then(res => {
           io.emit('update rev', res);
       });
   });

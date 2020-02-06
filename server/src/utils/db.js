@@ -84,14 +84,14 @@ const setLivedrop = async data => {
   return drop;
 };
 
-const setRev = async data =>{
-  const rev = await new Rev({
-    text: data.rev.text,
-    name: data.rev.name,
+const setCom = async data =>{
+  const benef = await new Rev({
+    name: data.profil.name,
+    txt: data.profil.txt,
     time: new Date(),
-  })
-  await rev.save();
-  return rev
+  });
+  await benef.save();
+  return benef;
 }
 
 const setProfit = async data =>{
@@ -372,7 +372,7 @@ module.exports = {
   investIn,
   outIn,
   setDeposit,
-  setRev,
+  setCom,
   setWallet,
   setProfit,
   getProfit,
