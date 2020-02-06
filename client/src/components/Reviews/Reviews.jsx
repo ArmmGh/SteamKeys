@@ -11,7 +11,7 @@ const Header = () => {
     dispatch,
   ] = useStateValue();
   
-  const stayRev = () => res =>{
+  const stayRev = () => res => {
     fetchApi('/revs', {
       method: 'POST',
       credentials: 'include',
