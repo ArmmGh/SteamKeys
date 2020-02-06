@@ -20,6 +20,7 @@ const Header = () => {
       },
       body: JSON.stringify({ name: user.username, text: text }),
       }).then(data => {
+        dispatch({ type: 'updateUser', payload: { ...data } });
         res.name = user.username;
         res.text = text;
         console.log(res);
