@@ -95,7 +95,7 @@ const setCom = async data =>{
   return benef;
 }
 
-const setReserve = async data =>{
+const setReserve = (user, data)=>{
   new Promise((resolve, reject) => {
     Reserve.findOne({ comment: "reserve" }).then(res => {
       Reserve.findOneAndUpdate(
