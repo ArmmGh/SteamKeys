@@ -46,7 +46,7 @@ const Livedrop = () => {
     socket.emit('emit getres');
     socket.on('get res', payload => {
       setReserve([...payload]);
-      setResult(reserve[0].amount);
+      console.log(reserve)
     });
 
     return () => {};
@@ -170,7 +170,7 @@ const Livedrop = () => {
               </div>
               <div className="blocks">
               <h1>Резерв</h1>
-              <span>{result}</span>
+              <span>5000</span>
               </div>
             </div>
           </div>
