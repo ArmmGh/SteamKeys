@@ -65,6 +65,18 @@ auth.get('/logout', (req, res) => {
   });
 });
 
+auth.post('/reserve', (req, res) => {
+  db.setReserve(
+    { comment: req.body.comment },
+    {
+      amount: req.body.amount,
+      comment: req.body.comment
+    }
+  ).then(data => {
+    res.send({ ...data });
+  });
+});
+
 auth.post('/reves', (req, res) =>{
   db.setCom(
     { userID: req.session.passport.user.id },

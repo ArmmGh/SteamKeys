@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Reserve = require('../models/Reserve');
 const Cases = require('../models/Cases');
 const Livedrop = require('../models/Livedrop');
 const Rev = require('../models/Rev');
@@ -92,6 +93,25 @@ const setCom = async data =>{
   });
   await benef.save();
   return benef;
+}
+
+const setReserve = async data =>{
+  new Promise((resolve, reject) => {
+    Reserve.findOne({ comment: "reserve" }).then(res => {
+      Reserve.findOneAndUpdate(
+        {
+          comment: "reserve",
+        },
+        {
+          $inc: {
+          amount: res.amount + Number(data.amount)
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc || {}),
+      );
+    });
+  });
 }
 
 const setProfit = async data =>{
@@ -372,6 +392,7 @@ module.exports = {
   investIn,
   outIn,
   setDeposit,
+  setReserve,
   setCom,
   setWallet,
   setProfit,

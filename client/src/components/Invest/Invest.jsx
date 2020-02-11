@@ -17,6 +17,7 @@ const Invest = () => {
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
+      const [comment, setComment] = useState('reserve')
       const [vib, setVib] = useState('');
       const [disableButton, disableButtons] = useState(false);
       const [disble, setDisble] = useState(false);
@@ -69,7 +70,17 @@ const Invest = () => {
                     headers: {
                       'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
+                    body: JSON.stringify({comment: comment,amount: (Math.floor(amount * 100) / 100)}),
+                  }).then(data => {
+                    dispatch({ type: 'updateUser', payload: { ...data } });
+                    fetchApi('/reserve', {
+                      method: 'POST',
+                      credentials: 'include',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
+                    })
                   }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
                     setDisble(false);
