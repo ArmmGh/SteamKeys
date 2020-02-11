@@ -168,7 +168,7 @@ const Livedrop = () => {
               </div>
               <div className="blocks">
               <h1>Резерв</h1>
-              <span>{reserve.amount}</span>
+              <span>{reserve[0].amount}</span>
               </div>
             </div>
           </div>
