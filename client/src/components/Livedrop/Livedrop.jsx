@@ -16,6 +16,7 @@ const formatter = buildFormatter(
 );
 
 const Livedrop = () => {
+  const [reserve, setReserve] = useState([]);
   const [{ socket, translate }] = useStateValue();
   const [livedrop, setLivedrop] = useState([]);
   const [totalUsers, setTotalusers] = useState(0);
@@ -39,6 +40,15 @@ const Livedrop = () => {
   const imagesCases = importAll(
     require.context('../../assets/cases', false, /\.(png|jpe?g|svg)$/),
   );
+
+  useEffect(() => {
+    socket.emit('emit getres');
+    socket.on('get res', payload => {
+      setReserve([...payload]);
+    });
+
+    return () => {};
+  }, []);
 
   useEffect(() => {
     socket.emit('emit getlive');
@@ -158,7 +168,7 @@ const Livedrop = () => {
               </div>
               <div className="blocks">
               <h1>Резерв</h1>
-              <span>500</span>
+              <span>{reserve.amount}</span>
               </div>
             </div>
           </div>

@@ -78,6 +78,7 @@ const getCase = type => Cases.findOne({ type }).then(res => res);
 const getLivedrop = () => Livedrop.find({});
 const getProfit = () => Profit.find({});
 const getRev = () => Rev.find({});
+const getRes = () => Reserve.find({ comment: "reverse"})
 
 const setLivedrop = async data => {
   const drop = await new Livedrop(data.game);
@@ -396,6 +397,7 @@ module.exports = {
   setCom,
   setWallet,
   setProfit,
+  getRes,
   getProfit,
   getMoney,
   getGames,

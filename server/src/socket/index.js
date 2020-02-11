@@ -53,6 +53,15 @@ module.exports = io => {
       socket.sentRev = true;
     }
 
+    if (!socket.sentRes) {
+      socket.on('emit getres', res => {
+        db.getRes().then(data => {
+          socket.emit('get res', data);
+        });
+      });
+      socket.sentRes = true;
+    }
+
     if (!socket.sentBenefit) {
       socket.on('emit getbenefit', res => {
         db.getProfit().then(data => {
