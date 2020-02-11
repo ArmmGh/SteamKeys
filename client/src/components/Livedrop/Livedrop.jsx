@@ -18,7 +18,7 @@ const formatter = buildFormatter(
 const Livedrop = () => {
   const [reserve, setReserve] = useState([]);
   const [{ socket, translate }] = useStateValue();
-  const [livedrop, setLivedrop] = useState([]);
+  const [livedrop, setLivedrop] = useState({});
   const [totalUsers, setTotalusers] = useState(0);
   const [openCases, setOpencases] = useState(0);
   const [onlineUsers, setOnlineusers] = useState(0);
@@ -168,7 +168,7 @@ const Livedrop = () => {
               </div>
               <div className="blocks">
               <h1>Резерв</h1>
-              <span>{reserve[0].amount}</span>
+              <span>{reserve.amount}</span>
               </div>
             </div>
           </div>
