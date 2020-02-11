@@ -16,7 +16,8 @@ const formatter = buildFormatter(
 );
 
 const Livedrop = () => {
-  const [reserve, setReserve] = useState({});
+  const [reserve, setReserve] = useState([]);
+  const [result, setResult] = useState('');
   const [{ socket, translate }] = useStateValue();
   const [livedrop, setLivedrop] = useState({});
   const [totalUsers, setTotalusers] = useState(0);
@@ -45,6 +46,7 @@ const Livedrop = () => {
     socket.emit('emit getres');
     socket.on('get res', payload => {
       setReserve([...payload]);
+      setResult(reserve[0]);
     });
 
     return () => {};
@@ -168,7 +170,7 @@ const Livedrop = () => {
               </div>
               <div className="blocks">
               <h1>Резерв</h1>
-              <span>{reserve.amount}</span>
+              <span>{result.amount}</span>
               </div>
             </div>
           </div>
