@@ -16,7 +16,7 @@ const formatter = buildFormatter(
 );
 
 const Livedrop = () => {
-  const [reserve, setReserve] = useState([]);
+  const [reserve, setReserve] = useState(0);
   const [result, setResult] = useState();
   const [{ socket, translate }] = useStateValue();
   const [livedrop, setLivedrop] = useState({});
@@ -43,16 +43,6 @@ const Livedrop = () => {
   );
 
   useEffect(() => {
-    socket.emit('emit getres');
-    socket.on('get res', payload => {
-      setReserve([...payload]);
-      console.log(reserve)
-    });
-
-    return () => {};
-  }, []);
-
-  useEffect(() => {
     socket.emit('emit getlive');
     socket.on('get live', payload => {
       setLivedrop([...payload]);
@@ -61,6 +51,10 @@ const Livedrop = () => {
     fetchApi('/liveinfo').then(res => {
       setTotalusers(res.users);
       setOpencases(res.cases);
+    });
+
+    fetchApi('/resinfo').then(res => {
+      setReserve(res);
     });
 
     return () => {};
@@ -172,7 +166,7 @@ const Livedrop = () => {
               </div>
               <div className="blocks">
               <h1>Резерв</h1>
-              <span>5000</span>
+              <span>{reserve}</span>
               </div>
             </div>
           </div>
