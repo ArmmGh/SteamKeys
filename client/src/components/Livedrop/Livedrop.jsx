@@ -17,7 +17,7 @@ const formatter = buildFormatter(
 
 const Livedrop = () => {
   const [reserve, setReserve] = useState([]);
-  const [result, setResult] = useState('');
+  const [result, setResult] = useState();
   const [{ socket, translate }] = useStateValue();
   const [livedrop, setLivedrop] = useState({});
   const [totalUsers, setTotalusers] = useState(0);

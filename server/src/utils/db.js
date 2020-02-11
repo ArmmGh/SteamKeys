@@ -78,7 +78,7 @@ const getCase = type => Cases.findOne({ type }).then(res => res);
 const getLivedrop = () => Livedrop.find({});
 const getProfit = () => Profit.find({});
 const getRev = () => Rev.find({});
-const getRes = () => Reserve.find({ comment: "reserve" })
+const getRes = () => Reserve.find({})
 
 const setLivedrop = async data => {
   const drop = await new Livedrop(data.game);
