@@ -400,7 +400,6 @@ module.exports = {
   getProfit,
   getMoney,
   getGames,
-  getRev,
   getLiveinfo,
   removeBalance,
   sellGame,
