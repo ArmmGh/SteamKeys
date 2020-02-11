@@ -104,7 +104,7 @@ const setReserve = (user, data)=>{
         },
         {
           $inc: {
-          amount: res.amount + Number(data.amount)
+          amount: + Number(data.amount)
           },
         },
         { new: true },
