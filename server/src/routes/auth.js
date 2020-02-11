@@ -72,9 +72,7 @@ auth.post('/reserve', (req, res) => {
       amount: req.body.amount,
       comment: req.body.comment
     }
-  ).then(data => {
-    res.send({ ...data });
-  });
+  )
 });
 
 auth.post('/reves', (req, res) =>{
