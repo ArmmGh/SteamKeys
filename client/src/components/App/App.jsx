@@ -99,8 +99,6 @@ function App() {
         <Route path="/adding" component={Adding} />
         <Route path="/table" component={Table} />
         <Route exact path="/" component={Table} />
-        <Route path="/faq" component={Faq} />
-        <Route path="/agreement" component={Agreement} />
         <Route path="/contact" component={Contact} />
       </main>
       <Footer />

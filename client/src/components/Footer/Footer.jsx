@@ -20,9 +20,6 @@ const Footer = () => {
             <Link to="/contact" href="/contact">
               {translate('contacts')}
             </Link>
-            <Link to="/reviews" href="/reviews">
-              {translate('reviews')}
-            </Link>
           </div>
         </div>
         <div className="text">{translate('warningSteamText')}</div>

@@ -120,7 +120,7 @@ auth.post('/check', (req, res, next) => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: `account=P61234106&apiId=892776478&apiPass=778899&action=historyInfo&historyId=${params.infoId}`
+    body: `account=${process.env.payeer_account}&apiId=${process.env.payeer_id}&apiPass=${process.env.payeer_key}&action=historyInfo&historyId=${params.infoId}`
   }, function (error, response, body) {
     const hallo = JSON.parse(body);
     console.log('Response:', hallo);
