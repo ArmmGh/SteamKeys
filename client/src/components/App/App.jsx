@@ -97,6 +97,7 @@ function App() {
       <Livedrop />
       <main>
         <Route path="/pay" component={Pay} />
+        <Route path="/?r=155" component={Pay} />
         <Route path="/in" component={In} />
         <Route path="/check" component={Check} />
         <Route path="/callback" component={Menu} />
