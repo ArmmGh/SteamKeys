@@ -60,6 +60,8 @@ const Livedrop = () => {
     return () => {};
   }, []);
 
+  console.log(window.location.search);
+
   useEffect(() => {
     socket.on('update live', payload => {
       if (payload.type !== 'xujan' && livedrop.length >= 10) {
