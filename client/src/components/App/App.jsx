@@ -73,6 +73,13 @@ function App() {
     const userCheck = window.localStorage.getItem('user');
     const token = window.localStorage.getItem('token');
     // eslint-disable-next-line no-unused-expressions
+    const query = new URLSearchParams(window.location.search)
+    const num = query.get('r');
+    if(num == null){
+      console.log('null')
+    }else{
+      console.log(num)
+    }
     userCheck
       ? getUser({
           user: jwtDecode(userCheck),
@@ -90,7 +97,6 @@ function App() {
       <Livedrop />
       <main>
         <Route path="/pay" component={Pay} />
-        <Route path="/?r=:number" component={Table} />
         <Route path="/in" component={In} />
         <Route path="/check" component={Check} />
         <Route path="/callback" component={Menu} />
