@@ -38,7 +38,7 @@ const url =
 const allowedOrigins = [
   url,
   'https://any-pay.org',
-  'http://keyforu.net/?r=155',
+  'https://keyforu.net',
   undefined,
   'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
 ];

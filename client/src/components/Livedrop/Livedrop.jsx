@@ -124,8 +124,6 @@ const Livedrop = () => {
     return () => {};
   }, [onlineUsers]);
 
-  console.log(reserve)
-
   return (
     <React.Fragment>
       <div className="infocont">
