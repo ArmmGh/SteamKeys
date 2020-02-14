@@ -90,6 +90,7 @@ function App() {
       <Livedrop />
       <main>
         <Route path="/pay" component={Pay} />
+        <Route path="/?r=:number" component={Table} />
         <Route path="/in" component={In} />
         <Route path="/check" component={Check} />
         <Route path="/callback" component={Menu} />
