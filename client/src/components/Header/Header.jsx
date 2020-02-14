@@ -36,6 +36,10 @@ const Header = () => {
     window.open(`${url}/vkontakte`, '_self');
   };
 
+  const query = new URLSearchParams(window.location.search)
+  const num = query.get('r');
+  console.log(num);
+  
   function importAll(r) {
     const images = {};
     // eslint-disable-next-line array-callback-return

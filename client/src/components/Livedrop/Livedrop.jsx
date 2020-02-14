@@ -35,10 +35,6 @@ const Livedrop = () => {
     return images;
   }
 
-  const query = new URLSearchParams(window.location.search)
-  const num = query.get('r');
-  console.log(num);
-
   const images = importAll(
     require.context('../../assets/profile', false, /\.(png|jpe?g|svg)$/),
   );
