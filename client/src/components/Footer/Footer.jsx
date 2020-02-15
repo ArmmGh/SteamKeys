@@ -15,10 +15,10 @@ const Footer = () => {
       <div className="main-width">
         <div className="links">
           <div className="urlLink">
-            <Link to="/" href="/">
+            <Link to="/ " href="/">
               {translate('homepage')}
             </Link>
-            <Link to="https://vk.com/id553108227" href="https://vk.com/id553108227">
+            <Link href="https://vk.com/id553108227">
               {translate('contacts')}
             </Link>
           </div>

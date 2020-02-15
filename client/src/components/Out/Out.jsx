@@ -60,6 +60,7 @@ const Out = () =>{
         }
     }
     const checkin = () => e =>{
+      if(user.benefitHistory.length !== 0 && user.benefitHistory.length !== null && user.benefitHistory.length !== undefined){
         disableButtons(true);
         fetchApi('/outin', {
             method: 'POST',
@@ -67,11 +68,14 @@ const Out = () =>{
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
+            body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: wallet }),
             }).then(data => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
             })
             window.location.reload()
+          }else{
+            alert("С начала вкладите в проекте")
+          }
    }
     return(
         <React.Fragment>

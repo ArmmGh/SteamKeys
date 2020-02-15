@@ -107,7 +107,6 @@ function App() {
         <Route path="/adding" component={Adding} />
         <Route path="/table" component={Table} />
         <Route exact path="/" component={Table} />
-        <Route path="/:name" component={Contact} />
       </main>
       <Footer />
     </div>
