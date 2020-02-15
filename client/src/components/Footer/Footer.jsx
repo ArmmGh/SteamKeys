@@ -10,6 +10,10 @@ const Footer = () => {
 
   useEffect(() => {}, []);
 
+  const openHelp = () =>{
+    window.open('https://vk.com/id553108227')
+  }
+
   return (
     <footer>
       <div className="main-width">
@@ -18,7 +22,7 @@ const Footer = () => {
             <Link to="/ " href="/">
               {translate('homepage')}
             </Link>
-            <Link href="https://vk.com/id553108227">
+            <Link onClick={openHelp()}>
               {translate('contacts')}
             </Link>
           </div>
