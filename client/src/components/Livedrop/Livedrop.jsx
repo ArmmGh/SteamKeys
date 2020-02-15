@@ -131,11 +131,11 @@ const Livedrop = () => {
             <div className="stats">
               <div className="blocks">
               <h1>Пользовательей</h1>
-              <span>{totalUsers}</span>
+              <span>{20 + totalUsers}</span>
               </div>
               <div className="blocks">
               <h1>Онлайн</h1>
-              <span>{onlineUsers}</span>
+              <span>{10 + onlineUsers}</span>
               </div>
             </div>
             <div className="slidi">
