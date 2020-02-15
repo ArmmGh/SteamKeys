@@ -10,7 +10,7 @@ const Footer = () => {
 
   useEffect(() => {}, []);
 
-  const openHelp = () =>{
+  const openHelp = () =>e =>{
     window.open('https://vk.com/id553108227')
   }
 
