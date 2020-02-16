@@ -16,20 +16,24 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="main-width">
-        <div className="links">
-          <div className="urlLink">
-            <Link to="/ " href="/">
-              {translate('homepage')}
-            </Link>
-            <Link onClick={openHelp()}>
-              {translate('contacts')}
-            </Link>
-          </div>
+    <div className="main-width">
+      <div className="links">
+        <div className="urlLink">
+          <Link to="/" href="/">
+            {translate('homepage')}
+          </Link>
+          <Link onClick={openHelp()}>
+            {translate('contacts')}
+          </Link>
         </div>
-        <div className="text"><img src={accept} alt="payeer"/></div>
+        <div className="socialLinks">
+          <a href="https://vk.com/id553108227">
+            <FaVk /> {translate('onVk')}
+          </a>
+        </div>
       </div>
-    </footer>
+    </div>
+  </footer>
   );
 };
 
