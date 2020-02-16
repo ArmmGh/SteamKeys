@@ -37,6 +37,7 @@ const url =
     : `https://${host}`;
 const allowedOrigins = [
   url,
+  'https://steam-keys.herokuapp.com',
   'https://any-pay.org',
   'https://keyforu.net',
   undefined,
