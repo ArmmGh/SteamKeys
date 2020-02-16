@@ -1,5 +1,7 @@
 footer {
-  background: #000000;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background: -webkit-linear-gradient(to left, #434343, #000000);
   background: linear-gradient(to left, #434343, #000000);
   padding: 35px 0;
@@ -60,4 +62,10 @@ footer {
       }
     }
   }
+}
+
+
+body {
+  position: relative;
+  min-height: 100vh;
 }
