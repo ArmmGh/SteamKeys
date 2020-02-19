@@ -19,7 +19,7 @@ import In from '../In';
 import Pay from '../Pay';
 
 function App() {
-  const [{ user, socket }, dispatch] = useStateValue();
+  const [{ user, socket, authenticated }, dispatch] = useStateValue();
 
   const getGames = () => {
     fetchApi('/games', {
@@ -75,6 +75,11 @@ function App() {
       console.log('null')
     }else{
       console.log(num)
+    }
+    if(authenticated){
+      if(num !== null){
+        window.open('https://keyforu.net/')
+      }
     }
     userCheck
       ? getUser({
