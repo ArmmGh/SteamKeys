@@ -71,9 +71,9 @@ function App() {
     // eslint-disable-next-line no-unused-expressions
     const query = new URLSearchParams(window.location.search)
     const num = query.get('r');
-    const num2 = useParams();
     if(authenticated){
       if(num !== null){
+        alert('hello')
         return <Redirect to="/" />
       }
     }else{
@@ -81,7 +81,6 @@ function App() {
         console.log('null')
       }else{
         console.log(num)
-        console.log(num2)
       }
     }
     userCheck
