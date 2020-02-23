@@ -317,11 +317,11 @@ auth.get('/user', (req, res) => {
             imgurl: req.user._json.photo,
             isLogged: true,
             gameHistory:
-              (req.user.gameHistory && req.user.gameHistory.reverse()) || [],
-            balanceHistory: req.user.balanceHistory || [],
-            benefitHistory: req.user.benefitHistory.reverse() || [],
-            inHistory: req.user.inHistory.reverse() || [],
-            outHistory: req.user.outHistory.reverse() || [],
+              (req.user.gameHistory && req.user.gameHistory.reverse()),
+            balanceHistory: req.user.balanceHistory,
+            benefitHistory: req.user.benefitHistory,
+            inHistory: req.user.inHistory,
+            outHistory: req.user.outHistory,
             ip: newUser.ip,
           });
         });

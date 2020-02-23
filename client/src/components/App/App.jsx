@@ -71,18 +71,11 @@ function App() {
     // eslint-disable-next-line no-unused-expressions
     const query = new URLSearchParams(window.location.search)
     const num = query.get('r');
-    if(authenticated){
-      if(num !== null){
-        alert('hello')
-        return <Redirect to="/" />
-      }
-    }else{
       if(num == null){
         console.log('null')
       }else{
         console.log(num)
       }
-    }
     userCheck
       ? getUser({
           user: jwtDecode(userCheck),
@@ -99,7 +92,11 @@ function App() {
       <Header />
       <Livedrop />
       <main>
-        <Route path="/:query" component={Pay} />
+        {authenticated ? (
+          <Route path="/pay" component={Pay} />
+        ) : (
+          <Route path="/pay" component={<Redirect to="/" />} />
+        )}
         <Route path="/pay" component={Pay} />
         <Route path="/in" component={In} />
         <Route path="/check" component={Check} />
