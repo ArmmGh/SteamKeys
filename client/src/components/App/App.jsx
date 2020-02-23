@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, useParams } from 'react-router-dom';
 import { useStateValue } from '../../context';
 import Header from '../Header';
 import Livedrop from '../Livedrop';
@@ -71,6 +71,7 @@ function App() {
     // eslint-disable-next-line no-unused-expressions
     const query = new URLSearchParams(window.location.search)
     const num = query.get('r');
+    const num2 = useParams();
     if(authenticated){
       if(num !== null){
         return <Redirect to="/" />
@@ -80,6 +81,7 @@ function App() {
         console.log('null')
       }else{
         console.log(num)
+        console.log(num2)
       }
     }
     userCheck
@@ -99,7 +101,6 @@ function App() {
       <Livedrop />
       <main>
         <Route path="/pay" component={Pay} />
-        <Route path="/?r=155" component={Pay} />
         <Route path="/in" component={In} />
         <Route path="/check" component={Check} />
         <Route path="/callback" component={Menu} />
