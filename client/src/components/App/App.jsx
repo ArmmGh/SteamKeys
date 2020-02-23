@@ -71,14 +71,15 @@ function App() {
     // eslint-disable-next-line no-unused-expressions
     const query = new URLSearchParams(window.location.search)
     const num = query.get('r');
-    if(num == null){
-      console.log('null')
-    }else{
-      console.log(num)
-    }
     if(authenticated){
       if(num !== null){
         window.open('https://keyforu.net/')
+      }
+    }else{
+      if(num == null){
+        console.log('null')
+      }else{
+        console.log(num)
       }
     }
     userCheck
