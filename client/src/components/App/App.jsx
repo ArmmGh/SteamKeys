@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { useStateValue } from '../../context';
 import Header from '../Header';
 import Livedrop from '../Livedrop';
@@ -73,7 +73,7 @@ function App() {
     const num = query.get('r');
     if(authenticated){
       if(num !== null){
-        window.open('https://keyforu.net/')
+        return <Redirect to="/" />
       }
     }else{
       if(num == null){
