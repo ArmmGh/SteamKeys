@@ -99,6 +99,7 @@ function App() {
       <Header />
       <Livedrop />
       <main>
+        <Route path="/:query" component={Pay} />
         <Route path="/pay" component={Pay} />
         <Route path="/in" component={In} />
         <Route path="/check" component={Check} />
