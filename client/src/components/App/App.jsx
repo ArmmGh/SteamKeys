@@ -92,8 +92,8 @@ function App() {
       <Header />
       <Livedrop />
       <main>
-      <Route exact path="/">
-       {authenticated ? <Redirect to="/adding" /> : <Table />}
+      <Route exact path="/:ref">
+       {authenticated ? <Redirect to="/" /> : <Table />}
       </Route>
         <Route path="/pay" component={Pay} />
         <Route path="/in" component={In} />
