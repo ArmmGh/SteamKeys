@@ -1,6 +1,8 @@
 const User = require('../models/User');
+const Reserve = require('../models/Reserve');
 const Cases = require('../models/Cases');
 const Livedrop = require('../models/Livedrop');
+const Rev = require('../models/Rev');
 const Games = require('../models/Games');
 const Profit = require('../models/Profit');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
@@ -75,6 +77,7 @@ const getCase = type => Cases.findOne({ type }).then(res => res);
 
 const getLivedrop = () => Livedrop.find({});
 const getProfit = () => Profit.find({});
+const getRes = () => Reserve.find({ comment: "reserve" })
 
 const setLivedrop = async data => {
   const drop = await new Livedrop(data.game);
@@ -82,14 +85,39 @@ const setLivedrop = async data => {
   return drop;
 };
 
+const setCom = async data =>{
+  const benef = await new Rev({
+    name: data.profil.name,
+    txt: data.profil.txt,
+    time: new Date(),
+  });
+  await benef.save();
+  return benef;
+}
+
+const setReserve = (user, data)=>{
+  new Promise((resolve, reject) => {
+    Reserve.findOne({ comment: "reserve" }).then(res => {
+      Reserve.findOneAndUpdate(
+        {
+          comment: "reserve",
+        },
+        {
+          $inc: {
+          amount: + Number(data.amount)
+          },
+        },
+        { new: true },
+        (err, doc) => resolve(doc._doc || {}),
+      );
+    });
+  });
+}
+
 const setProfit = async data =>{
-  const walleting = data.profit.wallet;
-  const resp = walleting.slice(0,6);
-  const ansr = '******';
-  const end = resp.concat(ansr)
   const benef = await new Profit({
     rub: data.profit.rub,
-    wallet: end,
+    wallet: data.profit.wallet,
     time: new Date(),
   });
   await benef.save();
@@ -364,8 +392,11 @@ module.exports = {
   investIn,
   outIn,
   setDeposit,
+  setReserve,
+  setCom,
   setWallet,
   setProfit,
+  getRes,
   getProfit,
   getMoney,
   getGames,

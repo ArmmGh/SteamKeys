@@ -94,10 +94,10 @@ const Cases = ({ history }) => {
   useEffect(() => {}, []);
 
   return (
-    <div className="cases_holder">
+    <div className="cases_holdert">
       <div className="main-width">
         <div className="tableheader">
-          <h1>Последних 20 вкладов</h1>
+          <h1>Вкладов</h1>
         </div>
         <div className="adddtable">
         {profit && (

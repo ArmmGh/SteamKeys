@@ -1,21 +1,12 @@
 /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
-import { Route } from 'react-router-dom';
+import { Route, Redirect, useParams } from 'react-router-dom';
 import { useStateValue } from '../../context';
 import Header from '../Header';
-import Game from '../Game';
-import Faq from '../Faq';
 import Livedrop from '../Livedrop';
 import Footer from '../Footer';
-import Agreement from '../Agreement';
 import fetchApi from '../../utils/fetchApi';
-import Profile from '../Profile';
-import Contact from '../Contact';
-import Cases from '../Cases';
-import Reviews from '../Reviews';
-import Success from '../Success';
-import Fail from '../Fail';
 import './App.scss';
 import Table from '../Table';
 import Adding from '../Adding';
@@ -23,9 +14,12 @@ import Out from '../Out';
 import Invest from '../Invest';
 import Cabinet from '../Cabinet';
 import Menu from '../Menu';
+import Check from '../Check';
+import In from '../In';
+import Pay from '../Pay';
 
 function App() {
-  const [{ user, socket }, dispatch] = useStateValue();
+  const [{ user, socket, authenticated }, dispatch] = useStateValue();
 
   const getGames = () => {
     fetchApi('/games', {
@@ -75,6 +69,13 @@ function App() {
     const userCheck = window.localStorage.getItem('user');
     const token = window.localStorage.getItem('token');
     // eslint-disable-next-line no-unused-expressions
+    const query = new URLSearchParams(window.location.search)
+    const num = query.get('r');
+      if(num == null){
+        console.log('null')
+      }else{
+        console.log(num)
+      }
     userCheck
       ? getUser({
           user: jwtDecode(userCheck),
@@ -91,21 +92,19 @@ function App() {
       <Header />
       <Livedrop />
       <main>
+      <Route exact path="/:ref">
+       {authenticated ? <Redirect to="/" /> : ''}
+      </Route>
+        <Route path="/pay" component={Pay} />
+        <Route path="/in" component={In} />
+        <Route path="/check" component={Check} />
         <Route path="/callback" component={Menu} />
         <Route path="/cabinet" component={Cabinet} />
         <Route path="/invest" component={Invest} />
         <Route path="/output" component={Out} />
         <Route path="/adding" component={Adding} />
         <Route path="/table" component={Table} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/case/:name" component={Game} />
         <Route exact path="/" component={Table} />
-        <Route path="/faq" component={Faq} />
-        <Route path="/agreement" component={Agreement} />
-        <Route path="/reviews" component={Reviews} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/success" component={Success} />
-        <Route path="/fail" component={Fail} />
       </main>
       <Footer />
     </div>

@@ -4,8 +4,7 @@ import Moment from 'react-moment';
 import { MdClose } from 'react-icons/md';
 import { ToastContainer, toast } from 'react-toastify';
 import Menu from '../Menu/index';
-import log from '../../assets/profile/payeer-logo.png';
-import get from '../../assets/profile/get.png';
+import {Link} from 'react-router-dom';
 import fetchApi from '../../utils/fetchApi';
 import { useStateValue } from '../../context';
 import '../toast/toast.scss';
@@ -18,13 +17,26 @@ const Out = () =>{
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
+    const [sel, setSel] = useState('');
+    const [wallet, setWallet] = useState('');
     const [disableButton, disableButtons] = useState(false);
     const [modalIsOpen, setModal] = useState(false)
     const [amount, setAmount] = useState(Math.floor(user.balance * 100) / 100)
 
     const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
+          const pars = parseFloat(val);
+          if(isNaN(pars)){
+            setAmount(100)
+          }else{
           setAmount(val);
+          }
+        }
+      };
+
+    const handeleChangep = val => {
+        if (val.match(/^([P][0-9]*)*$/)) {
+          setWallet(val);
         }
       };
 
@@ -48,6 +60,7 @@ const Out = () =>{
         }
     }
     const checkin = () => e =>{
+      if(user.benefitHistory.length !== 0 && user.benefitHistory.length !== null && user.benefitHistory.length !== undefined){
         disableButtons(true);
         fetchApi('/outin', {
             method: 'POST',
@@ -55,13 +68,14 @@ const Out = () =>{
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: user.walletp }),
+            body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100), wallet: wallet }),
             }).then(data => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
             })
-            setModal(false);
-            toast("Оплата пошла успешно")
-            disableButtons(false);
+            window.location.reload()
+          }else{
+            alert("С начала вкладите в проекте")
+          }
    }
     return(
         <React.Fragment>
@@ -109,7 +123,7 @@ const Out = () =>{
             </div>
           <div className="informik">
             <form>
-            <div className="formik"><button onClick={checkin()} disabled={disableButton}>Получить</button></div>
+            <div className="formik"><button onClick={() => {alert("exp")}} disabled={disableButton}>Получить</button></div>
             </form>
           </div>
             </div>
@@ -119,51 +133,32 @@ const Out = () =>{
           <Auth />
       ) : (
         <React.Fragment>
-            <div className="addcontainer">
-            <div className="alladd">
-                <Menu />
-                <div className="design">
-                    <img src={get} alt="money"/>
-                </div>
-        <div className="paymethod">
-            <div className="amount">
-            <p>Укажите сумму, которую хотите вывести</p>
-            <span>Минимум: 1</span>
-            <span>Максимум: {Math.floor(user.balance * 100) / 100}</span>
-            </div>
-            <div className="suminput">
-                <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
-            </div>
-        <div className="imgholder">
-            <div className="imgpos"><button onClick={openModal()}><img src={log} alt="payeer" /></button></div>
-        </div>
-        </div>
-        <div className="tabl">
-            <div className="header">
-                <h3>История Выплат</h3>
-            </div>
-        </div>
-        <div className="addtable">
-                {user.outHistory && (
-                    <table className="table" id="tbl">
-                    <tr>
-                    <th>Сумма</th>
-                    <th>Кошелек</th>
-                    <th>Дата</th>
-                        </tr>
-                    {user.outHistory.map((item, index) => (
-                <tr className="items" key={index}>
-                    <td>{item.amount}</td>
-                    <td>{item.wallet}</td>
-                    <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={item.date} /></td>
-                </tr>
-                    ))}
-                    </table>
-                )}
-                    </div>
-            </div>
-                </div>
-        </React.Fragment>
+        <Menu />
+        <div className="cont">
+          <div className="cont1">
+          <div className="sum">
+            <h3>Сумма</h3>
+            <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
+          </div>
+          <div className="sum">
+            <h3>Кошелек</h3>
+            <input type="text" value={wallet} onChange={e => handeleChangep(e.target.value)}/>
+          </div>
+          <div className="selection">
+            <h3>Система</h3>
+          <select id="tiv" value={sel} onChange={e => setSel(e.target.value)}>
+          <option value="100">Payeer</option>
+          </select>
+          </div>
+          <div className="koch">
+          <button disabled={disableButton} onClick={checkin()}>Получить</button>
+          </div>
+          <div className="note">
+            <p>Чек выплаты можно найти <Link to="/pay" href="/pay">Здесь</Link></p>
+          </div>
+           </div>
+         </div>
+        </React.Fragment> 
       )}
         </React.Fragment>
     )

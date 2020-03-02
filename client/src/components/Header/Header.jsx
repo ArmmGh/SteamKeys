@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiSettings, FiPlusCircle } from 'react-icons/fi';
 import { Slider } from 'react-burgers';
 import { FaSteam, FaVk } from 'react-icons/fa';
-import { MdClose } from 'react-icons/md';
+import { MdClose, MdAccessTime, MdAccountCircle} from 'react-icons/md';
 import Modal from 'react-modal';
 import fetchApi from '../../utils/fetchApi';
 import axios from 'axios';
@@ -17,6 +17,7 @@ const Header = () => {
     { user, socket, authenticated, translate },
     dispatch,
   ] = useStateValue();
+  const [local, setLocal] = useState(new Date().toLocaleTimeString())
   const [isActive, setActive] = useState(false);
   const [modalIsOpen, setModal] = useState(false);
   const [sum, setSum] = useState(1000);
@@ -34,7 +35,7 @@ const Header = () => {
   const authVk = () => e => {
     window.open(`${url}/vkontakte`, '_self');
   };
-
+  
   function importAll(r) {
     const images = {};
     // eslint-disable-next-line array-callback-return
@@ -55,6 +56,10 @@ const Header = () => {
       setSum(val);
     }
   };
+
+  setInterval( () => {
+    setLocal(new Date().toLocaleTimeString())
+  },1000)
 
   const addBalance = () => e => {};
 
@@ -119,90 +124,85 @@ const Header = () => {
           </div>
         </div>
       </Modal>
-      <header>
-        <div className="main-width">
-          <div className="header_holder">
-            <div className={`menu_bar ${isActive ? 'active' : ''}`}>
-              <Slider
-                width={30}
-                lineHeight={3}
-                lineSpacing={5}
-                padding="10px"
-                onClick={() => setActive(!isActive)}
-                active={isActive}
-              />
-            </div>
-            <ul className={`nav mobile_menu ${isActive ? 'show' : 'hide'}`}>
-              <li>
-                <Link to="/" href="/">
-                  {translate('homepage')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/reviews" href="/reviews">
-                  {translate('reviews')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" href="/faq">
-                  {translate('faqAndGuarant')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" href="/contact">
-                  Контакты
-                </Link>
-              </li>
-            </ul>
-            <div className="logo_holder">
-              <div className="logo">
-              <Link to="/" href="/">
-              <img src={Logo} alt="logo" />
-              </Link>
-              </div>
-            </div>
-            <div className="actions">
               {authenticated ? (
-                <React.Fragment>
-                  <div className="balance">
-                    <p>
-                      {translate('balance')}: <span>{(Math.floor(user.balance * 100) / 100)}</span>
-                    </p>
-                    <Link to="/adding" href="/adding">
-                    <FiPlusCircle/>
-                    </Link>
+                <div className="header2">
+        <header>
+            <div className="design">
+                <div className="GTC">
+                <div className="logon">
+                    <Link to="/" href="/"><img src={Logo} alt="logo"/></Link>
+                </div>
+                <div className="outauth">
+                  <div className="UTC">
+                  <div className="timer">
+                        <p>{local}</p>
+                    </div>
+                    <div className="icona">
+                        <div className="children">
+                    <MdAccessTime />
+                        </div>  
+                    </div>
                   </div>
-                  <div className="avatar">
-                    <Link to="/profile" href="/profile">
-                      <img src={user.imgurl} alt="" />
-                    </Link>
+                    <div className="prof">
+                      <div className="ile">
+                      <MdAccountCircle />
+                      </div>
+                      <div className="link">
+                        <Link to="/adding" href="/adding">
+                          ПРОФИЛЬ
+                        </Link>
+                      </div>
+                    </div>
+                </div>
+                  <div className="bal">
+                    <div className="num">
+                    <p>баланс:</p>
+                    <div className="cenzur">
+                    <span>{(Math.floor(user.balance * 100) / 100)}</span>
+                    </div>
+                    </div>
                   </div>
-                  <div className="settings">
-                    <Link to="/profile" href="/profile">
-                      <FiSettings />
-                      <p>{translate('profile')}</p>
-                    </Link>
-                  </div>
-                </React.Fragment>
+                </div>
+            </div>
+            </header>
+            </div>
               ) : (
-                <React.Fragment>
-                  <button className="auth" onClick={authSteam()}>
-                    <FaSteam />
-                    {translate('login')} <span>steam</span>
-                  </button>
-                  <button className="auth" onClick={authVk()}>
-                    <FaVk />
-                    {translate('login')} <span>vk</span>
-                  </button>
-                  {/* <button className="auth" onClick={authMail()}>
-                    Mail
-                  </button> */}
+        <React.Fragment>
+        <div className="header2">
+        <header>
+            <div className="design">
+                <div className="GTC">
+                <div className="logon">
+                    <img src={Logo} alt="logo"/>
+                </div>
+                <div className="outauth">
+                  <div className="UTC">
+                    <div className="timer">
+                        <p>{local}</p>
+                    </div>
+                    <div className="icona">
+                        <div className="children">
+                    <MdAccessTime />
+                        </div>  
+                    </div>
+                  </div>
+                </div>
+                <div className="authen">
+                    <div className="authbut">
+                    <button onClick={authVk()}>
+                        <div className="ici">
+                       <div className="vk"><FaVk /></div> 
+                       <div className="login">Войти</div>
+                       </div>
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </header>
+            </div>
                 </React.Fragment>
               )}
-            </div>
-          </div>
-        </div>
-      </header>
     </React.Fragment>
   );
 };

@@ -13,7 +13,8 @@ import { toast } from 'react-toastify';
 import Auth from '../Auth/index';
 
 
-const Adding = () =>{    
+const Adding = () =>{
+    const [system, setSystem] = useState('');    
     const [amount, setAmount] = useState(100);
     const [id, setId] = useState('');
     const [infoId, setInfoid] = useState('');
@@ -57,17 +58,6 @@ const Adding = () =>{
         });
       };
 
-      const hisopenModal = item => e => {
-        if(amount == ''){
-          toast("Поле не может быть пустым")
-        }else{
-          setModal(true);
-        }
-        setInvoice(item.invoice);
-        setAmount(item.amount)
-        setId(item)
-      };
-
       const brain = brainact => e =>{
         disableButtons(true);
         fetchApi('/check', {
@@ -82,10 +72,6 @@ const Adding = () =>{
           disableButtons(false);
         });
       }
-
-      const alert = () => e =>{
-        console.log("hello");
-    }
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
@@ -136,7 +122,6 @@ const Adding = () =>{
         <div className="body">
             <div className="checkpoint">
               <ul>
-                <h3>Действие в Payeer</h3>
                 <li>Перейдите на эту <Link onClick={opnI()}>страницу</Link></li>
                 <li>В поле <span className="underline">Номер счета, e-mail или телефон</span> заполнитье: <span className="inform">P44911742</span></li>
                 <li>В поле <span className="underline">Комментарий</span> заполнитье: <span className="inform">{invoice}</span></li>
@@ -162,67 +147,29 @@ const Adding = () =>{
         <Auth />
       ) : (
         <React.Fragment>
-        {!hideAlert && (
-          <div className="alert">
-            <div className="close" onClick={closeAlert()}>
-              <MdClose />
-            </div>
-            <div className="title">Внимание!!!</div>
-            <div className="text">
-            Прежде чем пополнить баланс в проекте внимательно читайте <Link to="/agreement" href="/agreement">Правила</Link> и <Link to="/agreement" href="/agreement">Условия</Link> сайта․
-            </div>
+        <Menu />
+        <div className="cont">
+          <div className="cont1">
+          <div className="sum">
+            <h3>Сумма</h3>
+            <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
           </div>
-        )}
-      <div className="addcontainer">
-          <div className="alladd">
-              <Menu />
-              <div className="design">
-                  <img src={des} alt="money"/>
-              </div>
-      <div className="paymethod">
-          <div className="amount">
-          <p>Укажите сумму и способ пополнения</p>
+          <div className="selection">
+            <h3>Система</h3>
+          <select id="tiv" value={system} onChange={e => setSystem(e.target.value)}>
+          <option value="100">Payeer</option>
+          </select>
           </div>
-          <div className="suminput">
-              <input type="text" value={amount} onChange={e => handeleChange(e.target.value)} />
+          <div className="koch">
+          <button onClick={openModal()}>Пополнить</button>
           </div>
-      <div className="imgholder">
-          <button onClick={openModal()} disabled={disableButton} ><img src={log} alt="payeer" /></button>
-      </div>
-      </div>
-      <div className="tabl">
-          <div className="header">
-              <h3>История Пополнении</h3>
+          <div className="note">
+            <p>Если вы не успели <br/> подвердить оплату <br />
+              Чек для подтверждение <br/> можно найти <Link to="/check" href="/check">Здесь</Link></p>
           </div>
-          <div className="addtable">
-              {user.inHistory && (
-                  <table className="table" id="tbl">
-                  <tr>
-                    <th>Сумма</th>
-                    <th>Статус</th>
-                    <th>Дата</th>
-                  </tr>
-                  {user.inHistory.map((item, index) => (
-                      <tr className="items" key={index}>
-                  <td>{item.amount}</td>
-                  <td>{item.action === 'waiting' ? (
-                    <button onClick={hisopenModal(item)}>Подтвердить</button>
-                  ) : item.action === 'sent' ? (
-                    <span>Перечислен</span>
-                  ) : (
-                    ''
-                  )
-                  }</td>
-                  <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={item.date} /></td>
-                      </tr>
-                  ))}
-                  </table>
-              )}
-                  </div>
-      </div>
-          </div>
-              </div>
-      </React.Fragment> 
+           </div>
+         </div>
+        </React.Fragment> 
       )}
         </React.Fragment>
     )

@@ -1,7 +1,6 @@
 import React, { useReducerm, useState } from 'react';
 import Menu from '../Menu/index';
 import Timer from 'react-compound-timer';
-import { MdClose } from 'react-icons/md';
 import { ToastContainer, toast } from 'react-toastify';
 import Moment from 'react-moment';
 import investlog from '../../assets/profile/invest.png';
@@ -18,17 +17,25 @@ const Invest = () => {
         { user, authenticated, translate, cases, socket },
         dispatch,
       ] = useStateValue();
+      const [comment, setComment] = useState('reserve')
+      const [vib, setVib] = useState('');
       const [disableButton, disableButtons] = useState(false);
       const [disble, setDisble] = useState(false);
       const [storage, setStorage] = useState(user.walletp)
-      const [amount, setAmount] = useState('');
-      const [hideAlert, toggleAlert] = useState(
-        window.localStorage.getItem('closeAlertI'),
-      );
+      const [amount, setAmount] = useState(0);
+      const [amountplus, setAmountplus] = useState(0)
 
       const handeleChange = val => {
         if (val.match(/^([1-9][0-9.]*)*$/)) {
-          setAmount(val);
+            const start = parseFloat(val);
+            const tax = Math.floor(start * 0.2 * 100) / 100 + start;
+            const end = Math.round(tax * 100) / 100;
+            setAmount(val)
+            if(isNaN(start)){
+              setAmountplus(0)
+            }else{
+              setAmountplus(end)
+            }
         }
       };
 
@@ -45,13 +52,14 @@ const Invest = () => {
                 dispatch({ type: 'updateUser', payload: { ...data } });
                 disableButtons(false);
             })
-            toast("Средства перечислен")
+            alert("Средства перечислен")
     }
 
     const invest = () => res => {
+            disableButtons(true)
             if(user.payment === 'yes'){
-                if(user.walletp == '' || user.walletp == null){
-                    toast("Сохраняйте кошелек в кабинет")
+                if(user.username == '' || user.username == null){
+                    alert("error")
                 }else{
                     if (amount !== ''){
                         if(user.balance >= amount){
@@ -62,120 +70,72 @@ const Invest = () => {
                     headers: {
                       'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
+                    body: JSON.stringify({comment: comment,amount: (Math.floor(amount * 100) / 100)}),
+                  }).then(data => {
+                    dispatch({ type: 'updateUser', payload: { ...data } });
+                    fetchApi('/reserve', {
+                      method: 'POST',
+                      credentials: 'include',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ amount: (Math.floor(amount * 100) / 100)}),
+                    })
                   }).then(data => {
                     dispatch({ type: 'updateUser', payload: { ...data } });
                     setDisble(false);
                     res.rub = amount;
-                    res.wallet = user.walletp;
+                    res.wallet = user.username;
                     res.time = new Date();
+                    console.log(res)
                     socket.emit('done benefit', {
                      profit: res,
                     });
-                    toast("Вклад принят")
-                  })      
+                    window.location.reload();
+                    disableButtons(false) 
+                  })    
                     }else{
-                        toast("Недостаточно средств")
+                        alert("Недостаточно средств")
                     }
                 }else{
-                    toast("Поле не может быть пустым")
+                    alert("Поле не может быть пустым")
                 }
         }
             }else{
-                toast("С начала пополнитье баланс")
+                alert("С начала пополнитье баланс")
             }
     }
-    const closeAlert = () => e => {
-        toggleAlert(true);
-        window.localStorage.setItem('closeAlertI', true);
-      };
     return(
         <React.Fragment>
-            <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnVisibilityChange
-            draggable
-            pauseOnHover
-            />
-            <ToastContainer />
           {!authenticated ? (
               <Auth />
           ) : (
-            <React.Fragment>
-            {!hideAlert && (
-            <div className="alert">
-              <div className="close" onClick={closeAlert()}>
-                <MdClose />
-              </div>
-              <div className="title">Внимание!!!</div>
-              <div className="text">
-              Прежде чем вкладивать в проекте внимательно читайте <Link to="/agreement" href="/agreement">Правила</Link> и <Link to="/agreement" href="/agreement">Условия</Link> сайта.
-              </div>
-            </div>
-          )}
-            <Menu />
-            <div className="investcontainer">
-                <div className="investall">
-                    <div className="investlog">
-                        <img src={investlog} alt="invest" />
-                    </div>
-                    <div className="txt">
-                        <p>Укажите сумму, которую хотите вкладивать</p>
-                        <span>Минимум: 1</span>
-                        <span>Максимум: {Math.floor(user.balance * 100) / 100}</span>
-                    </div>
-                    <div className="sumbit">
-                        <div><input type="text" value={amount} onChange={e => handeleChange(e.target.value)} /></div>
-                        <div className="btnholder"><button disabled={disble} onClick={invest()}>Вкладивать</button></div>
-                    </div>
-                    <div className="tbleheader">
-                        <h3>Вклады</h3>
-                    </div>
-                    <div className="addtable">
-                {user.benefitHistory && (
-                    <table className="table" id="tbl">
-                        <tr>
-                            <th>Сумма</th>
-                            <th>Статус</th>
-                            <th>Дата</th>
-                        </tr>
-                    {user.benefitHistory.map((items, index) => (
-                        <tr className="items" key={index}>
-                    <td>{(Math.floor(items.amount * 100) / 100)}</td>
-                    <td id="geting">
-                        {items.action === 'paid' ? (
-                            <span>Выплачено</span>
-                        ) : items.time <= new Date().getTime() && items.action === 'waiting' ? (
-                            <button 
-                            disabled={disableButton}
-                            onClick={get(items)}>Получить</button>
-                        ) : items.action === 'waiting' ? (
-                            <Timer
-                            initialTime={items.time - new Date().getTime()}
-                            direction="backward"
-                         >   
-                            <Timer.Hours />:
-                            <Timer.Minutes />:
-                            <Timer.Seconds />
-                        </Timer>
-                        ) : (
-                            ''
-                        )
-                    }
-                    </td>
-                    <td><Moment format="YYYY-MM-DD/HH:mm:ss" date={items.date} /></td>
-                        </tr>
-                    ))}
-                    </table>
-                )}
-                    </div>
-                </div>
-            </div>
+        <React.Fragment>
+        <Menu />
+        <div className="cont">
+          <div className="cont1">
+          <div className="sum">
+            <h3>Вкладу</h3>
+            <input type="text" value={amount} onChange={e => handeleChange(e.target.value)}/>
+          </div>
+          <div className="sum">
+            <h3>Получу</h3>
+            <input type="text" value={amountplus} />
+          </div>
+          <div className="selection">
+            <h3>Профит</h3>
+          <select id="tiv" value={vib} onChange={e => setVib(e.target.value)}>
+          <option value="100">20%</option>
+          </select>
+          </div>
+          <div className="koch">
+          <button disabled={disableButton} onClick={invest()}>Вложить</button>
+          </div>
+          <div className="note">
+            <p>Сумма вклада можно получить <Link to="/in" href="/in">Здесь</Link></p>
+          </div>
+           </div>
+         </div>
         </React.Fragment>
           )}
         </React.Fragment>

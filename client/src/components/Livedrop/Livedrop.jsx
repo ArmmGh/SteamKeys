@@ -1,12 +1,13 @@
 // /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
+import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
 import TimeAgo from 'react-timeago';
-import EnStrings from 'react-timeago/lib/language-strings/en';
 import RuStrings from 'react-timeago/lib/language-strings/ru';
 import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
 import { FaUser, FaUsers, FaRegFolderOpen } from 'react-icons/fa';
 import fetchApi from '../../utils/fetchApi';
+import img1 from '../../assets/profile/donald.gif';
 import './Livedrop.scss';
 import { useStateValue } from '../../context';
 
@@ -15,8 +16,10 @@ const formatter = buildFormatter(
 );
 
 const Livedrop = () => {
+  const [reserve, setReserve] = useState(0);
+  const [result, setResult] = useState();
   const [{ socket, translate }] = useStateValue();
-  const [livedrop, setLivedrop] = useState([]);
+  const [livedrop, setLivedrop] = useState({});
   const [totalUsers, setTotalusers] = useState(0);
   const [openCases, setOpencases] = useState(0);
   const [onlineUsers, setOnlineusers] = useState(0);
@@ -48,6 +51,10 @@ const Livedrop = () => {
     fetchApi('/liveinfo').then(res => {
       setTotalusers(res.users);
       setOpencases(res.cases);
+    });
+
+    fetchApi('/resinfo').then(res => {
+      setReserve(res);
     });
 
     return () => {};
@@ -119,81 +126,49 @@ const Livedrop = () => {
 
   return (
     <React.Fragment>
-      <div className="livedrop_holder">
-        <div className="livedrop">
-          <h1>LIVE BONUS</h1>
-          {livedrop && (
-            <ul className="list" id="list">
-              {livedrop.map((item, index) => (
-                <li className="item" key={index}>
-                  <Link to={`/case/${item.type}`} href={`/case/${item.type}`}>
-                    <div className="infoOver">
-                      <div className="avatar">
-                        <img
-                          src={
-                            item.type === 'bronze' ||
-                            item.type === 'metallic' ||
-                            item.type === 'silver' ||
-                            item.type === 'gold'
-                              ? imagesCases[item.type]
-                              : images[item.type]
-                          }
-                          alt={item.name}
-                        />
-                      </div>
-                      <div className="infoInner">
-                        <p>
-                          {translate('case')}:{' '}
-                          <span>{item.caseName || ''}</span>
-                        </p>
-                      </div>
-                    </div>
-                    <img src={images[item.img]} alt={item.img} />
-                    <p className="fullname">
-                      {item.name === 'other' ? 'Игра до 419 рублей' : item.name}
-                    </p>
-                    <TimeAgo
-                      formatter={formatter}
-                      minPeriod="1"
-                      date={item.time || new Date()}
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-      <div className="liveUsers">
-        <div className="main-width">
-          <div className="itemsHolder">
-            <div className="item">
-              <div className="icon">
-                <FaUsers />
+      <div className="infocont">
+          <div className="infomain">
+            <div className="stats">
+              <div className="blocks">
+              <h1>Пользовательей</h1>
+              <span>{1000 + totalUsers}</span>
               </div>
-              <div className="text">
-                {translate('totalUsers')}: <span>{totalUsers}</span>
+              <div className="blocks">
+              <h1>Онлайн</h1>
+              <span>{50 + onlineUsers}</span>
               </div>
             </div>
-            <div className="item">
-              <div className="icon">
-                <FaRegFolderOpen />
-              </div>
-              <div className="text">
-                Вкладов: <span>{openCases}</span>
-              </div>
+            <div className="slidi">
+            <Carousel
+            autoPlay={true}
+            interval={10000}
+            width="100%"
+            showIndicators={false}
+            showStatus={false}
+            showArrows={false}
+            showThumbs={false}
+            infiniteLoop
+            >
+                <div className="imge">
+                <div className="content">Выложу сумму и получи вклад + 20% от вклада через 24 часа</div>
+                </div>
+                <div>
+                <img src={img1} />
+                </div>
+            </Carousel>
             </div>
-            <div className="item">
-              <div className="icon">
-                <FaUser />
+            <div className="stats">
+            <div className="blocks">
+              <h1>Вкладов</h1>
+              <span>{1200 + openCases}</span>
               </div>
-              <div className="text">
-                {translate('onlineUsers')}: <span>{onlineUsers}</span>
+              <div className="blocks">
+              <h1>Резерв</h1>
+              <span>{100000 + reserve}</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </React.Fragment>
  );
 };

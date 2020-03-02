@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import accept from '../../assets/profile/accept.png';
 import { FaVk } from 'react-icons/fa';
 import { useStateValue } from '../../context';
 import './Footer.scss';
@@ -9,33 +10,30 @@ const Footer = () => {
 
   useEffect(() => {}, []);
 
+  const openHelp = () =>e =>{
+    window.open('https://vk.com/id553108227')
+  }
+
   return (
     <footer>
-      <div className="main-width">
-        <div className="links">
-          <div className="urlLink">
-            <Link to="/" href="/">
-              {translate('homepage')}
-            </Link>
-            <Link to="/contact" href="/contact">
-              {translate('contacts')}
-            </Link>
-            <Link to="/reviews" href="/reviews">
-              {translate('reviews')}
-            </Link>
-            <Link to="/agreement" href="/agreement">
-              {translate('agreement')}
-            </Link>
-          </div>
-          <div className="socialLinks">
-            <a href="https://vk.com/club184431451">
-              <FaVk /> {translate('onVk')}
-            </a>
-          </div>
+    <div className="main-width">
+      <div className="links">
+        <div className="urlLink">
+          <Link to="/" href="/">
+            {translate('homepage')}
+          </Link>
+          <Link onClick={openHelp()}>
+            {translate('contacts')}
+          </Link>
         </div>
-        <div className="text">{translate('warningSteamText')}</div>
+        <div className="socialLinks">
+          <a href="https://vk.com/id553108227">
+            <FaVk /> {translate('onVk')}
+          </a>
+        </div>
       </div>
-    </footer>
+    </div>
+  </footer>
   );
 };
 

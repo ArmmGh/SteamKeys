@@ -3,36 +3,45 @@
       box-shadow: 0 0 0 0 #d1dfff;
     }
   }
-  
+
+.cases_holdert{
+   background-color: black;
+  }
 
 .tableheader{
   h1{
     text-align: center;
-    color: black;
-    font-size: 40px;
-    text-shadow: 1px 1px #93b1f7, 2px 2px #93b1f7, 3px 3px #93b1f7;
-    margin-bottom: 10px;
+    color: white;
+    font-size: 36px;
+    margin-bottom: 5px;
   }
 }
 .adddtable{
-    margin-top: 7px;
+    padding-top: 7px;
+    padding-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    table tr:last-child,td:first-child {
+      border-bottom-left-radius: 10px;
+     }
+  
+    table tr:last-child,td:last-child {
+       border-bottom-right-radius: 10px;
+    }
     table{
-        width: 80%;
-        border: 2px solid black;
+        width: 90%;
+        border: 2px solid white;
         border-collapse: collapse;
         .thd{
-          background-color: #93b1f7;
+          color: white;
         }
         tr{
+            color: #f14100;
             height: 40px;
-            border-top: 2px solid black;
+            border-top: 2px solid white;
             text-align: center;
-        }
-        tr:nth-of-type(even){
-          background-color: #CECED1;
+
         }
     }
 }

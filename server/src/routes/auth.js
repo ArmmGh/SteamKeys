@@ -65,6 +65,29 @@ auth.get('/logout', (req, res) => {
   });
 });
 
+auth.post('/reserve', (req, res) => {
+  db.setReserve(
+    { comment: req.body.comment },
+    {
+      amount: req.body.amount,
+      comment: req.body.comment
+    }
+  )
+});
+
+auth.post('/reves', (req, res) =>{
+  db.setCom(
+    { userID: req.session.passport.user.id },
+    {
+      name: req.body.name,
+      txt: req.body.txt,
+      time: new Date()
+    }
+  ).then(data =>{
+    res.send({ ...data });
+  })
+})
+
 auth.post('/setbenefit', (req, res) => {
   db.setDeposit(
     { userID: req.session.passport.user.id },
@@ -97,7 +120,7 @@ auth.post('/check', (req, res, next) => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: `account=P61234106&apiId=892776478&apiPass=778899&action=historyInfo&historyId=${params.infoId}`
+    body: `account=${process.env.payeer_account}&apiId=${process.env.payeer_id}&apiPass=${process.env.payeer_key}&action=historyInfo&historyId=${params.infoId}`
   }, function (error, response, body) {
     const hallo = JSON.parse(body);
     console.log('Response:', hallo);
@@ -294,11 +317,11 @@ auth.get('/user', (req, res) => {
             imgurl: req.user._json.photo,
             isLogged: true,
             gameHistory:
-              (req.user.gameHistory && req.user.gameHistory.reverse()) || [],
-            balanceHistory: req.user.balanceHistory || [],
-            benefitHistory: req.user.benefitHistory.reverse() || [],
-            inHistory: req.user.inHistory.reverse() || [],
-            outHistory: req.user.outHistory.reverse() || [],
+              (req.user.gameHistory && req.user.gameHistory.reverse()),
+            balanceHistory: req.user.balanceHistory,
+            benefitHistory: req.user.benefitHistory,
+            inHistory: req.user.inHistory,
+            outHistory: req.user.outHistory,
             ip: newUser.ip,
           });
         });

@@ -11,5 +11,11 @@ livedrop.get('/live', (req, res) => {
 livedrop.get('/liveinfo', (req, res) => {
   db.getLiveinfo().then(data => res.send({ users: data[0], cases: data[1] }));
 });
+livedrop.get('/resinfo', (req, res) => {
+  db.getRes().then(data => {
+    res.send(JSON.stringify(data[0].amount))
+  });
+});
+
 
 module.exports = livedrop;
