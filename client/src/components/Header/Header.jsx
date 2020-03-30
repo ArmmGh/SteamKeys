@@ -6,7 +6,6 @@ import { FaSteam, FaVk } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
 import Modal from 'react-modal';
 import fetchApi from '../../utils/fetchApi';
-import axios from 'axios';
 import uuid from 'uuid/v4';
 import { useStateValue } from '../../context';
 import './Header.scss';
@@ -21,9 +20,8 @@ const Header = () => {
   const [modalIsOpen, setModal] = useState(false);
   const [sum, setSum] = useState(1000);
   const [random, setRandom] = useState(
-    Math.floor(100000 + Math.random() * 900000),
+    Math.floor(100000 + Math.random() * 100000),
   );
-
 
   const url = window.location.origin.match('keyforu')
     ? 'https://steam-keys.herokuapp.com'
@@ -64,7 +62,6 @@ const Header = () => {
     setSum('');
   };
   const storeData = () => e => {
-    // console.log(data);
     fetchApi('/storedata', {
       method: 'POST',
       credentials: 'include',
@@ -74,10 +71,11 @@ const Header = () => {
       body: JSON.stringify({
         id: user.userID,
         sum,
-        pay_id: user.userID,
+        pay_id: random,
       }),
     });
   };
+
 
   useEffect(() => {
     socket.on('aaa', data => console.log(data));
@@ -105,10 +103,31 @@ const Header = () => {
           <h1>Введите сумму</h1>
           <div className="inpHolder">
             <form action="https://any-pay.org/merchant" method="post">
-              <input type='hidden' name="merchant_id" defaultValue="4183" id="merchant_id" />
-              <input type='hidden' name="secret_key" defaultValue={process.env.api_key} id="secret_key" />
-              <input type='hidden' name="pay_id" defaultValue={user.userID} id="pay_id"/>'
-              <input type='text' name="amount" value={sum} onChange={e => handeleChange(e.target.value)} id="amount"/>
+              <input
+                type="text"
+                className="input"
+                name="amount"
+                value={sum}
+                onChange={e => handeleChange(e.target.value)}
+              />
+              <input
+                className="hide"
+                type="text"
+                name="merchant_id"
+                defaultValue="4183"
+              />
+              <input
+                className="hide"
+                type="text"
+                name="pay_id"
+                defaultValue={random}
+              />
+              <input
+                className="hide"
+                type="text"
+                name="currency"
+                defaultValue="RUB"
+              />
               <button onClick={storeData()} type="submit">
                 Пополнить
               </button>
@@ -153,12 +172,15 @@ const Header = () => {
                   Контакты
                 </Link>
               </li>
+              <li>
+                <Link to="/case/xujan" href="/case/xujan">
+                  {translate('xujanKeys')}
+                </Link>
+              </li>
             </ul>
             <div className="logo_holder">
               <div className="logo">
-              <Link to="/" href="/">
-              <img src={Logo} alt="logo" />
-              </Link>
+                <img src={Logo} alt="logo" />
               </div>
             </div>
             <div className="actions">
@@ -166,11 +188,9 @@ const Header = () => {
                 <React.Fragment>
                   <div className="balance">
                     <p>
-                      {translate('balance')}: <span>{(Math.floor(user.balance * 100) / 100)}</span>
+                      {translate('balance')}: <span>{user.balance}</span>
                     </p>
-                    <Link to="/adding" href="/adding">
-                    <FiPlusCircle/>
-                    </Link>
+                    <FiPlusCircle onClick={openModal()} />
                   </div>
                   <div className="avatar">
                     <Link to="/profile" href="/profile">
@@ -194,9 +214,6 @@ const Header = () => {
                     <FaVk />
                     {translate('login')} <span>vk</span>
                   </button>
-                  {/* <button className="auth" onClick={authMail()}>
-                    Mail
-                  </button> */}
                 </React.Fragment>
               )}
             </div>
@@ -208,3 +225,4 @@ const Header = () => {
 };
 
 export default Header;
+

@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import guarant from '../../assets/faq/guarant.svg';
-import thumb from '../../assets/faq/thumb.png';
-
 import './Contact.scss';
 
 const Contact = () => (
@@ -24,3 +21,4 @@ const Contact = () => (
 );
 
 export default Contact;
+

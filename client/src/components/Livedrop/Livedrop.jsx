@@ -1,4 +1,3 @@
-// /* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import TimeAgo from 'react-timeago';
@@ -121,7 +120,7 @@ const Livedrop = () => {
     <React.Fragment>
       <div className="livedrop_holder">
         <div className="livedrop">
-          <h1>LIVE BONUS</h1>
+          <h1>{translate('live')}</h1>
           {livedrop && (
             <ul className="list" id="list">
               {livedrop.map((item, index) => (
@@ -180,7 +179,7 @@ const Livedrop = () => {
                 <FaRegFolderOpen />
               </div>
               <div className="text">
-                Вкладов: <span>{openCases}</span>
+                {translate('openCase')}: <span>{openCases}</span>
               </div>
             </div>
             <div className="item">

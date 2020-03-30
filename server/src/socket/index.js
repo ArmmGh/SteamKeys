@@ -21,18 +21,6 @@ module.exports = io => {
       }
     });
 
-    socket.on('done benefit', data => {
-        db.setProfit(data).then(res => {
-            io.emit('update benefit', res);
-        });
-    });
-
-    socket.on('done rev', data => {
-      db.setCom(data).then(res => {
-          io.emit('update rev', res);
-      });
-  });
-
     if (!socket.sentLivedrop) {
       socket.on('emit getlive', res => {
         db.getLivedrop().then(data => {
@@ -41,35 +29,6 @@ module.exports = io => {
         });
       });
       socket.sentLivedrop = true;
-    }
-
-    if (!socket.sentRev) {
-      socket.on('emit getrev', res => {
-        db.getRev().then(data => {
-          data = data.reverse();
-          socket.emit('get rev', data);
-        });
-      });
-      socket.sentRev = true;
-    }
-
-    if (!socket.sentRes) {
-      socket.on('emit getres', res => {
-        db.getRes().then(data => {
-          socket.emit('get res', data);
-        });
-      });
-      socket.sentRes = true;
-    }
-
-    if (!socket.sentBenefit) {
-      socket.on('emit getbenefit', res => {
-        db.getProfit().then(data => {
-          data = data.reverse().slice(0, 15);
-          socket.emit('get benefit', data);
-        });
-      });
-      socket.sentBenefit = true;
     }
   });
 };

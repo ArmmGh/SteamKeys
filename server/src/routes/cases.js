@@ -25,6 +25,7 @@ cases.post('/opencase', (req, res) => {
       caseType: req.body.case.type,
       name: req.body.winner.name,
       img: req.body.winner.img,
+      price: req.body.case.priceRUB,
       order: req.body.winner.order || 0,
     },
   ).then(data => {

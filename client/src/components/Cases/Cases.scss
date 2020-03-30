@@ -8,15 +8,13 @@
   background: #f5f5f5;
   padding: 20px;
   .main-width {
-    .nameing{
-      h1 {
-        text-align: center;
-        color: white;
-        font-size: 40px;
-        text-shadow: 1px 1px #93b1f7, 2px 2px #93b1f7, 3px 3px #93b1f7;
-        margin-bottom: 15px;
-        margin-top: 15px;
-      }
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 40px;
+      text-shadow: 1px 1px #93b1f7, 2px 2px #93b1f7, 3px 3px #93b1f7;
+      margin-bottom: 15px;
+      margin-top: 15px;
     }
     ul.ourKeys {
       display: flex;

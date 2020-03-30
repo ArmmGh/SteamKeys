@@ -17,7 +17,6 @@ const cookieParser = require('cookie-parser');
 const setup = require('./utils/start');
 require('./utils/passport-steam');
 require('./utils/passport-vk');
-require('./utils/passport-mail');
 
 setup(app);
 app.enable('trust proxy');
@@ -35,12 +34,12 @@ const url =
   process.env.NODE_ENV === 'development'
     ? `http://${host}${port}`
     : `https://${host}`;
-  const allowedOrigins = [
-      url,
-      'https://any-pay.org',
-      undefined,
-      'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
-    ];
+const allowedOrigins = [
+  url,
+  'https://any-pay.org',
+  undefined,
+  'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+];
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());

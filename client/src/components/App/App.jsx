@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import { Route } from 'react-router-dom';
@@ -17,12 +16,6 @@ import Reviews from '../Reviews';
 import Success from '../Success';
 import Fail from '../Fail';
 import './App.scss';
-import Table from '../Table';
-import Adding from '../Adding';
-import Out from '../Out';
-import Invest from '../Invest';
-import Cabinet from '../Cabinet';
-import Menu from '../Menu';
 
 function App() {
   const [{ user, socket }, dispatch] = useStateValue();
@@ -91,15 +84,10 @@ function App() {
       <Header />
       <Livedrop />
       <main>
-        <Route path="/callback" component={Menu} />
-        <Route path="/cabinet" component={Cabinet} />
-        <Route path="/invest" component={Invest} />
-        <Route path="/output" component={Out} />
-        <Route path="/adding" component={Adding} />
-        <Route path="/table" component={Table} />
         <Route path="/profile" component={Profile} />
         <Route path="/case/:name" component={Game} />
-        <Route exact path="/" component={Table} />
+        <Route exact path="/" component={Game} />
+        <Route exact path="/" component={Cases} />
         <Route path="/faq" component={Faq} />
         <Route path="/agreement" component={Agreement} />
         <Route path="/reviews" component={Reviews} />

@@ -8,14 +8,10 @@ const userSchema = new Schema({
   ip: { city: String, country: String },
   email: { type: String, required: true },
   username: { type: String, required: true },
-  userID: { type: String || Number, required: true },
+  userID: { type: Number, required: true },
   admin: { type: Boolean, required: true },
   balance: { type: Number, required: true },
   profileurl: { type: String, required: true },
-  bonus: {type: String, required: true},
-  payment: {type: String, required: true},
-  walletq: { type: String || Number },
-  walletp: { type: String || Number },
   imgurl: { type: String },
   gameHistory: [
     {
@@ -35,30 +31,6 @@ const userSchema = new Schema({
       date: Date,
     },
   ],
-  benefitHistory: [
-    {
-      amount: Number,
-      action: String,
-      time: Number,
-      date: Date,
-    },
-  ],
-  inHistory: [
-    {
-      amount: Number,
-      invoice: Number,
-      action: String,
-      date: Date,
-    }
-  ],
-  outHistory: [
-    {
-      amount: Number,
-      action: String,
-      wallet: String || Number,
-      date: Date,
-    }
-  ]
 });
 
 const user = mongoose.model('User', userSchema);

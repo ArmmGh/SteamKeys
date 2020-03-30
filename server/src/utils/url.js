@@ -21,8 +21,3 @@ exports.defaultURLVk =
   process.env.NODE_ENV === 'development'
     ? `http://${host}:${port}/`
     : `https://${host}/`;
-
-    exports.returnURLMail =
-    process.env.NODE_ENV === 'development'
-      ? `http://${host}:${port}/mail/callback`
-      : `https://${host}/mail/callback`;

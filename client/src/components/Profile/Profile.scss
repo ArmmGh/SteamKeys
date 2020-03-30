@@ -1,5 +1,6 @@
 .profile {
   text-align: center;
+  padding: 20px 0;
   .info {
     h1.name {
       margin-bottom: 20px;
@@ -18,23 +19,11 @@
       }
     }
     .actions {
-      margin: 25px 0;
-        ul{
-            display: flex;
-            justify-content: space-around;
-            li{
-                list-style-type: none;
-            }
-            a{
-                text-decoration: none;
-                color: #93b1f7;
-            }
-        }
-        .ico{
-            display: flex;
-            justify-content: center;
-            font-size: 24px;
-        }
+      margin: 10px 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
       .auth {
         margin-right: 10px;
         display: flex;

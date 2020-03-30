@@ -18,6 +18,7 @@ const Game = params => {
   const [winner, setWinner] = useState(null);
   const [caseOpening, setOpening] = useState(false);
   const [demoOpen, setDemoOpen] = useState('false');
+  const [modalIsOpen, setModal] = useState(false);
   const [sum, setSum] = useState(1000);
 
   const url = window.location.origin.match('keyforu')
@@ -77,7 +78,7 @@ const Game = params => {
   }
 
   const openCase = () => e => {
-    if (user.bonus == 'none' || cases.type === 'demo') {
+    if (user.balance >= cases.priceRUB || cases.type === 'demo') {
       setOpening(true);
       const d = Math.random();
       let randomMargin = 0;
@@ -143,6 +144,12 @@ const Game = params => {
     setWinner(null);
     setMatrix(0);
   };
+
+  const openModal = () => e => {
+    setModal(true);
+    setSum(1000);
+  };
+
   const addBalance = () => e => {
     const data = {
       shop: 4285,
@@ -208,6 +215,66 @@ const Game = params => {
 
   return (
     <React.Fragment>
+      <Modal
+        closeTimeoutMS={200}
+        ariaHideApp={false}
+        onRequestClose={() => setModal(false)}
+        shouldCloseOnOverlayClick={true}
+        isOpen={modalIsOpen}
+        className="Modal"
+        overlayClassName="OverlayHeader"
+      >
+        <div className="header">
+          <div />
+          <h1>ПОПОЛНЕНИЕ БАЛАНСА</h1>
+          <div className="close">
+            <MdClose onClick={() => setModal(false)} />
+          </div>
+        </div>
+        <div className="body">
+          <h1>Введите сумму</h1>
+          <div className="inpHolder">
+            <input
+              type="text"
+              className="input"
+              name="sum"
+              value={sum}
+              onChange={e => handeleChange(e.target.value)}
+            />
+            <button onClick={openModal()}>Пополнить</button>
+          </div>
+          <div className="info">
+            Средства приходят моментально, но могут быть задержки до 5-10 минут.
+          </div>
+        </div>
+      </Modal>
+      {/* <Modal
+        ariaHideApp={false}
+        isOpen={modalIsOpen}
+        onAfterOpen={this.afterOpenModal}
+        onRequestClose={this.closeModal}
+        className="Modal"
+        overlayClassName="OverlayGame"
+      >
+        <div className="header">
+          <h1>Внимание!!!</h1>
+        </div>
+        <div className="body">
+          <div className="text">
+            В этом кейсе существует контент для взрослых, пожалуйста если вы
+            меньше 18 просим вас покинуть данный раздел.
+            <span>Игры из этого кейса не входят в Лайв ленту</span>
+          </div>
+        </div>
+        <div className="actions">
+          <button className="success" onClick={() => setModal(false)}>
+            Мне 18 или больше
+          </button>
+          <button className="danger" onClick={() => params.history.push('/')}>
+            Мне меньше 18
+          </button>
+        </div>
+      </Modal> */}
       <div className="game">
         {(authenticated || (!authenticated && cases)) && (
           <div className="main-width game_holder">
@@ -238,8 +305,17 @@ const Game = params => {
                   </div>
                 ) : (
                   <div className="actions actionsWinner">
+                    <button onClick={tryAgain()} className="tryAgain">
+                      {translate('tryAgain')}
+                    </button>
                     <Link to="/profile" href="/profile">
-                      Получить бонус можно в профиле
+                      {(winner.name === 'other' ||
+                        (winner.type === 'bronze' ||
+                          winner.type === 'metalliic' ||
+                          winner.type === 'silver' ||
+                          winner.type === 'gold')) &&
+                        'Продать или '}
+                      Взять ключ можно в профиле
                     </Link>
                   </div>
                 )}
@@ -269,15 +345,18 @@ const Game = params => {
 
                 {authenticated && user && cases && !caseOpening && (
                   <div className="action">
-                    {user.bonus === 'none' ? (
+                    {user.balance >= cases.priceRUB ? (
                       <button className="btn" onClick={openCase()}>
-                        Открыть кейс
+                        {`Открыть кейс за ${cases.priceRUB}₽`}
                       </button>
                     ) : (
                       <React.Fragment>
                         <div className="text">
-                         <span>Бонус уже зачислен</span>
+                          Цена кейса: <span>{cases.priceRUB}₽</span>
                         </div>
+                        <button className="btn" onClick={addBalance()}>
+                          {translate('addBalance')}
+                        </button>
                       </React.Fragment>
                     )}
                   </div>

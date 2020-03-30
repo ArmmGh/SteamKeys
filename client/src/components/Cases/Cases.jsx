@@ -1,9 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-use-before-define */
-/* eslint-disable space-before-function-paren */
-/* eslint-disable consistent-return */
-/* eslint-disable func-names */
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Tilt from 'react-tilt';
@@ -140,9 +134,7 @@ const Cases = ({ history }) => {
   return (
     <div className="cases_holder">
       <div className="main-width">
-        <div className="nameing">
         <h1>{translate('keys')}</h1>
-        </div>
         <ul className="ourKeys">
           {otherCases.map((item, i) => (
             <li key={i} className="item">
